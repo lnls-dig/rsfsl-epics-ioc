@@ -119,27 +119,6 @@ outSwePoints {
 }
 
 ######################################################################
-# Auto Adjust Frequency Scale
-#
-outAutoFreq {
-    out "%{|ADJ:FREQ}";
-}
-
-######################################################################
-# Auto Adjust Level Scale
-#
-outAutoLvl {
-    out "%{|ADJ:LEV}";
-}
-
-######################################################################
-# Auto Adjust Frequency and Level Scale
-#
-outAutoAll {
-    out "%{|ADJ:ALL}";
-}
-
-######################################################################
 # Trace Data (single sweep --> INIT:CONT OFF)
 #
 inTrace {
