@@ -70,12 +70,12 @@ inIdn {
 # Reference Level
 #
 inRefLvl {
-    out "DISP:WIND:TRAC:Y:RLEV?";
+    out "DISP:WIND:TRAC:Y:SCAL:RLEV?";
     in "%f";
 }
 
 outRefLvl {
-    out "DISP:WIND:TRAC:Y:RLEV %f";
+    out "DISP:WIND:TRAC:Y:SCAL:RLEV %f";
     @init { inRefLvl; };
 }
 
@@ -83,12 +83,12 @@ outRefLvl {
 # Reference Level Offset
 #
 inRefOff {
-    out "DISP:WIND:TRAC:Y:RLEV:OFFS?";
+    out "DISP:WIND:TRAC:Y:SCAL:RLEV:OFFS?";
     in "%f";
 }
 
 outRefOff {
-    out "DISP:WIND:TRAC:Y:RLEV:OFFS %f";
+    out "DISP:WIND:TRAC:Y:SCAL:RLEV:OFFS %f";
     @init { inRefOff; };
 }
 
@@ -109,35 +109,25 @@ outSweMode {
 # Sweep Points Number (MIN 101; MAX 32001)
 #
 inSwePoints {
-    out "SWE:POIN?";
+    out "SENS:SWE:POIN?";
     in "%i";
 }
 
 outSwePoints {
-    out "SWE:POIN %i";
+    out "SENS:SWE:POIN %i";
     @init { inSwePoints; };
-}
-
-######################################################################
-# Trace Data (single sweep --> INIT:CONT OFF)
-#
-inTrace {
-    Separator=",";
-    out "INIT;*WAI";
-    out "TRAC? TRACE1";
-    in "%E";
 }
 
 ######################################################################
 # Center Frequency
 #
 inFrqCent {
-    out "FREQ:CENT?";
+    out "SENS:FREQ:CENT?";
     in "%f";
 }
 
 outFrqCent {
-    out "FREQ:CENT %f";
+    out "SENS:FREQ:CENT %f";
     @init { inFrqCent; };
 }
 
@@ -145,12 +135,12 @@ outFrqCent {
 # Frequency Span
 #
 inFrqSpan {
-    out "FREQ:SPAN?";
+    out "SENS:FREQ:SPAN?";
     in "%f";
 }
 
 outFrqSpan {
-    out "FREQ:SPAN %f";
+    out "SENS:FREQ:SPAN %f";
     @init { inFrqSpan; };
 }
 
@@ -158,12 +148,12 @@ outFrqSpan {
 # Start Frequency
 #
 inFrqStart {
-    out "FREQ:STAR?";
+    out "SENS:FREQ:STAR?";
     in "%f";
 }
 
 outFrqStart {
-    out "FREQ:STAR %f";
+    out "SENS:FREQ:STAR %f";
     @init { inFrqStart; };
 }
 
@@ -171,12 +161,12 @@ outFrqStart {
 # Stop Frequency
 #
 inFrqStop {
-    out "FREQ:STOP?";
+    out "SENS:FREQ:STOP?";
     in "%f";
 }
 
 outFrqStop {
-    out "FREQ:STOP %f";
+    out "SENS:FREQ:STOP %f";
     @init { inFrqStop; };
 }
 
@@ -272,10 +262,22 @@ inMark1Y {
 }
 
 ######################################################################
-# Set Marker to Max Peak on Trace
+# Set Markers to Max Peak on Trace
 
-outMarkMax {
-    out "%{|CALC:MARK:MAX}";
+cmdMarkMax1 {
+    out "%{|CALC:MARK1:MAX:PEAK}";
+}
+
+cmdMarkMax2 {
+    out "%{|CALC:MARK2:MAX:PEAK}";
+}
+
+cmdMarkMax3 {
+    out "%{|CALC:MARK3:MAX:PEAK}";
+}
+
+cmdMarkMax4 {
+    out "%{|CALC:MARK4:MAX:PEAK}";
 }
 
 ######################################################################

@@ -13,7 +13,7 @@
 # Defines protocol to use the device as a StreamDevice IOC in EPICS
 #
 #---------------------------------------------------------------------
-# Copyright (c) 2016 Brazilian Synchrotron Light Laboratory, LNLS/CNPEM
+# Copyright (c) 2018 Brazilian Synchrotron Light Laboratory, LNLS/CNPEM
 #
 # This program is free software: you can redistribute it and/or
 # modify it under the terms of the GNU Lesser General Public License
@@ -35,26 +35,6 @@
 #---------------------------------------------------------------------
 
 ######################################################################
-# Reset to default state
-
-record(bo, "$(P)$(R)GeneralReset-Cmd") {
-  field(DESC, "Reset to default state")
-  field(DTYP, "stream")
-  field(ZNAM, "0")
-  field(ONAM, "1")
-  field(HIGH, "1")
-  field(OUT, "@rsfsv.proto outRst $(PORT)")
-}
-
-# Get identification
-
-record(stringin, "$(P)$(R)GeneralIdn-Cte") {
-  field(DESC, "Get device identification")
-  field(SCAN, "1 second")
-  field(DTYP, "stream")
-  field(INP, "@rsfsv.proto inIdn $(PORT)")
-}
-
 # Reference Level
 
 record(ai, "$(P)$(R)GeneralRefLvl-RB") {
@@ -66,14 +46,14 @@ record(ai, "$(P)$(R)GeneralRefLvl-RB") {
   field(ADEL, "-1")
   field(LINR, "NO CONVERSION")
   field(EGU, "dBm")
-  field(INP, "@rsfsv.proto inRefLvl $(PORT)")
+  field(INP, "@rsfsl.proto inRefLvl $(PORT)")
 }
 
 record(ao, "$(P)$(R)GeneralRefLvl-SP") {
   field(DESC, "Set reference level")
   field(DTYP, "stream")
   field(EGU, "dBm")
-  field(OUT, "@rsfsv.proto outRefLvl($1) $(PORT)")
+  field(OUT, "@rsfsl.proto outRefLvl($1) $(PORT)")
   field(FLNK,"$(P)$(R)GeneralRefLvl-RB")
 }
 
@@ -88,14 +68,14 @@ record(ai, "$(P)$(R)GeneralRefOff-RB") {
   field(ADEL, "-1")
   field(LINR, "NO CONVERSION")
   field(EGU, "dBm")
-  field(INP, "@rsfsv.proto inRefOff $(PORT)")
+  field(INP, "@rsfsl.proto inRefOff $(PORT)")
 }
 
 record(ao, "$(P)$(R)GeneralRefOff-SP") {
   field(DESC, "Set reference level offset")
   field(DTYP, "stream")
   field(EGU, "dBm")
-  field(OUT, "@rsfsv.proto outRefOff($1) $(PORT)")
+  field(OUT, "@rsfsl.proto outRefOff($1) $(PORT)")
   field(FLNK,"$(P)$(R)GeneralRefOff-RB")
 }
 
@@ -107,7 +87,7 @@ record(bi, "$(P)$(R)GeneralSweMode-Sts") {
   field(DTYP, "stream")
   field(ZNAM, "SINGLE")
   field(ONAM, "CONTINUOUS")
-  field(INP, "@rsfsv.proto inSweMode $(PORT)")
+  field(INP, "@rsfsl.proto inSweMode $(PORT)")
 }
 
 record(bo, "$(P)$(R)GeneralSweMode-Sel") {
@@ -115,7 +95,7 @@ record(bo, "$(P)$(R)GeneralSweMode-Sel") {
   field(DTYP, "stream")
   field(ZNAM, "SINGLE")
   field(ONAM, "CONTINUOUS")
-  field(OUT, "@rsfsv.proto outSweMode($1) $(PORT)")
+  field(OUT, "@rsfsl.proto outSweMode($1) $(PORT)")
   field(FLNK,"$(P)$(R)GeneralSweMode-Sts")
 }
 
@@ -130,26 +110,15 @@ record(ai, "$(P)$(R)GeneralSwePoints-RB") {
   field(ADEL, "-1")
   field(LINR, "NO CONVERSION")
   field(EGU, "points")
-  field(INP, "@rsfsv.proto inSwePoints $(PORT)")
+  field(INP, "@rsfsl.proto inSwePoints $(PORT)")
 }
 
 record(ao, "$(P)$(R)GeneralSwePoints-SP") {
   field(DESC, "Set number of points in one sweep")
   field(DTYP, "stream")
   field(EGU, "points")
-  field(OUT, "@rsfsv.proto outSwePoints($1) $(PORT)")
+  field(OUT, "@rsfsl.proto outSwePoints($1) $(PORT)")
   field(FLNK,"$(P)$(R)GeneralSwePoints-RB")
-}
-
-# Read Trace
-
-record(waveform, "$(P)$(R)GeneralTrace-RB") {
-    field(DESC, "Get trace waveform")
-    field(NELM, "32001")
-    field(FTVL, "FLOAT")
-    field(DTYP, "stream")
-    field(SCAN, "1 second")
-    field(INP,  "@rsfsv.proto inTrace $(PORT)")
 }
 
 # Center Frequency
@@ -163,14 +132,14 @@ record(ai, "$(P)$(R)FreqCenter-RB") {
   field(ADEL, "-1")
   field(LINR, "NO CONVERSION")
   field(EGU, "Hz")
-  field(INP, "@rsfsv.proto inFrqCent $(PORT)")
+  field(INP, "@rsfsl.proto inFrqCent $(PORT)")
 }
 
 record(ao, "$(P)$(R)FreqCenter-SP") {
   field(DESC, "Set center frequency")
   field(DTYP, "stream")
   field(EGU, "Hz")
-  field(OUT, "@rsfsv.proto outFrqCent($1) $(PORT)")
+  field(OUT, "@rsfsl.proto outFrqCent($1) $(PORT)")
   field(FLNK,"$(P)$(R)FreqCenter-RB")
 }
 
@@ -185,14 +154,14 @@ record(ai, "$(P)$(R)FreqSpan-RB") {
   field(ADEL, "-1")
   field(LINR, "NO CONVERSION")
   field(EGU, "Hz")
-  field(INP, "@rsfsv.proto inFrqSpan $(PORT)")
+  field(INP, "@rsfsl.proto inFrqSpan $(PORT)")
 }
 
 record(ao, "$(P)$(R)FreqSpan-SP") {
   field(DESC, "Set frequency span")
   field(DTYP, "stream")
   field(EGU, "Hz")
-  field(OUT, "@rsfsv.proto outFrqSpan($1) $(PORT)")
+  field(OUT, "@rsfsl.proto outFrqSpan($1) $(PORT)")
   field(FLNK,"$(P)$(R)FreqSpan-RB")
 }
 
@@ -207,14 +176,14 @@ record(ai, "$(P)$(R)FreqStart-RB") {
   field(ADEL, "-1")
   field(LINR, "NO CONVERSION")
   field(EGU, "Hz")
-  field(INP, "@rsfsv.proto inFrqStart $(PORT)")
+  field(INP, "@rsfsl.proto inFrqStart $(PORT)")
 }
 
 record(ao, "$(P)$(R)FreqStart-SP") {
   field(DESC, "Set start frequency")
   field(DTYP, "stream")
   field(EGU, "Hz")
-  field(OUT, "@rsfsv.proto outFrqStart($1) $(PORT)")
+  field(OUT, "@rsfsl.proto outFrqStart($1) $(PORT)")
   field(FLNK,"$(P)$(R)FreqStart-RB")
 }
 
@@ -229,14 +198,14 @@ record(ai, "$(P)$(R)FreqStop-RB") {
   field(ADEL, "-1")
   field(LINR, "NO CONVERSION")
   field(EGU, "Hz")
-  field(INP, "@rsfsv.proto inFrqStop $(PORT)")
+  field(INP, "@rsfsl.proto inFrqStop $(PORT)")
 }
 
 record(ao, "$(P)$(R)FreqStop-SP") {
   field(DESC, "Set stop frequency")
   field(DTYP, "stream")
   field(EGU, "Hz")
-  field(OUT, "@rsfsv.proto outFrqStop($1) $(PORT)")
+  field(OUT, "@rsfsl.proto outFrqStop($1) $(PORT)")
   field(FLNK,"$(P)$(R)FreqStop-RB")
 }
 
@@ -248,7 +217,7 @@ record(bi, "$(P)$(R)EnblMark1-Sts") {
   field(DTYP, "stream")
   field(ZNAM, "OFF")
   field(ONAM, "ON")
-  field(INP, "@rsfsv.proto inEnblMark1 $(PORT)")
+  field(INP, "@rsfsl.proto inEnblMark1 $(PORT)")
 }
 
 record(bo, "$(P)$(R)EnblMark1-Sel") {
@@ -256,7 +225,7 @@ record(bo, "$(P)$(R)EnblMark1-Sel") {
   field(DTYP, "stream")
   field(ZNAM, "OFF")
   field(ONAM, "ON")
-  field(OUT, "@rsfsv.proto outEnblMark1($1) $(PORT)")
+  field(OUT, "@rsfsl.proto outEnblMark1($1) $(PORT)")
   field(FLNK,"$(P)$(R)Mark1X-RB")
   field(FLNK,"$(P)$(R)EnblMark1-Sts")
 }
@@ -267,7 +236,7 @@ record(bi, "$(P)$(R)EnblMark2-Sts") {
   field(DTYP, "stream")
   field(ZNAM, "OFF")
   field(ONAM, "ON")
-  field(INP, "@rsfsv.proto inEnblMark2 $(PORT)")
+  field(INP, "@rsfsl.proto inEnblMark2 $(PORT)")
 }
 
 record(bo, "$(P)$(R)EnblMark2-Sel") {
@@ -275,7 +244,7 @@ record(bo, "$(P)$(R)EnblMark2-Sel") {
   field(DTYP, "stream")
   field(ZNAM, "OFF")
   field(ONAM, "ON")
-  field(OUT, "@rsfsv.proto outEnblMark2($1) $(PORT)")
+  field(OUT, "@rsfsl.proto outEnblMark2($1) $(PORT)")
   field(FLNK,"$(P)$(R)Mark2X-RB")
 }
 
@@ -285,7 +254,7 @@ record(bi, "$(P)$(R)EnblMark3-Sts") {
   field(DTYP, "stream")
   field(ZNAM, "OFF")
   field(ONAM, "ON")
-  field(INP, "@rsfsv.proto inEnblMark3 $(PORT)")
+  field(INP, "@rsfsl.proto inEnblMark3 $(PORT)")
 }
 
 record(bo, "$(P)$(R)EnblMark3-Sel") {
@@ -293,7 +262,7 @@ record(bo, "$(P)$(R)EnblMark3-Sel") {
   field(DTYP, "stream")
   field(ZNAM, "OFF")
   field(ONAM, "ON")
-  field(OUT, "@rsfsv.proto outEnblMark3($1) $(PORT)")
+  field(OUT, "@rsfsl.proto outEnblMark3($1) $(PORT)")
   field(FLNK,"$(P)$(R)Mark3X-RB")
 }
 
@@ -303,7 +272,7 @@ record(bi, "$(P)$(R)EnblMark4-Sts") {
   field(DTYP, "stream")
   field(ZNAM, "OFF")
   field(ONAM, "ON")
-  field(INP, "@rsfsv.proto inEnblMark4 $(PORT)")
+  field(INP, "@rsfsl.proto inEnblMark4 $(PORT)")
 }
 
 record(bo, "$(P)$(R)EnblMark4-Sel") {
@@ -311,10 +280,9 @@ record(bo, "$(P)$(R)EnblMark4-Sel") {
   field(DTYP, "stream")
   field(ZNAM, "OFF")
   field(ONAM, "ON")
-  field(OUT, "@rsfsv.proto outEnblMark4($1) $(PORT)")
+  field(OUT, "@rsfsl.proto outEnblMark4($1) $(PORT)")
   field(FLNK,"$(P)$(R)Mark4-RB")
 }
-
 
 # Markers X Values
 
@@ -327,14 +295,14 @@ record(ai, "$(P)$(R)Mark1X-RB") {
 #  field(ADEL, "-1")
   field(LINR, "NO CONVERSION")
   field(EGU, "seconds or Hz")
-  field(INP, "@rsfsv.proto inMark1X $(PORT)")
+  field(INP, "@rsfsl.proto inMark1X $(PORT)")
 }
 
 record(ao, "$(P)$(R)Mark1X-SP") {
   field(DESC, "Set X value of the marker1")
   field(DTYP, "stream")
   field(EGU, "seconds or Hz")
-  field(OUT, "@rsfsv.proto outMark1X($1) $(PORT)")
+  field(OUT, "@rsfsl.proto outMark1X($1) $(PORT)")
   field(FLNK,"$(P)$(R)Mark1X-RB")
 }
 
@@ -346,14 +314,14 @@ record(ai, "$(P)$(R)Mark2X-RB") {
   field(ADEL, "-1")
   field(LINR, "NO CONVERSION")
   field(EGU, "seconds or Hz")
-  field(INP, "@rsfsv.proto inMark2X $(PORT)")
+  field(INP, "@rsfsl.proto inMark2X $(PORT)")
 }
 
 record(ao, "$(P)$(R)Mark2X-SP") {
   field(DESC, "Set X value of the marker2")
   field(DTYP, "stream")
   field(EGU, "seconds or Hz")
-  field(OUT, "@rsfsv.proto outMark2X($1) $(PORT)")
+  field(OUT, "@rsfsl.proto outMark2X($1) $(PORT)")
   field(FLNK,"$(P)$(R)Mark2X-RB")
 }
 
@@ -365,14 +333,14 @@ record(ai, "$(P)$(R)Mark3X-RB") {
   field(ADEL, "-1")
   field(LINR, "NO CONVERSION")
   field(EGU, "seconds or Hz")
-  field(INP, "@rsfsv.proto inMark3X $(PORT)")
+  field(INP, "@rsfsl.proto inMark3X $(PORT)")
 }
 
 record(ao, "$(P)$(R)Mark3X-SP") {
   field(DESC, "Set X value of the marker3")
   field(DTYP, "stream")
   field(EGU, "seconds or Hz")
-  field(OUT, "@rsfsv.proto outMark3X($1) $(PORT)")
+  field(OUT, "@rsfsl.proto outMark3X($1) $(PORT)")
   field(FLNK,"$(P)$(R)Mark3X-RB")
 }
 
@@ -384,16 +352,20 @@ record(ai, "$(P)$(R)Mark4X-RB") {
   field(ADEL, "-1")
   field(LINR, "NO CONVERSION")
   field(EGU, "seconds or Hz")
-  field(INP, "@rsfsv.proto inMark4X $(PORT)")
+  field(INP, "@rsfsl.proto inMark4X $(PORT)")
 }
 
 record(ao, "$(P)$(R)Mark4X-SP") {
   field(DESC, "Set X value of the marker4")
   field(DTYP, "stream")
   field(EGU, "seconds or Hz")
-  field(OUT, "@rsfsv.proto outMark4X($1) $(PORT)")
+  field(OUT, "@rsfsl.proto outMark4X($1) $(PORT)")
   field(FLNK,"$(P)$(R)Mark4X-RB")
 }
+
+######################################################################
+########################## MONITOR ###################################
+######################################################################
 
 # Markers Y Values
 
@@ -406,20 +378,75 @@ record(ai, "$(P)$(R)Mark1Y-RB") {
   field(ADEL, "-1")
   field(LINR, "NO CONVERSION")
   field(EGU, "dBm")
-  field(INP, "@rsfsv.proto inMark1Y $(PORT)")
+  field(INP, "@rsfsl.proto inMark1Y $(PORT)")
 }
 
-# Set Marker to Max Peak on Trace
+######################################################################
+############################ COMMAND #################################
+######################################################################
 
-record(bo, "$(P)$(R)MarkFindMax-Cmd") {
-  field(DESC, "Set marker to max peak on trace")
+# Reset to default state
+
+record(bo, "$(P)$(R)GeneralReset-Cmd") {
+  field(DESC, "Reset to default state")
   field(DTYP, "stream")
   field(ZNAM, "0")
   field(ONAM, "1")
   field(HIGH, "1")
-  field(OUT, "@rsfsv.proto outMarkMax($1) $(PORT)")
+  field(OUT, "@rsfsl.proto outRst $(PORT)")
 }
-################################################################
+
+# Get identification
+
+record(stringin, "$(P)$(R)GeneralIdn-Cte") {
+  field(DESC, "Get device identification")
+  field(SCAN, "1 second")
+  field(DTYP, "stream")
+  field(INP, "@rsfsl.proto inIdn $(PORT)")
+}
+
+# Set Marker to Max Peak on Trace
+
+record(bo, "$(P)$(R)MarkMax1-Cmd") {
+  field(DESC, "Set marker1 to max peak on trace")
+  field(DTYP, "stream")
+  field(ZNAM, "0")
+  field(ONAM, "1")
+  field(HIGH, "1")
+  field(OUT, "@rsfsl.proto cmdMarkMax1($1) $(PORT)")
+}
+
+record(bo, "$(P)$(R)MarkMax2-Cmd") {
+  field(DESC, "Set marker2 to max peak on trace")
+  field(DTYP, "stream")
+  field(ZNAM, "0")
+  field(ONAM, "1")
+  field(HIGH, "1")
+  field(OUT, "@rsfsl.proto cmdMarkMax2($1) $(PORT)")
+}
+
+record(bo, "$(P)$(R)MarkMax3-Cmd") {
+  field(DESC, "Set marker3 to max peak on trace")
+  field(DTYP, "stream")
+  field(ZNAM, "0")
+  field(ONAM, "1")
+  field(HIGH, "1")
+  field(OUT, "@rsfsl.proto cmdMarkMax3($1) $(PORT)")
+}
+
+record(bo, "$(P)$(R)MarkMax4-Cmd") {
+  field(DESC, "Set marker4 to max peak on trace")
+  field(DTYP, "stream")
+  field(ZNAM, "0")
+  field(ONAM, "1")
+  field(HIGH, "1")
+  field(OUT, "@rsfsl.proto cmdMarkMax4($1) $(PORT)")
+}
+
+######################################################################
+############################## SAVE ##################################
+######################################################################
+
 # Save
 # Desc: Save '-Sel' and '-SP' PV values.
 
