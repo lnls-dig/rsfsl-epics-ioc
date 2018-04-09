@@ -480,7 +480,7 @@ record(mbbo, "$(P)$(R)MarkCountRes-Sel") {
 # Enable/Disable local oscillator supression for peak search
 
 record(bi, "$(P)$(R)EnblLocalOscSupr-Sts") {
-  field(DESC, "Get Local Oscillator Supression State")
+  field(DESC, "Get Oscillator Supression State")
   field(SCAN, "1 second")
   field(DTYP, "stream")
   field(ZNAM, "OFF")
@@ -489,7 +489,7 @@ record(bi, "$(P)$(R)EnblLocalOscSupr-Sts") {
 }
 
 record(bo, "$(P)$(R)EnblLocalOscSupr-Sel") {
-  field(DESC, "Enable or Disable Local Oscillator Supression")
+  field(DESC, "Enable/Disable Oscillator Supression")
   field(DTYP, "stream")
   field(ZNAM, "OFF")
   field(ONAM, "ON")
@@ -838,6 +838,167 @@ record(bo, "$(P)$(R)EnblOutCorrect-Sel") {
   field(FLNK,"$(P)$(R)EnblOutCorrect-Sts")
 }
 
+# Input Attenuator Value 
+
+record(ai, "$(P)$(R)AttIn-RB") {
+  field(DESC, "Get Input Attenuator Value")
+  field(SCAN, "1 second")
+  field(DTYP, "stream")
+  field(PREC, "1")
+  field(EGU, "dB")
+  field(LINR, "NO CONVERSION")
+  field(INP, "@rsfsl.proto inAttIn $(PORT)")
+}
+
+record(ao, "$(P)$(R)AttIn-SP") {
+  field(DESC, "Set Input Attenuator Value")
+  field(DTYP, "stream")
+  field(EGU, "dB")
+  field(OUT, "@rsfsl.proto outAttIn(1) $(PORT)")
+  field(FLNK,"$(P)$(R)AttIn-RB")
+}
+
+# Enable/Disable automatic coupling of the input attenuation to the
+# reference level
+
+record(bi, "$(P)$(R)EnblAttAuto-Sts") {
+  field(DESC, "Get Automatic Input Coupling State")
+  field(SCAN, "1 second")
+  field(DTYP, "stream")
+  field(ZNAM, "OFF")
+  field(ONAM, "ON")
+  field(INP, "@rsfsl.proto inEnblAttAuto $(PORT)")
+}
+
+record(bo, "$(P)$(R)EnblAttAuto-Sel") {
+  field(DESC, "Enable/Disable Autom. Input Coupling")
+  field(DTYP, "stream")
+  field(ZNAM, "OFF")
+  field(ONAM, "ON")
+  field(OUT, "@rsfsl.proto outEnblAttAuto($1) $(PORT)")
+  field(FLNK,"$(P)$(R)EnblAttAuto-Sts")
+}
+
+# Enable/Disable Input Preamplifier
+
+record(bi, "$(P)$(R)EnblPreamp-Sts") {
+  field(DESC, "Get Input Preamplifier State")
+  field(SCAN, "1 second")
+  field(DTYP, "stream")
+  field(ZNAM, "OFF")
+  field(ONAM, "ON")
+  field(INP, "@rsfsl.proto inEnblPreamp $(PORT)")
+}
+
+record(bo, "$(P)$(R)EnblPreamp-Sel") {
+  field(DESC, "Enable or Disable Input Preamplifier")
+  field(DTYP, "stream")
+  field(ZNAM, "OFF")
+  field(ONAM, "ON")
+  field(OUT, "@rsfsl.proto outEnblPreamp($1) $(PORT)")
+  field(FLNK,"$(P)$(R)EnblPreamp-Sts")
+}
+
+# Instrments Nominal Input Impedance
+
+record(bi, "$(P)$(R)ImpdIn-Sts") {
+  field(DESC, "Get Input Impedance")
+  field(SCAN, "1 second")
+  field(DTYP, "stream")
+  field(ZNAM, "50")
+  field(ONAM, "75")
+  field(INP, "@rsfsl.proto inImpdIn $(PORT)")
+}
+
+record(bo, "$(P)$(R)ImpdIn-Sel") {
+  field(DESC, "Set Input Impedance")
+  field(DTYP, "stream")
+  field(ZNAM, "50")
+  field(ONAM, "75")
+  field(OUT, "@rsfsl.proto outImpdIn($1) $(PORT)")
+  field(FLNK,"$(P)$(R)ImpdIn-Sts")
+}
+
+# Oscilators Reference
+
+record(bi, "$(P)$(R)RoscSrc-Sts") {
+  field(DESC, "Get Oscillators Reference")
+  field(SCAN, "1 second")
+  field(DTYP, "stream")
+  field(ZNAM, "50")
+  field(ONAM, "75")
+  field(INP, "@rsfsl.proto inRoscSrc $(PORT)")
+}
+
+record(bo, "$(P)$(R)RoscSrc-Sel") {
+  field(DESC, "Set Oscillators Reference")
+  field(DTYP, "stream")
+  field(ZNAM, "50")
+  field(ONAM, "75")
+  field(OUT, "@rsfsl.proto outRoscSrc($1) $(PORT)")
+  field(FLNK,"$(P)$(R)RoscSrc-Sts")
+}
+
+# Tracking Generator level 
+
+record(ai, "$(P)$(R)LvlOut-RB") {
+  field(DESC, "Get Tracking Generators Level")
+  field(SCAN, "1 second")
+  field(DTYP, "stream")
+  field(PREC, "1")
+  field(EGU, "dBm")
+  field(LINR, "NO CONVERSION")
+  field(INP, "@rsfsl.proto inLvlOut $(PORT)")
+}
+
+record(ao, "$(P)$(R)LvlOut-SP") {
+  field(DESC, "Set Tracking Generators Level")
+  field(DTYP, "stream")
+  field(EGU, "dBm")
+  field(OUT, "@rsfsl.proto outLvlOut(1) $(PORT)")
+  field(FLNK,"$(P)$(R)LvlOut-RB")
+}
+
+# Tracking Generator Offset Level 
+
+record(ai, "$(P)$(R)LvlOutOffset-RB") {
+  field(DESC, "Get Tracking Generator Offset Level")
+  field(SCAN, "1 second")
+  field(DTYP, "stream")
+  field(PREC, "1")
+  field(EGU, "dB")
+  field(LINR, "NO CONVERSION")
+  field(INP, "@rsfsl.proto inLvlOutOffset $(PORT)")
+}
+
+record(ao, "$(P)$(R)LvlOutOffset-SP") {
+  field(DESC, "Set Tracking Generator Offset Level")
+  field(DTYP, "stream")
+  field(EGU, "dB")
+  field(OUT, "@rsfsl.proto outLvlOutOffset(1) $(PORT)")
+  field(FLNK,"$(P)$(R)LvlOutOffset-RB")
+}
+
+# Tracking Generator level 
+
+record(ai, "$(P)$(R)GeneralRbw-RB") {
+  field(DESC, "Get Resolution Bandwidth")
+  field(SCAN, "1 second")
+  field(DTYP, "stream")
+  field(PREC, "1")
+  field(EGU, "Hz")
+  field(LINR, "NO CONVERSION")
+  field(INP, "@rsfsl.proto inRbw $(PORT)")
+}
+
+record(ao, "$(P)$(R)GeneralRbw-SP") {
+  field(DESC, "Set Rsolution Bandwidth")
+  field(DTYP, "stream")
+  field(EGU, "Hz")
+  field(OUT, "@rsfsl.proto outRbw(1) $(PORT)")
+  field(FLNK,"$(P)$(R)GeneralRbw-RB")
+}
+
 ######################################################################
 ########################## MONITOR ###################################
 ######################################################################
@@ -1097,7 +1258,7 @@ record(bo, "$(P)$(R)MarkMinLeft4-Cmd") {
 # corresponding trace (1-4)
 
 record(bo, "$(P)$(R)MarkMaxNext1-Cmd") {
-  field(DESC, "Position marker1 to the next value of trace ")
+  field(DESC, "Position mkr1 to next value on trace")
   field(DTYP, "stream")
   field(ZNAM, "0")
   field(ONAM, "1")
@@ -1106,7 +1267,7 @@ record(bo, "$(P)$(R)MarkMaxNext1-Cmd") {
 }
 
 record(bo, "$(P)$(R)MarkMaxNext2-Cmd") {
-  field(DESC, "Position marker2 to the next value of trace ")
+  field(DESC, "Position mkr2 to next value on trace")
   field(DTYP, "stream")
   field(ZNAM, "0")
   field(ONAM, "1")
@@ -1115,7 +1276,7 @@ record(bo, "$(P)$(R)MarkMaxNext2-Cmd") {
 }
 
 record(bo, "$(P)$(R)MarkMaxNext3-Cmd") {
-  field(DESC, "Position marker3 to the next value of trace ")
+  field(DESC, "Position mkr3 to next value on trace")
   field(DTYP, "stream")
   field(ZNAM, "0")
   field(ONAM, "1")
@@ -1124,7 +1285,7 @@ record(bo, "$(P)$(R)MarkMaxNext3-Cmd") {
 }
 
 record(bo, "$(P)$(R)MarkMaxNext4-Cmd") {
-  field(DESC, "Position marker4 to the next value of trace ")
+  field(DESC, "Position mkr4 to next value on trace")
   field(DTYP, "stream")
   field(ZNAM, "0")
   field(ONAM, "1")
@@ -1136,7 +1297,7 @@ record(bo, "$(P)$(R)MarkMaxNext4-Cmd") {
 # corresponding trace (1-4)
 
 record(bo, "$(P)$(R)MarkMinNext1-Cmd") {
-  field(DESC, "Position marker1 to the next value of trace ")
+  field(DESC, "Position mkr1 to the next value of trace")
   field(DTYP, "stream")
   field(ZNAM, "0")
   field(ONAM, "1")
@@ -1145,7 +1306,7 @@ record(bo, "$(P)$(R)MarkMinNext1-Cmd") {
 }
 
 record(bo, "$(P)$(R)MarkMinNext2-Cmd") {
-  field(DESC, "Position marker2 to the next value of trace ")
+  field(DESC, "Position mkr2 to the next value of trace")
   field(DTYP, "stream")
   field(ZNAM, "0")
   field(ONAM, "1")
@@ -1154,7 +1315,7 @@ record(bo, "$(P)$(R)MarkMinNext2-Cmd") {
 }
 
 record(bo, "$(P)$(R)MarkMinNext3-Cmd") {
-  field(DESC, "Position marker3 to the next value of trace ")
+  field(DESC, "Position mkr3 to the next value of trace")
   field(DTYP, "stream")
   field(ZNAM, "0")
   field(ONAM, "1")
@@ -1163,7 +1324,7 @@ record(bo, "$(P)$(R)MarkMinNext3-Cmd") {
 }
 
 record(bo, "$(P)$(R)MarkMinNext4-Cmd") {
-  field(DESC, "Position marker4 to the next value of trace ")
+  field(DESC, "Position mkr4 to the next value of trace")
   field(DTYP, "stream")
   field(ZNAM, "0")
   field(ONAM, "1")
