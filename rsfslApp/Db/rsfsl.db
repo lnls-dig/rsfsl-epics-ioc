@@ -6,7 +6,7 @@
 # Author     : Leticia Garcez Capovilla
 # Company    : Brazilian Synchrotron Light Laboratory, LNLS/CNPEM
 # Created    : 2018-03-19
-# Last update: 2018-03-19
+# Last update: 2018-04-04
 #---------------------------------------------------------------------
 # Description:
 #
@@ -32,9 +32,10 @@
 # Revisions  :
 # Date        	Version  	Author         		Description
 # 2018-mar-19 	1.0      	leticiagcapovilla       Created
+# 2018-apr-04	1.0		leticiagcapovilla	Updated
 #---------------------------------------------------------------------
 
-######################################################################
+#####################################################################
 # Reference Level
 
 record(ai, "$(P)$(R)GeneralRefLvl-RB") {
@@ -209,7 +210,7 @@ record(ao, "$(P)$(R)FreqStop-SP") {
   field(FLNK,"$(P)$(R)FreqStop-RB")
 }
 
-# Enable Markers (1-4)
+# Enable/Disable Markers (1-4)
 
 record(bi, "$(P)$(R)EnblMark1-Sts") {
   field(DESC, "Get Marker1 State")
@@ -221,12 +222,11 @@ record(bi, "$(P)$(R)EnblMark1-Sts") {
 }
 
 record(bo, "$(P)$(R)EnblMark1-Sel") {
-  field(DESC, "Set Marker1 State")
+  field(DESC, "Enable or Disable Marker1 State")
   field(DTYP, "stream")
   field(ZNAM, "OFF")
   field(ONAM, "ON")
   field(OUT, "@rsfsl.proto outEnblMark1($1) $(PORT)")
-  field(FLNK,"$(P)$(R)Mark1X-RB")
   field(FLNK,"$(P)$(R)EnblMark1-Sts")
 }
 
@@ -240,12 +240,12 @@ record(bi, "$(P)$(R)EnblMark2-Sts") {
 }
 
 record(bo, "$(P)$(R)EnblMark2-Sel") {
-  field(DESC, "Set Marker2 State")
+  field(DESC, "Enable or Disable Marker2 State")
   field(DTYP, "stream")
   field(ZNAM, "OFF")
   field(ONAM, "ON")
   field(OUT, "@rsfsl.proto outEnblMark2($1) $(PORT)")
-  field(FLNK,"$(P)$(R)Mark2X-RB")
+  field(FLNK,"$(P)$(R)EnblMark2-Sts")
 }
 
 record(bi, "$(P)$(R)EnblMark3-Sts") {
@@ -258,12 +258,12 @@ record(bi, "$(P)$(R)EnblMark3-Sts") {
 }
 
 record(bo, "$(P)$(R)EnblMark3-Sel") {
-  field(DESC, "Set Marker3 State")
+  field(DESC, "Enable or Disable Marker3 State")
   field(DTYP, "stream")
   field(ZNAM, "OFF")
   field(ONAM, "ON")
   field(OUT, "@rsfsl.proto outEnblMark3($1) $(PORT)")
-  field(FLNK,"$(P)$(R)Mark3X-RB")
+  field(FLNK,"$(P)$(R)EnblMark3-Sts")
 }
 
 record(bi, "$(P)$(R)EnblMark4-Sts") {
@@ -276,17 +276,17 @@ record(bi, "$(P)$(R)EnblMark4-Sts") {
 }
 
 record(bo, "$(P)$(R)EnblMark4-Sel") {
-  field(DESC, "Set Marker4 State")
+  field(DESC, "Enable or Disable Marker4 State")
   field(DTYP, "stream")
   field(ZNAM, "OFF")
   field(ONAM, "ON")
   field(OUT, "@rsfsl.proto outEnblMark4($1) $(PORT)")
-  field(FLNK,"$(P)$(R)Mark4-RB")
+  field(FLNK,"$(P)$(R)EnblMark4-Sts")
 }
 
 # Markers X Values
 
-record(ai, "$(P)$(R)Mark1X-RB") {
+record(ai, "$(P)$(R)MarkX1-RB") {
   field(DESC, "Get X value of the marker1")
   field(DTYP, "stream")
   field(SCAN, "1 second")
@@ -295,18 +295,18 @@ record(ai, "$(P)$(R)Mark1X-RB") {
 #  field(ADEL, "-1")
   field(LINR, "NO CONVERSION")
   field(EGU, "seconds or Hz")
-  field(INP, "@rsfsl.proto inMark1X $(PORT)")
+  field(INP, "@rsfsl.proto inMarkX1 $(PORT)")
 }
 
-record(ao, "$(P)$(R)Mark1X-SP") {
+record(ao, "$(P)$(R)MarkX1-SP") {
   field(DESC, "Set X value of the marker1")
   field(DTYP, "stream")
   field(EGU, "seconds or Hz")
-  field(OUT, "@rsfsl.proto outMark1X($1) $(PORT)")
-  field(FLNK,"$(P)$(R)Mark1X-RB")
+  field(OUT, "@rsfsl.proto outMarkX1($1) $(PORT)")
+  field(FLNK,"$(P)$(R)MarkX1-RB")
 }
 
-record(ai, "$(P)$(R)Mark2X-RB") {
+record(ai, "$(P)$(R)MarkX2-RB") {
   field(DESC, "Get X value of the marker2")
   field(DTYP, "stream")
   field(PREC, "1")
@@ -314,18 +314,18 @@ record(ai, "$(P)$(R)Mark2X-RB") {
   field(ADEL, "-1")
   field(LINR, "NO CONVERSION")
   field(EGU, "seconds or Hz")
-  field(INP, "@rsfsl.proto inMark2X $(PORT)")
+  field(INP, "@rsfsl.proto inMarkX2 $(PORT)")
 }
 
-record(ao, "$(P)$(R)Mark2X-SP") {
+record(ao, "$(P)$(R)MarkX2-SP") {
   field(DESC, "Set X value of the marker2")
   field(DTYP, "stream")
   field(EGU, "seconds or Hz")
-  field(OUT, "@rsfsl.proto outMark2X($1) $(PORT)")
-  field(FLNK,"$(P)$(R)Mark2X-RB")
+  field(OUT, "@rsfsl.proto outMarkX2($1) $(PORT)")
+  field(FLNK,"$(P)$(R)MarkX2-RB")
 }
 
-record(ai, "$(P)$(R)Mark3X-RB") {
+record(ai, "$(P)$(R)MarkX3-RB") {
   field(DESC, "Get X value of the marker3")
   field(DTYP, "stream")
   field(PREC, "1")
@@ -333,18 +333,18 @@ record(ai, "$(P)$(R)Mark3X-RB") {
   field(ADEL, "-1")
   field(LINR, "NO CONVERSION")
   field(EGU, "seconds or Hz")
-  field(INP, "@rsfsl.proto inMark3X $(PORT)")
+  field(INP, "@rsfsl.proto inMarkX3 $(PORT)")
 }
 
-record(ao, "$(P)$(R)Mark3X-SP") {
+record(ao, "$(P)$(R)MarkX3-SP") {
   field(DESC, "Set X value of the marker3")
   field(DTYP, "stream")
   field(EGU, "seconds or Hz")
-  field(OUT, "@rsfsl.proto outMark3X($1) $(PORT)")
-  field(FLNK,"$(P)$(R)Mark3X-RB")
+  field(OUT, "@rsfsl.proto outMarkX3($1) $(PORT)")
+  field(FLNK,"$(P)$(R)MarkX3-RB")
 }
 
-record(ai, "$(P)$(R)Mark4X-RB") {
+record(ai, "$(P)$(R)MarkX4-RB") {
   field(DESC, "Get X value of the marker4")
   field(DTYP, "stream")
   field(PREC, "1")
@@ -352,24 +352,508 @@ record(ai, "$(P)$(R)Mark4X-RB") {
   field(ADEL, "-1")
   field(LINR, "NO CONVERSION")
   field(EGU, "seconds or Hz")
-  field(INP, "@rsfsl.proto inMark4X $(PORT)")
+  field(INP, "@rsfsl.proto inMarkX4 $(PORT)")
 }
 
-record(ao, "$(P)$(R)Mark4X-SP") {
+record(ao, "$(P)$(R)MarkX4-SP") {
   field(DESC, "Set X value of the marker4")
   field(DTYP, "stream")
   field(EGU, "seconds or Hz")
-  field(OUT, "@rsfsl.proto outMark4X($1) $(PORT)")
-  field(FLNK,"$(P)$(R)Mark4X-RB")
+  field(OUT, "@rsfsl.proto outMarkX4($1) $(PORT)")
+  field(FLNK,"$(P)$(R)MarkX4-RB")
+}
+
+# Enable/Disable Marker Frequency Counters (1-4)
+
+record(bi, "$(P)$(R)EnblMarkCount1-Sts") {
+  field(DESC, "Get Marker1 Freq. Counter State")
+  field(SCAN, "1 second")
+  field(DTYP, "stream")
+  field(ZNAM, "OFF")
+  field(ONAM, "ON")
+  field(INP, "@rsfsl.proto inEnblMarkCount1 $(PORT)")
+}
+
+record(bo, "$(P)$(R)EnblMarkCount1-Sel") {
+  field(DESC, "Enable or Disable Marker1 Freq. Counter")
+  field(DTYP, "stream")
+  field(ZNAM, "OFF")
+  field(ONAM, "ON")
+  field(OUT, "@rsfsl.proto outEnblMarkCount1($1) $(PORT)")
+  field(FLNK,"$(P)$(R)EnblMarkCount1-Sts")
+}
+
+record(bi, "$(P)$(R)EnblMarkCount2-Sts") {
+  field(DESC, "Get Marker2 Freq. Counter State")
+  field(SCAN, "1 second")
+  field(DTYP, "stream")
+  field(ZNAM, "OFF")
+  field(ONAM, "ON")
+  field(INP, "@rsfsl.proto inEnblMarkCount2 $(PORT)")
+}
+
+record(bo, "$(P)$(R)EnblMarkCount2-Sel") {
+  field(DESC, "Enable or Disable Marker2 Freq. Counter")
+  field(DTYP, "stream")
+  field(ZNAM, "OFF")
+  field(ONAM, "ON")
+  field(OUT, "@rsfsl.proto outEnblMarkCount2($1) $(PORT)")
+  field(FLNK,"$(P)$(R)EnblMarkCount2-Sts")
+}
+
+record(bi, "$(P)$(R)EnblMarkCount3-Sts") {
+  field(DESC, "Get Marker3 Freq. Counter State")
+  field(SCAN, "1 second")
+  field(DTYP, "stream")
+  field(ZNAM, "OFF")
+  field(ONAM, "ON")
+  field(INP, "@rsfsl.proto inEnblMarkCount3 $(PORT)")
+}
+
+record(bo, "$(P)$(R)EnblMarkCount3-Sel") {
+  field(DESC, "Enable or Disable Marker3 Freq. Counter")
+  field(DTYP, "stream")
+  field(ZNAM, "OFF")
+  field(ONAM, "ON")
+  field(OUT, "@rsfsl.proto outEnblMarkCount3($1) $(PORT)")
+  field(FLNK,"$(P)$(R)EnblMarkCount3-Sts")
+}
+
+record(bi, "$(P)$(R)EnblMarkCount4-Sts") {
+  field(DESC, "Get Marker4 Freq. Counter State")
+  field(SCAN, "1 second")
+  field(DTYP, "stream")
+  field(ZNAM, "OFF")
+  field(ONAM, "ON")
+  field(INP, "@rsfsl.proto inEnblMarkCount4 $(PORT)")
+}
+
+record(bo, "$(P)$(R)EnblMarkCount4-Sel") {
+  field(DESC, "Enable or Disable Marker4 Freq. Counter")
+  field(DTYP, "stream")
+  field(ZNAM, "OFF")
+  field(ONAM, "ON")
+  field(OUT, "@rsfsl.proto outEnblMarkCount4($1) $(PORT)")
+  field(FLNK,"$(P)$(R)EnblMarkCount4-Sts")
+}
+
+# Marker frequency counter resolution
+
+record(mbbi, "$(P)$(R)MarkCountRes-Sts") {
+  field(DESC, "Get Resolution of the Frequency Counter")
+  field(SCAN, "1 second")
+  field(DTYP, "stream")
+  field(ZRVL, "0")
+  field(ZRST, "0.1")
+  field(ONVL, "1")
+  field(ONST, "1")
+  field(TWVL, "2")
+  field(TWST, "10")
+  field(THVL, "3")
+  field(THST, "100")
+  field(FRVL, "4")
+  field(FRST, "1000")
+  field(FVVL, "5")
+  field(FVST, "10000")
+  field(INP, "@rsfsl.proto inMarkCountRes $(PORT)")
+}
+
+record(mbbo, "$(P)$(R)MarkCountRes-Sel") {
+  field(DESC, "Get Resolution of the Frequency Counter")
+  field(DTYP, "stream")
+  field(ZRVL, "0")
+  field(ZRST, "0.1")
+  field(ONVL, "1")
+  field(ONST, "1")
+  field(TWVL, "2")
+  field(TWST, "10")
+  field(THVL, "3")
+  field(THST, "100")
+  field(FRVL, "4")
+  field(FRST, "1000")
+  field(FVVL, "5")
+  field(FVST, "10000")
+  field(OUT, "@rsfsl.proto outMarkCountRes($1) $(PORT)")
+  field(FLNK, "$(P)$(R)MarkCountRes-Sts")
+}
+
+# Enable/Disable local oscillator supression for peak search
+
+record(bi, "$(P)$(R)EnblLocalOscSupr-Sts") {
+  field(DESC, "Get Local Oscillator Supression State")
+  field(SCAN, "1 second")
+  field(DTYP, "stream")
+  field(ZNAM, "OFF")
+  field(ONAM, "ON")
+  field(INP, "@rsfsl.proto inEnblLocalOscSupr $(PORT)")
+}
+
+record(bo, "$(P)$(R)EnblLocalOscSupr-Sel") {
+  field(DESC, "Enable or Disable Local Oscillator Supression")
+  field(DTYP, "stream")
+  field(ZNAM, "OFF")
+  field(ONAM, "ON")
+  field(OUT, "@rsfsl.proto outEnblLocalOscSupr($1) $(PORT)")
+  field(FLNK,"$(P)$(R)EnblLocalOscSupr-Sts")
+}
+
+# Enable/Disable automatic maximum peak searh for markers (1-4)
+
+record(bi, "$(P)$(R)EnblMaxAuto1-Sts") {
+  field(DESC, "Get Automatic Peak Search State")
+  field(SCAN, "1 second")
+  field(DTYP, "stream")
+  field(ZNAM, "OFF")
+  field(ONAM, "ON")
+  field(INP, "@rsfsl.proto inEnblMaxAuto1 $(PORT)")
+}
+
+record(bo, "$(P)$(R)EnblMaxAuto1-Sel") {
+  field(DESC, "Enable or Disable Automatic Peak Search")
+  field(DTYP, "stream")
+  field(ZNAM, "OFF")
+  field(ONAM, "ON")
+  field(OUT, "@rsfsl.proto outEnblMaxAuto1($1) $(PORT)")
+  field(FLNK,"$(P)$(R)EnblMaxAuto1-Sts")
+}
+
+record(bi, "$(P)$(R)EnblMaxAuto2-Sts") {
+  field(DESC, "Get Automatic Peak Search State")
+  field(SCAN, "1 second")
+  field(DTYP, "stream")
+  field(ZNAM, "OFF")
+  field(ONAM, "ON")
+  field(INP, "@rsfsl.proto inEnblMaxAuto2 $(PORT)")
+}
+
+record(bo, "$(P)$(R)EnblMaxAuto2-Sel") {
+  field(DESC, "Enable or Disable Automatic Peak Search")
+  field(DTYP, "stream")
+  field(ZNAM, "OFF")
+  field(ONAM, "ON")
+  field(OUT, "@rsfsl.proto outEnblMaxAuto2($1) $(PORT)")
+  field(FLNK,"$(P)$(R)EnblMaxAuto2-Sts")
+}
+
+record(bi, "$(P)$(R)EnblMaxAuto3-Sts") {
+  field(DESC, "Get Automatic Peak Search State")
+  field(SCAN, "1 second")
+  field(DTYP, "stream")
+  field(ZNAM, "OFF")
+  field(ONAM, "ON")
+  field(INP, "@rsfsl.proto inEnblMaxAuto3 $(PORT)")
+}
+
+record(bo, "$(P)$(R)EnblMaxAuto3-Sel") {
+  field(DESC, "Enable or Disable Automatic Peak Search")
+  field(DTYP, "stream")
+  field(ZNAM, "OFF")
+  field(ONAM, "ON")
+  field(OUT, "@rsfsl.proto outEnblMaxAuto3($1) $(PORT)")
+  field(FLNK,"$(P)$(R)EnblMaxAuto3-Sts")
+}
+
+record(bi, "$(P)$(R)EnblMaxAuto4-Sts") {
+  field(DESC, "Get Automatic Peak Search State")
+  field(SCAN, "1 second")
+  field(DTYP, "stream")
+  field(ZNAM, "OFF")
+  field(ONAM, "ON")
+  field(INP, "@rsfsl.proto inEnblMaxAuto4 $(PORT)")
+}
+
+record(bo, "$(P)$(R)EnblMaxAuto4-Sel") {
+  field(DESC, "Enable or Disable Automatic Peak Search")
+  field(DTYP, "stream")
+  field(ZNAM, "OFF")
+  field(ONAM, "ON")
+  field(OUT, "@rsfsl.proto outEnblMaxAuto4($1) $(PORT)")
+  field(FLNK,"$(P)$(R)EnblMaxAuto4-Sts")
+}
+
+# Enable automatic minimum peak searh for markers (1-4)
+
+record(bi, "$(P)$(R)EnblMinAuto1-Sts") {
+  field(DESC, "Get Automatic Peak Search State")
+  field(SCAN, "1 second")
+  field(DTYP, "stream")
+  field(ZNAM, "OFF")
+  field(ONAM, "ON")
+  field(INP, "@rsfsl.proto inEnblMinAuto1 $(PORT)")
+}
+
+record(bo, "$(P)$(R)EnblMinAuto1-Sel") {
+  field(DESC, "Enable or Disable Automatic Peak Search")
+  field(DTYP, "stream")
+  field(ZNAM, "OFF")
+  field(ONAM, "ON")
+  field(OUT, "@rsfsl.proto outEnblMinAuto1($1) $(PORT)")
+  field(FLNK,"$(P)$(R)EnblMinAuto1-Sts")
+}
+
+record(bi, "$(P)$(R)EnblMinAuto2-Sts") {
+  field(DESC, "Get Automatic Peak Search State")
+  field(SCAN, "1 second")
+  field(DTYP, "stream")
+  field(ZNAM, "OFF")
+  field(ONAM, "ON")
+  field(INP, "@rsfsl.proto inEnblMinAuto2 $(PORT)")
+}
+
+record(bo, "$(P)$(R)EnblMinAuto2-Sel") {
+  field(DESC, "Enable or Disable Automatic Peak Search")
+  field(DTYP, "stream")
+  field(ZNAM, "OFF")
+  field(ONAM, "ON")
+  field(OUT, "@rsfsl.proto outEnblMinAuto2($1) $(PORT)")
+  field(FLNK,"$(P)$(R)EnblMinAuto2-Sts")
+}
+
+record(bi, "$(P)$(R)EnblMinAuto3-Sts") {
+  field(DESC, "Get Automatic Peak Search State")
+  field(SCAN, "1 second")
+  field(DTYP, "stream")
+  field(ZNAM, "OFF")
+  field(ONAM, "ON")
+  field(INP, "@rsfsl.proto inEnblMinAuto3 $(PORT)")
+}
+
+record(bo, "$(P)$(R)EnblMinAuto3-Sel") {
+  field(DESC, "Enable or Disable Automatic Peak Search")
+  field(DTYP, "stream")
+  field(ZNAM, "OFF")
+  field(ONAM, "ON")
+  field(OUT, "@rsfsl.proto outEnblMinAuto3($1) $(PORT)")
+  field(FLNK,"$(P)$(R)EnblMinAuto3-Sts")
+}
+
+record(bi, "$(P)$(R)EnblMinAuto4-Sts") {
+  field(DESC, "Get Automatic Peak Search State")
+  field(SCAN, "1 second")
+  field(DTYP, "stream")
+  field(ZNAM, "OFF")
+  field(ONAM, "ON")
+  field(INP, "@rsfsl.proto inEnblMinAuto4 $(PORT)")
+}
+
+record(bo, "$(P)$(R)EnblMinAuto4-Sel") {
+  field(DESC, "Enable or Disable Automatic Peak Search")
+  field(DTYP, "stream")
+  field(ZNAM, "OFF")
+  field(ONAM, "ON")
+  field(OUT, "@rsfsl.proto outEnblMinAuto4($1) $(PORT)")
+  field(FLNK,"$(P)$(R)EnblMinAuto4-Sts")
+}
+
+# Define the peak excursion
+
+record(ai, "$(P)$(R)MarkPExcursion-RB") {
+  field(DESC, "Get Peak Excursion")
+  field(SCAN, "1 second")
+  field(DTYP, "stream")
+  field(PREC, "1")
+  field(MDEL, "-1")
+  field(ADEL, "-1")
+  field(LINR, "NO CONVERSION")
+  field(EGU, "dB")
+  field(INP, "@rsfsl.proto inMarkPExcursion $(PORT)")
+}
+
+record(ao, "$(P)$(R)MarkPExcursion-SP") {
+  field(DESC, "Set Peak Excursion")
+  field(DTYP, "stream")
+  field(EGU, "dB")
+  field(OUT, "@rsfsl.proto outMarkPExcursion($1) $(PORT)")
+  field(FLNK,"$(P)$(R)GeneralRefLvl-RB")
+}
+
+# Enable/Disable marker limited search range
+
+record(bi, "$(P)$(R)EnblMarkLimit-Sts") {
+  field(DESC, "Get Automatic Peak Search State")
+  field(SCAN, "1 second")
+  field(DTYP, "stream")
+  field(ZNAM, "OFF")
+  field(ONAM, "ON")
+  field(INP, "@rsfsl.proto inEnblMarkLimit $(PORT)")
+}
+
+record(bo, "$(P)$(R)EnblMarkLimit-Sel") {
+  field(DESC, "Enable or Disable Automatic Peak Search")
+  field(DTYP, "stream")
+  field(ZNAM, "OFF")
+  field(ONAM, "ON")
+  field(OUT, "@rsfsl.proto outEnblMarkLimit($1) $(PORT)")
+  field(FLNK,"$(P)$(R)EnblMarkLimit-Sts")
+}
+
+# Left limit for the search range
+
+record(ai, "$(P)$(R)MarkLimitLeft-RB") {
+  field(DESC, "Get left limit for the search range")
+  field(SCAN, "1 second")
+  field(DTYP, "stream")
+  field(PREC, "1")
+  field(LINR, "NO CONVERSION")
+  field(INP, "@rsfsl.proto inMarkLimitLeft $(PORT)")
+}
+
+record(ao, "$(P)$(R)MarkLimitLeft-SP") {
+  field(DESC, "Set Left limit for the search range")
+  field(DTYP, "stream")
+  field(OUT, "@rsfsl.proto outMarkLimitLeft($1) $(PORT)")
+  field(FLNK,"$(P)$(R)MarkLimitLeft-RB")
+}
+
+# Right limit for the search range
+
+record(ai, "$(P)$(R)MarkLimitRight-RB") {
+  field(DESC, "Get Right Limit for the Search Range")
+  field(SCAN, "1 second")
+  field(DTYP, "stream")
+  field(PREC, "1")
+  field(LINR, "NO CONVERSION")
+  field(INP, "@rsfsl.proto inMarkLimitRight $(PORT)")
+}
+
+record(ao, "$(P)$(R)MarkLimitRight-SP") {
+  field(DESC, "Set Right Limit for the Search Range")
+  field(DTYP, "stream")
+  field(OUT, "@rsfsl.proto outMarkLimitRight($1) $(PORT)")
+  field(FLNK,"$(P)$(R)MarkLimitRight-RB")
+}
+
+# Enable/Disable Markers (1-4)
+
+record(bi, "$(P)$(R)EnblDMark1-Sts") {
+  field(DESC, "Get Delta Marker1 State")
+  field(SCAN, "1 second")
+  field(DTYP, "stream")
+  field(ZNAM, "OFF")
+  field(ONAM, "ON")
+  field(INP, "@rsfsl.proto inEnblDMark1 $(PORT)")
+}
+
+record(bo, "$(P)$(R)EnblDMark1-Sel") {
+  field(DESC, "Enable or Disable Delta Marker1")
+  field(DTYP, "stream")
+  field(ZNAM, "OFF")
+  field(ONAM, "ON")
+  field(OUT, "@rsfsl.proto outEnblDMark1($1) $(PORT)")
+  field(FLNK,"$(P)$(R)EnblDMark1-Sts")
+}
+
+record(bi, "$(P)$(R)EnblDMark2-Sts") {
+  field(DESC, "Get Delta Marker2 State")
+  field(SCAN, "1 second")
+  field(DTYP, "stream")
+  field(ZNAM, "OFF")
+  field(ONAM, "ON")
+  field(INP, "@rsfsl.proto inEnblDMark2 $(PORT)")
+}
+
+record(bo, "$(P)$(R)EnblDMark2-Sel") {
+  field(DESC, "Enable or Disable Delta Marker2")
+  field(DTYP, "stream")
+  field(ZNAM, "OFF")
+  field(ONAM, "ON")
+  field(OUT, "@rsfsl.proto outEnblDMark2($1) $(PORT)")
+  field(FLNK,"$(P)$(R)EnblDMark2-Sts")
+}
+
+record(bi, "$(P)$(R)EnblDMark3-Sts") {
+  field(DESC, "Get Delta Marker3 State")
+  field(SCAN, "1 second")
+  field(DTYP, "stream")
+  field(ZNAM, "OFF")
+  field(ONAM, "ON")
+  field(INP, "@rsfsl.proto inEnblDMark3 $(PORT)")
+}
+
+record(bo, "$(P)$(R)EnblDMark3-Sel") {
+  field(DESC, "Enable or Disable Delta Marker3")
+  field(DTYP, "stream")
+  field(ZNAM, "OFF")
+  field(ONAM, "ON")
+  field(OUT, "@rsfsl.proto outEnblDMark3($1) $(PORT)")
+  field(FLNK,"$(P)$(R)EnblDMark3-Sts")
+}
+
+record(bi, "$(P)$(R)EnblDMark4-Sts") {
+  field(DESC, "Get Delta Marker4 State")
+  field(SCAN, "1 second")
+  field(DTYP, "stream")
+  field(ZNAM, "OFF")
+  field(ONAM, "ON")
+  field(INP, "@rsfsl.proto inEnblDMark4 $(PORT)")
+}
+
+record(bo, "$(P)$(R)EnblDMark4-Sel") {
+  field(DESC, "Enable or Disable Delta Marker4")
+  field(DTYP, "stream")
+  field(ZNAM, "OFF")
+  field(ONAM, "ON")
+  field(OUT, "@rsfsl.proto outEnblDMark4($1) $(PORT)")
+  field(FLNK,"$(P)$(R)EnblDMark4-Sts")
+}
+
+# State of the tracking generator output
+
+record(bi, "$(P)$(R)EnblOutp-Sts") {
+  field(DESC, "Get Tracking Generator State")
+  field(SCAN, "1 second")
+  field(DTYP, "stream")
+  field(ZNAM, "OFF")
+  field(ONAM, "ON")
+  field(INP, "@rsfsl.proto inEnblOut $(PORT)")
+}
+
+record(bo, "$(P)$(R)EnblOutp-Sel") {
+  field(DESC, "Enable or Disable Tracking Generator")
+  field(DTYP, "stream")
+  field(ZNAM, "OFF")
+  field(ONAM, "ON")
+  field(OUT, "@rsfsl.proto outEnblOut($1) $(PORT)")
+  field(FLNK,"$(P)$(R)EnblOutp-Sts")
+}
+
+# Enable/Disable Tracking Generator Normalization of the measurement
+# results
+
+record(bi, "$(P)$(R)EnblOutCorrect-Sts") {
+  field(DESC, "Get Tracking Generator State")
+  field(SCAN, "1 second")
+  field(DTYP, "stream")
+  field(ZNAM, "OFF")
+  field(ONAM, "ON")
+  field(INP, "@rsfsl.proto inEnblOutCorrect $(PORT)")
+}
+
+record(bo, "$(P)$(R)EnblOutCorrect-Sel") {
+  field(DESC, "Enable or Disable Tracking Generator")
+  field(DTYP, "stream")
+  field(ZNAM, "OFF")
+  field(ONAM, "ON")
+  field(OUT, "@rsfsl.proto outEnblOutCorrect($1) $(PORT)")
+  field(FLNK,"$(P)$(R)EnblOutCorrect-Sts")
 }
 
 ######################################################################
 ########################## MONITOR ###################################
 ######################################################################
 
-# Markers Y Values
+# Get identification
 
-record(ai, "$(P)$(R)Mark1Y-RB") {
+record(stringin, "$(P)$(R)GeneralIdn-Cte") {
+  field(DESC, "Get device identification")
+  field(SCAN, "1 second")
+  field(DTYP, "stream")
+  field(INP, "@rsfsl.proto inIdn $(PORT)")
+}
+
+# Queries Markers Y Values
+
+record(ai, "$(P)$(R)Mark1Y-Mon") {
   field(DESC, "Get Y value of the marker")
   field(SCAN, "1 second")
   field(DTYP, "stream")
@@ -378,7 +862,93 @@ record(ai, "$(P)$(R)Mark1Y-RB") {
   field(ADEL, "-1")
   field(LINR, "NO CONVERSION")
   field(EGU, "dBm")
-  field(INP, "@rsfsl.proto inMark1Y $(PORT)")
+  field(INP, "@rsfsl.proto monMark1Y $(PORT)")
+}
+
+record(ai, "$(P)$(R)Mark2Y-Mon") {
+  field(DESC, "Get Y value of the marker2")
+  field(SCAN, "1 second")
+  field(DTYP, "stream")
+  field(PREC, "1")
+  field(MDEL, "-1")
+  field(ADEL, "-1")
+  field(LINR, "NO CONVERSION")
+  field(EGU, "dBm")
+  field(INP, "@rsfsl.proto monMark2Y $(PORT)")
+}
+
+record(ai, "$(P)$(R)Mark3Y-Mon") {
+  field(DESC, "Get Y value of the marker3")
+  field(SCAN, "1 second")
+  field(DTYP, "stream")
+  field(PREC, "1")
+  field(MDEL, "-1")
+  field(ADEL, "-1")
+  field(LINR, "NO CONVERSION")
+  field(EGU, "dBm")
+  field(INP, "@rsfsl.proto monMark3Y $(PORT)")
+}
+
+record(ai, "$(P)$(R)Mark4Y-Mon") {
+  field(DESC, "Get Y value of the marker4")
+  field(SCAN, "1 second")
+  field(DTYP, "stream")
+  field(PREC, "1")
+  field(MDEL, "-1")
+  field(ADEL, "-1")
+  field(LINR, "NO CONVERSION")
+  field(EGU, "dBm")
+  field(INP, "@rsfsl.proto monMark4Y $(PORT)")
+}
+
+# Queries the result of the markers frequency counters (1-4)
+
+record(ai, "$(P)$(R)MarkFreqCount1-Mon") {
+  field(DESC, "Get Marker1 Freq. Counter Result")
+  field(SCAN, "1 second")
+  field(DTYP, "stream")
+  field(PREC, "1")
+  field(MDEL, "-1")
+  field(ADEL, "-1")
+  field(LINR, "NO CONVERSION")
+  field(EGU, "dBm")
+  field(INP, "@rsfsl.proto monMarkFreqCount1 $(PORT)")
+}
+
+record(ai, "$(P)$(R)MarkFreqCount2-Mon") {
+  field(DESC, "Get Marker2 Freq. Counter Result")
+  field(SCAN, "1 second")
+  field(DTYP, "stream")
+  field(PREC, "1")
+  field(MDEL, "-1")
+  field(ADEL, "-1")
+  field(LINR, "NO CONVERSION")
+  field(EGU, "dBm")
+  field(INP, "@rsfsl.proto monMarkFreqCount2 $(PORT)")
+}
+
+record(ai, "$(P)$(R)MarkFreqCount3-Mon") {
+  field(DESC, "Get Marker3 Freq. Counter Result")
+  field(SCAN, "1 second")
+  field(DTYP, "stream")
+  field(PREC, "1")
+  field(MDEL, "-1")
+  field(ADEL, "-1")
+  field(LINR, "NO CONVERSION")
+  field(EGU, "dBm")
+  field(INP, "@rsfsl.proto monMarkFreqCount3 $(PORT)")
+}
+
+record(ai, "$(P)$(R)MarkFreqCount4-Mon") {
+  field(DESC, "Get Marker4 Freq. Counter Result")
+  field(SCAN, "1 second")
+  field(DTYP, "stream")
+  field(PREC, "1")
+  field(MDEL, "-1")
+  field(ADEL, "-1")
+  field(LINR, "NO CONVERSION")
+  field(EGU, "dBm")
+  field(INP, "@rsfsl.proto monMarkFreqCount4 $(PORT)")
 }
 
 ######################################################################
@@ -393,19 +963,10 @@ record(bo, "$(P)$(R)GeneralReset-Cmd") {
   field(ZNAM, "0")
   field(ONAM, "1")
   field(HIGH, "1")
-  field(OUT, "@rsfsl.proto outRst $(PORT)")
+  field(OUT, "@rsfsl.proto cmdRst $(PORT)")
 }
 
-# Get identification
-
-record(stringin, "$(P)$(R)GeneralIdn-Cte") {
-  field(DESC, "Get device identification")
-  field(SCAN, "1 second")
-  field(DTYP, "stream")
-  field(INP, "@rsfsl.proto inIdn $(PORT)")
-}
-
-# Set Marker to Max Peak on Trace
+# Set Marker to Max Peak on Trace (1-4)
 
 record(bo, "$(P)$(R)MarkMax1-Cmd") {
   field(DESC, "Set marker1 to max peak on trace")
@@ -441,6 +1002,300 @@ record(bo, "$(P)$(R)MarkMax4-Cmd") {
   field(ONAM, "1")
   field(HIGH, "1")
   field(OUT, "@rsfsl.proto cmdMarkMax4($1) $(PORT)")
+}
+
+# Turn all markers off
+
+record(bo, "$(P)$(R)MarkAOff-Cmd") {
+  field(DESC, "Turn all markers off")
+  field(DTYP, "stream")
+  field(ZNAM, "0")
+  field(ONAM, "1")
+  field(HIGH, "1")
+  field(OUT, "@rsfsl.proto cmdMarkAOff($1) $(PORT)")
+}
+
+# Position the marker to the next smaller maximium value to the left
+# of the current value (1-4)
+
+record(bo, "$(P)$(R)MarkMaxLeft1-Cmd") {
+  field(DESC, "Position marker1 to the left ")
+  field(DTYP, "stream")
+  field(ZNAM, "0")
+  field(ONAM, "1")
+  field(HIGH, "1")
+  field(OUT, "@rsfsl.proto cmdMarkMaxLeft1($1) $(PORT)")
+}
+
+record(bo, "$(P)$(R)MarkMaxLeft2-Cmd") {
+  field(DESC, "Position marker2 to the left ")
+  field(DTYP, "stream")
+  field(ZNAM, "0")
+  field(ONAM, "1")
+  field(HIGH, "1")
+  field(OUT, "@rsfsl.proto cmdMarkMaxLeft2($1) $(PORT)")
+}
+
+record(bo, "$(P)$(R)MarkMaxLeft3-Cmd") {
+  field(DESC, "Position marker3 to the left ")
+  field(DTYP, "stream")
+  field(ZNAM, "0")
+  field(ONAM, "1")
+  field(HIGH, "1")
+  field(OUT, "@rsfsl.proto cmdMarkMaxLeft3($1) $(PORT)")
+}
+
+record(bo, "$(P)$(R)MarkMaxLeft4-Cmd") {
+  field(DESC, "Position marker4 to the left ")
+  field(DTYP, "stream")
+  field(ZNAM, "0")
+  field(ONAM, "1")
+  field(HIGH, "1")
+  field(OUT, "@rsfsl.proto cmdMarkMaxLeft4($1) $(PORT)")
+}
+
+# Position the marker to the next smaller minimium value to the left
+# of the current value (1-4)
+
+record(bo, "$(P)$(R)MarkMinLeft1-Cmd") {
+  field(DESC, "Position marker1 to the left ")
+  field(DTYP, "stream")
+  field(ZNAM, "0")
+  field(ONAM, "1")
+  field(HIGH, "1")
+  field(OUT, "@rsfsl.proto cmdMarkMinLeft1($1) $(PORT)")
+}
+
+record(bo, "$(P)$(R)MarkMinLeft2-Cmd") {
+  field(DESC, "Position marker2 to the left ")
+  field(DTYP, "stream")
+  field(ZNAM, "0")
+  field(ONAM, "1")
+  field(HIGH, "1")
+  field(OUT, "@rsfsl.proto cmdMarkMinLeft2($1) $(PORT)")
+}
+
+record(bo, "$(P)$(R)MarkMinLeft3-Cmd") {
+  field(DESC, "Position marker3 to the left ")
+  field(DTYP, "stream")
+  field(ZNAM, "0")
+  field(ONAM, "1")
+  field(HIGH, "1")
+  field(OUT, "@rsfsl.proto cmdMarkMinLeft3($1) $(PORT)")
+}
+
+record(bo, "$(P)$(R)MarkMinLeft4-Cmd") {
+  field(DESC, "Position marker4 to the left ")
+  field(DTYP, "stream")
+  field(ZNAM, "0")
+  field(ONAM, "1")
+  field(HIGH, "1")
+  field(OUT, "@rsfsl.proto cmdMarkMinLeft4($1) $(PORT)")
+}
+
+# Position the marker to the next smaller maximium value of the
+# corresponding trace (1-4)
+
+record(bo, "$(P)$(R)MarkMaxNext1-Cmd") {
+  field(DESC, "Position marker1 to the next value of trace ")
+  field(DTYP, "stream")
+  field(ZNAM, "0")
+  field(ONAM, "1")
+  field(HIGH, "1")
+  field(OUT, "@rsfsl.proto cmdMarkMaxNext1($1) $(PORT)")
+}
+
+record(bo, "$(P)$(R)MarkMaxNext2-Cmd") {
+  field(DESC, "Position marker2 to the next value of trace ")
+  field(DTYP, "stream")
+  field(ZNAM, "0")
+  field(ONAM, "1")
+  field(HIGH, "1")
+  field(OUT, "@rsfsl.proto cmdMarkMaxNext2($1) $(PORT)")
+}
+
+record(bo, "$(P)$(R)MarkMaxNext3-Cmd") {
+  field(DESC, "Position marker3 to the next value of trace ")
+  field(DTYP, "stream")
+  field(ZNAM, "0")
+  field(ONAM, "1")
+  field(HIGH, "1")
+  field(OUT, "@rsfsl.proto cmdMarkMaxNext3($1) $(PORT)")
+}
+
+record(bo, "$(P)$(R)MarkMaxNext4-Cmd") {
+  field(DESC, "Position marker4 to the next value of trace ")
+  field(DTYP, "stream")
+  field(ZNAM, "0")
+  field(ONAM, "1")
+  field(HIGH, "1")
+  field(OUT, "@rsfsl.proto cmdMarkMaxNext4($1) $(PORT)")
+}
+
+# Position the marker to the next smaller minimium value of the
+# corresponding trace (1-4)
+
+record(bo, "$(P)$(R)MarkMinNext1-Cmd") {
+  field(DESC, "Position marker1 to the next value of trace ")
+  field(DTYP, "stream")
+  field(ZNAM, "0")
+  field(ONAM, "1")
+  field(HIGH, "1")
+  field(OUT, "@rsfsl.proto cmdMarkMinNext1($1) $(PORT)")
+}
+
+record(bo, "$(P)$(R)MarkMinNext2-Cmd") {
+  field(DESC, "Position marker2 to the next value of trace ")
+  field(DTYP, "stream")
+  field(ZNAM, "0")
+  field(ONAM, "1")
+  field(HIGH, "1")
+  field(OUT, "@rsfsl.proto cmdMarkMinNext2($1) $(PORT)")
+}
+
+record(bo, "$(P)$(R)MarkMinNext3-Cmd") {
+  field(DESC, "Position marker3 to the next value of trace ")
+  field(DTYP, "stream")
+  field(ZNAM, "0")
+  field(ONAM, "1")
+  field(HIGH, "1")
+  field(OUT, "@rsfsl.proto cmdMarkMinNext3($1) $(PORT)")
+}
+
+record(bo, "$(P)$(R)MarkMinNext4-Cmd") {
+  field(DESC, "Position marker4 to the next value of trace ")
+  field(DTYP, "stream")
+  field(ZNAM, "0")
+  field(ONAM, "1")
+  field(HIGH, "1")
+  field(OUT, "@rsfsl.proto cmdMarkMinNext4($1) $(PORT)")
+}
+
+# Position the marker to the next smaller maximium value to the right
+# of the current value (1-4)
+
+record(bo, "$(P)$(R)MarkMaxRight1-Cmd") {
+  field(DESC, "Position marker1 to the right ")
+  field(DTYP, "stream")
+  field(ZNAM, "0")
+  field(ONAM, "1")
+  field(HIGH, "1")
+  field(OUT, "@rsfsl.proto cmdMarkMaxRight1($1) $(PORT)")
+}
+
+record(bo, "$(P)$(R)MarkMaxRight2-Cmd") {
+  field(DESC, "Position marker2 to the right ")
+  field(DTYP, "stream")
+  field(ZNAM, "0")
+  field(ONAM, "1")
+  field(HIGH, "1")
+  field(OUT, "@rsfsl.proto cmdMarkMaxRight2($1) $(PORT)")
+}
+
+record(bo, "$(P)$(R)MarkMaxRight3-Cmd") {
+  field(DESC, "Position marker3 to the right ")
+  field(DTYP, "stream")
+  field(ZNAM, "0")
+  field(ONAM, "1")
+  field(HIGH, "1")
+  field(OUT, "@rsfsl.proto cmdMarkMaxRight3($1) $(PORT)")
+}
+
+record(bo, "$(P)$(R)MarkMaxRight4-Cmd") {
+  field(DESC, "Position marker4 to the right ")
+  field(DTYP, "stream")
+  field(ZNAM, "0")
+  field(ONAM, "1")
+  field(HIGH, "1")
+  field(OUT, "@rsfsl.proto cmdMarkMaxRight4($1) $(PORT)")
+}
+
+# Position the marker to the next smaller minimium value to the right
+# of the current value (1-4)
+
+record(bo, "$(P)$(R)MarkMinRight1-Cmd") {
+  field(DESC, "Position marker1 to the right ")
+  field(DTYP, "stream")
+  field(ZNAM, "0")
+  field(ONAM, "1")
+  field(HIGH, "1")
+  field(OUT, "@rsfsl.proto cmdMarkMinRight1($1) $(PORT)")
+}
+
+record(bo, "$(P)$(R)MarkMinRight2-Cmd") {
+  field(DESC, "Position marker2 to the right ")
+  field(DTYP, "stream")
+  field(ZNAM, "0")
+  field(ONAM, "1")
+  field(HIGH, "1")
+  field(OUT, "@rsfsl.proto cmdMarkMinRight2($1) $(PORT)")
+}
+
+record(bo, "$(P)$(R)MarkMinRight3-Cmd") {
+  field(DESC, "Position marker3 to the right ")
+  field(DTYP, "stream")
+  field(ZNAM, "0")
+  field(ONAM, "1")
+  field(HIGH, "1")
+  field(OUT, "@rsfsl.proto cmdMarkMinRight3($1) $(PORT)")
+}
+
+record(bo, "$(P)$(R)MarkMinRight4-Cmd") {
+  field(DESC, "Position marker4 to the right ")
+  field(DTYP, "stream")
+  field(ZNAM, "0")
+  field(ONAM, "1")
+  field(HIGH, "1")
+  field(OUT, "@rsfsl.proto cmdMarkMinRight4($1) $(PORT)")
+}
+
+# Set Marker to Min Peak on Trace (1-4)
+
+record(bo, "$(P)$(R)MarkMin1-Cmd") {
+  field(DESC, "Set marker1 to min peak on trace")
+  field(DTYP, "stream")
+  field(ZNAM, "0")
+  field(ONAM, "1")
+  field(HIGH, "1")
+  field(OUT, "@rsfsl.proto cmdMarkMin1($1) $(PORT)")
+}
+
+record(bo, "$(P)$(R)MarkMin2-Cmd") {
+  field(DESC, "Set marker2 to min peak on trace")
+  field(DTYP, "stream")
+  field(ZNAM, "0")
+  field(ONAM, "1")
+  field(HIGH, "1")
+  field(OUT, "@rsfsl.proto cmdMarkMin2($1) $(PORT)")
+}
+
+record(bo, "$(P)$(R)MarkMin3-Cmd") {
+  field(DESC, "Set marker3 to min peak on trace")
+  field(DTYP, "stream")
+  field(ZNAM, "0")
+  field(ONAM, "1")
+  field(HIGH, "1")
+  field(OUT, "@rsfsl.proto cmdMarkMin3($1) $(PORT)")
+}
+
+record(bo, "$(P)$(R)MarkMin4-Cmd") {
+  field(DESC, "Set marker4 to min peak on trace")
+  field(DTYP, "stream")
+  field(ZNAM, "0")
+  field(ONAM, "1")
+  field(HIGH, "1")
+  field(OUT, "@rsfsl.proto cmdMarkMin4($1) $(PORT)")
+}
+
+# Switch off all delta markers
+
+record(bo, "$(P)$(R)DMarkAOff-Cmd") {
+  field(DESC, "Switch off all delta markers")
+  field(DTYP, "stream")
+  field(ZNAM, "0")
+  field(ONAM, "1")
+  field(HIGH, "1")
+  field(OUT, "@rsfsl.proto cmdDMarkAOff($1) $(PORT)")
 }
 
 ######################################################################
