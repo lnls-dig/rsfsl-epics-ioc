@@ -80,29 +80,29 @@ outRefOff {
 }
 
 ######################################################################
-# Continuous Sweep Mode
+# Enable Continuous Sweep Mode
 #
-inSweMode {
+inEnblContSwe {
     out "INIT:CONT?";
     in "%i";
 }
 
-outSweMode {
+outEnblContSwe {
     out "INIT:CONT %{OFF|ON}";
-    @init { inSweMode; };
+    @init { inEnblContSwe; };
 }
 
 ######################################################################
 # Sweep Points Number (MIN 101; MAX 32001)
 #
-inSwePoints {
+inSwePts {
     out "SENS:SWE:POIN?";
     in "%i";
 }
 
-outSwePoints {
+outSwePts {
     out "SENS:SWE:POIN %i";
-    @init { inSwePoints; };
+    @init { inSwePts; };
 }
 
 ######################################################################
@@ -606,22 +606,22 @@ inIdn {
 ######################################################################
 # Markers Y Values
 
-monMark1Y {
+monMarkY1 {
     out "CALC:MARK1:Y?";
     in "%f";
 }
 
-monMark2Y {
+monMarkY2 {
     out "CALC:MARK2:Y?";
     in "%f";
 }
 
-monMark3Y {
+monMarkY3 {
     out "CALC:MARK3:Y?";
     in "%f";
 }
 
-monMark4Y {
+monMarkY4 {
     out "CALC:MARK4:Y?";
     in "%f";
 }
@@ -828,6 +828,34 @@ cmdMarkMin4 {
 
 cmdDMarkAOff {
     out "%{|CALC:DELT:AOFF}";
+}
+
+######################################################################
+# Initiate a new measurement sequence
+
+cmdInitMeas {
+    out "%{|INIT:IMM}";
+}
+
+######################################################################
+# Continue a stopped measurement in single sweep mode
+
+cmdConMeas {
+    out "%{|INIT:CONM}";
+}
+
+######################################################################
+# Start a Spectrum Emission Mask Measurement
+
+cmdSpecEmisMeas {
+    out "%{|INIT:ESP}";
+}
+
+######################################################################
+# Start a Spurious Emissions Measurement
+
+cmdSpurEmisMeas {
+    out "%{|INIT:SPUR}";
 }
 
 ######################################################################

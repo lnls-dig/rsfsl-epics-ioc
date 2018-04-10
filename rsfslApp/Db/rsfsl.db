@@ -38,7 +38,7 @@
 #####################################################################
 # Reference Level
 
-record(ai, "$(P)$(R)GeneralRefLvl-RB") {
+record(ai, "$(P)$(R)RefLvl-RB") {
   field(DESC, "Get reference level")
   field(SCAN, "1 second")
   field(DTYP, "stream")
@@ -50,17 +50,17 @@ record(ai, "$(P)$(R)GeneralRefLvl-RB") {
   field(INP, "@rsfsl.proto inRefLvl $(PORT)")
 }
 
-record(ao, "$(P)$(R)GeneralRefLvl-SP") {
+record(ao, "$(P)$(R)RefLvl-SP") {
   field(DESC, "Set reference level")
   field(DTYP, "stream")
   field(EGU, "dBm")
   field(OUT, "@rsfsl.proto outRefLvl($1) $(PORT)")
-  field(FLNK,"$(P)$(R)GeneralRefLvl-RB")
+  field(FLNK,"$(P)$(R)RefLvl-RB")
 }
 
 # Reference Level Offset
 
-record(ai, "$(P)$(R)GeneralRefOff-RB") {
+record(ai, "$(P)$(R)RefOff-RB") {
   field(DESC, "Get reference level offset")
   field(SCAN, "1 second")
   field(DTYP, "stream")
@@ -72,37 +72,37 @@ record(ai, "$(P)$(R)GeneralRefOff-RB") {
   field(INP, "@rsfsl.proto inRefOff $(PORT)")
 }
 
-record(ao, "$(P)$(R)GeneralRefOff-SP") {
+record(ao, "$(P)$(R)RefOff-SP") {
   field(DESC, "Set reference level offset")
   field(DTYP, "stream")
   field(EGU, "dBm")
   field(OUT, "@rsfsl.proto outRefOff($1) $(PORT)")
-  field(FLNK,"$(P)$(R)GeneralRefOff-RB")
+  field(FLNK,"$(P)$(R)RefOff-RB")
 }
 
-# Continuous Sweep Mode
+# Enable Continuous Sweep Mode
 
-record(bi, "$(P)$(R)GeneralSweMode-Sts") {
-  field(DESC, "Get sweep mode (SINGLE|CONTINUOUS)")
+record(bi, "$(P)$(R)EnblContSwe-Sts") {
+  field(DESC, "Get Continuous Sweep State")
   field(SCAN, "1 second")
   field(DTYP, "stream")
   field(ZNAM, "SINGLE")
   field(ONAM, "CONTINUOUS")
-  field(INP, "@rsfsl.proto inSweMode $(PORT)")
+  field(INP, "@rsfsl.proto inEnblContSwe $(PORT)")
 }
 
-record(bo, "$(P)$(R)GeneralSweMode-Sel") {
-  field(DESC, "Set sweep mode (SINGLE|CONTINUOUS)")
+record(bo, "$(P)$(R)EnblContSwe-Sel") {
+  field(DESC, "Enable/Disable Continuous Sweep")
   field(DTYP, "stream")
   field(ZNAM, "SINGLE")
   field(ONAM, "CONTINUOUS")
-  field(OUT, "@rsfsl.proto outSweMode($1) $(PORT)")
-  field(FLNK,"$(P)$(R)GeneralSweMode-Sts")
+  field(OUT, "@rsfsl.proto outEnblContSwe($1) $(PORT)")
+  field(FLNK,"$(P)$(R)EnblContSwe-Sts")
 }
 
 # Sweep Points Number
 
-record(ai, "$(P)$(R)GeneralSwePoints-RB") {
+record(ai, "$(P)$(R)SwePts-RB") {
   field(DESC, "Get number of points in one sweep")
   field(SCAN, "1 second")
   field(DTYP, "stream")
@@ -111,15 +111,15 @@ record(ai, "$(P)$(R)GeneralSwePoints-RB") {
   field(ADEL, "-1")
   field(LINR, "NO CONVERSION")
   field(EGU, "points")
-  field(INP, "@rsfsl.proto inSwePoints $(PORT)")
+  field(INP, "@rsfsl.proto inSwePts $(PORT)")
 }
 
-record(ao, "$(P)$(R)GeneralSwePoints-SP") {
+record(ao, "$(P)$(R)SwePts-SP") {
   field(DESC, "Set number of points in one sweep")
   field(DTYP, "stream")
   field(EGU, "points")
-  field(OUT, "@rsfsl.proto outSwePoints($1) $(PORT)")
-  field(FLNK,"$(P)$(R)GeneralSwePoints-RB")
+  field(OUT, "@rsfsl.proto outSwePts($1) $(PORT)")
+  field(FLNK,"$(P)$(R)SwePts-RB")
 }
 
 # Center Frequency
@@ -1014,7 +1014,7 @@ record(stringin, "$(P)$(R)GeneralIdn-Cte") {
 
 # Queries Markers Y Values
 
-record(ai, "$(P)$(R)Mark1Y-Mon") {
+record(ai, "$(P)$(R)MarkY1-Mon") {
   field(DESC, "Get Y value of the marker")
   field(SCAN, "1 second")
   field(DTYP, "stream")
@@ -1023,10 +1023,10 @@ record(ai, "$(P)$(R)Mark1Y-Mon") {
   field(ADEL, "-1")
   field(LINR, "NO CONVERSION")
   field(EGU, "dBm")
-  field(INP, "@rsfsl.proto monMark1Y $(PORT)")
+  field(INP, "@rsfsl.proto monMarkY1 $(PORT)")
 }
 
-record(ai, "$(P)$(R)Mark2Y-Mon") {
+record(ai, "$(P)$(R)MarkY2-Mon") {
   field(DESC, "Get Y value of the marker2")
   field(SCAN, "1 second")
   field(DTYP, "stream")
@@ -1035,10 +1035,10 @@ record(ai, "$(P)$(R)Mark2Y-Mon") {
   field(ADEL, "-1")
   field(LINR, "NO CONVERSION")
   field(EGU, "dBm")
-  field(INP, "@rsfsl.proto monMark2Y $(PORT)")
+  field(INP, "@rsfsl.proto monMarkY2 $(PORT)")
 }
 
-record(ai, "$(P)$(R)Mark3Y-Mon") {
+record(ai, "$(P)$(R)MarkY3-Mon") {
   field(DESC, "Get Y value of the marker3")
   field(SCAN, "1 second")
   field(DTYP, "stream")
@@ -1047,10 +1047,10 @@ record(ai, "$(P)$(R)Mark3Y-Mon") {
   field(ADEL, "-1")
   field(LINR, "NO CONVERSION")
   field(EGU, "dBm")
-  field(INP, "@rsfsl.proto monMark3Y $(PORT)")
+  field(INP, "@rsfsl.proto monMarkY3 $(PORT)")
 }
 
-record(ai, "$(P)$(R)Mark4Y-Mon") {
+record(ai, "$(P)$(R)MarkY4-Mon") {
   field(DESC, "Get Y value of the marker4")
   field(SCAN, "1 second")
   field(DTYP, "stream")
@@ -1059,7 +1059,7 @@ record(ai, "$(P)$(R)Mark4Y-Mon") {
   field(ADEL, "-1")
   field(LINR, "NO CONVERSION")
   field(EGU, "dBm")
-  field(INP, "@rsfsl.proto monMark4Y $(PORT)")
+  field(INP, "@rsfsl.proto monMarkY4 $(PORT)")
 }
 
 # Queries the result of the markers frequency counters (1-4)
