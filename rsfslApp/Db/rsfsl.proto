@@ -66,808 +66,808 @@ outRefLvl {
     @init { inRefLvl; };
 }
 
-######################################################################
-# Reference Level Offset
-#
-inRefOff {
-    out "DISP:WIND:TRAC:Y:SCAL:RLEV:OFFS?";
-    in "%f";
-}
-
-outRefOff {
-    out "DISP:WIND:TRAC:Y:SCAL:RLEV:OFFS %f";
-    @init { inRefOff; };
-}
-
-######################################################################
-# Enable Continuous Sweep Mode
-#
-inEnblContSwe {
-    out "INIT:CONT?";
-    in "%i";
-}
-
-outEnblContSwe {
-    out "INIT:CONT %{OFF|ON}";
-    @init { inEnblContSwe; };
-}
-
-######################################################################
-# Sweep Points Number (MIN 101; MAX 32001)
-#
-inSwePts {
-    out "SENS:SWE:POIN?";
-    in "%i";
-}
-
-outSwePts {
-    out "SENS:SWE:POIN %i";
-    @init { inSwePts; };
-}
-
-######################################################################
-# Center Frequency
-#
-inFrqCent {
-    out "SENS:FREQ:CENT?";
-    in "%f";
-}
-
-outFrqCent {
-    out "SENS:FREQ:CENT %f";
-    @init { inFrqCent; };
-}
-
-######################################################################
-# Frequency Span
-#
-inFrqSpan {
-    out "SENS:FREQ:SPAN?";
-    in "%f";
-}
-
-outFrqSpan {
-    out "SENS:FREQ:SPAN %f";
-    @init { inFrqSpan; };
-}
-
-######################################################################
-# Start Frequency
-#
-inFrqStart {
-    out "SENS:FREQ:STAR?";
-    in "%f";
-}
-
-outFrqStart {
-    out "SENS:FREQ:STAR %f";
-    @init { inFrqStart; };
-}
-
-######################################################################
-# Stop Frequency
-#
-inFrqStop {
-    out "SENS:FREQ:STOP?";
-    in "%f";
-}
-
-outFrqStop {
-    out "SENS:FREQ:STOP %f";
-    @init { inFrqStop; };
-}
-
-######################################################################
-# Enable/Disable Markers (1-4)
-
-inEnblMark1 {
-    out "CALC:MARK1:STAT?";
-    in "%i";
-}
-
-outEnblMark1 {
-    out "CALC:MARK1:STAT %i";
-    @init { inEnblMark1; };
-}
-
-inEnblMark2 {
-    out "CALC:MARK2:STAT?";
-    in "%i";
-}
-
-outEnblMark2 {
-    out "CALC:MARK2:STAT %i";
-    @init { inEnblMark2; };
-}
-
-inEnblMark3 {
-    out "CALC:MARK3:STAT?";
-    in "%i";
-}
-
-outEnblMark3 {
-    out "CALC:MARK3:STAT %i";
-    @init { inEnblMark3; };
-}
-
-inEnblMark4 {
-    out "CALC:MARK4:STAT?";
-    in "%i";
-}
-
-outEnblMark4 {
-    out "CALC:MARK4:STAT %i";
-    @init { inEnblMark4; };
-}
-
-######################################################################
-# Markers X Values
-
-inMarkX1 {
-    out "CALC:MARK1:X?";
-    in "%f";
-}
-
-outMarkX1 {
-    out "CALC:MARK1:X %f";
-}
-
-inMarkX2 {
-    out "CALC:MARK2:X?";
-    in "%f";
-}
-
-outMarkX2 {
-    out "CALC:MARK2:X %f";
-}
-
-inMarkX3 {
-    out "CALC:MARK3:X?";
-    in "%f";
-}
-
-outMarkX3 {
-    out "CALC:MARK3:X %f";
-}
-
-inMarkX4 {
-    out "CALC:MARK4:X?";
-    in "%f";
-}
-
-outMarkX4 {
-    out "CALC:MARK4:X %f";
-}
-
-######################################################################
-# Enable Marker Frequency Counters (1-4)
-
-inEnblMarkCount1 {
-    out "CALC:MARK1:COUN?";
-    in "%i";
-}
-
-inEnblMarkCount2 {
-    out "CALC:MARK2:COUN?";
-    in "%i";
-}
-
-inEnblMarkCount3 {
-    out "CALC:MARK3:COUN?";
-    in "%i";
-}
-
-inEnblMarkCount4 {
-    out "CALC:MARK4:COUN?";
-    in "%i";
-}
-
-outEnblMarkCount1 {
-    out "CALC:MARK1:COUN %i";
-}
-
-outEnblMarkCount2 {
-    out "CALC:MARK2:COUN %i";
-}
-
-outEnblMarkCount3 {
-    out "CALC:MARK3:COUN %i";
-}
-
-outEnblMarkCount4 {
-    out "CALC:MARK4:COUN %i";
-}
-
-######################################################################
-# Marker Frequency Counter Resolution
-
-inMarkCountRes {
-    out "CALC:MARK:COUN:RES?";
-    in "%i";
-}
-
-outMarkCountRes {
-    out "CALC:MARK:COUN:RES %{0.1|1|10|100|1000|10000}";
-}
-
-######################################################################
-# Enable local oscillator supression for peak search
-
-inEnblLocalOscSupr {
-    out "CALC:MARK:LOEX?";
-    in "%i";
-}
-
-outEnblLocalOscSupr {
-    out "CALC:MARK:LOEX %{OFF|ON}";
-}
-
-######################################################################
-# Enable automatic peak search for markers (1-4)
-
-inEnblMaxAuto1 {
-    out "CALC:MARK1:MAX:AUTO?";
-    in "%i";
-}
-
-inEnblMaxAuto2 {
-    out "CALC:MARK2:MAX:AUTO?";
-    in "%i";
-}
-
-inEnblMaxAuto3 {
-    out "CALC:MARK3:MAX:AUTO?";
-    in "%i";
-}
-
-inEnblMaxAuto4 {
-    out "CALC:MARK4:MAX:AUTO?";
-    in "%i";
-}
-
-outEnblMaxAuto1 {
-    out "CALC:MARK1:MAX:AUTO %{OFF|ON}";
-}
-
-outEnblMaxAuto2 {
-    out "CALC:MARK2:MAX:AUTO %{OFF|ON}";
-}
-
-outEnblMaxAuto3 {
-    out "CALC:MARK3:MAX:AUTO %{OFF|ON}";
-}
-
-outEnblMaxAuto4 {
-    out "CALC:MARK4:MAX:AUTO %{OFF|ON}";
-}
-
-######################################################################
-# Enable automatic peak search for markers (1-4)
-
-inEnblMinAuto1 {
-    out "CALC:MARK1:MIN:AUTO?";
-    in "%i";
-}
-
-inEnblMinAuto2 {
-    out "CALC:MARK2:MIN:AUTO?";
-    in "%i";
-}
-
-inEnblMinAuto3 {
-    out "CALC:MARK3:MIN:AUTO?";
-    in "%i";
-}
-
-inEnblMinAuto4 {
-    out "CALC:MARK4:MIN:AUTO?";
-    in "%i";
-}
-
-outEnblMinAuto1 {
-    out "CALC:MARK1:MIN:AUTO %{OFF|ON}";
-}
-
-outEnblMinAuto2 {
-    out "CALC:MARK2:MIN:AUTO %{OFF|ON}";
-}
-
-outEnblMinAuto3 {
-    out "CALC:MARK3:MIN:AUTO %{OFF|ON}";
-}
-
-outEnblMinAuto4 {
-    out "CALC:MARK4:MIN:AUTO %{OFF|ON}";
-}
-
-######################################################################
-# Define the peak excursion
-
-inMarkPExcursion {
-    out "CALC:MARK:PEXC?";
-    in "%f";
-}
-
-outMarkPExcursion {
-    out "CALC:MARK:PEXC %f";
-}
-
-######################################################################
-# Enable/Disable limited search range
-
-inEnblMarkLimit {
-    out "CALC:MARK:X:SLIM:STAT?";
-    in "%i";
-}
-
-outEnblMarkLimit {
-    out "CALC:MARK:X:SLIM:STAT %{OFF|ON}";
-}
-
-######################################################################
-# Left limit for the search range
-
-inMarkLimitLeft {
-    out "CALC:MARK:X:SLIM:LEFT?";
-    in "%f";
-}
-
-outMarkLimitLeft {
-    out "CALC:MARK:X:SLIM:LEFT %f";
-}
-
-######################################################################
-# Right limit for the search range
-
-inMarkLimitRight {
-    out "CALC:MARK:X:SLIM:RIGHT?";
-    in "%f";
-}
-
-outMarkLimitRight {
-    out "CALC:MARK:X:SLIM:RIGHT %f";
-}
-
-######################################################################
-# Enable/Disable Delta Markers (1-4)
-
-inEnblDMark1 {
-    out "CALC:DELT1:STAT?";
-    in "%i";
-}
-
-outEnblDMark1 {
-    out "CALC:DELT1:STAT %i";
-    @init { inEnblDMark1; };
-}
-
-inEnblDMark2 {
-    out "CALC:DELT2:STAT?";
-    in "%i";
-}
-
-outEnblDMark2 {
-    out "CALC:DELT2:STAT %i";
-    @init { inEnblDMark2; };
-}
-
-inEnblDMark3 {
-    out "CALC:DELT3:STAT?";
-    in "%i";
-}
-
-outEnblDMark3 {
-    out "CALC:DELT3:STAT %i";
-    @init { inEnblDMark3; };
-}
-
-inEnblDMark4 {
-    out "CALC:DELT4:STAT?";
-    in "%i";
-}
-
-outEnblDMark4 {
-    out "CALC:DELT4:STAT %i";
-    @init { inEnblDMark4; };
-}
-
-######################################################################
-# State of tracking generator output
-
-inEnblOut {
-    out "OUTP:STAT?";
-    in "%i";
-}
-
-outEnblOut {
-    out "OUTP:STAT %{OFF|ON}";
-}
-
-######################################################################
-# Enable/Disable Tracking Generator Normalization of the measurement
-# results
-
-inEnblOutCorrect {
-    out "SENS:CORR:STAT?";
-    in "%i";
-}
-
-outEnblOutCorrect {
-    out "SENS:CORR:STAT %{OFF|ON}";
-}
-
-######################################################################
-# Input Attenuator Value
-
-inAttIn {
-    out "INP:ATT?";
-    in "%f";
-}
-
-outAttIn {
-    out "INP:ATT %f";
-}
-
-######################################################################
-# Enable/Disable automatic coupling of the input attenuation to the
-# reference level
-
-inEnblAttAuto {
-    out "INP:ATT:AUTO?";
-    in 	"%i";
-}
-
-outEnblAttAuto {
-    out "INP:ATT:AUTO %{OFF|ON}";
-}
-
-#####################################################################
-# Enable/Disable Input Preamplifier
-
-inEnblPreamp {
-    out "INP:GAIN:STAT?";
-    in "%i";
-}
-
-outEnblPreamp {
-    out "INP:GAIN:STAT %{OFF|ON}";
-}
-
-######################################################################
-# Instruments Nominal input impedance
-
-inImpdIn {
-    out "INP:IMP?";
-    in "%i";
-}
-
-outImpdIn {
-    out "INP:IMP %{50|75}";
-}
-
-######################################################################
-# Oscillator Reference
-
-inRoscSrc {
-    out "SOUR:EXT:ROSC:SOUR?";
-    in "%i";
-}
-
-outRoscSrc {
-    out "SOUR:EXT:ROSC:SOUR %{INT|EXT}";
-}
-
-######################################################################
-# Tracking Generator Level
-
-inLvlOut {
-    out "SOUR:POW:LEV:IMM:AMPL?";
-    in "%f";
-}
-
-outLvlOut {
-    out "SOUR:POW:LEV:IMM:AMPL %f";
-}
-
-######################################################################
-# Tracking Generator Offset Level
-
-inLvlOutOffset {
-    out "SOUR:POW:LEV:IMM:OFFS?";
-    in "%f";
-}
-
-outLvlOutOffset {
-    out "SOUR:POW:LEV:IMM:OFFS %f";
-}
-
-######################################################################
-# Resolution Bandwidth
-
-inRbw {
-    out "SENS:BWID:RES?";
-    in "%f";
-}
-
-outRbw {
-    out "SENS:BWID:RES %f";
-}
-
-######################################################################
-########################### MONITOR ##################################
-######################################################################
-# Get identification
-
-inIdn {
-    out "*IDN?";
-    in "%s";
-}
-
-######################################################################
-# Markers Y Values
-
-monMarkY1 {
-    out "CALC:MARK1:Y?";
-    in "%f";
-}
-
-monMarkY2 {
-    out "CALC:MARK2:Y?";
-    in "%f";
-}
-
-monMarkY3 {
-    out "CALC:MARK3:Y?";
-    in "%f";
-}
-
-monMarkY4 {
-    out "CALC:MARK4:Y?";
-    in "%f";
-}
-
-######################################################################
-# Queries the result of the markers frequency counters (1-4)
-
-monMarkFreqCount1 {
-    out "CALC:MARK1:COUN:FREQ?";
-    in "%f";
-}
-
-monMarkFreqCount2 {
-    out "CALC:MARK2:COUN:FREQ?";
-    in "%f";
-}
-
-monMarkFreqCount3 {
-    out "CALC:MARK3:COUN:FREQ?";
-    in "%f";
-}
-
-monMarkFreqCount4 {
-    out "CALC:MARK4:COUN:FREQ?";
-    in "%f";
-}
-
-######################################################################
-########################### COMMAND ##################################
-######################################################################
-# Reset to default state
-cmdRst {
-    out "%{|*RST; *WAI}";
-}
-
-######################################################################
-# Set Markers to Max Peak on Trace (1-4)
-
-cmdMarkMax1 {
-    out "%{|CALC:MARK1:MAX:PEAK}";
-}
-
-cmdMarkMax2 {
-    out "%{|CALC:MARK2:MAX:PEAK}";
-}
-
-cmdMarkMax3 {
-    out "%{|CALC:MARK3:MAX:PEAK}";
-}
-
-cmdMarkMax4 {
-    out "%{|CALC:MARK4:MAX:PEAK}";
-}
-
-######################################################################
-# Turn all markers off
-
-cmdMarkAOff {
-    out "%{|CALC:MARK:AOFF}";
-}
-
-######################################################################
-# Position the marker to the next smaller maximium value to the left
-# of the current value (1-4)
-
-cmdMarkMaxLeft1 {
-    out "%{|CALC:MARK1:MAX:LEFT}";
-}
-
-cmdMarkMaxLeft2 {
-    out "%{|CALC:MARK2:MAX:LEFT}";
-}
-
-cmdMarkMaxLeft3 {
-    out "%{|CALC:MARK3:MAX:LEFT}";
-}
-
-cmdMarkMaxLeft4 {
-    out "%{|CALC:MARK4:MAX:LEFT}";
-}
-
-######################################################################
-# Position the marker to the next smaller minimium value to the left
-# of the current value (1-4)
-
-cmdMarkMinLeft1 {
-    out "%{|CALC:MARK1:MIN:LEFT}";
-}
-
-cmdMarkMinLeft2 {
-    out "%{|CALC:MARK2:MIN:LEFT}";
-}
-
-cmdMarkMinLeft3 {
-    out "%{|CALC:MARK3:MIN:LEFT}";
-}
-
-cmdMarkMinLeft4 {
-    out "%{|CALC:MARK4:MIN:LEFT}";
-}
-
-######################################################################
-# Position the marker to the next smaller maximium value of the
-# corresponding trace (1-4)
-
-cmdMarkMaxNext1 {
-    out "%{|CALC:MARK1:MAX:NEXT}";
-}
-
-cmdMarkMaxNext2 {
-    out "%{|CALC:MARK2:MAX:NEXT}";
-}
-
-cmdMarkMaxNext3 {
-    out "%{|CALC:MARK3:MAX:NEXT}";
-}
-
-cmdMarkMaxNext4 {
-    out "%{|CALC:MARK4:MAX:NEXT}";
-}
-
-######################################################################
-# Position the marker to the next smaller minimium value of the
-# corresponding trace (1-4)
-
-cmdMarkMinNext1 {
-    out "%{|CALC:MARK1:MIN:NEXT}";
-}
-
-cmdMarkMinNext2 {
-    out "%{|CALC:MARK2:MIN:NEXT}";
-}
-
-cmdMarkMinNext3 {
-    out "%{|CALC:MARK3:MIN:NEXT}";
-}
-
-cmdMarkMinNext4 {
-    out "%{|CALC:MARK4:MIN:NEXT}";
-}
-
-#####################################################################
-# Position the marker to the next smaller maximium value to the right
-# of the current value (1-4)
-
-cmdMarkMaxRight1 {
-    out "%{|CALC:MARK1:MAX:RIGHT}";
-}
-
-cmdMarkMaxRight2 {
-    out "%{|CALC:MARK2:MAX:RIGHT}";
-}
-
-cmdMarkMaxRight3 {
-    out "%{|CALC:MARK3:MAX:RIGHT}";
-}
-
-cmdMarkMaxRight4 {
-    out "%{|CALC:MARK4:MAX:RIGHT}";
-}
-
-#####################################################################
-# Position the marker to the next smaller minimium value to the right
-# of the current value (1-4)
-
-cmdMarkMinRight1 {
-    out "%{|CALC:MARK1:MIN:RIGHT}";
-}
-
-cmdMarkMinRight2 {
-    out "%{|CALC:MARK2:MIN:RIGHT}";
-}
-
-cmdMarkMinRight3 {
-    out "%{|CALC:MARK3:MIN:RIGHT}";
-}
-
-cmdMarkMinRight4 {
-    out "%{|CALC:MARK4:MIN:RIGHT}";
-}
-
-######################################################################
-# Set Markers to Min Peak on Trace (1-4)
-
-cmdMarkMin1 {
-    out "%{|CALC:MARK1:MIN:PEAK}";
-}
-
-cmdMarkMin2 {
-    out "%{|CALC:MARK2:MIN:PEAK}";
-}
-
-cmdMarkMin3 {
-    out "%{|CALC:MARK3:MIN:PEAK}";
-}
-
-cmdMarkMin4 {
-    out "%{|CALC:MARK4:MIN:PEAK}";
-}
-
-######################################################################
-# Switch off all Delta Markers
-
-
-cmdDMarkAOff {
-    out "%{|CALC:DELT:AOFF}";
-}
-
-######################################################################
-# Initiate a new measurement sequence
-
-cmdInitMeas {
-    out "%{|INIT:IMM}";
-}
-
-######################################################################
-# Continue a stopped measurement in single sweep mode
-
-cmdConMeas {
-    out "%{|INIT:CONM}";
-}
-
-######################################################################
-# Start a Spectrum Emission Mask Measurement
-
-cmdSpecEmisMeas {
-    out "%{|INIT:ESP}";
-}
-
-######################################################################
-# Start a Spurious Emissions Measurement
-
-cmdSpurEmisMeas {
-    out "%{|INIT:SPUR}";
-}
-
-######################################################################
-############################## SAVE ##################################
-######################################################################
-# IQ Data
-#
-#inIQ {
-#    Separator=",";
-#    out "INIT:CONT OFF";
-#    out "TRAC:IQ:STAT ON";
-#    out "TRAC:IQ:SET NORM,10 MHz,32 MHz,IMM,POS,0,10";
-#    out "TRAC:IQ:DATA?";
-#    in "%E";
+#######################################################################
+## Reference Level Offset
+##
+#inRefOff {
+#    out "DISP:WIND:TRAC:Y:SCAL:RLEV:OFFS?";
+#    in "%f";
 #}
+#
+#outRefOff {
+#    out "DISP:WIND:TRAC:Y:SCAL:RLEV:OFFS %f";
+#    @init { inRefOff; };
+#}
+#
+#######################################################################
+## Enable Continuous Sweep Mode
+##
+#inEnblContSwe {
+#    out "INIT:CONT?";
+#    in "%i";
+#}
+#
+#outEnblContSwe {
+#    out "INIT:CONT %{OFF|ON}";
+#    @init { inEnblContSwe; };
+#}
+#
+#######################################################################
+## Sweep Points Number (MIN 101; MAX 32001)
+##
+#inSwePts {
+#    out "SENS:SWE:POIN?";
+#    in "%i";
+#}
+#
+#outSwePts {
+#    out "SENS:SWE:POIN %i";
+#    @init { inSwePts; };
+#}
+#
+#######################################################################
+## Center Frequency
+##
+#inFrqCent {
+#    out "SENS:FREQ:CENT?";
+#    in "%f";
+#}
+#
+#outFrqCent {
+#    out "SENS:FREQ:CENT %f";
+#    @init { inFrqCent; };
+#}
+#
+#######################################################################
+## Frequency Span
+##
+#inFrqSpan {
+#    out "SENS:FREQ:SPAN?";
+#    in "%f";
+#}
+#
+#outFrqSpan {
+#    out "SENS:FREQ:SPAN %f";
+#    @init { inFrqSpan; };
+#}
+#
+#######################################################################
+## Start Frequency
+##
+#inFrqStart {
+#    out "SENS:FREQ:STAR?";
+#    in "%f";
+#}
+#
+#outFrqStart {
+#    out "SENS:FREQ:STAR %f";
+#    @init { inFrqStart; };
+#}
+#
+#######################################################################
+## Stop Frequency
+##
+#inFrqStop {
+#    out "SENS:FREQ:STOP?";
+#    in "%f";
+#}
+#
+#outFrqStop {
+#    out "SENS:FREQ:STOP %f";
+#    @init { inFrqStop; };
+#}
+#
+#######################################################################
+## Enable/Disable Markers (1-4)
+#
+#inEnblMark1 {
+#    out "CALC:MARK1:STAT?";
+#    in "%i";
+#}
+#
+#outEnblMark1 {
+#    out "CALC:MARK1:STAT %i";
+#    @init { inEnblMark1; };
+#}
+#
+#inEnblMark2 {
+#    out "CALC:MARK2:STAT?";
+#    in "%i";
+#}
+#
+#outEnblMark2 {
+#    out "CALC:MARK2:STAT %i";
+#    @init { inEnblMark2; };
+#}
+#
+#inEnblMark3 {
+#    out "CALC:MARK3:STAT?";
+#    in "%i";
+#}
+#
+#outEnblMark3 {
+#    out "CALC:MARK3:STAT %i";
+#    @init { inEnblMark3; };
+#}
+#
+#inEnblMark4 {
+#    out "CALC:MARK4:STAT?";
+#    in "%i";
+#}
+#
+#outEnblMark4 {
+#    out "CALC:MARK4:STAT %i";
+#    @init { inEnblMark4; };
+#}
+#
+#######################################################################
+## Markers X Values
+#
+#inMarkX1 {
+#    out "CALC:MARK1:X?";
+#    in "%f";
+#}
+#
+#outMarkX1 {
+#    out "CALC:MARK1:X %f";
+#}
+#
+#inMarkX2 {
+#    out "CALC:MARK2:X?";
+#    in "%f";
+#}
+#
+#outMarkX2 {
+#    out "CALC:MARK2:X %f";
+#}
+#
+#inMarkX3 {
+#    out "CALC:MARK3:X?";
+#    in "%f";
+#}
+#
+#outMarkX3 {
+#    out "CALC:MARK3:X %f";
+#}
+#
+#inMarkX4 {
+#    out "CALC:MARK4:X?";
+#    in "%f";
+#}
+#
+#outMarkX4 {
+#    out "CALC:MARK4:X %f";
+#}
+#
+#######################################################################
+## Enable Marker Frequency Counters (1-4)
+#
+#inEnblMarkCount1 {
+#    out "CALC:MARK1:COUN?";
+#    in "%i";
+#}
+#
+#inEnblMarkCount2 {
+#    out "CALC:MARK2:COUN?";
+#    in "%i";
+#}
+#
+#inEnblMarkCount3 {
+#    out "CALC:MARK3:COUN?";
+#    in "%i";
+#}
+#
+#inEnblMarkCount4 {
+#    out "CALC:MARK4:COUN?";
+#    in "%i";
+#}
+#
+#outEnblMarkCount1 {
+#    out "CALC:MARK1:COUN %i";
+#}
+#
+#outEnblMarkCount2 {
+#    out "CALC:MARK2:COUN %i";
+#}
+#
+#outEnblMarkCount3 {
+#    out "CALC:MARK3:COUN %i";
+#}
+#
+#outEnblMarkCount4 {
+#    out "CALC:MARK4:COUN %i";
+#}
+#
+#######################################################################
+## Marker Frequency Counter Resolution
+#
+#inMarkCountRes {
+#    out "CALC:MARK:COUN:RES?";
+#    in "%i";
+#}
+#
+#outMarkCountRes {
+#    out "CALC:MARK:COUN:RES %{0.1|1|10|100|1000|10000}";
+#}
+#
+#######################################################################
+## Enable local oscillator supression for peak search
+#
+#inEnblLocalOscSupr {
+#    out "CALC:MARK:LOEX?";
+#    in "%i";
+#}
+#
+#outEnblLocalOscSupr {
+#    out "CALC:MARK:LOEX %{OFF|ON}";
+#}
+#
+#######################################################################
+## Enable automatic peak search for markers (1-4)
+#
+#inEnblMaxAuto1 {
+#    out "CALC:MARK1:MAX:AUTO?";
+#    in "%i";
+#}
+#
+#inEnblMaxAuto2 {
+#    out "CALC:MARK2:MAX:AUTO?";
+#    in "%i";
+#}
+#
+#inEnblMaxAuto3 {
+#    out "CALC:MARK3:MAX:AUTO?";
+#    in "%i";
+#}
+#
+#inEnblMaxAuto4 {
+#    out "CALC:MARK4:MAX:AUTO?";
+#    in "%i";
+#}
+#
+#outEnblMaxAuto1 {
+#    out "CALC:MARK1:MAX:AUTO %{OFF|ON}";
+#}
+#
+#outEnblMaxAuto2 {
+#    out "CALC:MARK2:MAX:AUTO %{OFF|ON}";
+#}
+#
+#outEnblMaxAuto3 {
+#    out "CALC:MARK3:MAX:AUTO %{OFF|ON}";
+#}
+#
+#outEnblMaxAuto4 {
+#    out "CALC:MARK4:MAX:AUTO %{OFF|ON}";
+#}
+#
+#######################################################################
+## Enable automatic peak search for markers (1-4)
+#
+#inEnblMinAuto1 {
+#    out "CALC:MARK1:MIN:AUTO?";
+#    in "%i";
+#}
+#
+#inEnblMinAuto2 {
+#    out "CALC:MARK2:MIN:AUTO?";
+#    in "%i";
+#}
+#
+#inEnblMinAuto3 {
+#    out "CALC:MARK3:MIN:AUTO?";
+#    in "%i";
+#}
+#
+#inEnblMinAuto4 {
+#    out "CALC:MARK4:MIN:AUTO?";
+#    in "%i";
+#}
+#
+#outEnblMinAuto1 {
+#    out "CALC:MARK1:MIN:AUTO %{OFF|ON}";
+#}
+#
+#outEnblMinAuto2 {
+#    out "CALC:MARK2:MIN:AUTO %{OFF|ON}";
+#}
+#
+#outEnblMinAuto3 {
+#    out "CALC:MARK3:MIN:AUTO %{OFF|ON}";
+#}
+#
+#outEnblMinAuto4 {
+#    out "CALC:MARK4:MIN:AUTO %{OFF|ON}";
+#}
+#
+#######################################################################
+## Define the peak excursion
+#
+#inMarkPExcursion {
+#    out "CALC:MARK:PEXC?";
+#    in "%f";
+#}
+#
+#outMarkPExcursion {
+#    out "CALC:MARK:PEXC %f";
+#}
+#
+#######################################################################
+## Enable/Disable limited search range
+#
+#inEnblMarkLimit {
+#    out "CALC:MARK:X:SLIM:STAT?";
+#    in "%i";
+#}
+#
+#outEnblMarkLimit {
+#    out "CALC:MARK:X:SLIM:STAT %{OFF|ON}";
+#}
+#
+#######################################################################
+## Left limit for the search range
+#
+#inMarkLimitLeft {
+#    out "CALC:MARK:X:SLIM:LEFT?";
+#    in "%f";
+#}
+#
+#outMarkLimitLeft {
+#    out "CALC:MARK:X:SLIM:LEFT %f";
+#}
+#
+#######################################################################
+## Right limit for the search range
+#
+#inMarkLimitRight {
+#    out "CALC:MARK:X:SLIM:RIGHT?";
+#    in "%f";
+#}
+#
+#outMarkLimitRight {
+#    out "CALC:MARK:X:SLIM:RIGHT %f";
+#}
+#
+#######################################################################
+## Enable/Disable Delta Markers (1-4)
+#
+#inEnblDMark1 {
+#    out "CALC:DELT1:STAT?";
+#    in "%i";
+#}
+#
+#outEnblDMark1 {
+#    out "CALC:DELT1:STAT %i";
+#    @init { inEnblDMark1; };
+#}
+#
+#inEnblDMark2 {
+#    out "CALC:DELT2:STAT?";
+#    in "%i";
+#}
+#
+#outEnblDMark2 {
+#    out "CALC:DELT2:STAT %i";
+#    @init { inEnblDMark2; };
+#}
+#
+#inEnblDMark3 {
+#    out "CALC:DELT3:STAT?";
+#    in "%i";
+#}
+#
+#outEnblDMark3 {
+#    out "CALC:DELT3:STAT %i";
+#    @init { inEnblDMark3; };
+#}
+#
+#inEnblDMark4 {
+#    out "CALC:DELT4:STAT?";
+#    in "%i";
+#}
+#
+#outEnblDMark4 {
+#    out "CALC:DELT4:STAT %i";
+#    @init { inEnblDMark4; };
+#}
+#
+#######################################################################
+## State of tracking generator output
+#
+#inEnblOut {
+#    out "OUTP:STAT?";
+#    in "%i";
+#}
+#
+#outEnblOut {
+#    out "OUTP:STAT %{OFF|ON}";
+#}
+#
+#######################################################################
+## Enable/Disable Tracking Generator Normalization of the measurement
+## results
+#
+#inEnblOutCorrect {
+#    out "SENS:CORR:STAT?";
+#    in "%i";
+#}
+#
+#outEnblOutCorrect {
+#    out "SENS:CORR:STAT %{OFF|ON}";
+#}
+#
+#######################################################################
+## Input Attenuator Value
+#
+#inAttIn {
+#    out "INP:ATT?";
+#    in "%f";
+#}
+#
+#outAttIn {
+#    out "INP:ATT %f";
+#}
+#
+#######################################################################
+## Enable/Disable automatic coupling of the input attenuation to the
+## reference level
+#
+#inEnblAttAuto {
+#    out "INP:ATT:AUTO?";
+#    in 	"%i";
+#}
+#
+#outEnblAttAuto {
+#    out "INP:ATT:AUTO %{OFF|ON}";
+#}
+#
+######################################################################
+## Enable/Disable Input Preamplifier
+#
+#inEnblPreamp {
+#    out "INP:GAIN:STAT?";
+#    in "%i";
+#}
+#
+#outEnblPreamp {
+#    out "INP:GAIN:STAT %{OFF|ON}";
+#}
+#
+#######################################################################
+## Instruments Nominal input impedance
+#
+#inImpdIn {
+#    out "INP:IMP?";
+#    in "%i";
+#}
+#
+#outImpdIn {
+#    out "INP:IMP %{50|75}";
+#}
+#
+#######################################################################
+## Oscillator Reference
+#
+#inRoscSrc {
+#    out "SOUR:EXT:ROSC:SOUR?";
+#    in "%i";
+#}
+#
+#outRoscSrc {
+#    out "SOUR:EXT:ROSC:SOUR %{INT|EXT}";
+#}
+#
+#######################################################################
+## Tracking Generator Level
+#
+#inLvlOut {
+#    out "SOUR:POW:LEV:IMM:AMPL?";
+#    in "%f";
+#}
+#
+#outLvlOut {
+#    out "SOUR:POW:LEV:IMM:AMPL %f";
+#}
+#
+#######################################################################
+## Tracking Generator Offset Level
+#
+#inLvlOutOffset {
+#    out "SOUR:POW:LEV:IMM:OFFS?";
+#    in "%f";
+#}
+#
+#outLvlOutOffset {
+#    out "SOUR:POW:LEV:IMM:OFFS %f";
+#}
+#
+#######################################################################
+## Resolution Bandwidth
+#
+#inRbw {
+#    out "SENS:BWID:RES?";
+#    in "%f";
+#}
+#
+#outRbw {
+#    out "SENS:BWID:RES %f";
+#}
+#
+#######################################################################
+############################ MONITOR ##################################
+#######################################################################
+## Get identification
+#
+#inIdn {
+#    out "*IDN?";
+#    in "%s";
+#}
+#
+#######################################################################
+## Markers Y Values
+#
+#monMarkY1 {
+#    out "CALC:MARK1:Y?";
+#    in "%f";
+#}
+#
+#monMarkY2 {
+#    out "CALC:MARK2:Y?";
+#    in "%f";
+#}
+#
+#monMarkY3 {
+#    out "CALC:MARK3:Y?";
+#    in "%f";
+#}
+#
+#monMarkY4 {
+#    out "CALC:MARK4:Y?";
+#    in "%f";
+#}
+#
+#######################################################################
+## Queries the result of the markers frequency counters (1-4)
+#
+#monMarkFreqCount1 {
+#    out "CALC:MARK1:COUN:FREQ?";
+#    in "%f";
+#}
+#
+#monMarkFreqCount2 {
+#    out "CALC:MARK2:COUN:FREQ?";
+#    in "%f";
+#}
+#
+#monMarkFreqCount3 {
+#    out "CALC:MARK3:COUN:FREQ?";
+#    in "%f";
+#}
+#
+#monMarkFreqCount4 {
+#    out "CALC:MARK4:COUN:FREQ?";
+#    in "%f";
+#}
+#
+#######################################################################
+############################ COMMAND ##################################
+#######################################################################
+## Reset to default state
+#cmdRst {
+#    out "%{|*RST; *WAI}";
+#}
+#
+#######################################################################
+## Set Markers to Max Peak on Trace (1-4)
+#
+#cmdMarkMax1 {
+#    out "%{|CALC:MARK1:MAX:PEAK}";
+#}
+#
+#cmdMarkMax2 {
+#    out "%{|CALC:MARK2:MAX:PEAK}";
+#}
+#
+#cmdMarkMax3 {
+#    out "%{|CALC:MARK3:MAX:PEAK}";
+#}
+#
+#cmdMarkMax4 {
+#    out "%{|CALC:MARK4:MAX:PEAK}";
+#}
+#
+#######################################################################
+## Turn all markers off
+#
+#cmdMarkAOff {
+#    out "%{|CALC:MARK:AOFF}";
+#}
+#
+#######################################################################
+## Position the marker to the next smaller maximium value to the left
+## of the current value (1-4)
+#
+#cmdMarkMaxLeft1 {
+#    out "%{|CALC:MARK1:MAX:LEFT}";
+#}
+#
+#cmdMarkMaxLeft2 {
+#    out "%{|CALC:MARK2:MAX:LEFT}";
+#}
+#
+#cmdMarkMaxLeft3 {
+#    out "%{|CALC:MARK3:MAX:LEFT}";
+#}
+#
+#cmdMarkMaxLeft4 {
+#    out "%{|CALC:MARK4:MAX:LEFT}";
+#}
+#
+#######################################################################
+## Position the marker to the next smaller minimium value to the left
+## of the current value (1-4)
+#
+#cmdMarkMinLeft1 {
+#    out "%{|CALC:MARK1:MIN:LEFT}";
+#}
+#
+#cmdMarkMinLeft2 {
+#    out "%{|CALC:MARK2:MIN:LEFT}";
+#}
+#
+#cmdMarkMinLeft3 {
+#    out "%{|CALC:MARK3:MIN:LEFT}";
+#}
+#
+#cmdMarkMinLeft4 {
+#    out "%{|CALC:MARK4:MIN:LEFT}";
+#}
+#
+#######################################################################
+## Position the marker to the next smaller maximium value of the
+## corresponding trace (1-4)
+#
+#cmdMarkMaxNext1 {
+#    out "%{|CALC:MARK1:MAX:NEXT}";
+#}
+#
+#cmdMarkMaxNext2 {
+#    out "%{|CALC:MARK2:MAX:NEXT}";
+#}
+#
+#cmdMarkMaxNext3 {
+#    out "%{|CALC:MARK3:MAX:NEXT}";
+#}
+#
+#cmdMarkMaxNext4 {
+#    out "%{|CALC:MARK4:MAX:NEXT}";
+#}
+#
+#######################################################################
+## Position the marker to the next smaller minimium value of the
+## corresponding trace (1-4)
+#
+#cmdMarkMinNext1 {
+#    out "%{|CALC:MARK1:MIN:NEXT}";
+#}
+#
+#cmdMarkMinNext2 {
+#    out "%{|CALC:MARK2:MIN:NEXT}";
+#}
+#
+#cmdMarkMinNext3 {
+#    out "%{|CALC:MARK3:MIN:NEXT}";
+#}
+#
+#cmdMarkMinNext4 {
+#    out "%{|CALC:MARK4:MIN:NEXT}";
+#}
+#
+######################################################################
+## Position the marker to the next smaller maximium value to the right
+## of the current value (1-4)
+#
+#cmdMarkMaxRight1 {
+#    out "%{|CALC:MARK1:MAX:RIGHT}";
+#}
+#
+#cmdMarkMaxRight2 {
+#    out "%{|CALC:MARK2:MAX:RIGHT}";
+#}
+#
+#cmdMarkMaxRight3 {
+#    out "%{|CALC:MARK3:MAX:RIGHT}";
+#}
+#
+#cmdMarkMaxRight4 {
+#    out "%{|CALC:MARK4:MAX:RIGHT}";
+#}
+#
+######################################################################
+## Position the marker to the next smaller minimium value to the right
+## of the current value (1-4)
+#
+#cmdMarkMinRight1 {
+#    out "%{|CALC:MARK1:MIN:RIGHT}";
+#}
+#
+#cmdMarkMinRight2 {
+#    out "%{|CALC:MARK2:MIN:RIGHT}";
+#}
+#
+#cmdMarkMinRight3 {
+#    out "%{|CALC:MARK3:MIN:RIGHT}";
+#}
+#
+#cmdMarkMinRight4 {
+#    out "%{|CALC:MARK4:MIN:RIGHT}";
+#}
+#
+#######################################################################
+## Set Markers to Min Peak on Trace (1-4)
+#
+#cmdMarkMin1 {
+#    out "%{|CALC:MARK1:MIN:PEAK}";
+#}
+#
+#cmdMarkMin2 {
+#    out "%{|CALC:MARK2:MIN:PEAK}";
+#}
+#
+#cmdMarkMin3 {
+#    out "%{|CALC:MARK3:MIN:PEAK}";
+#}
+#
+#cmdMarkMin4 {
+#    out "%{|CALC:MARK4:MIN:PEAK}";
+#}
+#
+#######################################################################
+## Switch off all Delta Markers
+#
+#
+#cmdDMarkAOff {
+#    out "%{|CALC:DELT:AOFF}";
+#}
+#
+#######################################################################
+## Initiate a new measurement sequence
+#
+#cmdInitMeas {
+#    out "%{|INIT:IMM}";
+#}
+#
+#######################################################################
+## Continue a stopped measurement in single sweep mode
+#
+#cmdConMeas {
+#    out "%{|INIT:CONM}";
+#}
+#
+#######################################################################
+## Start a Spectrum Emission Mask Measurement
+#
+#cmdSpecEmisMeas {
+#    out "%{|INIT:ESP}";
+#}
+#
+#######################################################################
+## Start a Spurious Emissions Measurement
+#
+#cmdSpurEmisMeas {
+#    out "%{|INIT:SPUR}";
+#}
+#
+#######################################################################
+############################### SAVE ##################################
+#######################################################################
+## IQ Data
+##
+##inIQ {
+##    Separator=",";
+##    out "INIT:CONT OFF";
+##    out "TRAC:IQ:STAT ON";
+##    out "TRAC:IQ:SET NORM,10 MHz,32 MHz,IMM,POS,0,10";
+##    out "TRAC:IQ:DATA?";
+##    in "%E";
+##}
