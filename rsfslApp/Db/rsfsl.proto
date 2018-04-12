@@ -66,19 +66,19 @@ outRefLvl {
     @init { inRefLvl; };
 }
 
-#######################################################################
-## Reference Level Offset
-##
-#inRefOff {
-#    out "DISP:WIND:TRAC:Y:SCAL:RLEV:OFFS?";
-#    in "%f";
-#}
+######################################################################
+# Reference Level Offset
 #
-#outRefOff {
-#    out "DISP:WIND:TRAC:Y:SCAL:RLEV:OFFS %f";
-#    @init { inRefOff; };
-#}
-#
+inRefOff {
+    out "DISP:WIND:TRAC:Y:SCAL:RLEV:OFFS?";
+    in "%f";
+}
+
+outRefOff {
+    out "DISP:WIND:TRAC:Y:SCAL:RLEV:OFFS %f";
+    @init { inRefOff; };
+}
+
 #######################################################################
 ## Enable Continuous Sweep Mode
 ##
@@ -92,71 +92,71 @@ outRefLvl {
 #    @init { inEnblContSwe; };
 #}
 #
-#######################################################################
-## Sweep Points Number (MIN 101; MAX 32001)
-##
-#inSwePts {
-#    out "SENS:SWE:POIN?";
-#    in "%i";
-#}
+######################################################################
+# Sweep Points Number (MIN 101; MAX 32001)
 #
-#outSwePts {
-#    out "SENS:SWE:POIN %i";
-#    @init { inSwePts; };
-#}
+inSwePts {
+    out "SENS:SWE:POIN?";
+    in "%i";
+}
+
+outSwePts {
+    out "SENS:SWE:POIN %i";
+    @init { inSwePts; };
+}
+
+######################################################################
+# Center Frequency
 #
-#######################################################################
-## Center Frequency
-##
-#inFrqCent {
-#    out "SENS:FREQ:CENT?";
-#    in "%f";
-#}
+inFrqCent {
+    out "SENS:FREQ:CENT?";
+    in "%f";
+}
+
+outFrqCent {
+    out "SENS:FREQ:CENT %f";
+    @init { inFrqCent; };
+}
+
+######################################################################
+# Frequency Span
 #
-#outFrqCent {
-#    out "SENS:FREQ:CENT %f";
-#    @init { inFrqCent; };
-#}
+inFrqSpan {
+    out "SENS:FREQ:SPAN?";
+    in "%f";
+}
+
+outFrqSpan {
+    out "SENS:FREQ:SPAN %f";
+    @init { inFrqSpan; };
+}
+
+#####################################################################
+# Start Frequency
 #
-#######################################################################
-## Frequency Span
-##
-#inFrqSpan {
-#    out "SENS:FREQ:SPAN?";
-#    in "%f";
-#}
+inFrqStart {
+    out "SENS:FREQ:STAR?";
+    in "%f";
+}
+
+outFrqStart {
+    out "SENS:FREQ:STAR %f";
+    @init { inFrqStart; };
+}
+
+######################################################################
+# Stop Frequency
 #
-#outFrqSpan {
-#    out "SENS:FREQ:SPAN %f";
-#    @init { inFrqSpan; };
-#}
-#
-#######################################################################
-## Start Frequency
-##
-#inFrqStart {
-#    out "SENS:FREQ:STAR?";
-#    in "%f";
-#}
-#
-#outFrqStart {
-#    out "SENS:FREQ:STAR %f";
-#    @init { inFrqStart; };
-#}
-#
-#######################################################################
-## Stop Frequency
-##
-#inFrqStop {
-#    out "SENS:FREQ:STOP?";
-#    in "%f";
-#}
-#
-#outFrqStop {
-#    out "SENS:FREQ:STOP %f";
-#    @init { inFrqStop; };
-#}
-#
+inFrqStop {
+    out "SENS:FREQ:STOP?";
+    in "%f";
+}
+
+outFrqStop {
+    out "SENS:FREQ:STOP %f";
+    @init { inFrqStop; };
+}
+
 #######################################################################
 ## Enable/Disable Markers (1-4)
 #
@@ -390,6 +390,7 @@ outRefLvl {
 #
 #outMarkPExcursion {
 #    out "CALC:MARK:PEXC %f";
+#    @init{ inMarkPExcursion; };
 #}
 #
 #######################################################################
@@ -858,16 +859,16 @@ outRefLvl {
 #    out "%{|INIT:SPUR}";
 #}
 #
-#######################################################################
-############################### SAVE ##################################
-#######################################################################
-## IQ Data
-##
-##inIQ {
-##    Separator=",";
-##    out "INIT:CONT OFF";
-##    out "TRAC:IQ:STAT ON";
-##    out "TRAC:IQ:SET NORM,10 MHz,32 MHz,IMM,POS,0,10";
-##    out "TRAC:IQ:DATA?";
-##    in "%E";
-##}
+######################################################################
+############################## SAVE ##################################
+######################################################################
+# IQ Data
+
+inIQ {
+    Separator=",";
+    out "INIT:CONT OFF";
+    out "TRAC:IQ:STAT ON";
+    out "TRAC:IQ:SET NORM,10 MHz,32 MHz,IMM,POS,0,10";
+    out "TRAC:IQ:DATA?";
+    in "%E";
+}

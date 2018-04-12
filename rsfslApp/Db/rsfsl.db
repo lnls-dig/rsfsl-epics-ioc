@@ -40,12 +40,11 @@
 
 record(ai, "$(P)$(R)RefLvl-RB") {
   field(DESC, "Get reference level")
-  field(SCAN, "1 second")
+  field(PINI, "YES")
   field(DTYP, "stream")
   field(PREC, "1")
   field(MDEL, "-1")
   field(ADEL, "-1")
-  field(LINR, "NO CONVERSION")
   field(EGU, "dBm")
   field(INP, "@rsfsl.proto inRefLvl $(PORT)")
 }
@@ -58,28 +57,36 @@ record(ao, "$(P)$(R)RefLvl-SP") {
   field(FLNK,"$(P)$(R)RefLvl-RB")
 }
 
-## Reference Level Offset
-#
-#record(ai, "$(P)$(R)RefOff-RB") {
-#  field(DESC, "Get reference level offset")
-#  field(SCAN, "1 second")
-#  field(DTYP, "stream")
-#  field(PREC, "1")
-#  field(MDEL, "-1")
-#  field(ADEL, "-1")
-#  field(LINR, "NO CONVERSION")
-#  field(EGU, "dBm")
-#  field(INP, "@rsfsl.proto inRefOff $(PORT)")
-#}
-#
-#record(ao, "$(P)$(R)RefOff-SP") {
-#  field(DESC, "Set reference level offset")
-#  field(DTYP, "stream")
-#  field(EGU, "dBm")
-#  field(OUT, "@rsfsl.proto outRefOff($1) $(PORT)")
-#  field(FLNK,"$(P)$(R)RefOff-RB")
-#}
-#
+# Reference Level Offset
+
+record(ai, "$(P)$(R)RefOff-RB") {
+  field(DESC, "Get reference level offset")
+  field(PINI, "YES")
+  field(DTYP, "stream")
+  field(PREC, "1")
+  field(MDEL, "-1")
+  field(ADEL, "-1")
+  field(EGU, "dBm")
+  field(INP, "@rsfsl.proto inRefOff $(PORT)")
+}
+
+record(ao, "$(P)$(R)RefOff-SP") {
+  field(DESC, "Set reference level offset")
+  field(DTYP, "stream")
+  field(EGU, "dBm")
+  field(OUT, "@rsfsl.proto outRefOff($1) $(PORT)")
+  field(FLNK,"$(P)$(R)RefLvlFout")
+}
+
+# Reference Level Fanout
+
+record(fanout, "$(P)$(R)RefLvlFout") {
+  field(DESC, "Reference Level Fanout")
+  field(LNK1, "$(P)$(R)RefOff-RB")
+  field(LNK2, "$(P)$(R)RefLvl-RB")
+  field(SELM, "All")
+}
+
 ## Enable Continuous Sweep Mode
 #
 #record(bi, "$(P)$(R)EnblContSwe-Sts") {
@@ -100,117 +107,123 @@ record(ao, "$(P)$(R)RefLvl-SP") {
 #  field(FLNK,"$(P)$(R)EnblContSwe-Sts")
 #}
 #
-## Sweep Points Number
-#
-#record(ai, "$(P)$(R)SwePts-RB") {
-#  field(DESC, "Get number of points in one sweep")
-#  field(SCAN, "1 second")
-#  field(DTYP, "stream")
-#  field(PREC, "1")
-#  field(MDEL, "-1")
-#  field(ADEL, "-1")
-#  field(LINR, "NO CONVERSION")
-#  field(EGU, "points")
-#  field(INP, "@rsfsl.proto inSwePts $(PORT)")
-#}
-#
-#record(ao, "$(P)$(R)SwePts-SP") {
-#  field(DESC, "Set number of points in one sweep")
-#  field(DTYP, "stream")
-#  field(EGU, "points")
-#  field(OUT, "@rsfsl.proto outSwePts($1) $(PORT)")
-#  field(FLNK,"$(P)$(R)SwePts-RB")
-#}
-#
-## Center Frequency
-#
-#record(ai, "$(P)$(R)FreqCenter-RB") {
-#  field(DESC, "Get center frequency")
-#  field(SCAN, "1 second")
-#  field(DTYP, "stream")
-#  field(PREC, "1")
-##  field(MDEL, "-1")
-##  field(ADEL, "-1")
-#  field(LINR, "NO CONVERSION")
-#  field(EGU, "Hz")
-#  field(INP, "@rsfsl.proto inFrqCent $(PORT)")
-#}
-#
-#record(ao, "$(P)$(R)FreqCenter-SP") {
-#  field(DESC, "Set center frequency")
-#  field(DTYP, "stream")
-#  field(EGU, "Hz")
-#  field(OUT, "@rsfsl.proto outFrqCent($1) $(PORT)")
-#  field(FLNK,"$(P)$(R)FreqCenter-RB")
-#}
-#
-## Frequency Span
-#
-#record(ai, "$(P)$(R)FreqSpan-RB") {
-#  field(DESC, "Get frequency span")
-#  field(SCAN, "1 second")
-#  field(DTYP, "stream")
-#  field(PREC, "1")
-#  field(MDEL, "-1")
-#  field(ADEL, "-1")
-#  field(LINR, "NO CONVERSION")
-#  field(EGU, "Hz")
-#  field(INP, "@rsfsl.proto inFrqSpan $(PORT)")
-#}
-#
-#record(ao, "$(P)$(R)FreqSpan-SP") {
-#  field(DESC, "Set frequency span")
-#  field(DTYP, "stream")
-#  field(EGU, "Hz")
-#  field(OUT, "@rsfsl.proto outFrqSpan($1) $(PORT)")
-#  field(FLNK,"$(P)$(R)FreqSpan-RB")
-#}
-#
-## Start Frequency
-#
-#record(ai, "$(P)$(R)FreqStart-RB") {
-#  field(DESC, "Get start frequency")
-#  field(SCAN, "1 second")
-#  field(DTYP, "stream")
-#  field(PREC, "1")
-#  field(MDEL, "-1")
-#  field(ADEL, "-1")
-#  field(LINR, "NO CONVERSION")
-#  field(EGU, "Hz")
-#  field(INP, "@rsfsl.proto inFrqStart $(PORT)")
-#}
-#
-#record(ao, "$(P)$(R)FreqStart-SP") {
-#  field(DESC, "Set start frequency")
-#  field(DTYP, "stream")
-#  field(EGU, "Hz")
-#  field(OUT, "@rsfsl.proto outFrqStart($1) $(PORT)")
-#  field(FLNK,"$(P)$(R)FreqStart-RB")
-#}
-#
-## Stop Frequency
-#
-#record(ai, "$(P)$(R)FreqStop-RB") {
-#  field(DESC, "Get stop frequency")
-#  field(SCAN, "1 second")
-#  field(DTYP, "stream")
-#  field(PREC, "1")
-#  field(MDEL, "-1")
-#  field(ADEL, "-1")
-#  field(LINR, "NO CONVERSION")
-#  field(EGU, "Hz")
-#  field(INP, "@rsfsl.proto inFrqStop $(PORT)")
-#}
-#
-#record(ao, "$(P)$(R)FreqStop-SP") {
-#  field(DESC, "Set stop frequency")
-#  field(DTYP, "stream")
-#  field(EGU, "Hz")
-#  field(OUT, "@rsfsl.proto outFrqStop($1) $(PORT)")
-#  field(FLNK,"$(P)$(R)FreqStop-RB")
-#}
-#
-## Enable/Disable Markers (1-4)
+# Sweep Points Number
+
+record(ai, "$(P)$(R)SwePts-RB") {
+  field(DESC, "Get number of points in one sweep")
+  field(PINI, "YES")
+  field(DTYP, "stream")
+  field(PREC, "1")
+  field(MDEL, "-1")
+  field(ADEL, "-1")
+  field(EGU, "points")
+  field(INP, "@rsfsl.proto inSwePts $(PORT)")
+}
+
+record(ao, "$(P)$(R)SwePts-SP") {
+  field(DESC, "Set number of points in one sweep")
+  field(DTYP, "stream")
+  field(EGU, "points")
+  field(OUT, "@rsfsl.proto outSwePts($1) $(PORT)")
+  field(FLNK,"$(P)$(R)SwePts-RB")
+}
+
+# Center Frequency
+
+record(ai, "$(P)$(R)FreqCenter-RB") {
+  field(DESC, "Get center frequency")
+  field(PINI, "YES")
+  field(DTYP, "stream")
+  field(PREC, "1")
+  field(MDEL, "-1")
+  field(ADEL, "-1")
+  field(EGU, "Hz")
+  field(INP, "@rsfsl.proto inFrqCent $(PORT)")
+}
+
+record(ao, "$(P)$(R)FreqCenter-SP") {
+  field(DESC, "Set center frequency")
+  field(DTYP, "stream")
+  field(EGU, "Hz")
+  field(OUT, "@rsfsl.proto outFrqCent($1) $(PORT)")
+  field(FLNK,"$(P)$(R)FreqFout")
+}
+
+# Frequency Span
+
+record(ai, "$(P)$(R)FreqSpan-RB") {
+  field(DESC, "Get frequency span")
+  field(PINI, "YES")
+  field(DTYP, "stream")
+  field(PREC, "1")
+  field(MDEL, "-1")
+  field(ADEL, "-1")
+  field(EGU, "Hz")
+  field(INP, "@rsfsl.proto inFrqSpan $(PORT)")
+}
+
+record(ao, "$(P)$(R)FreqSpan-SP") {
+  field(DESC, "Set frequency span")
+  field(DTYP, "stream")
+  field(EGU, "Hz")
+  field(OUT, "@rsfsl.proto outFrqSpan($1) $(PORT)")
+  field(FLNK,"$(P)$(R)FreqFout")
+}
+
+# Frequency Fanout
+
+record(fanout, "$(P)$(R)FreqFout") {
+  field(DESC, "Frequency Fanout")
+  field(FLN1, "$(P)$(R)FreqSpan-RB")
+  field(LNK2, "$(P)$(R)FreqStart-RB")
+  field(LNK3, "$(P)$(R)FreqStop-RB")
+  field(LNK4, "$(P)$(R)FreqCenter-RB")
+  field(SELM, "All")
+}
+
+# Start Frequency
+
+record(ai, "$(P)$(R)FreqStart-RB") {
+  field(DESC, "Get start frequency")
+  field(PINI, "YES")
+  field(DTYP, "stream")
+  field(PREC, "1")
+  field(MDEL, "-1")
+  field(ADEL, "-1")
+  field(EGU, "Hz")
+  field(INP, "@rsfsl.proto inFrqStart $(PORT)")
+}
+
+record(ao, "$(P)$(R)FreqStart-SP") {
+  field(DESC, "Set start frequency")
+  field(DTYP, "stream")
+  field(EGU, "Hz")
+  field(OUT, "@rsfsl.proto outFrqStart($1) $(PORT)")
+  field(FLNK,"$(P)$(R)FreqFout")
+}
+
+# Stop Frequency
+
+record(ai, "$(P)$(R)FreqStop-RB") {
+  field(DESC, "Get stop frequency")
+  field(PINI, "YES")
+  field(DTYP, "stream")
+  field(PREC, "1")
+  field(MDEL, "-1")
+  field(ADEL, "-1")
+  field(EGU, "Hz")
+  field(INP, "@rsfsl.proto inFrqStop $(PORT)")
+}
+
+record(ao, "$(P)$(R)FreqStop-SP") {
+  field(DESC, "Set stop frequency")
+  field(DTYP, "stream")
+  field(EGU, "Hz")
+  field(OUT, "@rsfsl.proto outFrqStop($1) $(PORT)")
+  field(FLNK,"$(P)$(R)FreqFout")
+}
+
+# Enable/Disable Markers (1-4)
 #
 #record(bi, "$(P)$(R)EnblMark1-Sts") {
 #  field(DESC, "Get Marker1 State")
@@ -293,7 +306,6 @@ record(ao, "$(P)$(R)RefLvl-SP") {
 #  field(PREC, "1")
 ##  field(MDEL, "-1")
 ##  field(ADEL, "-1")
-#  field(LINR, "NO CONVERSION")
 #  field(EGU, "seconds or Hz")
 #  field(INP, "@rsfsl.proto inMarkX1 $(PORT)")
 #}
@@ -312,7 +324,6 @@ record(ao, "$(P)$(R)RefLvl-SP") {
 #  field(PREC, "1")
 #  field(MDEL, "-1")
 #  field(ADEL, "-1")
-#  field(LINR, "NO CONVERSION")
 #  field(EGU, "seconds or Hz")
 #  field(INP, "@rsfsl.proto inMarkX2 $(PORT)")
 #}
@@ -331,7 +342,6 @@ record(ao, "$(P)$(R)RefLvl-SP") {
 #  field(PREC, "1")
 #  field(MDEL, "-1")
 #  field(ADEL, "-1")
-#  field(LINR, "NO CONVERSION")
 #  field(EGU, "seconds or Hz")
 #  field(INP, "@rsfsl.proto inMarkX3 $(PORT)")
 #}
@@ -350,7 +360,6 @@ record(ao, "$(P)$(R)RefLvl-SP") {
 #  field(PREC, "1")
 #  field(MDEL, "-1")
 #  field(ADEL, "-1")
-#  field(LINR, "NO CONVERSION")
 #  field(EGU, "seconds or Hz")
 #  field(INP, "@rsfsl.proto inMarkX4 $(PORT)")
 #}
@@ -649,12 +658,11 @@ record(ao, "$(P)$(R)RefLvl-SP") {
 #
 #record(ai, "$(P)$(R)MarkPExcursion-RB") {
 #  field(DESC, "Get Peak Excursion")
-#  field(SCAN, "1 second")
+#  field(PINI, "YES")
 #  field(DTYP, "stream")
 #  field(PREC, "1")
 #  field(MDEL, "-1")
 #  field(ADEL, "-1")
-#  field(LINR, "NO CONVERSION")
 #  field(EGU, "dB")
 #  field(INP, "@rsfsl.proto inMarkPExcursion $(PORT)")
 #}
@@ -694,7 +702,6 @@ record(ao, "$(P)$(R)RefLvl-SP") {
 #  field(SCAN, "1 second")
 #  field(DTYP, "stream")
 #  field(PREC, "1")
-#  field(LINR, "NO CONVERSION")
 #  field(INP, "@rsfsl.proto inMarkLimitLeft $(PORT)")
 #}
 #
@@ -712,7 +719,6 @@ record(ao, "$(P)$(R)RefLvl-SP") {
 #  field(SCAN, "1 second")
 #  field(DTYP, "stream")
 #  field(PREC, "1")
-#  field(LINR, "NO CONVERSION")
 #  field(INP, "@rsfsl.proto inMarkLimitRight $(PORT)")
 #}
 #
@@ -846,7 +852,6 @@ record(ao, "$(P)$(R)RefLvl-SP") {
 #  field(DTYP, "stream")
 #  field(PREC, "1")
 #  field(EGU, "dB")
-#  field(LINR, "NO CONVERSION")
 #  field(INP, "@rsfsl.proto inAttIn $(PORT)")
 #}
 #
@@ -947,7 +952,6 @@ record(ao, "$(P)$(R)RefLvl-SP") {
 #  field(DTYP, "stream")
 #  field(PREC, "1")
 #  field(EGU, "dBm")
-#  field(LINR, "NO CONVERSION")
 #  field(INP, "@rsfsl.proto inLvlOut $(PORT)")
 #}
 #
@@ -967,7 +971,6 @@ record(ao, "$(P)$(R)RefLvl-SP") {
 #  field(DTYP, "stream")
 #  field(PREC, "1")
 #  field(EGU, "dB")
-#  field(LINR, "NO CONVERSION")
 #  field(INP, "@rsfsl.proto inLvlOutOffset $(PORT)")
 #}
 #
@@ -987,7 +990,6 @@ record(ao, "$(P)$(R)RefLvl-SP") {
 #  field(DTYP, "stream")
 #  field(PREC, "1")
 #  field(EGU, "Hz")
-#  field(LINR, "NO CONVERSION")
 #  field(INP, "@rsfsl.proto inRbw $(PORT)")
 #}
 #
@@ -1021,7 +1023,6 @@ record(ao, "$(P)$(R)RefLvl-SP") {
 #  field(PREC, "1")
 #  field(MDEL, "-1")
 #  field(ADEL, "-1")
-#  field(LINR, "NO CONVERSION")
 #  field(EGU, "dBm")
 #  field(INP, "@rsfsl.proto monMarkY1 $(PORT)")
 #}
@@ -1033,7 +1034,6 @@ record(ao, "$(P)$(R)RefLvl-SP") {
 #  field(PREC, "1")
 #  field(MDEL, "-1")
 #  field(ADEL, "-1")
-#  field(LINR, "NO CONVERSION")
 #  field(EGU, "dBm")
 #  field(INP, "@rsfsl.proto monMarkY2 $(PORT)")
 #}
@@ -1045,7 +1045,6 @@ record(ao, "$(P)$(R)RefLvl-SP") {
 #  field(PREC, "1")
 #  field(MDEL, "-1")
 #  field(ADEL, "-1")
-#  field(LINR, "NO CONVERSION")
 #  field(EGU, "dBm")
 #  field(INP, "@rsfsl.proto monMarkY3 $(PORT)")
 #}
@@ -1057,7 +1056,6 @@ record(ao, "$(P)$(R)RefLvl-SP") {
 #  field(PREC, "1")
 #  field(MDEL, "-1")
 #  field(ADEL, "-1")
-#  field(LINR, "NO CONVERSION")
 #  field(EGU, "dBm")
 #  field(INP, "@rsfsl.proto monMarkY4 $(PORT)")
 #}
@@ -1071,7 +1069,6 @@ record(ao, "$(P)$(R)RefLvl-SP") {
 #  field(PREC, "1")
 #  field(MDEL, "-1")
 #  field(ADEL, "-1")
-#  field(LINR, "NO CONVERSION")
 #  field(EGU, "dBm")
 #  field(INP, "@rsfsl.proto monMarkFreqCount1 $(PORT)")
 #}
@@ -1083,7 +1080,6 @@ record(ao, "$(P)$(R)RefLvl-SP") {
 #  field(PREC, "1")
 #  field(MDEL, "-1")
 #  field(ADEL, "-1")
-#  field(LINR, "NO CONVERSION")
 #  field(EGU, "dBm")
 #  field(INP, "@rsfsl.proto monMarkFreqCount2 $(PORT)")
 #}
@@ -1095,7 +1091,6 @@ record(ao, "$(P)$(R)RefLvl-SP") {
 #  field(PREC, "1")
 #  field(MDEL, "-1")
 #  field(ADEL, "-1")
-#  field(LINR, "NO CONVERSION")
 #  field(EGU, "dBm")
 #  field(INP, "@rsfsl.proto monMarkFreqCount3 $(PORT)")
 #}
@@ -1107,7 +1102,6 @@ record(ao, "$(P)$(R)RefLvl-SP") {
 #  field(PREC, "1")
 #  field(MDEL, "-1")
 #  field(ADEL, "-1")
-#  field(LINR, "NO CONVERSION")
 #  field(EGU, "dBm")
 #  field(INP, "@rsfsl.proto monMarkFreqCount4 $(PORT)")
 #}
@@ -1459,27 +1453,27 @@ record(ao, "$(P)$(R)RefLvl-SP") {
 #  field(OUT, "@rsfsl.proto cmdDMarkAOff($1) $(PORT)")
 #}
 #
-#######################################################################
-############################### SAVE ##################################
-#######################################################################
-#
-## Save
-## Desc: Save '-Sel' and '-SP' PV values.
-#
-#record(bo, "$(P)$(R)Save-Cmd"){
-#  field(DESC, "Save PV values cmd")
-#  field(ZNAM, "OFF")
-#  field(ONAM, "ON")
-#  field(HIGH, "1")
-#  field(FLNK, "$(P)$(R)SaveTrg")
-#}
-#
-## This PV is monitored by autosave
-#record(calc, "$(P)$(R)SaveTrg"){
-#  field(ASG, "Reserved")
-#  field(DESC, "Save PV values trigger")
-#  field(INPA, "$(P)$(R)Save-Cmd.VAL")
-#  field(CALC, "A=1?!VAL:VAL")
-#  field(VAL, "0")
-#}
-#
+######################################################################
+############################## SAVE ##################################
+######################################################################
+
+# Save
+# Desc: Save '-Sel' and '-SP' PV values.
+
+record(bo, "$(P)$(R)Save-Cmd"){
+  field(DESC, "Save PV values cmd")
+  field(ZNAM, "OFF")
+  field(ONAM, "ON")
+  field(HIGH, "1")
+  field(FLNK, "$(P)$(R)SaveTrg")
+}
+
+# This PV is monitored by autosave
+record(calc, "$(P)$(R)SaveTrg"){
+  field(ASG, "Reserved")
+  field(DESC, "Save PV values trigger")
+  field(INPA, "$(P)$(R)Save-Cmd.VAL")
+  field(CALC, "A=1?!VAL:VAL")
+  field(VAL, "0")
+}
+
