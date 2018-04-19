@@ -14,7 +14,7 @@ PermissionsStartOnly=true
 Environment=RSFSL_INSTANCE=%i
 ExecStartPre=/bin/mkdir -p /var/log/procServ/%p%i
 ExecStartPre=/bin/mkdir -p /var/run/procServ/%p%i
-WorkingDirectory=/opt/epics/startup/ioc/rsfsl-epics-ioc/iocBoot/iocrsfsl
+WorkingDirectory=<INSTALL_PREFIX>/<IOC_NAME>/iocBoot/iocrsfsl
 # Run procServ with IOC
 ExecStart="/usr/local/bin/runRSFSL.sh"
 
