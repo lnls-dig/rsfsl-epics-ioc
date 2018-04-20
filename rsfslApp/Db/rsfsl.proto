@@ -94,7 +94,7 @@ outRefOff {
 #
 ######################################################################
 # Sweep Points Number (MIN 101; MAX 32001)
-#
+
 inSwePts {
     out "SENS:SWE:POIN?";
     in "%i";
@@ -106,8 +106,36 @@ outSwePts {
 }
 
 ######################################################################
+# Sweep time
+
+inSweTime {
+    out "SENS:SWE:TIME?";
+    in "%f";
+}
+
+outSweTime {
+    out "SENS:SWE:TIME %f";
+    @init { inSweTime; };
+}
+
+######################################################################
+# Enable/Disable automatic coupling of the sweep time to the 
+# frequency span and bandwidth settings
+
+
+inEnblSweTimeAuto {
+    out "SENS:SWE:TIME:AUTO?";
+    in "%i";
+}
+
+outEnblSweTimeAuto {
+    out "SENS:SWE:TIME:AUTO %{OFF|ON}";
+    @init { inEnblSweTimeAuto; };
+}
+
+######################################################################
 # Center Frequency
-#
+
 inFrqCent {
     out "SENS:FREQ:CENT?";
     in "%f";
@@ -157,88 +185,88 @@ outFrqStop {
     @init { inFrqStop; };
 }
 
-#######################################################################
-## Enable/Disable Markers (1-4)
-#
-#inEnblMark1 {
-#    out "CALC:MARK1:STAT?";
-#    in "%i";
-#}
-#
-#outEnblMark1 {
-#    out "CALC:MARK1:STAT %i";
-#    @init { inEnblMark1; };
-#}
-#
-#inEnblMark2 {
-#    out "CALC:MARK2:STAT?";
-#    in "%i";
-#}
-#
-#outEnblMark2 {
-#    out "CALC:MARK2:STAT %i";
-#    @init { inEnblMark2; };
-#}
-#
-#inEnblMark3 {
-#    out "CALC:MARK3:STAT?";
-#    in "%i";
-#}
-#
-#outEnblMark3 {
-#    out "CALC:MARK3:STAT %i";
-#    @init { inEnblMark3; };
-#}
-#
-#inEnblMark4 {
-#    out "CALC:MARK4:STAT?";
-#    in "%i";
-#}
-#
-#outEnblMark4 {
-#    out "CALC:MARK4:STAT %i";
-#    @init { inEnblMark4; };
-#}
-#
-#######################################################################
-## Markers X Values
-#
-#inMarkX1 {
-#    out "CALC:MARK1:X?";
-#    in "%f";
-#}
-#
-#outMarkX1 {
-#    out "CALC:MARK1:X %f";
-#}
-#
-#inMarkX2 {
-#    out "CALC:MARK2:X?";
-#    in "%f";
-#}
-#
-#outMarkX2 {
-#    out "CALC:MARK2:X %f";
-#}
-#
-#inMarkX3 {
-#    out "CALC:MARK3:X?";
-#    in "%f";
-#}
-#
-#outMarkX3 {
-#    out "CALC:MARK3:X %f";
-#}
-#
-#inMarkX4 {
-#    out "CALC:MARK4:X?";
-#    in "%f";
-#}
-#
-#outMarkX4 {
-#    out "CALC:MARK4:X %f";
-#}
-#
+######################################################################
+# Enable/Disable Markers (1-4)
+
+inEnblMark1 {
+    out "CALC:MARK1:STAT?";
+    in "%i";
+}
+
+outEnblMark1 {
+    out "CALC:MARK1:STAT %i";
+    @init { inEnblMark1; };
+}
+
+inEnblMark2 {
+    out "CALC:MARK2:STAT?";
+    in "%i";
+}
+
+outEnblMark2 {
+    out "CALC:MARK2:STAT %i";
+    @init { inEnblMark2; };
+}
+
+inEnblMark3 {
+    out "CALC:MARK3:STAT?";
+    in "%i";
+}
+
+outEnblMark3 {
+    out "CALC:MARK3:STAT %i";
+    @init { inEnblMark3; };
+}
+
+inEnblMark4 {
+    out "CALC:MARK4:STAT?";
+    in "%i";
+}
+
+outEnblMark4 {
+    out "CALC:MARK4:STAT %i";
+    @init { inEnblMark4; };
+}
+
+######################################################################
+# Markers X Values
+
+inMarkX1 {
+    out "CALC:MARK1:X?";
+    in "%f";
+}
+
+outMarkX1 {
+    out "CALC:MARK1:X %f";
+}
+
+inMarkX2 {
+    out "CALC:MARK2:X?";
+    in "%f";
+}
+
+outMarkX2 {
+    out "CALC:MARK2:X %f";
+}
+
+inMarkX3 {
+    out "CALC:MARK3:X?";
+    in "%f";
+}
+
+outMarkX3 {
+    out "CALC:MARK3:X %f";
+}
+
+inMarkX4 {
+    out "CALC:MARK4:X?";
+    in "%f";
+}
+
+outMarkX4 {
+    out "CALC:MARK4:X %f";
+}
+
 #######################################################################
 ## Enable Marker Frequency Counters (1-4)
 #
@@ -429,61 +457,62 @@ outFrqStop {
 #    out "CALC:MARK:X:SLIM:RIGHT %f";
 #}
 #
-#######################################################################
-## Enable/Disable Delta Markers (1-4)
-#
-#inEnblDMark1 {
-#    out "CALC:DELT1:STAT?";
-#    in "%i";
-#}
-#
-#outEnblDMark1 {
-#    out "CALC:DELT1:STAT %i";
-#    @init { inEnblDMark1; };
-#}
-#
-#inEnblDMark2 {
-#    out "CALC:DELT2:STAT?";
-#    in "%i";
-#}
-#
-#outEnblDMark2 {
-#    out "CALC:DELT2:STAT %i";
-#    @init { inEnblDMark2; };
-#}
-#
-#inEnblDMark3 {
-#    out "CALC:DELT3:STAT?";
-#    in "%i";
-#}
-#
-#outEnblDMark3 {
-#    out "CALC:DELT3:STAT %i";
-#    @init { inEnblDMark3; };
-#}
-#
-#inEnblDMark4 {
-#    out "CALC:DELT4:STAT?";
-#    in "%i";
-#}
-#
-#outEnblDMark4 {
-#    out "CALC:DELT4:STAT %i";
-#    @init { inEnblDMark4; };
-#}
-#
-#######################################################################
-## State of tracking generator output
-#
-#inEnblOut {
-#    out "OUTP:STAT?";
-#    in "%i";
-#}
-#
-#outEnblOut {
-#    out "OUTP:STAT %{OFF|ON}";
-#}
-#
+######################################################################
+# Enable/Disable Delta Markers (1-4)
+
+inEnblDMark1 {
+    out "CALC:DELT1:STAT?";
+    in "%i";
+}
+
+outEnblDMark1 {
+    out "CALC:DELT1:STAT %i";
+    @init { inEnblDMark1; };
+}
+
+inEnblDMark2 {
+    out "CALC:DELT2:STAT?";
+    in "%i";
+}
+
+outEnblDMark2 {
+    out "CALC:DELT2:STAT %i";
+    @init { inEnblDMark2; };
+}
+
+inEnblDMark3 {
+    out "CALC:DELT3:STAT?";
+    in "%i";
+}
+
+outEnblDMark3 {
+    out "CALC:DELT3:STAT %i";
+    @init { inEnblDMark3; };
+}
+
+inEnblDMark4 {
+    out "CALC:DELT4:STAT?";
+    in "%i";
+}
+
+outEnblDMark4 {
+    out "CALC:DELT4:STAT %i";
+    @init { inEnblDMark4; };
+}
+
+######################################################################
+# State of tracking generator output
+
+inEnblOut {
+    out "OUTP:STAT?";
+    in "%i";
+}
+
+outEnblOut {
+    out "OUTP:STAT %{OFF|ON}";
+    @init { inEnblOut; };
+}
+
 #######################################################################
 ## Enable/Disable Tracking Generator Normalization of the measurement
 ## results
@@ -677,13 +706,13 @@ outFrqStop {
 #    out "%{|CALC:MARK4:MAX:PEAK}";
 #}
 #
-#######################################################################
-## Turn all markers off
-#
-#cmdMarkAOff {
-#    out "%{|CALC:MARK:AOFF}";
-#}
-#
+######################################################################
+# Turn all markers off
+
+cmdMarkAOff {
+    out "%{|CALC:MARK:AOFF}";
+}
+
 #######################################################################
 ## Position the marker to the next smaller maximium value to the left
 ## of the current value (1-4)
@@ -823,14 +852,14 @@ outFrqStop {
 #    out "%{|CALC:MARK4:MIN:PEAK}";
 #}
 #
-#######################################################################
-## Switch off all Delta Markers
-#
-#
-#cmdDMarkAOff {
-#    out "%{|CALC:DELT:AOFF}";
-#}
-#
+######################################################################
+# Switch off all Delta Markers
+
+
+cmdDMarkAOff {
+    out "%{|CALC:DELT:AOFF}";
+}
+
 #######################################################################
 ## Initiate a new measurement sequence
 #
