@@ -633,29 +633,29 @@ outEnblOut {
 #    in "%s";
 #}
 #
-#######################################################################
-## Markers Y Values
-#
-#monMarkY1 {
-#    out "CALC:MARK1:Y?";
-#    in "%f";
-#}
-#
-#monMarkY2 {
-#    out "CALC:MARK2:Y?";
-#    in "%f";
-#}
-#
-#monMarkY3 {
-#    out "CALC:MARK3:Y?";
-#    in "%f";
-#}
-#
-#monMarkY4 {
-#    out "CALC:MARK4:Y?";
-#    in "%f";
-#}
-#
+######################################################################
+# Markers Y Values
+
+monMarkY1 {
+    out "CALC:MARK1:Y?";
+    in "%f";
+}
+
+monMarkY2 {
+    out "CALC:MARK2:Y?";
+    in "%f";
+}
+
+monMarkY3 {
+    out "CALC:MARK3:Y?";
+    in "%f";
+}
+
+monMarkY4 {
+    out "CALC:MARK4:Y?";
+    in "%f";
+}
+
 #######################################################################
 ## Queries the result of the markers frequency counters (1-4)
 #
@@ -679,33 +679,33 @@ outEnblOut {
 #    in "%f";
 #}
 #
-#######################################################################
-############################ COMMAND ##################################
-#######################################################################
-## Reset to default state
-#cmdRst {
-#    out "%{|*RST; *WAI}";
-#}
-#
-#######################################################################
-## Set Markers to Max Peak on Trace (1-4)
-#
-#cmdMarkMax1 {
-#    out "%{|CALC:MARK1:MAX:PEAK}";
-#}
-#
-#cmdMarkMax2 {
-#    out "%{|CALC:MARK2:MAX:PEAK}";
-#}
-#
-#cmdMarkMax3 {
-#    out "%{|CALC:MARK3:MAX:PEAK}";
-#}
-#
-#cmdMarkMax4 {
-#    out "%{|CALC:MARK4:MAX:PEAK}";
-#}
-#
+######################################################################
+########################### COMMAND ##################################
+######################################################################
+# Reset to default state
+cmdRst {
+    out "%{|*RST; *WAI}";
+}
+
+######################################################################
+# Set Markers to Max Peak on Trace (1-4)
+
+cmdMarkMax1 {
+    out "%{|CALC:MARK1:MAX:PEAK}";
+}
+
+cmdMarkMax2 {
+    out "%{|CALC:MARK2:MAX:PEAK}";
+}
+
+cmdMarkMax3 {
+    out "%{|CALC:MARK3:MAX:PEAK}";
+}
+
+cmdMarkMax4 {
+    out "%{|CALC:MARK4:MAX:PEAK}";
+}
+
 ######################################################################
 # Turn all markers off
 
@@ -713,145 +713,145 @@ cmdMarkAOff {
     out "%{|CALC:MARK:AOFF}";
 }
 
-#######################################################################
-## Position the marker to the next smaller maximium value to the left
-## of the current value (1-4)
-#
-#cmdMarkMaxLeft1 {
-#    out "%{|CALC:MARK1:MAX:LEFT}";
-#}
-#
-#cmdMarkMaxLeft2 {
-#    out "%{|CALC:MARK2:MAX:LEFT}";
-#}
-#
-#cmdMarkMaxLeft3 {
-#    out "%{|CALC:MARK3:MAX:LEFT}";
-#}
-#
-#cmdMarkMaxLeft4 {
-#    out "%{|CALC:MARK4:MAX:LEFT}";
-#}
-#
-#######################################################################
-## Position the marker to the next smaller minimium value to the left
-## of the current value (1-4)
-#
-#cmdMarkMinLeft1 {
-#    out "%{|CALC:MARK1:MIN:LEFT}";
-#}
-#
-#cmdMarkMinLeft2 {
-#    out "%{|CALC:MARK2:MIN:LEFT}";
-#}
-#
-#cmdMarkMinLeft3 {
-#    out "%{|CALC:MARK3:MIN:LEFT}";
-#}
-#
-#cmdMarkMinLeft4 {
-#    out "%{|CALC:MARK4:MIN:LEFT}";
-#}
-#
-#######################################################################
-## Position the marker to the next smaller maximium value of the
-## corresponding trace (1-4)
-#
-#cmdMarkMaxNext1 {
-#    out "%{|CALC:MARK1:MAX:NEXT}";
-#}
-#
-#cmdMarkMaxNext2 {
-#    out "%{|CALC:MARK2:MAX:NEXT}";
-#}
-#
-#cmdMarkMaxNext3 {
-#    out "%{|CALC:MARK3:MAX:NEXT}";
-#}
-#
-#cmdMarkMaxNext4 {
-#    out "%{|CALC:MARK4:MAX:NEXT}";
-#}
-#
-#######################################################################
-## Position the marker to the next smaller minimium value of the
-## corresponding trace (1-4)
-#
-#cmdMarkMinNext1 {
-#    out "%{|CALC:MARK1:MIN:NEXT}";
-#}
-#
-#cmdMarkMinNext2 {
-#    out "%{|CALC:MARK2:MIN:NEXT}";
-#}
-#
-#cmdMarkMinNext3 {
-#    out "%{|CALC:MARK3:MIN:NEXT}";
-#}
-#
-#cmdMarkMinNext4 {
-#    out "%{|CALC:MARK4:MIN:NEXT}";
-#}
-#
 ######################################################################
-## Position the marker to the next smaller maximium value to the right
-## of the current value (1-4)
-#
-#cmdMarkMaxRight1 {
-#    out "%{|CALC:MARK1:MAX:RIGHT}";
-#}
-#
-#cmdMarkMaxRight2 {
-#    out "%{|CALC:MARK2:MAX:RIGHT}";
-#}
-#
-#cmdMarkMaxRight3 {
-#    out "%{|CALC:MARK3:MAX:RIGHT}";
-#}
-#
-#cmdMarkMaxRight4 {
-#    out "%{|CALC:MARK4:MAX:RIGHT}";
-#}
-#
+# Position the marker to the next smaller maximium value to the left
+# of the current value (1-4)
+
+cmdMarkMaxLeft1 {
+    out "%{|CALC:MARK1:MAX:LEFT}";
+}
+
+cmdMarkMaxLeft2 {
+    out "%{|CALC:MARK2:MAX:LEFT}";
+}
+
+cmdMarkMaxLeft3 {
+    out "%{|CALC:MARK3:MAX:LEFT}";
+}
+
+cmdMarkMaxLeft4 {
+    out "%{|CALC:MARK4:MAX:LEFT}";
+}
+
 ######################################################################
-## Position the marker to the next smaller minimium value to the right
-## of the current value (1-4)
-#
-#cmdMarkMinRight1 {
-#    out "%{|CALC:MARK1:MIN:RIGHT}";
-#}
-#
-#cmdMarkMinRight2 {
-#    out "%{|CALC:MARK2:MIN:RIGHT}";
-#}
-#
-#cmdMarkMinRight3 {
-#    out "%{|CALC:MARK3:MIN:RIGHT}";
-#}
-#
-#cmdMarkMinRight4 {
-#    out "%{|CALC:MARK4:MIN:RIGHT}";
-#}
-#
-#######################################################################
-## Set Markers to Min Peak on Trace (1-4)
-#
-#cmdMarkMin1 {
-#    out "%{|CALC:MARK1:MIN:PEAK}";
-#}
-#
-#cmdMarkMin2 {
-#    out "%{|CALC:MARK2:MIN:PEAK}";
-#}
-#
-#cmdMarkMin3 {
-#    out "%{|CALC:MARK3:MIN:PEAK}";
-#}
-#
-#cmdMarkMin4 {
-#    out "%{|CALC:MARK4:MIN:PEAK}";
-#}
-#
+# Position the marker to the next smaller minimium value to the left
+# of the current value (1-4)
+
+cmdMarkMinLeft1 {
+    out "%{|CALC:MARK1:MIN:LEFT}";
+}
+
+cmdMarkMinLeft2 {
+    out "%{|CALC:MARK2:MIN:LEFT}";
+}
+
+cmdMarkMinLeft3 {
+    out "%{|CALC:MARK3:MIN:LEFT}";
+}
+
+cmdMarkMinLeft4 {
+    out "%{|CALC:MARK4:MIN:LEFT}";
+}
+
+######################################################################
+# Position the marker to the next smaller maximium value of the
+# corresponding trace (1-4)
+
+cmdMarkMaxNext1 {
+    out "%{|CALC:MARK1:MAX:NEXT}";
+}
+
+cmdMarkMaxNext2 {
+    out "%{|CALC:MARK2:MAX:NEXT}";
+}
+
+cmdMarkMaxNext3 {
+    out "%{|CALC:MARK3:MAX:NEXT}";
+}
+
+cmdMarkMaxNext4 {
+    out "%{|CALC:MARK4:MAX:NEXT}";
+}
+
+######################################################################
+# Position the marker to the next smaller minimium value of the
+# corresponding trace (1-4)
+
+cmdMarkMinNext1 {
+    out "%{|CALC:MARK1:MIN:NEXT}";
+}
+
+cmdMarkMinNext2 {
+    out "%{|CALC:MARK2:MIN:NEXT}";
+}
+
+cmdMarkMinNext3 {
+    out "%{|CALC:MARK3:MIN:NEXT}";
+}
+
+cmdMarkMinNext4 {
+    out "%{|CALC:MARK4:MIN:NEXT}";
+}
+
+#####################################################################
+# Position the marker to the next smaller maximium value to the right
+# of the current value (1-4)
+
+cmdMarkMaxRight1 {
+    out "%{|CALC:MARK1:MAX:RIGHT}";
+}
+
+cmdMarkMaxRight2 {
+    out "%{|CALC:MARK2:MAX:RIGHT}";
+}
+
+cmdMarkMaxRight3 {
+    out "%{|CALC:MARK3:MAX:RIGHT}";
+}
+
+cmdMarkMaxRight4 {
+    out "%{|CALC:MARK4:MAX:RIGHT}";
+}
+
+#####################################################################
+# Position the marker to the next smaller minimium value to the right
+# of the current value (1-4)
+
+cmdMarkMinRight1 {
+    out "%{|CALC:MARK1:MIN:RIGHT}";
+}
+
+cmdMarkMinRight2 {
+    out "%{|CALC:MARK2:MIN:RIGHT}";
+}
+
+cmdMarkMinRight3 {
+    out "%{|CALC:MARK3:MIN:RIGHT}";
+}
+
+cmdMarkMinRight4 {
+    out "%{|CALC:MARK4:MIN:RIGHT}";
+}
+
+#####################################################################
+# Set Markers to Min Peak on Trace (1-4)
+
+cmdMarkMin1 {
+    out "%{|CALC:MARK1:MIN:PEAK}";
+}
+
+cmdMarkMin2 {
+    out "%{|CALC:MARK2:MIN:PEAK}";
+}
+
+cmdMarkMin3 {
+    out "%{|CALC:MARK3:MIN:PEAK}";
+}
+
+cmdMarkMin4 {
+    out "%{|CALC:MARK4:MIN:PEAK}";
+}
+
 ######################################################################
 # Switch off all Delta Markers
 
