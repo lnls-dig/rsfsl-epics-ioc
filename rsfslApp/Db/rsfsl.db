@@ -87,26 +87,26 @@ record(fanout, "$(P)$(R)RefLvlFout") {
   field(SELM, "All")
 }
 
-## Enable Continuous Sweep Mode
-#
-#record(bi, "$(P)$(R)EnblContSwe-Sts") {
-#  field(DESC, "Get Continuous Sweep State")
-#  field(SCAN, "1 second")
-#  field(DTYP, "stream")
-#  field(ZNAM, "SINGLE")
-#  field(ONAM, "CONTINUOUS")
-#  field(INP, "@rsfsl.proto inEnblContSwe $(PORT)")
-#}
-#
-#record(bo, "$(P)$(R)EnblContSwe-Sel") {
-#  field(DESC, "Enable/Disable Continuous Sweep")
-#  field(DTYP, "stream")
-#  field(ZNAM, "SINGLE")
-#  field(ONAM, "CONTINUOUS")
-#  field(OUT, "@rsfsl.proto outEnblContSwe($1) $(PORT)")
-#  field(FLNK,"$(P)$(R)EnblContSwe-Sts")
-#}
-#
+# Enable Continuous Sweep Mode
+
+record(bi, "$(P)$(R)EnblContSwe-Sts") {
+  field(DESC, "Get Continuous Sweep State")
+  field(SCAN, "1 second")
+  field(DTYP, "stream")
+  field(ZNAM, "SINGLE")
+  field(ONAM, "CONTINUOUS")
+  field(INP, "@rsfsl.proto inEnblContSwe $(PORT)")
+}
+
+record(bo, "$(P)$(R)EnblContSwe-Sel") {
+  field(DESC, "Enable/Disable Continuous Sweep")
+  field(DTYP, "stream")
+  field(ZNAM, "SINGLE")
+  field(ONAM, "CONTINUOUS")
+  field(OUT, "@rsfsl.proto outEnblContSwe($1) $(PORT)")
+  field(FLNK,"$(P)$(R)EnblContSwe-Sts")
+}
+
 # Sweep Points Number
 
 record(ai, "$(P)$(R)SwePts-RB") {
@@ -1043,38 +1043,65 @@ record(bo, "$(P)$(R)EnblOutp-Sel") {
 #  field(FLNK,"$(P)$(R)LvlOutOffset-RB")
 #}
 #
-## Tracking Generator level 
-#
-#record(ai, "$(P)$(R)Rbw-RB") {
-#  field(DESC, "Get Resolution Bandwidth")
-#  field(SCAN, "1 second")
-#  field(DTYP, "stream")
-#  field(PREC, "1")
-#  field(EGU, "Hz")
-#  field(INP, "@rsfsl.proto inRbw $(PORT)")
-#}
-#
-#record(ao, "$(P)$(R)Rbw-SP") {
-#  field(DESC, "Set Rsolution Bandwidth")
-#  field(DTYP, "stream")
-#  field(EGU, "Hz")
-#  field(OUT, "@rsfsl.proto outRbw(1) $(PORT)")
-#  field(FLNK,"$(P)$(R)Rbw-RB")
-#}
-#
-#######################################################################
-########################### MONITOR ###################################
-#######################################################################
-#
-## Get identification
-#
-#record(stringin, "$(P)$(R)Idn-Cte") {
-#  field(DESC, "Get device identification")
-#  field(SCAN, "1 second")
-#  field(DTYP, "stream")
-#  field(INP, "@rsfsl.proto inIdn $(PORT)")
-#}
-#
+# Resolution Bandwidth 
+
+record(mbbi, "$(P)$(R)Rbw-Sts") {
+  field(DTYP, "stream")
+  field(SCAN, "1 second")
+  field(ZRST, "3kHz")
+  field(ZRVL, "3000")
+  field(ONST, "10kHz")
+  field(ONVL, "10000")
+  field(TWST, "30kHz")
+  field(TWVL, "30000")
+  field(THST, "100kHz")
+  field(THVL, "100000")
+  field(FRST, "300kHz")
+  field(FRVL, "300000")
+  field(FVST, "1MHz")
+  field(FVVL, "1000000")
+  field(SXST, "3MHz")
+  field(SXVL, "3000000")
+  field(SVST, "10MHz")
+  field(SVVL, "10000000")
+  field(INP, "@rsfsl.proto inRbw $(PORT)")
+}
+
+record(mbbo, "$(P)$(R)Rbw-Sel") {
+  field(DTYP, "stream")
+  field(ZRST, "3kHz")
+  field(ZRVL, "3000")
+  field(ONST, "10kHz")
+  field(ONVL, "10000")
+  field(TWST, "30kHz")
+  field(TWVL, "30000")
+  field(THST, "100kHz")
+  field(THVL, "100000")
+  field(FRST, "300kHz")
+  field(FRVL, "300000")
+  field(FVST, "1MHz")
+  field(FVVL, "1000000")
+  field(SXST, "3MHz")
+  field(SXVL, "3000000")
+  field(SVST, "10MHz")
+  field(SVVL, "10000000")
+  field(OUT, "@rsfsl.proto outRbw(1) $(PORT)")
+  field(FLNK, "$(P)$(R)Rbw-Sts")
+}
+
+######################################################################
+########################## MONITOR ###################################
+######################################################################
+
+# Get identification
+
+record(stringin, "$(P)$(R)Idn-Cte") {
+  field(DESC, "Get device identification")
+  field(SCAN, "1 second")
+  field(DTYP, "stream")
+  field(INP, "@rsfsl.proto inIdn $(PORT)")
+}
+
 # Queries Markers Y Values
 
 record(ai, "$(P)$(R)MarkY1-Mon") {
@@ -1169,17 +1196,17 @@ record(ai, "$(P)$(R)MarkY4-Mon") {
 
 # Reset to default state
 
-#record(bo, "$(P)$(R)Rst-Cmd") {
-#  field(DESC, "Reset to default state")
-#  field(DTYP, "stream")
-#  field(ZNAM, "0")
-#  field(ONAM, "1")
-#  field(HIGH, "1")
-#  field(OUT, "@rsfsl.proto cmdRst $(PORT)")
-#  field(FLNK, "$(P)$(R)StsRstFout1")
-#}
-#
-## Status Reset Fanout
+record(bo, "$(P)$(R)Rst-Cmd") {
+  field(DESC, "Reset to default state")
+  field(DTYP, "stream")
+  field(ZNAM, "0")
+  field(ONAM, "1")
+  field(HIGH, "1")
+  field(OUT, "@rsfsl.proto cmdRst $(PORT)")
+  field(FLNK, "$(P)$(R)StsRstFout1")
+}
+
+# Status Reset Fanout
 #
 #record(fanout, "$(P)$(R)StsRstFout1") {
 #  field(LNK1, "$(P)$(R)RefLvl-RB")

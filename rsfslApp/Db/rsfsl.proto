@@ -79,19 +79,19 @@ outRefOff {
     @init { inRefOff; };
 }
 
-#######################################################################
-## Enable Continuous Sweep Mode
-##
-#inEnblContSwe {
-#    out "INIT:CONT?";
-#    in "%i";
-#}
+######################################################################
+# Enable Continuous Sweep Mode
 #
-#outEnblContSwe {
-#    out "INIT:CONT %{OFF|ON}";
-#    @init { inEnblContSwe; };
-#}
-#
+inEnblContSwe {
+    out "INIT:CONT?";
+    in "%i";
+}
+
+outEnblContSwe {
+    out "INIT:CONT %{OFF|ON}";
+    @init { inEnblContSwe; };
+}
+
 ######################################################################
 # Sweep Points Number (MIN 101; MAX 32001)
 
@@ -611,28 +611,28 @@ outEnblOut {
 #    out "SOUR:POW:LEV:IMM:OFFS %f";
 #}
 #
-#######################################################################
-## Resolution Bandwidth
-#
-#inRbw {
-#    out "SENS:BWID:RES?";
-#    in "%f";
-#}
-#
-#outRbw {
-#    out "SENS:BWID:RES %f";
-#}
-#
-#######################################################################
-############################ MONITOR ##################################
-#######################################################################
-## Get identification
-#
-#inIdn {
-#    out "*IDN?";
-#    in "%s";
-#}
-#
+######################################################################
+# Resolution Bandwidth
+
+inRbw {
+    out "SENS:BWID:RES?";
+    in "%i";
+}
+
+outRbw {
+    out "SENS:BWID:RES %i";
+}
+
+######################################################################
+########################### MONITOR ##################################
+######################################################################
+# Get identification
+
+inIdn {
+    out "*IDN?";
+    in "%s";
+}
+
 ######################################################################
 # Markers Y Values
 
