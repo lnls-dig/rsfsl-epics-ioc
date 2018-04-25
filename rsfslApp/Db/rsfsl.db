@@ -363,6 +363,7 @@ record(ai, "$(P)$(R)MarkX1-RB") {
 record(ao, "$(P)$(R)MarkX1-SP") {
   field(DESC, "Set X value of the marker1")
   field(DTYP, "stream")
+  field(PREC, "4")
   field(EGU, "Hz")
   field(OUT, "@rsfsl.proto outMarkX1($1) $(PORT)")
   field(FLNK,"$(P)$(R)Mkr1Fout")
@@ -381,6 +382,7 @@ record(ai, "$(P)$(R)MarkX2-RB") {
 record(ao, "$(P)$(R)MarkX2-SP") {
   field(DESC, "Set X value of the marker2")
   field(DTYP, "stream")
+  field(PREC, "4")
   field(EGU, "Hz")
   field(OUT, "@rsfsl.proto outMarkX2($1) $(PORT)")
   field(FLNK,"$(P)$(R)Mkr2Fout")
@@ -399,6 +401,7 @@ record(ai, "$(P)$(R)MarkX3-RB") {
 record(ao, "$(P)$(R)MarkX3-SP") {
   field(DESC, "Set X value of the marker3")
   field(DTYP, "stream")
+  field(PREC, "4")
   field(EGU, "Hz")
   field(OUT, "@rsfsl.proto outMarkX3($1) $(PORT)")
   field(FLNK,"$(P)$(R)Mkr3Fout")
@@ -417,6 +420,7 @@ record(ai, "$(P)$(R)MarkX4-RB") {
 record(ao, "$(P)$(R)MarkX4-SP") {
   field(DESC, "Set X value of the marker4")
   field(DTYP, "stream")
+  field(PREC, "4")
   field(EGU, "Hz")
   field(OUT, "@rsfsl.proto outMarkX4($1) $(PORT)")
   field(FLNK,"$(P)$(R)Mkr4Fout")
@@ -905,25 +909,64 @@ record(bo, "$(P)$(R)EnblOutp-Sel") {
 #  field(FLNK,"$(P)$(R)EnblOutCorrect-Sts")
 #}
 #
-## Input Attenuator Value 
-#
-#record(ai, "$(P)$(R)AttIn-RB") {
-#  field(DESC, "Get Input Attenuator Value")
-#  field(SCAN, "1 second")
-#  field(DTYP, "stream")
-#  field(PREC, "1")
-#  field(EGU, "dB")
-#  field(INP, "@rsfsl.proto inAttIn $(PORT)")
-#}
-#
-#record(ao, "$(P)$(R)AttIn-SP") {
-#  field(DESC, "Set Input Attenuator Value")
-#  field(DTYP, "stream")
-#  field(EGU, "dB")
-#  field(OUT, "@rsfsl.proto outAttIn(1) $(PORT)")
-#  field(FLNK,"$(P)$(R)AttIn-RB")
-#}
-#
+# Input Attenuator Value 
+
+record(mbbi, "$(P)$(R)AttIn-Sts") {
+  field(DTYP, "stream")
+  field(PINI, "YES")
+  field(ZRST, "0 dB")
+  field(ZRVL, "0")
+  field(ONST, "5 dB")
+  field(ONVL, "5")
+  field(TWST, "10 dB")
+  field(TWVL, "10")
+  field(THST, "15 dB")
+  field(THVL, "15")
+  field(FRST, "20 dB")
+  field(FRVL, "20")
+  field(FVST, "25 dB")
+  field(FVVL, "25")
+  field(SXST, "30 dB")
+  field(SXVL, "30")
+  field(SVST, "35 dB")
+  field(SVVL, "35")
+  field(EIST, "40 dB")
+  field(EIVL, "40")
+  field(NIST, "45 dB")
+  field(NIVL, "45")
+  field(TEST, "50 dB")
+  field(TEVL, "50")
+  field(INP, "@rsfsl.proto inAttIn $(PORT)")
+}
+
+record(mbbo, "$(P)$(R)AttIn-Sel") {
+  field(DTYP, "stream")
+  field(ZRST, "0 dB")
+  field(ZRVL, "0")
+  field(ONST, "5 dB")
+  field(ONVL, "5")
+  field(TWST, "10 dB")
+  field(TWVL, "10")
+  field(THST, "15 dB")
+  field(THVL, "15")
+  field(FRST, "20 dB")
+  field(FRVL, "20")
+  field(FVST, "25 dB")
+  field(FVVL, "25")
+  field(SXST, "30 dB")
+  field(SXVL, "30")
+  field(SVST, "35 dB")
+  field(SVVL, "35")
+  field(EIST, "40 dB")
+  field(EIVL, "40")
+  field(NIST, "45 dB")
+  field(NIVL, "45")
+  field(TEST, "50 dB")
+  field(TEVL, "50")
+  field(OUT, "@rsfsl.proto outAttIn(1) $(PORT)")
+  field(FLNK, "$(P)$(R)AttIn-Sts")
+}
+
 ## Enable/Disable automatic coupling of the input attenuation to the
 ## reference level
 #
@@ -1005,25 +1048,26 @@ record(bo, "$(P)$(R)EnblOutp-Sel") {
 #  field(FLNK,"$(P)$(R)RoscSrc-Sts")
 #}
 #
-## Tracking Generator level 
-#
-#record(ai, "$(P)$(R)LvlOut-RB") {
-#  field(DESC, "Get Tracking Generators Level")
-#  field(SCAN, "1 second")
-#  field(DTYP, "stream")
-#  field(PREC, "1")
-#  field(EGU, "dBm")
-#  field(INP, "@rsfsl.proto inLvlOut $(PORT)")
-#}
-#
-#record(ao, "$(P)$(R)LvlOut-SP") {
-#  field(DESC, "Set Tracking Generators Level")
-#  field(DTYP, "stream")
-#  field(EGU, "dBm")
-#  field(OUT, "@rsfsl.proto outLvlOut(1) $(PORT)")
-#  field(FLNK,"$(P)$(R)LvlOut-RB")
-#}
-#
+# Tracking Generator level 
+
+record(ai, "$(P)$(R)LvlOut-RB") {
+  field(DESC, "Get Tracking Generators Level")
+  field(PINI, "YES")
+  field(DTYP, "stream")
+  field(PREC, "3")
+  field(EGU, "dBm")
+  field(INP, "@rsfsl.proto inLvlOut $(PORT)")
+}
+
+record(ao, "$(P)$(R)LvlOut-SP") {
+  field(DESC, "Set Tracking Generators Level")
+  field(DTYP, "stream")
+  field(PREC, "3")
+  field(EGU, "dBm")
+  field(OUT, "@rsfsl.proto outLvlOut(1) $(PORT)")
+  field(FLNK,"$(P)$(R)LvlOut-RB")
+}
+
 ## Tracking Generator Offset Level 
 #
 #record(ai, "$(P)$(R)LvlOutOffset-RB") {
@@ -1048,42 +1092,42 @@ record(bo, "$(P)$(R)EnblOutp-Sel") {
 record(mbbi, "$(P)$(R)Rbw-Sts") {
   field(DTYP, "stream")
   field(SCAN, "1 second")
-  field(ZRST, "3kHz")
+  field(ZRST, "3 kHz")
   field(ZRVL, "3000")
-  field(ONST, "10kHz")
+  field(ONST, "10 kHz")
   field(ONVL, "10000")
-  field(TWST, "30kHz")
+  field(TWST, "30 kHz")
   field(TWVL, "30000")
-  field(THST, "100kHz")
+  field(THST, "100 kHz")
   field(THVL, "100000")
-  field(FRST, "300kHz")
+  field(FRST, "300 kHz")
   field(FRVL, "300000")
-  field(FVST, "1MHz")
+  field(FVST, "1 MHz")
   field(FVVL, "1000000")
-  field(SXST, "3MHz")
+  field(SXST, "3 MHz")
   field(SXVL, "3000000")
-  field(SVST, "10MHz")
+  field(SVST, "10 MHz")
   field(SVVL, "10000000")
   field(INP, "@rsfsl.proto inRbw $(PORT)")
 }
 
 record(mbbo, "$(P)$(R)Rbw-Sel") {
   field(DTYP, "stream")
-  field(ZRST, "3kHz")
+  field(ZRST, "3 kHz")
   field(ZRVL, "3000")
-  field(ONST, "10kHz")
+  field(ONST, "10 kHz")
   field(ONVL, "10000")
-  field(TWST, "30kHz")
+  field(TWST, "30 kHz")
   field(TWVL, "30000")
-  field(THST, "100kHz")
+  field(THST, "100 kHz")
   field(THVL, "100000")
-  field(FRST, "300kHz")
+  field(FRST, "300 kHz")
   field(FRVL, "300000")
-  field(FVST, "1MHz")
+  field(FVST, "1 MHz")
   field(FVVL, "1000000")
-  field(SXST, "3MHz")
+  field(SXST, "3 MHz")
   field(SXVL, "3000000")
-  field(SVST, "10MHz")
+  field(SVST, "10 MHz")
   field(SVVL, "10000000")
   field(OUT, "@rsfsl.proto outRbw(1) $(PORT)")
   field(FLNK, "$(P)$(R)Rbw-Sts")

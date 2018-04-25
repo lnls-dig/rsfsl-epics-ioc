@@ -526,18 +526,18 @@ outEnblOut {
 #    out "SENS:CORR:STAT %{OFF|ON}";
 #}
 #
-#######################################################################
-## Input Attenuator Value
-#
-#inAttIn {
-#    out "INP:ATT?";
-#    in "%f";
-#}
-#
-#outAttIn {
-#    out "INP:ATT %f";
-#}
-#
+######################################################################
+# Input Attenuator Value
+
+inAttIn {
+    out "INP:ATT?";
+    in "%i";
+}
+
+outAttIn {
+    out "INP:ATT %i";
+}
+
 #######################################################################
 ## Enable/Disable automatic coupling of the input attenuation to the
 ## reference level
@@ -587,18 +587,18 @@ outEnblOut {
 #    out "SOUR:EXT:ROSC:SOUR %{INT|EXT}";
 #}
 #
-#######################################################################
-## Tracking Generator Level
-#
-#inLvlOut {
-#    out "SOUR:POW:LEV:IMM:AMPL?";
-#    in "%f";
-#}
-#
-#outLvlOut {
-#    out "SOUR:POW:LEV:IMM:AMPL %f";
-#}
-#
+######################################################################
+# Tracking Generator Level
+
+inLvlOut {
+    out "SOUR:POW:LEV:IMM:AMPL?";
+    in "%f";
+}
+
+outLvlOut {
+    out "SOUR:POW:LEV:IMM:AMPL %f";
+}
+
 #######################################################################
 ## Tracking Generator Offset Level
 #
