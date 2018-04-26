@@ -624,6 +624,31 @@ outRbw {
 }
 
 ######################################################################
+# Video Bandwidth
+
+inVbw {
+    out "SENS:BWID:VID?";
+    in "%i";
+}
+
+outVbw {
+    out "SENS:BWID:VID %i";
+}
+
+######################################################################
+# Enable/Disable automatic coupling of the video bandwidth to the
+# resolution bandwidth
+
+inEnblVbwAuto {
+    out "SENS:BWID:VID:AUTO?";
+    in "%i";
+}
+
+outEnblVbwAuto {
+    out "SENS:BWID:VID:AUTO %{OFF|ON}";
+}
+
+######################################################################
 ########################### MONITOR ##################################
 ######################################################################
 # Get identification
