@@ -1,5 +1,8 @@
 #!/bin/sh
 
+set -e
+set +u
+
 # Source environment
 . ./checkEnv.sh
 
@@ -18,7 +21,7 @@ if [ -z "$DEVICE_IP" ]; then
 fi
 
 if [ -z "$EPICS_CA_MAX_ARRAY_BYTES" ]; then
-    export EPICS_CA_MAX_ARRAY_BYTES="300000"
+    export EPICS_CA_MAX_ARRAY_BYTES="8000000"
 fi
 
 cd "$IOC_BOOT_DIR"
