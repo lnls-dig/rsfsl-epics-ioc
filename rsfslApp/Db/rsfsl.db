@@ -723,7 +723,7 @@ record(ao, "$(P)$(R)DMarkX1-SP") {
   field(PREC, "3")
   field(EGU, "Hz")
   field(OUT, "@rsfsl.proto outDMarkX1($1) $(PORT)")
-  field(FLNK,"$(P)$(R)DMarkX1-RB")
+  field(FLNK,"$(P)$(R)MarkerFout")
 }
 
 record(ai, "$(P)$(R)DMarkX2-RB") {
@@ -745,7 +745,7 @@ record(ao, "$(P)$(R)DMarkX2-SP") {
   field(PREC, "3")
   field(EGU, "Hz")
   field(OUT, "@rsfsl.proto outDMarkX2($1) $(PORT)")
-  field(FLNK,"$(P)$(R)DMarkX2-RB")
+  field(FLNK,"$(P)$(R)MarkerFout")
 }
 
 record(ai, "$(P)$(R)DMarkX3-RB") {
@@ -767,7 +767,7 @@ record(ao, "$(P)$(R)DMarkX3-SP") {
   field(PREC, "3")
   field(EGU, "Hz")
   field(OUT, "@rsfsl.proto outDMarkX3($1) $(PORT)")
-  field(FLNK,"$(P)$(R)DMarkX3-RB")
+  field(FLNK,"$(P)$(R)MarkerFout")
 }
 
 record(ai, "$(P)$(R)DMarkX4-RB") {
@@ -789,7 +789,7 @@ record(ao, "$(P)$(R)DMarkX4-SP") {
   field(PREC, "3")
   field(EGU, "Hz")
   field(OUT, "@rsfsl.proto outDMarkX4($1) $(PORT)")
-  field(FLNK,"$(P)$(R)DMarkX4-RB")
+  field(FLNK,"$(P)$(R)MarkerFout")
 }
  
 # State of the tracking generator output
@@ -1418,6 +1418,44 @@ record(bo, "$(P)$(R)MarkMax4-Cmd") {
   field(OUT, "@rsfsl.proto cmdMarkMax4($1) $(PORT)")
 }
 
+# Set Delta Marker to Max Peak on Trace (1-4)
+
+record(bo, "$(P)$(R)DMarkMax1-Cmd") {
+  field(DESC, "Set d.marker1 to max peak on trace")
+  field(DTYP, "stream")
+  field(ZNAM, "0")
+  field(ONAM, "1")
+  field(HIGH, "1")
+  field(OUT, "@rsfsl.proto cmdDMarkMax1($1) $(PORT)")
+}
+
+record(bo, "$(P)$(R)DMarkMax2-Cmd") {
+  field(DESC, "Set d.marker2 to max peak on trace")
+  field(DTYP, "stream")
+  field(ZNAM, "0")
+  field(ONAM, "1")
+  field(HIGH, "1")
+  field(OUT, "@rsfsl.proto cmdDMarkMax2($1) $(PORT)")
+}
+
+record(bo, "$(P)$(R)DMarkMax3-Cmd") {
+  field(DESC, "Set d.marker3 to max peak on trace")
+  field(DTYP, "stream")
+  field(ZNAM, "0")
+  field(ONAM, "1")
+  field(HIGH, "1")
+  field(OUT, "@rsfsl.proto cmdDMarkMax3($1) $(PORT)")
+}
+
+record(bo, "$(P)$(R)DMarkMax4-Cmd") {
+  field(DESC, "Set d.marker4 to max peak on trace")
+  field(DTYP, "stream")
+  field(ZNAM, "0")
+  field(ONAM, "1")
+  field(HIGH, "1")
+  field(OUT, "@rsfsl.proto cmdDMarkMax4($1) $(PORT)")
+}
+
 # Turn all markers off
 
 record(bo, "$(P)$(R)MarkAOff-Cmd") {
@@ -1522,6 +1560,53 @@ record(bo, "$(P)$(R)MarkMaxLeft4-Cmd") {
   field(OUT, "@rsfsl.proto cmdMarkMaxLeft4($1) $(PORT)")
 }
 
+# Position the delta marker to the next smaller maximium value to the left
+# of the current value (1-4)
+
+record(bo, "$(P)$(R)DMarkMaxLeft1-Cmd") {
+  field(DESC, "Position d.marker1 to the left ")
+  field(DISV, "0")
+  field(SDIS, "$(P)$(R)EnblDMark1-Sts.RVAL")
+  field(DTYP, "stream")
+  field(ZNAM, "0")
+  field(ONAM, "1")
+  field(HIGH, "1")
+  field(OUT, "@rsfsl.proto cmdDMarkMaxLeft1($1) $(PORT)")
+}
+
+record(bo, "$(P)$(R)DMarkMaxLeft2-Cmd") {
+  field(DESC, "Position d.marker2 to the left ")
+  field(DISV, "0")
+  field(SDIS, "$(P)$(R)EnblDMark2-Sts.RVAL")
+  field(DTYP, "stream")
+  field(ZNAM, "0")
+  field(ONAM, "1")
+  field(HIGH, "1")
+  field(OUT, "@rsfsl.proto cmdDMarkMaxLeft2($1) $(PORT)")
+}
+
+record(bo, "$(P)$(R)DMarkMaxLeft3-Cmd") {
+  field(DESC, "Position d.marker3 to the left ")
+  field(DISV, "0")
+  field(SDIS, "$(P)$(R)EnblDMark3-Sts.RVAL")
+  field(DTYP, "stream")
+  field(ZNAM, "0")
+  field(ONAM, "1")
+  field(HIGH, "1")
+  field(OUT, "@rsfsl.proto cmdDMarkMaxLeft3($1) $(PORT)")
+}
+
+record(bo, "$(P)$(R)DMarkMaxLeft4-Cmd") {
+  field(DESC, "Position d.marker4 to the left ")
+  field(DISV, "0")
+  field(SDIS, "$(P)$(R)EnblDMark4-Sts.RVAL")
+  field(DTYP, "stream")
+  field(ZNAM, "0")
+  field(ONAM, "1")
+  field(HIGH, "1")
+  field(OUT, "@rsfsl.proto cmdDMarkMaxLeft4($1) $(PORT)")
+}
+
 # Position the marker to the next smaller minimium value to the left
 # of the current value (1-4)
 
@@ -1567,6 +1652,53 @@ record(bo, "$(P)$(R)MarkMinLeft4-Cmd") {
   field(ONAM, "1")
   field(HIGH, "1")
   field(OUT, "@rsfsl.proto cmdMarkMinLeft4($1) $(PORT)")
+}
+
+# Position the delta marker to the next smaller minimium value to the left
+# of the current value (1-4)
+
+record(bo, "$(P)$(R)DMarkMinLeft1-Cmd") {
+  field(DESC, "Position d.marker1 to the left ")
+  field(DISV, "0")
+  field(SDIS, "$(P)$(R)EnblDMark1-Sts.RVAL")
+  field(DTYP, "stream")
+  field(ZNAM, "0")
+  field(ONAM, "1")
+  field(HIGH, "1")
+  field(OUT, "@rsfsl.proto cmdDMarkMinLeft1($1) $(PORT)")
+}
+
+record(bo, "$(P)$(R)DMarkMinLeft2-Cmd") {
+  field(DESC, "Position d.marker2 to the left ")
+  field(DISV, "0")
+  field(SDIS, "$(P)$(R)EnblDMark2-Sts.RVAL")
+  field(DTYP, "stream")
+  field(ZNAM, "0")
+  field(ONAM, "1")
+  field(HIGH, "1")
+  field(OUT, "@rsfsl.proto cmdDMarkMinLeft2($1) $(PORT)")
+}
+
+record(bo, "$(P)$(R)DMarkMinLeft3-Cmd") {
+  field(DESC, "Position d.marker3 to the left ")
+  field(DISV, "0")
+  field(SDIS, "$(P)$(R)EnblDMark3-Sts.RVAL")
+  field(DTYP, "stream")
+  field(ZNAM, "0")
+  field(ONAM, "1")
+  field(HIGH, "1")
+  field(OUT, "@rsfsl.proto cmdDMarkMinLeft3($1) $(PORT)")
+}
+
+record(bo, "$(P)$(R)DMarkMinLeft4-Cmd") {
+  field(DESC, "Position d.marker4 to the left ")
+  field(DISV, "0")
+  field(SDIS, "$(P)$(R)EnblDMark4-Sts.RVAL")
+  field(DTYP, "stream")
+  field(ZNAM, "0")
+  field(ONAM, "1")
+  field(HIGH, "1")
+  field(OUT, "@rsfsl.proto cmdDMarkMinLeft4($1) $(PORT)")
 }
 
 # Position the marker to the next smaller maximium value of the
@@ -1616,6 +1748,53 @@ record(bo, "$(P)$(R)MarkMaxNext4-Cmd") {
   field(OUT, "@rsfsl.proto cmdMarkMaxNext4($1) $(PORT)")
 }
 
+# Position the delta marker to the next smaller maximium value of the
+# corresponding trace (1-4)
+
+record(bo, "$(P)$(R)DMarkMaxNext1-Cmd") {
+  field(DESC, "Position d.mkr1 to next value on trace")
+  field(DISV, "0")
+  field(SDIS, "$(P)$(R)EnblDMark1-Sts.RVAL")
+  field(DTYP, "stream")
+  field(ZNAM, "0")
+  field(ONAM, "1")
+  field(HIGH, "1")
+  field(OUT, "@rsfsl.proto cmdDMarkMaxNext1($1) $(PORT)")
+}
+
+record(bo, "$(P)$(R)DMarkMaxNext2-Cmd") {
+  field(DESC, "Position d.mkr2 to next value on trace")
+  field(DISV, "0")
+  field(SDIS, "$(P)$(R)EnblDMark2-Sts.RVAL")
+  field(DTYP, "stream")
+  field(ZNAM, "0")
+  field(ONAM, "1")
+  field(HIGH, "1")
+  field(OUT, "@rsfsl.proto cmdDMarkMaxNext2($1) $(PORT)")
+}
+
+record(bo, "$(P)$(R)DMarkMaxNext3-Cmd") {
+  field(DESC, "Position d.mkr3 to next value on trace")
+  field(DISV, "0")
+  field(SDIS, "$(P)$(R)EnblDMark1-Sts.RVAL")
+  field(DTYP, "stream")
+  field(ZNAM, "0")
+  field(ONAM, "1")
+  field(HIGH, "1")
+  field(OUT, "@rsfsl.proto cmdDMarkMaxNext3($1) $(PORT)")
+}
+
+record(bo, "$(P)$(R)DMarkMaxNext4-Cmd") {
+  field(DESC, "Position d.mkr4 to next value on trace")
+  field(DISV, "0")
+  field(SDIS, "$(P)$(R)EnblDMark4-Sts.RVAL")
+  field(DTYP, "stream")
+  field(ZNAM, "0")
+  field(ONAM, "1")
+  field(HIGH, "1")
+  field(OUT, "@rsfsl.proto cmdDMarkMaxNext4($1) $(PORT)")
+}
+
 # Position the marker to the next smaller minimium value of the
 # corresponding trace (1-4)
 
@@ -1661,6 +1840,53 @@ record(bo, "$(P)$(R)MarkMinNext4-Cmd") {
   field(ONAM, "1")
   field(HIGH, "1")
   field(OUT, "@rsfsl.proto cmdMarkMinNext4($1) $(PORT)")
+}
+
+# Position the delta marker to the next smaller minimium value of the
+# corresponding trace (1-4)
+
+record(bo, "$(P)$(R)DMarkMinNext1-Cmd") {
+  field(DESC, "Position d.mkr1 to the next value of trace")
+  field(DISV, "0")
+  field(SDIS, "$(P)$(R)EnblDMark1-Sts.RVAL")
+  field(DTYP, "stream")
+  field(ZNAM, "0")
+  field(ONAM, "1")
+  field(HIGH, "1")
+  field(OUT, "@rsfsl.proto cmdDMarkMinNext1($1) $(PORT)")
+}
+
+record(bo, "$(P)$(R)DMarkMinNext2-Cmd") {
+  field(DESC, "Position d.mkr2 to the next value of trace")
+  field(DISV, "0")
+  field(SDIS, "$(P)$(R)EnblDMark2-Sts.RVAL")
+  field(DTYP, "stream")
+  field(ZNAM, "0")
+  field(ONAM, "1")
+  field(HIGH, "1")
+  field(OUT, "@rsfsl.proto cmdDMarkMinNext2($1) $(PORT)")
+}
+
+record(bo, "$(P)$(R)DMarkMinNext3-Cmd") {
+  field(DESC, "Position d.mkr3 to the next value of trace")
+  field(DISV, "0")
+  field(SDIS, "$(P)$(R)EnblDMark3-Sts.RVAL")
+  field(DTYP, "stream")
+  field(ZNAM, "0")
+  field(ONAM, "1")
+  field(HIGH, "1")
+  field(OUT, "@rsfsl.proto cmdDMarkMinNext3($1) $(PORT)")
+}
+
+record(bo, "$(P)$(R)DMarkMinNext4-Cmd") {
+  field(DESC, "Position d.mkr4 to the next value of trace")
+  field(DISV, "0")
+  field(SDIS, "$(P)$(R)EnblDMark4-Sts.RVAL")
+  field(DTYP, "stream")
+  field(ZNAM, "0")
+  field(ONAM, "1")
+  field(HIGH, "1")
+  field(OUT, "@rsfsl.proto cmdDMarkMinNext4($1) $(PORT)")
 }
 
 # Position the marker to the next smaller maximium value to the right
@@ -1710,6 +1936,53 @@ record(bo, "$(P)$(R)MarkMaxRight4-Cmd") {
   field(OUT, "@rsfsl.proto cmdMarkMaxRight4($1) $(PORT)")
 }
 
+# Position the delta marker to the next smaller maximium value to the right
+# of the current value (1-4)
+
+record(bo, "$(P)$(R)DMarkMaxRight1-Cmd") {
+  field(DESC, "Position d.marker1 to the right ")
+  field(DISV, "0")
+  field(SDIS, "$(P)$(R)EnblDMark1-Sts.RVAL")
+  field(DTYP, "stream")
+  field(ZNAM, "0")
+  field(ONAM, "1")
+  field(HIGH, "1")
+  field(OUT, "@rsfsl.proto cmdDMarkMaxRight1($1) $(PORT)")
+}
+
+record(bo, "$(P)$(R)DMarkMaxRight2-Cmd") {
+  field(DESC, "Position d.marker2 to the right ")
+  field(DISV, "0")
+  field(SDIS, "$(P)$(R)EnblDMark2-Sts.RVAL")
+  field(DTYP, "stream")
+  field(ZNAM, "0")
+  field(ONAM, "1")
+  field(HIGH, "1")
+  field(OUT, "@rsfsl.proto cmdDMarkMaxRight2($1) $(PORT)")
+}
+
+record(bo, "$(P)$(R)DMarkMaxRight3-Cmd") {
+  field(DESC, "Position d.marker3 to the right ")
+  field(DISV, "0")
+  field(SDIS, "$(P)$(R)EnblDMark3-Sts.RVAL")
+  field(DTYP, "stream")
+  field(ZNAM, "0")
+  field(ONAM, "1")
+  field(HIGH, "1")
+  field(OUT, "@rsfsl.proto cmdDMarkMaxRight3($1) $(PORT)")
+}
+
+record(bo, "$(P)$(R)DMarkMaxRight4-Cmd") {
+  field(DESC, "Position d.marker4 to the right ")
+  field(DISV, "0")
+  field(SDIS, "$(P)$(R)EnblDMark4-Sts.RVAL")
+  field(DTYP, "stream")
+  field(ZNAM, "0")
+  field(ONAM, "1")
+  field(HIGH, "1")
+  field(OUT, "@rsfsl.proto cmdDMarkMaxRight4($1) $(PORT)")
+}
+
 # Position the marker to the next smaller minimium value to the right
 # of the current value (1-4)
 
@@ -1757,6 +2030,53 @@ record(bo, "$(P)$(R)MarkMinRight4-Cmd") {
   field(OUT, "@rsfsl.proto cmdMarkMinRight4($1) $(PORT)")
 }
 
+# Position the delta marker to the next smaller minimium value to the right
+# of the current value (1-4)
+
+record(bo, "$(P)$(R)DMarkMinRight1-Cmd") {
+  field(DESC, "Position d.marker1 to the right ")
+  field(DISV, "0")
+  field(SDIS, "$(P)$(R)EnblDMark1-Sts.RVAL")
+  field(DTYP, "stream")
+  field(ZNAM, "0")
+  field(ONAM, "1")
+  field(HIGH, "1")
+  field(OUT, "@rsfsl.proto cmdDMarkMinRight1($1) $(PORT)")
+}
+
+record(bo, "$(P)$(R)DMarkMinRight2-Cmd") {
+  field(DESC, "Position d.marker2 to the right ")
+  field(DISV, "0")
+  field(SDIS, "$(P)$(R)EnblDMark2-Sts.RVAL")
+  field(DTYP, "stream")
+  field(ZNAM, "0")
+  field(ONAM, "1")
+  field(HIGH, "1")
+  field(OUT, "@rsfsl.proto cmdDMarkMinRight2($1) $(PORT)")
+}
+
+record(bo, "$(P)$(R)DMarkMinRight3-Cmd") {
+  field(DESC, "Position d.marker3 to the right ")
+  field(DISV, "0")
+  field(SDIS, "$(P)$(R)EnblDMark3-Sts.RVAL")
+  field(DTYP, "stream")
+  field(ZNAM, "0")
+  field(ONAM, "1")
+  field(HIGH, "1")
+  field(OUT, "@rsfsl.proto cmdDMarkMinRight3($1) $(PORT)")
+}
+
+record(bo, "$(P)$(R)DMarkMinRight4-Cmd") {
+  field(DESC, "Position d.marker4 to the right ")
+  field(DISV, "0")
+  field(SDIS, "$(P)$(R)EnblDMark4-Sts.RVAL")
+  field(DTYP, "stream")
+  field(ZNAM, "0")
+  field(ONAM, "1")
+  field(HIGH, "1")
+  field(OUT, "@rsfsl.proto cmdDMarkMinRight4($1) $(PORT)")
+}
+
 # Set Marker to Min Peak on Trace (1-4)
 
 record(bo, "$(P)$(R)MarkMin1-Cmd") {
@@ -1793,6 +2113,56 @@ record(bo, "$(P)$(R)MarkMin4-Cmd") {
   field(ONAM, "1")
   field(HIGH, "1")
   field(OUT, "@rsfsl.proto cmdMarkMin4($1) $(PORT)")
+}
+
+# Switch off all delta markers
+
+record(bo, "$(P)$(R)DMarkAOff-Cmd") {
+  field(DESC, "Switch off all delta markers")
+  field(DTYP, "stream")
+  field(ZNAM, "0")
+  field(ONAM, "1")
+  field(HIGH, "1")
+  field(OUT, "@rsfsl.proto cmdDMarkAOff($1) $(PORT)")
+  field(FLNK, "$(P)$(R)MarkerFout")
+}
+
+# Set Delta Marker to Min Peak on Trace (1-4)
+
+record(bo, "$(P)$(R)DMarkMin1-Cmd") {
+  field(DESC, "Set d.marker1 to min peak on trace")
+  field(DTYP, "stream")
+  field(ZNAM, "0")
+  field(ONAM, "1")
+  field(HIGH, "1")
+  field(OUT, "@rsfsl.proto cmdDMarkMin1($1) $(PORT)")
+}
+
+record(bo, "$(P)$(R)DMarkMin2-Cmd") {
+  field(DESC, "Set d.marker2 to min peak on trace")
+  field(DTYP, "stream")
+  field(ZNAM, "0")
+  field(ONAM, "1")
+  field(HIGH, "1")
+  field(OUT, "@rsfsl.proto cmdDMarkMin2($1) $(PORT)")
+}
+
+record(bo, "$(P)$(R)DMarkMin3-Cmd") {
+  field(DESC, "Set d.marker3 to min peak on trace")
+  field(DTYP, "stream")
+  field(ZNAM, "0")
+  field(ONAM, "1")
+  field(HIGH, "1")
+  field(OUT, "@rsfsl.proto cmdDMarkMin3($1) $(PORT)")
+}
+
+record(bo, "$(P)$(R)DMarkMin4-Cmd") {
+  field(DESC, "Set d.marker4 to min peak on trace")
+  field(DTYP, "stream")
+  field(ZNAM, "0")
+  field(ONAM, "1")
+  field(HIGH, "1")
+  field(OUT, "@rsfsl.proto cmdDMarkMin4($1) $(PORT)")
 }
 
 # Switch off all delta markers
