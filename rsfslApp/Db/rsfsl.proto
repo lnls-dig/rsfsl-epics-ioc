@@ -685,6 +685,25 @@ cmdMarkMax4 {
 }
 
 ######################################################################
+# Set Delta Markers to Max Peak on Trace (1-4)
+
+cmdDMarkMax1 {
+    out "%{|CALC:DELT1:MAX:PEAK}";
+}
+
+cmdDMarkMax2 {
+    out "%{|CALC:DELT2:MAX:PEAK}";
+}
+
+cmdDMarkMax3 {
+    out "%{|CALC:DELT3:MAX:PEAK}";
+}
+
+cmdDMarkMax4 {
+    out "%{|CALC:DELT4:MAX:PEAK}";
+}
+
+######################################################################
 # Turn all markers off
 
 cmdMarkAOff {
@@ -712,6 +731,26 @@ cmdMarkMaxLeft4 {
 }
 
 ######################################################################
+# Position the delta marker to the next smaller maximium value to the left
+# of the current value (1-4)
+
+cmdDMarkMaxLeft1 {
+    out "%{|CALC:DELT1:MAX:LEFT}";
+}
+
+cmdDMarkMaxLeft2 {
+    out "%{|CALC:DELT2:MAX:LEFT}";
+}
+
+cmdDMarkMaxLeft3 {
+    out "%{|CALC:DELT3:MAX:LEFT}";
+}
+
+cmdDMarkMaxLeft4 {
+    out "%{|CALC:DELT4:MAX:LEFT}";
+}
+
+######################################################################
 # Position the marker to the next smaller minimium value to the left
 # of the current value (1-4)
 
@@ -729,6 +768,26 @@ cmdMarkMinLeft3 {
 
 cmdMarkMinLeft4 {
     out "%{|CALC:MARK4:MIN:LEFT}";
+}
+
+######################################################################
+# Position the delta marker to the next smaller minimium value to the left
+# of the current value (1-4)
+
+cmdDMarkMinLeft1 {
+    out "%{|CALC:DELT1:MIN:LEFT}";
+}
+
+cmdDMarkMinLeft2 {
+    out "%{|CALC:DELT2:MIN:LEFT}";
+}
+
+cmdDMarkMinLeft3 {
+    out "%{|CALC:DELT3:MIN:LEFT}";
+}
+
+cmdDMarkMinLeft4 {
+    out "%{|CALC:DELT4:MIN:LEFT}";
 }
 
 ######################################################################
@@ -752,6 +811,26 @@ cmdMarkMaxNext4 {
 }
 
 ######################################################################
+# Position the delta marker to the next smaller maximium value of the
+# corresponding trace (1-4)
+
+cmdDMarkMaxNext1 {
+    out "%{|CALC:DELT1:MAX:NEXT}";
+}
+
+cmdDMarkMaxNext2 {
+    out "%{|CALC:DELT2:MAX:NEXT}";
+}
+
+cmdDMarkMaxNext3 {
+    out "%{|CALC:DELT3:MAX:NEXT}";
+}
+
+cmdDMarkMaxNext4 {
+    out "%{|CALC:DELT4:MAX:NEXT}";
+}
+
+######################################################################
 # Position the marker to the next smaller minimium value of the
 # corresponding trace (1-4)
 
@@ -769,6 +848,26 @@ cmdMarkMinNext3 {
 
 cmdMarkMinNext4 {
     out "%{|CALC:MARK4:MIN:NEXT}";
+}
+
+######################################################################
+# Position the delta marker to the next smaller minimium value of the
+# corresponding trace (1-4)
+
+cmdDMarkMinNext1 {
+    out "%{|CALC:DELT1:MIN:NEXT}";
+}
+
+cmdDMarkMinNext2 {
+    out "%{|CALC:DELT2:MIN:NEXT}";
+}
+
+cmdDMarkMinNext3 {
+    out "%{|CALC:DELT3:MIN:NEXT}";
+}
+
+cmdDMarkMinNext4 {
+    out "%{|CALC:DELT4:MIN:NEXT}";
 }
 
 #####################################################################
@@ -792,6 +891,26 @@ cmdMarkMaxRight4 {
 }
 
 #####################################################################
+# Position the delta marker to the next smaller maximium value to the right
+# of the current value (1-4)
+
+cmdDMarkMaxRight1 {
+    out "%{|CALC:DELT1:MAX:RIGHT}";
+}
+
+cmdDMarkMaxRight2 {
+    out "%{|CALC:DELT2:MAX:RIGHT}";
+}
+
+cmdDMarkMaxRight3 {
+    out "%{|CALC:DELT3:MAX:RIGHT}";
+}
+
+cmdDMarkMaxRight4 {
+    out "%{|CALC:DELT4:MAX:RIGHT}";
+}
+
+#####################################################################
 # Position the marker to the next smaller minimium value to the right
 # of the current value (1-4)
 
@@ -812,6 +931,26 @@ cmdMarkMinRight4 {
 }
 
 #####################################################################
+# Position the delta marker to the next smaller minimium value to the right
+# of the current value (1-4)
+
+cmdDMarkMinRight1 {
+    out "%{|CALC:DELT1:MIN:RIGHT}";
+}
+
+cmdDMarkMinRight2 {
+    out "%{|CALC:DELT2:MIN:RIGHT}";
+}
+
+cmdDMarkMinRight3 {
+    out "%{|CALC:DELT3:MIN:RIGHT}";
+}
+
+cmdDMarkMinRight4 {
+    out "%{|CALC:DELT4:MIN:RIGHT}";
+}
+
+#####################################################################
 # Set Markers to Min Peak on Trace (1-4)
 
 cmdMarkMin1 {
@@ -828,6 +967,25 @@ cmdMarkMin3 {
 
 cmdMarkMin4 {
     out "%{|CALC:MARK4:MIN:PEAK}";
+}
+
+#####################################################################
+# Set Delta Markers to Min Peak on Trace (1-4)
+
+cmdDMarkMin1 {
+    out "%{|CALC:DELT1:MIN:PEAK}";
+}
+
+cmdDMarkMin2 {
+    out "%{|CALC:DELT2:MIN:PEAK}";
+}
+
+cmdDMarkMin3 {
+    out "%{|CALC:DELT3:MIN:PEAK}";
+}
+
+cmdDMarkMin4 {
+    out "%{|CALC:DELT4:MIN:PEAK}";
 }
 
 ######################################################################

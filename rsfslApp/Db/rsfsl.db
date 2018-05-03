@@ -465,6 +465,8 @@ record(bi, "$(P)$(R)EnblMarkCount-Sts") {
 record(bo, "$(P)$(R)EnblMarkCount-Sel") {
   field(DESC, "Enable/Disable Marker Freq. Counter")
   field(DTYP, "stream")
+  field(DISV, "0")
+  field(SDIS, "$(P)$(R)EnblMark1-Sts.RVAL")
   field(ZNAM, "OFF")
   field(ONAM, "ON")
   field(OUT, "@rsfsl.proto outEnblMarkCount($1) $(PORT)")
@@ -1846,7 +1848,7 @@ record(bo, "$(P)$(R)MarkMinNext4-Cmd") {
 # corresponding trace (1-4)
 
 record(bo, "$(P)$(R)DMarkMinNext1-Cmd") {
-  field(DESC, "Position d.mkr1 to the next value of trace")
+  field(DESC, "Position d.mkr1 to next value of trace")
   field(DISV, "0")
   field(SDIS, "$(P)$(R)EnblDMark1-Sts.RVAL")
   field(DTYP, "stream")
@@ -1857,7 +1859,7 @@ record(bo, "$(P)$(R)DMarkMinNext1-Cmd") {
 }
 
 record(bo, "$(P)$(R)DMarkMinNext2-Cmd") {
-  field(DESC, "Position d.mkr2 to the next value of trace")
+  field(DESC, "Position d.mkr2 to next value of trace")
   field(DISV, "0")
   field(SDIS, "$(P)$(R)EnblDMark2-Sts.RVAL")
   field(DTYP, "stream")
@@ -1868,7 +1870,7 @@ record(bo, "$(P)$(R)DMarkMinNext2-Cmd") {
 }
 
 record(bo, "$(P)$(R)DMarkMinNext3-Cmd") {
-  field(DESC, "Position d.mkr3 to the next value of trace")
+  field(DESC, "Position d.mkr3 to next value of trace")
   field(DISV, "0")
   field(SDIS, "$(P)$(R)EnblDMark3-Sts.RVAL")
   field(DTYP, "stream")
@@ -1879,7 +1881,7 @@ record(bo, "$(P)$(R)DMarkMinNext3-Cmd") {
 }
 
 record(bo, "$(P)$(R)DMarkMinNext4-Cmd") {
-  field(DESC, "Position d.mkr4 to the next value of trace")
+  field(DESC, "Position d.mkr4 to next value of trace")
   field(DISV, "0")
   field(SDIS, "$(P)$(R)EnblDMark4-Sts.RVAL")
   field(DTYP, "stream")
