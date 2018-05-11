@@ -303,7 +303,7 @@ record(bo, "$(P)$(R)EnblMark1-Sel") {
   field(ZNAM, "OFF")
   field(ONAM, "ON")
   field(OUT, "@rsfsl.proto outEnblMark1($1) $(PORT)")
-  field(FLNK,"$(P)$(R)MarkerFout")
+  field(FLNK, "$(P)$(R)MarkerFout")
 }
 
 record(bi, "$(P)$(R)EnblMark2-Sts") {
@@ -318,11 +318,77 @@ record(bi, "$(P)$(R)EnblMark2-Sts") {
 record(bo, "$(P)$(R)EnblMark2-Sel") {
   field(DESC, "Enable or Disable Marker2 State")
   field(DTYP, "stream")
+  field(DISV, "1")
+  field(SDIS, "$(P)$(R)OnOffM2-Sts.RVAL")
   field(ZNAM, "OFF")
   field(ONAM, "ON")
   field(OUT, "@rsfsl.proto outEnblMark2($1) $(PORT)")
   field(FLNK,"$(P)$(R)MarkerFout")
 }
+
+##### Follow Second Max Peak Mode
+  
+record(calcout, "$(P)$(R)EnblMark2") {
+  field(SCAN, "1 second")
+  field(INPA, "0") #pode ser alterado externamente
+  field(CALC, "A=1?1:0")
+  field(OUT, "$(P)$(R)OnOffMark2-Sel.RVAL")
+  field(FLNK, "$(P)$(R)OnOffMark2-Sel")
+}
+
+record(calcout, "$(P)$(R)OnMaxPeak2") {
+  field(DISV, "0")
+  field(SDIS, "$(P)$(R)EnblMark2.VAL")
+  field(INPA, "$(P)$(R)EnblMark2.VAL")
+  field(CALC, "A=1?1:0")
+  field(OUT, "$(P)$(R)OnOffMark2-Sel.RVAL")
+  field(FLNK, "$(P)$(R)OnOffMark2-Sel")
+}
+
+record(bi, "$(P)$(R)OnOffMark2-Sts") {
+  field(DESC, "Get Second Max Peak")
+  field(DISV, "0")
+  field(SDIS, "$(P)$(R)EnblMark2.VAL")
+  field(DTYP, "stream")
+  field(ZNAM, "OFF")
+  field(ONAM, "ON")
+  field(INP, "$(P)$(R)@rsfsl.proto inOnOffM2 $(PORT)")
+  field(FLNK, "$(P)$(R)MarkX2-Follow")
+}
+
+record(bo, "$(P)$(R)OnOffMark2-Sel") {
+  field(DESC, "Place Mark2 on second Max Peak")
+  field(DISV, "0")
+  field(SDIS, "$(P)$(R)EnblMark2.VAL")
+  field(DTYP, "stream")
+  field(ZNAM, "OFF")
+  field(ONAM, "ON")
+  field(OUT, "@rsfsl.proto outOnOffM2($1) $(PORT)")
+  field(FLNK, "$(P)$(R)OnOffMark2-Sts")
+}
+
+record(ai, "$(P)$(R)MarkX2-Follow") {
+  field(DESC, "Get X value of the marker2")
+  field(DISV, "0")
+  field(SDIS, "$(P)$(R)EnblMark2.VAL")
+  field(DTYP, "stream")
+  field(PREC, "3")
+  field(MDEL, "-1")
+  field(ADEL, "-1")
+  field(EGU, "Hz")
+  field(INP, "@rsfsl.proto inMarkX2 $(PORT)")
+  field(FLNK, "$(P)$(R)OffMark2")
+}
+ 
+record(calcout, "$(P)$(R)OffMark2") {
+  field(DISV, "0")
+  field(SDIS, "$(P)$(R)EnblMark2.VAL")
+  field(INPA, "1")
+  field(CALC, "A=1?0:1")
+  field(OUT, "$(P)$(R)OnOffM2-Sel.RVAL")
+  field(FLNK, "$(P)$(R)OnMark2")
+}
+#######
 
 record(bi, "$(P)$(R)EnblMark3-Sts") {
   field(DESC, "Get Marker3 State")
