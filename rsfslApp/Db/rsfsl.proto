@@ -208,14 +208,8 @@ outEnblMark2 {
     @init { inEnblMark2; };
 }
 
-inOnOffM2 {
-    out "CALC:MARK2:STAT?";
-    in "%i";
-}
-
 outOnOffM2 {
     out "CALC:MARK2:STAT %i";
-    @init { inOnOffM2; };
 }
 
 inEnblMark3 {
@@ -228,6 +222,10 @@ outEnblMark3 {
     @init { inEnblMark3; };
 }
 
+outOnOffM3 {
+    out "CALC:MARK3:STAT %i";
+}
+
 inEnblMark4 {
     out "CALC:MARK4:STAT?";
     in "%i";
@@ -236,6 +234,10 @@ inEnblMark4 {
 outEnblMark4 {
     out "CALC:MARK4:STAT %i";
     @init { inEnblMark4; };
+}
+
+outOnOffM4 {
+    out "CALC:MARK4:STAT %i";
 }
 
 ######################################################################

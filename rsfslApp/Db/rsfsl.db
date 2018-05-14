@@ -288,6 +288,7 @@ record(ao, "$(P)$(R)FreqStop-SP") {
 #Enable/Disable Markers (1-4)
 
 # The Marker1 will stay ON if any Delta Marker is also ON or if the Limited Search ($(P)$(R)EnblMarkLimit-Sts) is ON
+
 record(bi, "$(P)$(R)EnblMark1-Sts") {
   field(DESC, "Get Marker1 State")
   field(PINI, "YES")
@@ -325,70 +326,6 @@ record(bo, "$(P)$(R)EnblMark2-Sel") {
   field(OUT, "@rsfsl.proto outEnblMark2($1) $(PORT)")
   field(FLNK,"$(P)$(R)MarkerFout")
 }
-
-##### Follow Second Max Peak Mode
-  
-record(calcout, "$(P)$(R)EnblMark2") {
-  field(SCAN, "1 second")
-  field(INPA, "0") #pode ser alterado externamente
-  field(CALC, "A=1?1:0")
-  field(OUT, "$(P)$(R)OnOffMark2-Sel.RVAL")
-  field(FLNK, "$(P)$(R)OnOffMark2-Sel")
-}
-
-record(calcout, "$(P)$(R)OnMaxPeak2") {
-  field(DISV, "0")
-  field(SDIS, "$(P)$(R)EnblMark2.VAL")
-  field(INPA, "$(P)$(R)EnblMark2.VAL")
-  field(CALC, "A=1?1:0")
-  field(OUT, "$(P)$(R)OnOffMark2-Sel.RVAL")
-  field(FLNK, "$(P)$(R)OnOffMark2-Sel")
-}
-
-record(bi, "$(P)$(R)OnOffMark2-Sts") {
-  field(DESC, "Get Second Max Peak")
-  field(DISV, "0")
-  field(SDIS, "$(P)$(R)EnblMark2.VAL")
-  field(DTYP, "stream")
-  field(ZNAM, "OFF")
-  field(ONAM, "ON")
-  field(INP, "$(P)$(R)@rsfsl.proto inOnOffM2 $(PORT)")
-  field(FLNK, "$(P)$(R)MarkX2-Follow")
-}
-
-record(bo, "$(P)$(R)OnOffMark2-Sel") {
-  field(DESC, "Place Mark2 on second Max Peak")
-  field(DISV, "0")
-  field(SDIS, "$(P)$(R)EnblMark2.VAL")
-  field(DTYP, "stream")
-  field(ZNAM, "OFF")
-  field(ONAM, "ON")
-  field(OUT, "@rsfsl.proto outOnOffM2($1) $(PORT)")
-  field(FLNK, "$(P)$(R)OnOffMark2-Sts")
-}
-
-record(ai, "$(P)$(R)MarkX2-Follow") {
-  field(DESC, "Get X value of the marker2")
-  field(DISV, "0")
-  field(SDIS, "$(P)$(R)EnblMark2.VAL")
-  field(DTYP, "stream")
-  field(PREC, "3")
-  field(MDEL, "-1")
-  field(ADEL, "-1")
-  field(EGU, "Hz")
-  field(INP, "@rsfsl.proto inMarkX2 $(PORT)")
-  field(FLNK, "$(P)$(R)OffMark2")
-}
- 
-record(calcout, "$(P)$(R)OffMark2") {
-  field(DISV, "0")
-  field(SDIS, "$(P)$(R)EnblMark2.VAL")
-  field(INPA, "1")
-  field(CALC, "A=1?0:1")
-  field(OUT, "$(P)$(R)OnOffM2-Sel.RVAL")
-  field(FLNK, "$(P)$(R)OnMark2")
-}
-#######
 
 record(bi, "$(P)$(R)EnblMark3-Sts") {
   field(DESC, "Get Marker3 State")
@@ -558,7 +495,7 @@ record(bo, "$(P)$(R)EnblLocalOscSupr-Sel") {
   field(FLNK,"$(P)$(R)EnblLocalOscSupr-Sts")
 }
 
-# Enable/Disable automatic maximum peak searh (only available for Marker1)
+# Enable/Disable automatic maximum peak search
 
 record(bi, "$(P)$(R)EnblMaxAuto-Sts") {
   field(DESC, "Get Automatic Peak Search State")
@@ -577,6 +514,105 @@ record(bo, "$(P)$(R)EnblMaxAuto-Sel") {
   field(OUT, "@rsfsl.proto outEnblMaxAuto($1) $(PORT)")
   field(FLNK,"$(P)$(R)EnblMaxAuto-Sts")
 }
+
+##### Maximum peak search for marker 2 
+  
+record(calcout, "$(P)$(R)EnblMaxAuto2") {
+  field(SCAN, ".1 second")
+  field(INPA, "0")
+  field(CALC, "A=1?1:0")
+  field(OUT, "$(P)$(R)OnOffMark2-Sel.RVAL")
+  field(FLNK, "$(P)$(R)OnOffMark2-Sel")
+}
+
+record(bo, "$(P)$(R)OnOffMark2-Sel") {
+  field(DESC, "Place Mark2 on Max Peak Automatically")
+  field(DTYP, "stream")
+  field(ZNAM, "OFF")
+  field(ONAM, "ON")
+  field(OUT, "@rsfsl.proto outOnOffM2($1) $(PORT)")
+  field(FLNK, "$(P)$(R)DynamicX2-RB")
+}
+
+record(ai, "$(P)$(R)DynamicX2-RB") {
+  field(DESC, "Get X value of the marker2")
+  field(DISV, "0")
+  field(SDIS, "$(P)$(R)EnblMaxAuto2.VAL")
+  field(DTYP, "stream")
+  field(PREC, "3")
+  field(MDEL, "-1")
+  field(ADEL, "-1")
+  field(EGU, "Hz")
+  field(INP, "@rsfsl.proto inMarkX2 $(PORT)")
+}
+ 
+#####
+
+##### Maximum peak search for marker3
+  
+record(calcout, "$(P)$(R)EnblMaxAuto3") {
+  field(SCAN, ".1 second")
+  field(INPA, "0")
+  field(CALC, "A=1?1:0")
+  field(OUT, "$(P)$(R)OnOffMark3-Sel.RVAL")
+  field(FLNK, "$(P)$(R)OnOffMark3-Sel")
+}
+
+record(bo, "$(P)$(R)OnOffMark3-Sel") {
+  field(DESC, "Place Mark3 on Max Peak")
+  field(DTYP, "stream")
+  field(ZNAM, "OFF")
+  field(ONAM, "ON")
+  field(OUT, "@rsfsl.proto outOnOffM3($1) $(PORT)")
+  field(FLNK, "$(P)$(R)DynamicX3-RB")
+}
+
+record(ai, "$(P)$(R)DynamicX3-RB") {
+  field(DESC, "Get X value of the marker3")
+  field(DISV, "0")
+  field(SDIS, "$(P)$(R)EnblMaxAuto3.VAL")
+  field(DTYP, "stream")
+  field(PREC, "3")
+  field(MDEL, "-1")
+  field(ADEL, "-1")
+  field(EGU, "Hz")
+  field(INP, "@rsfsl.proto inMarkX3 $(PORT)")
+}
+ 
+#####
+
+##### Maximum peak search for marker4
+  
+record(calcout, "$(P)$(R)EnblMaxAuto4") {
+  field(SCAN, ".1 second")
+  field(INPA, "0")
+  field(CALC, "A=1?1:0")
+  field(OUT, "$(P)$(R)OnOffMark4-Sel.RVAL")
+  field(FLNK, "$(P)$(R)OnOffMark4-Sel")
+}
+
+record(bo, "$(P)$(R)OnOffMark4-Sel") {
+  field(DESC, "Place Mark4 on Max Peak")
+  field(DTYP, "stream")
+  field(ZNAM, "OFF")
+  field(ONAM, "ON")
+  field(OUT, "@rsfsl.proto outOnOffM4($1) $(PORT)")
+  field(FLNK, "$(P)$(R)DynamicX4-RB")
+}
+
+record(ai, "$(P)$(R)DynamicX4-RB") {
+  field(DESC, "Get X value of the marker3")
+  field(DISV, "0")
+  field(SDIS, "$(P)$(R)EnblMaxAuto4.VAL")
+  field(DTYP, "stream")
+  field(PREC, "3")
+  field(MDEL, "-1")
+  field(ADEL, "-1")
+  field(EGU, "Hz")
+  field(INP, "@rsfsl.proto inMarkX4 $(PORT)")
+}
+ 
+#####
 
 # Enable automatic minimum peak searh (only available for Marker1)
 
