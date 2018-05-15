@@ -517,22 +517,18 @@ record(bo, "$(P)$(R)EnblMaxAuto-Sel") {
 
 ##### Maximum peak search for marker 2 
   
-record(bo, "$(P)$(R)EnblMaxAuto2") {
+record(bo, "$(P)$(R)EnblMaxAuto2-Sel") {
   field(SCAN, ".1 second")
+  field(DISV, "1")
+  field(SDIS, "$(P)$(R)EnblMark2-Sel.RVAL")
   field(OUT, "$(P)$(R)OnOffMark2-Sel.RVAL")
   field(FLNK, "$(P)$(R)OnOffMark2-Sel")
 }
 
-#record(calcout, "$(P)$(R)EnblMaxAuto2") {
-#  field(SCAN, ".1 second")
-#  field(INPA, "$(P)$(R)test")
-#  field(CALC, "A=1?1:0")
-#  field(OUT, "$(P)$(R)OnOffMark2-Sel.RVAL")
-#  field(FLNK, "$(P)$(R)OnOffMark2-Sel")
-#}
-
 record(bo, "$(P)$(R)OnOffMark2-Sel") {
   field(DESC, "Place Mark2 on Max Peak Automatically")
+  field(DISV, "0")
+  field(SDIS, "$(P)$(R)EnblMaxAuto2-Sel")
   field(DTYP, "stream")
   field(ZNAM, "OFF")
   field(ONAM, "ON")
@@ -543,23 +539,22 @@ record(bo, "$(P)$(R)OnOffMark2-Sel") {
 record(ai, "$(P)$(R)DynamicX2-RB") {
   field(DESC, "Get X value of the marker2")
   field(DISV, "0")
-  field(SDIS, "$(P)$(R)EnblMaxAuto2")
+  field(SDIS, "$(P)$(R)EnblMaxAuto2-Sel")
   field(DTYP, "stream")
   field(PREC, "3")
   field(MDEL, "-1")
   field(ADEL, "-1")
   field(EGU, "Hz")
   field(INP, "@rsfsl.proto inMarkX2 $(PORT)")
+  field(FLNK, "$(P)$(R)EnblMark2-Sts")
 }
- 
-#####
 
 ##### Maximum peak search for marker3
   
-record(calcout, "$(P)$(R)EnblMaxAuto3") {
+record(bo, "$(P)$(R)EnblMaxAuto3-Sel") {
   field(SCAN, ".1 second")
-  field(INPA, "0")
-  field(CALC, "A=1?1:0")
+  field(DISV, "1")
+  field(SDIS, "$(P)$(R)EnblMark3-Sel.RVAL")
   field(OUT, "$(P)$(R)OnOffMark3-Sel.RVAL")
   field(FLNK, "$(P)$(R)OnOffMark3-Sel")
 }
@@ -576,23 +571,22 @@ record(bo, "$(P)$(R)OnOffMark3-Sel") {
 record(ai, "$(P)$(R)DynamicX3-RB") {
   field(DESC, "Get X value of the marker3")
   field(DISV, "0")
-  field(SDIS, "$(P)$(R)EnblMaxAuto3.VAL")
+  field(SDIS, "$(P)$(R)EnblMaxAuto3-Sel")
   field(DTYP, "stream")
   field(PREC, "3")
   field(MDEL, "-1")
   field(ADEL, "-1")
   field(EGU, "Hz")
   field(INP, "@rsfsl.proto inMarkX3 $(PORT)")
+  field(FLNK, "$(P)$(R)EnblMark3-Sts")
 }
- 
-#####
 
 ##### Maximum peak search for marker4
   
-record(calcout, "$(P)$(R)EnblMaxAuto4") {
+record(bo, "$(P)$(R)EnblMaxAuto4-Sel") {
   field(SCAN, ".1 second")
-  field(INPA, "0")
-  field(CALC, "A=1?1:0")
+  field(DISV, "1")
+  field(SDIS, "$(P)$(R)EnblMark4-Sel.RVAL")
   field(OUT, "$(P)$(R)OnOffMark4-Sel.RVAL")
   field(FLNK, "$(P)$(R)OnOffMark4-Sel")
 }
@@ -609,17 +603,16 @@ record(bo, "$(P)$(R)OnOffMark4-Sel") {
 record(ai, "$(P)$(R)DynamicX4-RB") {
   field(DESC, "Get X value of the marker3")
   field(DISV, "0")
-  field(SDIS, "$(P)$(R)EnblMaxAuto4.VAL")
+  field(SDIS, "$(P)$(R)EnblMaxAuto4-Sel")
   field(DTYP, "stream")
   field(PREC, "3")
   field(MDEL, "-1")
   field(ADEL, "-1")
   field(EGU, "Hz")
   field(INP, "@rsfsl.proto inMarkX4 $(PORT)")
+  field(FLNK, "$(P)$(R)EnblMark4-Sts")
 }
  
-#####
-
 # Enable automatic minimum peak searh (only available for Marker1)
 
 record(bi, "$(P)$(R)EnblMinAuto-Sts") {
@@ -813,15 +806,15 @@ record(bo, "$(P)$(R)EnblDMark4-Sel") {
  
 ##### Maximum peak search for Dmarker1
   
-record(calcout, "$(P)$(R)EnblDMaxAuto1") {
+record(bo, "$(P)$(R)EnblDMaxAuto1-Sel") {
   field(SCAN, ".1 second")
-  field(INPA, "0")
-  field(CALC, "A=1?1:0")
-  field(OUT, "$(P)$(R)OnOffDM1-Sel.RVAL")
-  field(FLNK, "$(P)$(R)OnOffDM1-Sel")
+  field(DISV, "1")
+  field(SDIS, "$(P)$(R)EnblDMark1-Sel.RVAL")
+  field(OUT, "$(P)$(R)OnOffDMark1-Sel.RVAL")
+  field(FLNK, "$(P)$(R)OnOffDMark1-Sel")
 }
 
-record(bo, "$(P)$(R)OnOffDM1-Sel") {
+record(bo, "$(P)$(R)OnOffDMark1-Sel") {
   field(DESC, "Place DMark1 on Max Peak")
   field(DTYP, "stream")
   field(ZNAM, "OFF")
@@ -833,26 +826,27 @@ record(bo, "$(P)$(R)OnOffDM1-Sel") {
 record(ai, "$(P)$(R)DynamicDX1-RB") {
   field(DESC, "Get X value of the marker3")
   field(DISV, "0")
-  field(SDIS, "$(P)$(R)EnblDMaxAuto1.VAL")
+  field(SDIS, "$(P)$(R)EnblDMaxAuto1-Sel")
   field(DTYP, "stream")
   field(PREC, "3")
   field(MDEL, "-1")
   field(ADEL, "-1")
   field(EGU, "Hz")
   field(INP, "@rsfsl.proto inDMarkX1 $(PORT)")
+  field(FLNK, "$(P)$(R)EnblDMark1-Sts")
 }
 
 ##### Maximum peak search for Dmarker2 
   
-record(calcout, "$(P)$(R)EnblDMaxAuto2") {
+record(bo, "$(P)$(R)EnblDMaxAuto2-Sel") {
   field(SCAN, ".1 second")
-  field(INPA, "0")
-  field(CALC, "A=1?1:0")
-  field(OUT, "$(P)$(R)OnOffDM2-Sel.RVAL")
-  field(FLNK, "$(P)$(R)OnOffDM2-Sel")
+  field(DISV, "1")
+  field(SDIS, "$(P)$(R)EnblDMark2-Sel.RVAL")
+  field(OUT, "$(P)$(R)OnOffDMark2-Sel.RVAL")
+  field(FLNK, "$(P)$(R)OnOffDMark2-Sel")
 }
 
-record(bo, "$(P)$(R)OnOffDM2-Sel") {
+record(bo, "$(P)$(R)OnOffDMark2-Sel") {
   field(DESC, "Place DMark2 on Max Peak")
   field(DTYP, "stream")
   field(ZNAM, "OFF")
@@ -864,26 +858,27 @@ record(bo, "$(P)$(R)OnOffDM2-Sel") {
 record(ai, "$(P)$(R)DynamicDX2-RB") {
   field(DESC, "Get X value of the marker2")
   field(DISV, "0")
-  field(SDIS, "$(P)$(R)EnblDMaxAuto2.VAL")
+  field(SDIS, "$(P)$(R)EnblDMaxAuto2-Sel")
   field(DTYP, "stream")
   field(PREC, "3")
   field(MDEL, "-1")
   field(ADEL, "-1")
   field(EGU, "Hz")
   field(INP, "@rsfsl.proto inDMarkX2 $(PORT)")
+  field(FLNK, "$(P)$(R)EnblDMark2-Sts")
 }
  
 ##### Maximum peak search for Dmarker3
   
-record(calcout, "$(P)$(R)EnblDMaxAuto3") {
+record(bo, "$(P)$(R)EnblDMaxAuto3-Sel") {
   field(SCAN, ".1 second")
-  field(INPA, "0")
-  field(CALC, "A=1?1:0")
-  field(OUT, "$(P)$(R)OnOffDM3-Sel.RVAL")
-  field(FLNK, "$(P)$(R)OnOffDM3-Sel")
+  field(DISV, "1")
+  field(SDIS, "$(P)$(R)EnblDMark3-Sel.RVAL")
+  field(OUT, "$(P)$(R)OnOffDMark3-Sel.RVAL")
+  field(FLNK, "$(P)$(R)OnOffDMark3-Sel")
 }
 
-record(bo, "$(P)$(R)OnOffDM3-Sel") {
+record(bo, "$(P)$(R)OnOffDMark3-Sel") {
   field(DESC, "Place DMark3 on Max Peak")
   field(DTYP, "stream")
   field(ZNAM, "OFF")
@@ -895,26 +890,27 @@ record(bo, "$(P)$(R)OnOffDM3-Sel") {
 record(ai, "$(P)$(R)DynamicDX3-RB") {
   field(DESC, "Get X value of the marker3")
   field(DISV, "0")
-  field(SDIS, "$(P)$(R)EnblDMaxAuto3.VAL")
+  field(SDIS, "$(P)$(R)EnblDMaxAuto3-Sel")
   field(DTYP, "stream")
   field(PREC, "3")
   field(MDEL, "-1")
   field(ADEL, "-1")
   field(EGU, "Hz")
   field(INP, "@rsfsl.proto inDMarkX3 $(PORT)")
+  field(FLNK, "$(P)$(R)EnblDMark3-Sts")
 }
  
 ##### Maximum peak search for Dmarker4
   
-record(calcout, "$(P)$(R)EnblDMaxAuto4") {
+record(bo, "$(P)$(R)EnblDMaxAuto4-Sel") {
   field(SCAN, ".1 second")
-  field(INPA, "0")
-  field(CALC, "A=1?1:0")
-  field(OUT, "$(P)$(R)OnOffDM4-Sel.RVAL")
-  field(FLNK, "$(P)$(R)OnOffDM4-Sel")
+  field(DISV, "1")
+  field(SDIS, "$(P)$(R)EnblDMark4-Sel.RVAL")
+  field(OUT, "$(P)$(R)OnOffDMark4-Sel.RVAL")
+  field(FLNK, "$(P)$(R)OnOffDMark4-Sel")
 }
 
-record(bo, "$(P)$(R)OnOffDM4-Sel") {
+record(bo, "$(P)$(R)OnOffDMark4-Sel") {
   field(DESC, "Place DMark4 on Max Peak")
   field(DTYP, "stream")
   field(ZNAM, "OFF")
@@ -926,13 +922,14 @@ record(bo, "$(P)$(R)OnOffDM4-Sel") {
 record(ai, "$(P)$(R)DynamicDX4-RB") {
   field(DESC, "Get X value of the marker3")
   field(DISV, "0")
-  field(SDIS, "$(P)$(R)EnblDMaxAuto4.VAL")
+  field(SDIS, "$(P)$(R)EnblDMaxAuto4-Sel")
   field(DTYP, "stream")
   field(PREC, "3")
   field(MDEL, "-1")
   field(ADEL, "-1")
   field(EGU, "Hz")
   field(INP, "@rsfsl.proto inDMarkX4 $(PORT)")
+  field(FLNK, "$(P)$(R)EnblDMark4-Sts")
 }
 
 # Delta Markers X Values
@@ -1700,9 +1697,14 @@ record(bo, "$(P)$(R)MarkAOff-Cmd") {
   field(ONAM, "1")
   field(HIGH, "1")
   field(OUT, "@rsfsl.proto cmdMarkAOff($1) $(PORT)")
-  field(FLNK, "$(P)$(R)MarkerFout")
+  field(FLNK, "$(P)$(R)MarkAOffFout")
 }
 
+record(fanout, "$(P)$(R)MarkAOffFout") {
+  field(LNK1, "$(P)$(R)MarkerFout")
+  field(LNK2, "$(P)$(R)DataFout")
+  field(SELM, "All")
+}
 record(fanout, "$(P)$(R)MarkerFout") {
   field(LNK1, "$(P)$(R)Mkr1Fout")
   field(LNK2, "$(P)$(R)Mkr2Fout")
@@ -1717,6 +1719,20 @@ record(fanout, "$(P)$(R)DMarkerFout") {
   field(LNK2, "$(P)$(R)EnblDMark2-Sts")
   field(LNK3, "$(P)$(R)EnblDMark3-Sts")
   field(LNK4, "$(P)$(R)EnblDMark4-Sts")
+  field(SELM, "All")
+}
+
+record(dfanout, "$(P)$(R)DataFout") {
+  field(VAL, "0")
+  field(OMSL, "closed_loop")
+  field(OUTA, "$(P)$(R)EnblMaxAuto1-Sel.RVAL")
+  field(OUTB, "$(P)$(R)EnblMaxAuto2-Sel.RVAL")
+  field(OUTC, "$(P)$(R)EnblMaxAuto3-Sel.RVAL")
+  field(OUTD, "$(P)$(R)EnblMaxAuto4-Sel.RVAL")
+  field(OUTE, "$(P)$(R)EnblDMaxAuto1-Sel.RVAL")
+  field(OUTF, "$(P)$(R)EnblDMaxAuto2-Sel.RVAL")
+  field(OUTG, "$(P)$(R)EnblDMaxAuto3-Sel.RVAL")
+  field(OUTH, "$(P)$(R)EnblDMaxAuto4-Sel.RVAL")
   field(SELM, "All")
 }
 
@@ -2359,9 +2375,24 @@ record(bo, "$(P)$(R)DMarkAOff-Cmd") {
   field(ONAM, "1")
   field(HIGH, "1")
   field(OUT, "@rsfsl.proto cmdDMarkAOff($1) $(PORT)")
-  field(FLNK, "$(P)$(R)MarkerFout")
+  field(FLNK, "$(P)$(R)DMarkAOffFout")
 }
 
+record(fanout, "$(P)$(R)DMarkAOffFout") {
+  field(LNK1, "$(P)$(R)MarkerFout")
+  field(LNK2, "$(P)$(R)DataFout1")
+  field(SELM, "All")
+}
+
+record(dfanout, "$(P)$(R)DataFout1") {
+  field(DOL, "0")
+  field(OMSL, "supervisory")
+  field(OUTA, "$(P)$(R)EnblDMaxAuto1-Sel.RVAL")
+  field(OUTB, "$(P)$(R)EnblDMaxAuto2-Sel.RVAL")
+  field(OUTC, "$(P)$(R)EnblDMaxAuto3-Sel.RVAL")
+  field(OUTD, "$(P)$(R)EnblDMaxAuto4-Sel.RVAL")
+  field(SELM, "All")
+}
 # Set Delta Marker to Min Peak on Trace (1-4)
 
 record(bo, "$(P)$(R)DMarkMin1-Cmd") {
