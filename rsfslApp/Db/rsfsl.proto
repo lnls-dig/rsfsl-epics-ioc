@@ -134,6 +134,19 @@ outEnblSweTimeAuto {
 }
 
 ######################################################################
+# Type of display and evaluation of the trace
+
+inTraceMode {
+    out "DISP:WIND:TRAC1:MODE?";
+    in "%{WRIT|VIEW|AVER|MAXH|MINH|BLANK}";
+}
+
+outTraceMode {
+    out "DISP:WIND:TRAC1:MODE %{WRIT|VIEW|AVER|MAXH|MINH|BLANK}";
+    @init { inTraceMode; };
+}
+ 
+######################################################################
 # Center Frequency
 
 inFrqCent {
@@ -291,19 +304,19 @@ outEnblMarkCount {
     out "CALC:MARK:COUN %i";
 }
 
-######################################################################
-# Enable local oscillator supression for peak search
-
-inEnblLocalOscSupr {
-    out "CALC:MARK:LOEX?";
-    in "%i";
-}
-
-outEnblLocalOscSupr {
-    out "CALC:MARK:LOEX %i";
-}
-
-######################################################################
+#######################################################################
+## Enable local oscillator supression for peak search
+#
+#inEnblLocalOscSupr {
+#    out "CALC:MARK:LOEX?";
+#    in "%i";
+#}
+#
+#outEnblLocalOscSupr {
+#    out "CALC:MARK:LOEX %i";
+#}
+#
+#######################################################################
 # Enable automatic peak search (only available for Marker1)
 
 inEnblMaxAuto {
@@ -686,6 +699,15 @@ monMarkCount {
 }
 
 ######################################################################
+# Data Trace (waveform in single sweep)
+
+monTrace {
+    out "INIT;*WAI";
+    out "TRAC? TRACE1";
+    in "%E";
+}
+
+
 ########################### COMMAND ##################################
 ######################################################################
 # Reset to default state
