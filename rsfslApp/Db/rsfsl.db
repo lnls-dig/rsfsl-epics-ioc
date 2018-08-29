@@ -1,8 +1,8 @@
 #---------------------------------------------------------------------
-# Title      : Rohde & Schwarz FSL Spectrum Analyzer Epics Protocol File
+# Title      : Rohde & Schwarz FSL Spectrum Analyzer Epics Database File
 # Project    :
 #---------------------------------------------------------------------
-# File       : rsfsl.proto
+# File       : rsfsl.db
 # Author     : Leticia Garcez Capovilla
 # Company    : Brazilian Synchrotron Light Laboratory, LNLS/CNPEM
 # Created    : 2018-03-19
@@ -10,7 +10,7 @@
 #---------------------------------------------------------------------
 # Description:
 #
-# Defines protocol to use the device as a StreamDevice IOC in EPICS
+# Defines database to use the device in EPICS
 #
 #---------------------------------------------------------------------
 # Copyright (c) 2018 Brazilian Synchrotron Light Laboratory, LNLS/CNPEM
@@ -52,6 +52,8 @@ record(ai, "$(P)$(R)RefLvl-RB") {
 record(ao, "$(P)$(R)RefLvl-SP") {
   field(DESC, "Set reference level")
   field(DTYP, "stream")
+  field(DRVH, "30")
+  field(DRVL, "-130")
   field(EGU, "dBm")
   field(OUT, "@rsfsl.proto outRefLvl($1) $(PORT)")
   field(FLNK,"$(P)$(R)RefLvl-RB")
@@ -66,14 +68,16 @@ record(ai, "$(P)$(R)RefOff-RB") {
   field(PREC, "1")
   field(MDEL, "-1")
   field(ADEL, "-1")
-  field(EGU, "dBm")
+  field(EGU, "dB")
   field(INP, "@rsfsl.proto inRefOff $(PORT)")
 }
 
 record(ao, "$(P)$(R)RefOff-SP") {
   field(DESC, "Set reference level offset")
   field(DTYP, "stream")
-  field(EGU, "dBm")
+  field(DRVH, "200")
+  field(DRVL, "-200")
+  field(EGU, "dB")
   field(OUT, "@rsfsl.proto outRefOff($1) $(PORT)")
   field(FLNK,"$(P)$(R)LvlFout")
 }
@@ -122,6 +126,8 @@ record(ai, "$(P)$(R)SwePts-RB") {
 record(ao, "$(P)$(R)SwePts-SP") {
   field(DESC, "Set number of points in one sweep")
   field(DTYP, "stream")
+  field(DRVH, "32001")
+  field(DRVL, "101")
   field(EGU, "points")
   field(OUT, "@rsfsl.proto outSwePts($1) $(PORT)")
   field(FLNK, "$(P)$(R)SweFout")
@@ -309,6 +315,8 @@ record(ai, "$(P)$(R)FreqStart-RB") {
 record(ao, "$(P)$(R)FreqStart-SP") {
   field(DESC, "Set start frequency")
   field(DTYP, "stream")
+  field(DRVH, "3000000000")
+  field(DRVL, "9000")
   field(EGU, "Hz")
   field(OUT, "@rsfsl.proto outFrqStart($1) $(PORT)")
   field(FLNK,"$(P)$(R)FStartFout")
@@ -340,6 +348,8 @@ record(ai, "$(P)$(R)FreqStop-RB") {
 record(ao, "$(P)$(R)FreqStop-SP") {
   field(DESC, "Set stop frequency")
   field(DTYP, "stream")
+  field(DRVH, "3000000000")
+  field(DRVL, "9000")
   field(EGU, "Hz")
   field(OUT, "@rsfsl.proto outFrqStop($1) $(PORT)")
   field(FLNK,"$(P)$(R)FStopFout")
@@ -1280,6 +1290,8 @@ record(ao, "$(P)$(R)LvlOut-SP") {
   field(DESC, "Set Tracking Generators Level")
   field(DTYP, "stream")
   field(PREC, "3")
+  field(DRVH, "0")
+  field(DRVL, "-50")
   field(EGU, "dBm")
   field(OUT, "@rsfsl.proto outLvlOut(1) $(PORT)")
   field(FLNK,"$(P)$(R)LvlOut-RB")
@@ -1300,6 +1312,8 @@ record(ao, "$(P)$(R)LvlOutOffset-SP") {
   field(DESC, "Set Tracking Generator Offset Level")
   field(DTYP, "stream")
   field(PREC, "1")
+  field(DRVH, "200")
+  field(DRVL, "-200")
   field(EGU, "dB")
   field(OUT, "@rsfsl.proto outLvlOutOffset(1) $(PORT)")
   field(FLNK,"$(P)$(R)OutputFout")
@@ -1476,6 +1490,24 @@ record(bo, "$(P)$(R)EnblVbwAuto-Sel") {
   field(OUT, "@rsfsl.proto outEnblVbwAuto($1) $(PORT)")
   field(FLNK,"$(P)$(R)SweFout")
 }
+
+## Analize a specific harmonic
+#record(bo, "$(P)$(R)GoHarmonic-Cmd")
+#  field(DESC, "See the vicinity of a specific frequency spectrum")
+#  field(HIGH, "1")
+#  field
+#}
+#
+#record(calcout, "$(P)$(R)CalcHarmonic") {
+#  field(DESC, "Calculate the frequency of the desired harmonic")
+#  field(INPA, "$(P)$(R)Harmonic-SP.OUT")
+#  field(CALC, "A*578")
+#  field(OUT, "$(P)$(R)HarmonicFreq-RB")
+#}
+#
+#record(ai, "$(P)$(R)HarmonicFreq-RB") {
+#  field(INP, "$(P)$(R)CalcHarmonic.OUT")
+#}
 
 ######################################################################
 ########################## MONITOR ###################################
