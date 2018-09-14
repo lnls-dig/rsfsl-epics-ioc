@@ -46,6 +46,7 @@ rsfsl_DBD += drvVxi11.dbd
 rsfsl_DBD += stream.dbd
 rsfsl_DBD += calcSupport.dbd
 rsfsl_DBD += asSupport.dbd
+rsfsl_DBD += menuScan.dbd
 
 rsfsl_LIBS += asyn
 rsfsl_LIBS += stream
