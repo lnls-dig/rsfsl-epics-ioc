@@ -1,4 +1,4 @@
-#swee---------------------------------------------------------------------
+#---------------------------------------------------------------------
 # Title      : Rohde & Schwarz FSL Spectrum Analyzer Epics Protocol File
 # Project    :
 #---------------------------------------------------------------------
@@ -636,6 +636,30 @@ outEnblVbwAuto {
 }
 
 ######################################################################
+# Select Filter Type
+
+inFiltType {
+    out "SENS:BWID:RES:TYPE?";
+    in "%s";
+}
+
+outFiltType {
+    out "SENS:BWID:RES:TYPE %{NORM|FFT|CFIL|RRC|PULS}";
+}
+
+######################################################################
+# Select Detector Type Manually
+
+inDetecType {
+    out "SENS:DET:FUNC?";
+    in "%s";
+}
+
+outDetecType {
+    out "SENS:DET:FUNC %{APE|NEG|POS|SAMP|RMS|AVER|QPE}";
+}
+
+######################################################################
 ########################### MONITOR ##################################
 ######################################################################
 # Get identification
@@ -700,16 +724,24 @@ monMarkCount {
 }
 
 ######################################################################
-# Data Trace (waveform in single sweep)
+# Data Trace (one waveform per sweep, retrieves level information)
 
 monTrace {
-    out "FORM:DATA ASC";
-    out "INIT;*WAI";
+#    out "INIT;*WAI";
     out "TRAC? TRACE1";
 #    out "*WAI";
     in "%f";
 }
 
+######################################################################
+# Data Format (always use ASCII format)
+
+outDataFormat {
+    out "FORM:DATA ASC";
+    @init { outDataFormat; };
+}
+
+######################################################################
 ########################### COMMAND ##################################
 ######################################################################
 # Reset to default state

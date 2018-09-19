@@ -1491,6 +1491,86 @@ record(bo, "$(P)$(R)EnblVbwAuto-Sel") {
   field(FLNK,"$(P)$(R)SweFout")
 }
 
+# Select Filter Type
+
+record(mbbi, "$(P)$(R)FiltType-Sts") {
+  field(DESC, "Get Filter Type")
+  field(DTYP, "stream")
+  field(PINI, "YES")
+  field(ZRST, "NORM")
+  field(ZRVL, "0")
+  field(ONST, "FFT")
+  field(ONVL, "1")
+  field(TWST, "CFIL")
+  field(TWVL, "2")
+  field(THST, "RRC")
+  field(THVL, "3")
+  field(FRST, "PULS")
+  field(FRVL, "4")
+  field(INP, "@rsfsl.proto inFiltType $(PORT)")
+}
+
+record(mbbo, "$(P)$(R)FiltType-Sel") {
+  field(DESC, "Set Filter Type")
+  field(DTYP, "stream")
+  field(ZRST, "NORM")
+  field(ZRVL, "0")
+  field(ONST, "FFT")
+  field(ONVL, "1")
+  field(TWST, "CFIL")
+  field(TWVL, "2")
+  field(THST, "RRC")
+  field(THVL, "3")
+  field(FRST, "PULS")
+  field(FRVL, "4")
+  field(OUT, "@rsfsl.proto outFiltType(1) $(PORT)")
+  field(FLNK, "$(P)$(R)FiltType-Sts")
+}
+
+# Select Detector Type Manually
+
+record(mbbi, "$(P)$(R)DetecType-Sts") {
+  field(DESC, "Get Detector Type")
+  field(DTYP, "stream")
+  field(PINI, "YES")
+  field(ZRST, "APE")
+  field(ZRVL, "0")
+  field(ONST, "NEG")
+  field(ONVL, "1")
+  field(TWST, "POS")
+  field(TWVL, "2")
+  field(THST, "SAMP")
+  field(THVL, "3")
+  field(FRST, "RMS")
+  field(FRVL, "4")
+  field(FVST, "AVER")
+  field(FVVL, "5")
+  field(SXST, "QPE")
+  field(SXVL, "6")
+  field(INP, "@rsfsl.proto inDetecType $(PORT)")
+}
+
+record(mbbo, "$(P)$(R)DetecType-Sel") {
+  field(DESC, "Set Detector Type Manually")
+  field(DTYP, "stream")
+  field(ZRST, "APE")
+  field(ZRVL, "0")
+  field(ONST, "NEG")
+  field(ONVL, "1")
+  field(TWST, "POS")
+  field(TWVL, "2")
+  field(THST, "SAMP")
+  field(THVL, "3")
+  field(FRST, "RMS")
+  field(FRVL, "4")
+  field(FVST, "AVER")
+  field(FVVL, "5")
+  field(SXST, "QPE")
+  field(SXVL, "6")
+  field(OUT, "@rsfsl.proto outDetecType(1) $(PORT)")
+  field(FLNK, "$(P)$(R)DetecType-Sts")
+}
+
 ## Analize a specific harmonic
 #record(bo, "$(P)$(R)GoHarmonic-Cmd")
 #  field(DESC, "See the vicinity of a specific frequency spectrum")
