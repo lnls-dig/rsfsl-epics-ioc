@@ -1652,8 +1652,8 @@ record(ai, "$(P)$(R)MarkCount-Mon") {
 
 record(waveform, "$(P)$(R)Trace-Mon") {
   field(DESC, "Get trace waveform")
-  field(SCAN, "1 second")
-  field(NELM, "32001")
+  field(SCAN, ".01 second")
+  field(NELM, "501")
   field(FTVL, "FLOAT")
   field(DTYP, "stream")
   field(INP, "@rsfsl.proto monTrace $(PORT)")

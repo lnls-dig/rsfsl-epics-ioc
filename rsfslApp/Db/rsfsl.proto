@@ -51,6 +51,7 @@ ExtraInput = Ignore;
 WriteTimeout = ${GLOBAL_TIMEOUT};
 ReadTimeout = ${GLOBAL_TIMEOUT};
 ReplyTimeout = ${GLOBAL_TIMEOUT};
+Separator = ",";
 #
 #
 ######################################################################
@@ -702,11 +703,12 @@ monMarkCount {
 # Data Trace (waveform in single sweep)
 
 monTrace {
+    out "FORM:DATA ASC";
     out "INIT;*WAI";
     out "TRAC? TRACE1";
-    in "%E";
+#    out "*WAI";
+    in "%f";
 }
-
 
 ########################### COMMAND ##################################
 ######################################################################
