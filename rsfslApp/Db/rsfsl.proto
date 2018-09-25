@@ -46,10 +46,11 @@ GLOBAL_TIMEOUT = 5000;
 # Communication setup
 #
 OutTerminator = CR LF;
-InTerminator = LF;
-ExtraInput = Ignore;
+InTerminator = 10;
+ExtraInput = Error;
+MaxInput = 576018;
 WriteTimeout = ${GLOBAL_TIMEOUT};
-ReadTimeout = ${GLOBAL_TIMEOUT};
+ReadTimeout = 10;
 ReplyTimeout = ${GLOBAL_TIMEOUT};
 Separator = ",";
 #
