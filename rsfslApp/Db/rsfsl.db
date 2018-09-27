@@ -263,9 +263,76 @@ record(fanout, "$(P)$(R)FCenterFout") {
   field(LNK2, "$(P)$(R)FreqSpan-RB")
   field(LNK3, "$(P)$(R)FreqStart-RB")
   field(LNK4, "$(P)$(R)FreqStop-RB")
-  field(LNK5, "$(P)$(R)SwePts-RB")
-  field(LNK6, "$(P)$(R)SweTime-RB")
-  field(SELM, "All")
+  field(LNK5, "$(P)$(R)FreqStep-RB")
+ field(SELM, "All")
+}
+
+# Frequency Step
+
+record(ai, "$(P)$(R)FreqStep-RB") {
+  field(DESC, "Get the frequency step size")
+  field(PINI, "YES")
+  field(DTYP, "stream")
+  field(PREC, "1")
+  field(MDEL, "-1")
+  field(ADEL, "-1")
+  field(EGU, "Hz")
+  field(INP, "@rsfsl.proto inFreqStep $(PORT)")
+}
+
+record(ao, "$(P)$(R)FreqStep-SP") {
+  field(DESC, "Set the frequency step size")
+  field(DTYP, "stream")
+  field(EGU, "Hz")
+  field(OUT, "@rsfsl.proto outFreqStep($1) $(PORT)")
+  field(FLNK,"$(P)$(R)FreqStep-RB")
+}
+
+# Frequency Step Link
+
+record(mbbi, "$(P)$(R)StepLink-Sts") {
+  field(DESC, "Get the step size coupling")
+  field(DTYP, "stream")
+  field(PINI, "YES")
+  field(ZRVL, "0")
+  field(ZRST, "SPAN")
+  field(ONVL, "1")
+  field(ONST, "RBW")
+  field(TWVL, "2")
+  field(TWST, "OFF")
+  field(INP, "@rsfsl.proto inStepLink $(PORT)")
+}
+
+record(mbbo, "$(P)$(R)StepLink-Sel") {
+  field(DESC, "Set the step size coupling")
+  field(DTYP, "stream")
+  field(ZRVL, "0")
+  field(ZRST, "SPAN")
+  field(ONVL, "1")
+  field(ONST, "RBW")
+  field(TWVL, "2")
+  field(TWST, "OFF")
+  field(OUT, "@rsfsl.proto outStepLink($1) $(PORT)")
+  field(FLNK, "$(P)$(R)StepLink-Sts")
+}
+
+# Enable/Disable Auto Frequency Step Size (step coupled to span)
+
+record(bi, "$(P)$(R)AutoStep-Sts") {
+  field(DESC, "Get automatic step size state")
+  field(DTYP, "stream")
+  field(ZNAM, "OFF")
+  field(ONAM, "ON")
+  field(INP, "@rsfsl.proto inAutoStep $(PORT)")
+}
+
+record(bo, "$(P)$(R)AutoStep-Sel") {
+  field(DESC, "Enable/Disable automatic step size state")
+  field(DTYP, "stream")
+  field(ZNAM, "OFF")
+  field(ONAM, "ON")
+  field(OUT, "@rsfsl.proto outAutoStep($1) $(PORT)")
+  field(FLNK, "$(P)$(R)AutoStep-Sts")
 }
 
 # Frequency Span
@@ -1733,7 +1800,7 @@ record(ai, "$(P)$(R)MarkCount-Mon") {
 record(waveform, "$(P)$(R)Trace-Mon") {
   field(DESC, "Get trace waveform")
   field(SCAN, ".01 second")
-  field(NELM, "8001")
+  field(NELM, "32001")
   field(FTVL, "FLOAT")
   field(DTYP, "stream")
   field(INP, "@rsfsl.proto monTrace $(PORT)")

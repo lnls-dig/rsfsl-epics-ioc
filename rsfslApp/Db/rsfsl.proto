@@ -50,7 +50,7 @@ InTerminator = 10;
 ExtraInput = Error;
 MaxInput = 576018;
 WriteTimeout = ${GLOBAL_TIMEOUT};
-ReadTimeout = 10;
+ReadTimeout = ${GLOBAL_TIMEOUT};
 ReplyTimeout = ${GLOBAL_TIMEOUT};
 Separator = ",";
 #
@@ -159,6 +159,45 @@ inFrqCent {
 outFrqCent {
     out "SENS:FREQ:CENT %f";
     @init { inFrqCent; };
+}
+
+######################################################################
+# Frequency Step
+
+inFreqStep {
+    out "SENS:FREQ:CENT:STEP?";
+    in "%f";
+}
+
+outFreqStep {
+    out "SENS:FREQ:CENT:STEP %f";
+    @init { inFreqStep; };
+}
+
+######################################################################
+# Frequency Step Link
+
+inStepLink {
+    out "SENS:FREQ:CENT:STEP:LINK?";
+    in "%s";
+}
+
+outStepLink {
+    out "SENS:FREQ:CENT:STEP:LINK %{SPAN|RBW|OFF}";
+    @init { inStepLink; };
+}
+
+######################################################################
+# Enable/Disable Auto Frequency Step (step coupled to span)
+
+inAutoStep {
+    out "SENS:FREQ:CENT:STEP:AUTO?";
+    in "%i";
+}
+
+outAutoStep {
+    out "SENS:FREQ:CENT:STEP:AUTO %{OFF|ON}";
+    @init { inAutoStep; };
 }
 
 ######################################################################
@@ -728,9 +767,7 @@ monMarkCount {
 # Data Trace (one waveform per sweep, retrieves level information)
 
 monTrace {
-#    out "INIT;*WAI";
     out "TRAC? TRACE1";
-#    out "*WAI";
     in "%f";
 }
 
