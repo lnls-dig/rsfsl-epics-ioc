@@ -364,35 +364,6 @@ record(fanout, "$(P)$(R)FSpanFout") {
   field(SELM, "All")
 }
 
-# Frequency Array (for espectrogram) and calculated step frequency
-# The frequency step is span/sweep_points
-
-record(calcout, "$(P)$(R)CalcStep") {
-  field(DESC, "Calculate the frequency step")
-  field(INPA, "$(P)$(R)SwePts-RB")
-  field(INPB, "$(P)$(R)FreqSpan-RB")
-  field(CALC, "B/(A-1)")
-  field(OUT, "")
-  field(FLNK, "")
-}
-
-#record(waveform, "$(P)$(R)") {
-#  field(DESC, "Set the frequency value for each sweep point")
-#  field()
-#}
-#####################################################################
-#record(, "$(P)$(R)FreqArray") {
-#  field(DESC, "Set the frequency for each sweep point")
-#  field(SVL, "@rsfsl.proto inFrqStart $(PORT)")
-#  field(NELM, "200")
-#  field(ULIM, "$(P)$(R)FreqStop-RB")
-#  field(LLIM, "$(P)$(R)FreqStart-RB")
-#}
-#Record "DIG:RSFSL:FreqArray" is of unknown type "histogram"
-#Error at or before ")" in file "../../rsfslApp/Db/rsfsl.db" line 380
-#Error: syntax error
-#####################################################################
-
 # Start Frequency
 
 record(ai, "$(P)$(R)FreqStart-RB") {
@@ -1689,7 +1660,7 @@ record(bo, "$(P)$(R)EnblSpec-Sel") {
 # Enable/Disable Delete of Previous Measurement (SPECM, Opt. K14)
 
 record(bi, "$(P)$(R)EnblDelPrevMeas-Sts") {
-  field(DESC, "Get if the previous measurement is deleted")
+  field(DESC, "Get previous measurement deletion state")
   field(DTYP, "stream")
   field(PINI, "YES")
   field(ZNAM, "OFF")
@@ -1698,12 +1669,60 @@ record(bi, "$(P)$(R)EnblDelPrevMeas-Sts") {
 } 
   
 record(bo, "$(P)$(R)EnblDelPrevMeas-Sel") {
-  field(DESC, "Set if the previous measurement is deleted")
+  field(DESC, "Set previous measurement deletion state")
   field(DTYP, "stream")
   field(ZNAM, "OFF")
   field(ONAM, "ON")
   field(OUT, "@rsfsl.proto outEnblDelMeas($1) $(PORT)")
   field(FLNK,"$(P)$(R)EnblDelPrevMeas-Sts")
+}
+
+# Number of Recorded Frames in Single Sweep Mode (SPECM, Opt. K14)
+
+record(ai, "$(P)$(R)SpecFrameCount-RB") {
+  field(DESC, "Get number of recorded frames")
+  field(PINI, "YES")
+  field(DTYP, "stream")
+  field(INP, "@rsfsl.proto inSpecFrameCount $(PORT)")
+}
+
+record(ao, "$(P)$(R)SpecFrameCount-SP") {
+  field(DESC, "Set number of frames to be recorded")
+  field(DTYP, "stream")
+  field(OUT, "@rsfsl.proto outSpecFrameCount(1) $(PORT)")
+  field(FLNK,"$(P)$(R)SpecFrameCount-RB")
+}
+
+# Frame Selection (SPECM, Opt. K14)
+
+record(ai, "$(P)$(R)SpecFrame-RB") {
+  field(DESC, "Get frame number to be acquired")
+  field(PINI, "YES")
+  field(DTYP, "stream")
+  field(INP, "@rsfsl.proto inSpecFrame $(PORT)")
+}
+
+record(ao, "$(P)$(R)SpecFrame-SP") {
+  field(DESC, "Set the frame number to be acquired")
+  field(DTYP, "stream")
+  field(OUT, "@rsfsl.proto outSpecFrame(1) $(PORT)")
+  field(FLNK,"$(P)$(R)SpecFrame-RB")
+}
+
+# History Depth (SPECM, Opt. K14)
+
+record(ai, "$(P)$(R)SpecBuffSize-RB") {
+  field(DESC, "Get the buffer size")
+  field(PINI, "YES")
+  field(DTYP, "stream")
+  field(INP, "@rsfsl.proto inSpecBuffSize $(PORT)")
+}
+
+record(ao, "$(P)$(R)SpecBuffSize-SP") {
+  field(DESC, "Set the buffer size")
+  field(DTYP, "stream")
+  field(OUT, "@rsfsl.proto outSpecBuffSize(1) $(PORT)")
+  field(FLNK,"$(P)$(R)SpecBuffSize-RB")
 }
 
 ######################################################################
@@ -1855,6 +1874,19 @@ record(waveform, "$(P)$(R)Trace-Mon") {
   field(DTYP, "stream")
   field(INP, "@rsfsl.proto monTrace $(PORT)")
 
+}
+
+# Frequency Array
+
+record(acalcout, "$(P)$(R)FreqArray-Mon") {
+  field(DESC, "Set the frequency for each sweep point")
+  field(PINI, "1")
+  field(PREC, "3")
+  field(NELM, "32001")
+  field(INPA, "$(P)$(R)FreqStart-RB")
+  field(INPB, "$(P)$(R)FreqStop-RB")
+  field(INPC, "$(P)$(R)SwePts-RB")
+  field(CALC, "IX*(B-A)/(C-1)+A")
 }
 
 ######################################################################
