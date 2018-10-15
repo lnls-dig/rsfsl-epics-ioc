@@ -121,6 +121,7 @@ record(ai, "$(P)$(R)SwePts-RB") {
   field(ADEL, "-1")
   field(EGU, "points")
   field(INP, "@rsfsl.proto inSwePts $(PORT)")
+  field(FLNK, "$(P)$(R)FreqArray-Mon")
 }
 
 record(ao, "$(P)$(R)SwePts-SP") {
@@ -130,7 +131,7 @@ record(ao, "$(P)$(R)SwePts-SP") {
   field(DRVL, "101")
   field(EGU, "points")
   field(OUT, "@rsfsl.proto outSwePts($1) $(PORT)")
-  field(FLNK, "$(P)$(R)SweFout")
+  field(FLNK, "$(P)$(R)SwePts-RB")
 }
 
 # Sweep Time
@@ -144,6 +145,7 @@ record(ai, "$(P)$(R)SweTime-RB") {
   field(ADEL, "-1")
   field(EGU, "s")
   field(INP, "@rsfsl.proto inSweTime $(PORT)")
+  field(FLNK, "$(P)$(R)SweTimeFout")
 }
 
 record(ao, "$(P)$(R)SweTime-SP") {
@@ -152,7 +154,15 @@ record(ao, "$(P)$(R)SweTime-SP") {
   field(PREC, "3")
   field(EGU, "s")
   field(OUT, "@rsfsl.proto outSweTime($1) $(PORT)")
-  field(FLNK, "$(P)$(R)SweFout")
+  field(FLNK, "$(P)$(R)SweTime-RB")
+}
+
+record(fanout, "$(P)$(R)SweTimeFout") {
+  field(LNK1, "$(P)$(R)Rbw-Sts")
+  field(LNK2, "$(P)$(R)Vbw-Sts")
+  field(LNK3, "$(P)$(R)EnblSweTimeAuto-Sts")
+  field(LNK4, "$(P)$(R)EnblVbwAuto-Sts")
+  field(SELM, "All")
 }
 
 # Enable/Disable automatic coupling of the sweep time to the
@@ -165,6 +175,7 @@ record(bi, "$(P)$(R)EnblSweTimeAuto-Sts") {
   field(ZNAM, "OFF")
   field(ONAM, "ON")
   field(INP, "@rsfsl.proto inEnblSweTimeAuto $(PORT)")
+  field(FLNK, "$(P)$(R)SweTime-RB")
 }
 
 record(bo, "$(P)$(R)EnblSweTimeAuto-Sel") {
@@ -173,27 +184,7 @@ record(bo, "$(P)$(R)EnblSweTimeAuto-Sel") {
   field(ZNAM, "OFF")
   field(ONAM, "ON")
   field(OUT, "@rsfsl.proto outEnblSweTimeAuto($1) $(PORT)")
-  field(FLNK,"$(P)$(R)SweFout")
-}
-
-# Sweep Fanout
-
-record(fanout, "$(P)$(R)SweFout") {
-  field(DESC, "Sweep Fanout")
-  field(LNK1, "$(P)$(R)SwePts-RB")
-  field(LNK2, "$(P)$(R)SweTime-RB")
-  field(LNK3, "$(P)$(R)Rbw-Sts")
-  field(LNK4, "$(P)$(R)Vbw-Sts")
-  field(LNK5, "$(P)$(R)SweEnblFout")
-  field(SELM, "All")
-}
-
-record(fanout, "$(P)$(R)SweEnblFout") {
-  field(DESC, "Sweep Enable Fanout")
-  field(LNK1, "$(P)$(R)EnblContSwe-Sts")
-  field(LNK2, "$(P)$(R)EnblVbwAuto-Sts")
-  field(LNK3, "$(P)$(R)EnblSweTimeAuto-Sts")
-  field(SELM, "All")
+  field(FLNK,"$(P)$(R)EnblSweTimeAuto-Sts")
 }
 
 # Type of display and evaluation of trace
@@ -247,6 +238,7 @@ record(ai, "$(P)$(R)FreqCenter-RB") {
   field(ADEL, "-1")
   field(EGU, "Hz")
   field(INP, "@rsfsl.proto inFrqCent $(PORT)")
+  field(FLNK, "$(P)$(R)FCenterFout")
 }
 
 record(ao, "$(P)$(R)FreqCenter-SP") {
@@ -254,12 +246,12 @@ record(ao, "$(P)$(R)FreqCenter-SP") {
   field(DTYP, "stream")
   field(EGU, "Hz")
   field(OUT, "@rsfsl.proto outFrqCent($1) $(PORT)")
-  field(FLNK,"$(P)$(R)FCenterFout")
+  field(FLNK,"$(P)$(R)FreqCenter-RB")
 }
 
 record(fanout, "$(P)$(R)FCenterFout") {
-  field(LNK1, "$(P)$(R)FreqCenter-RB")
-  field(LNK2, "$(P)$(R)FreqSpan-RB")
+  field(LNK1, "$(P)$(R)FreqArray-Mon")
+  field(LNK2, "$(P)$(R)FreqSpan-RB")	#sometimes, changes in Center Frequency will also affect the Span
   field(LNK3, "$(P)$(R)FreqStart-RB")
   field(LNK4, "$(P)$(R)FreqStop-RB")
   field(LNK5, "$(P)$(R)SweTime-RB")
@@ -345,6 +337,7 @@ record(ai, "$(P)$(R)FreqSpan-RB") {
   field(ADEL, "-1")
   field(EGU, "Hz")
   field(INP, "@rsfsl.proto inFrqSpan $(PORT)")
+  field(FLNK, "$(P)$(R)FSpanFout")
 }
 
 record(ao, "$(P)$(R)FreqSpan-SP") {
@@ -352,15 +345,15 @@ record(ao, "$(P)$(R)FreqSpan-SP") {
   field(DTYP, "stream")
   field(EGU, "Hz")
   field(OUT, "@rsfsl.proto outFrqSpan($1) $(PORT)")
-  field(FLNK,"$(P)$(R)FSpanFout")
+  field(FLNK,"$(P)$(R)FreqSpan-RB")
 }
 
 record(fanout, "$(P)$(R)FSpanFout") {
-  field(LNK1, "$(P)$(R)FreqSpan-RB")
+  field(LNK1, "$(P)$(R)FreqArray-Mon")
   field(LNK2, "$(P)$(R)SweTime-RB")
   field(LNK3, "$(P)$(R)FreqStart-RB")
   field(LNK4, "$(P)$(R)FreqStop-RB")
-  field(LNK5, "$(P)$(R)FreqCenter-RB")
+  field(LNK5, "$(P)$(R)FreqCenter-RB")	#if the span is too big, it will affect the Center Frequency
   field(SELM, "All")
 }
 
@@ -375,6 +368,7 @@ record(ai, "$(P)$(R)FreqStart-RB") {
   field(ADEL, "-1")
   field(EGU, "Hz")
   field(INP, "@rsfsl.proto inFrqStart $(PORT)")
+  field(FLNK, "$(P)$(R)FStartFout")
 }
 
 record(ao, "$(P)$(R)FreqStart-SP") {
@@ -384,19 +378,18 @@ record(ao, "$(P)$(R)FreqStart-SP") {
   field(DRVL, "9000")
   field(EGU, "Hz")
   field(OUT, "@rsfsl.proto outFrqStart($1) $(PORT)")
-  field(FLNK,"$(P)$(R)FStartFout")
+  field(FLNK,"$(P)$(R)FreqStart-RB")
 }
 
 record(fanout, "$(P)$(R)FStartFout") {
-  field(LNK1, "$(P)$(R)FreqStart-RB")
+  field(LNK1, "$(P)$(R)FreqArray-Mon")
   field(LNK2, "$(P)$(R)FreqStop-RB")
   field(LNK3, "$(P)$(R)FreqSpan-RB")
   field(LNK4, "$(P)$(R)FreqCenter-RB")
-  field(LNK5, "$(P)$(R)SwePts-RB")
-  field(LNK6, "$(P)$(R)SweTime-RB")
+  field(LNK5, "$(P)$(R)SweTime-RB")
   field(SELM, "All")
-
 }
+
 # Stop Frequency
 
 record(ai, "$(P)$(R)FreqStop-RB") {
@@ -408,6 +401,7 @@ record(ai, "$(P)$(R)FreqStop-RB") {
   field(ADEL, "-1")
   field(EGU, "Hz")
   field(INP, "@rsfsl.proto inFrqStop $(PORT)")
+  field(FLNK, "$(P)$(R)FStopFout")
 }
 
 record(ao, "$(P)$(R)FreqStop-SP") {
@@ -417,16 +411,15 @@ record(ao, "$(P)$(R)FreqStop-SP") {
   field(DRVL, "9000")
   field(EGU, "Hz")
   field(OUT, "@rsfsl.proto outFrqStop($1) $(PORT)")
-  field(FLNK,"$(P)$(R)FStopFout")
+  field(FLNK,"$(P)$(R)FreqStop-RB")
 }
 
 record(fanout, "$(P)$(R)FStopFout") {
-  field(LNK1, "$(P)$(R)FreqStop-RB")
+  field(LNK1, "$(P)$(R)FreqArray-Mon")
   field(LNK2, "$(P)$(R)FreqStart-RB")
   field(LNK3, "$(P)$(R)FreqSpan-RB")
   field(LNK4, "$(P)$(R)FreqCenter-RB")
-  field(LNK5, "$(P)$(R)SwePts-RB")
-  field(LNK6, "$(P)$(R)SweTime-RB")
+  field(LNK5, "$(P)$(R)SweTime-RB")
   field(SELM, "All")
 }
 
@@ -463,6 +456,7 @@ record(mbbi, "$(P)$(R)Rbw-Sts") {
   field(TVST, "10 MHz")
   field(TVVL, "10000000")
   field(INP, "@rsfsl.proto inRbw $(PORT)")
+  field(FLNK, "$(P)$(R)RbwFout")
 }
 
 record(mbbo, "$(P)$(R)Rbw-Sel") {
@@ -495,7 +489,14 @@ record(mbbo, "$(P)$(R)Rbw-Sel") {
   field(TVST, "10 MHz")
   field(TVVL, "10000000")
   field(OUT, "@rsfsl.proto outRbw(1) $(PORT)")
-  field(FLNK, "$(P)$(R)SweFout")
+  field(FLNK, "$(P)$(R)Rbw-Sts")
+}
+
+record(fanout, "$(P)$(R)RbwFout"){
+  field(LNK1, "$(P)$(R)SweTime-RB")
+  field(LNK2, "$(P)$(R)Vbw-Sts")
+  field(LNK3, "$(P)$(R)EnblVbwAuto-Sts")
+  field(SELM, "All")
 }
 
 # Video Bandwidth
@@ -535,6 +536,7 @@ record(mbbi, "$(P)$(R)Vbw-Sts") {
   field(FTST, "10 MHz")
   field(FTVL, "10000000")
   field(INP, "@rsfsl.proto inVbw $(PORT)")
+  field(FLNK, "$(P)$(R)VbwFout")
 }
 
 record(mbbo, "$(P)$(R)Vbw-Sel") {
@@ -570,8 +572,15 @@ record(mbbo, "$(P)$(R)Vbw-Sel") {
   field(TTVL, "3000000")
   field(FTST, "10 MHz")
   field(FTVL, "10000000")
- field(OUT, "@rsfsl.proto outVbw(1) $(PORT)")
-  field(FLNK, "$(P)$(R)SweFout")
+  field(OUT, "@rsfsl.proto outVbw(1) $(PORT)")
+  field(FLNK, "$(P)$(R)Vbw-Sts")
+}
+
+record(fanout, "$(P)$(R)VbwFout") {
+  field(LNK1, "$(P)$(R)SweTime-RB")
+  field(LNK2, "$(P)$(R)Rbw-Sts")
+  field(LNK3, "$(P)$(R)EnblVbwAuto-Sts")
+  field(SELM, "All")
 }
 
 # Enable/Disable automatic coupling of the video bandwidth to the
@@ -584,6 +593,7 @@ record(bi, "$(P)$(R)EnblVbwAuto-Sts") {
   field(ZNAM, "OFF")
   field(ONAM, "ON")
   field(INP, "@rsfsl.proto inEnblVbwAuto $(PORT)")
+  field(FLNK, "$(P)$(R)VbwAutoFout")
  }
 
 record(bo, "$(P)$(R)EnblVbwAuto-Sel") {
@@ -592,7 +602,14 @@ record(bo, "$(P)$(R)EnblVbwAuto-Sel") {
   field(ZNAM, "OFF")
   field(ONAM, "ON")
   field(OUT, "@rsfsl.proto outEnblVbwAuto($1) $(PORT)")
-  field(FLNK,"$(P)$(R)SweFout")
+  field(FLNK, "$(P)$(R)EnblVbwAuto-Sts")
+}
+
+record(fanout, "$(P)$(R)VbwAutoFout") {
+  field(LNK1, "$(P)$(R)Vbw-Sts")
+  field(LNK2, "$(P)$(R)Rbw-Sts")
+  field(LNK3, "$(P)$(R)SweTime-RB")
+  field(SELM, "All")
 }
 
 # Select Filter Type
@@ -702,11 +719,12 @@ record(mbbo, "$(P)$(R)DetecType-Sel") {
 
 record(bi, "$(P)$(R)EnblMark1-Sts") {
   field(DESC, "Get Marker1 State")
-  field(SCAN, ".2 second")
   field(DTYP, "stream")
+  field(PINI, "YES")
   field(ZNAM, "OFF")
   field(ONAM, "ON")
   field(INP, "@rsfsl.proto inEnblMark1 $(PORT)")
+  field(FLNK, "$(P)$(R)MarkStateFout")
 }
 
 record(bo, "$(P)$(R)EnblMark1-Sel") {
@@ -720,11 +738,12 @@ record(bo, "$(P)$(R)EnblMark1-Sel") {
 
 record(bi, "$(P)$(R)EnblMark2-Sts") {
   field(DESC, "Get Marker2 State")
-  field(SCAN, ".2 second")
   field(DTYP, "stream")
+  field(PINI, "YES")
   field(ZNAM, "OFF")
   field(ONAM, "ON")
   field(INP, "@rsfsl.proto inEnblMark2 $(PORT)")
+  field(FLNK, "$(P)$(R)MarkStateFout")
 }
 
 record(bo, "$(P)$(R)EnblMark2-Sel") {
@@ -735,16 +754,17 @@ record(bo, "$(P)$(R)EnblMark2-Sel") {
   field(ZNAM, "OFF")
   field(ONAM, "ON")
   field(OUT, "@rsfsl.proto outEnblMark2($1) $(PORT)")
-  field(FLNK,"$(P)$(R)EnblMark1-Sts")
+  field(FLNK,"$(P)$(R)EnblMark2-Sts")
 }
 
 record(bi, "$(P)$(R)EnblMark3-Sts") {
   field(DESC, "Get Marker3 State")
-  field(SCAN, ".2 second")
   field(DTYP, "stream")
+  field(PINI, "YES")
   field(ZNAM, "OFF")
   field(ONAM, "ON")
   field(INP, "@rsfsl.proto inEnblMark3 $(PORT)")
+  field(FLNK, "$(P)$(R)MarkStateFout")
 }
 
 record(bo, "$(P)$(R)EnblMark3-Sel") {
@@ -753,16 +773,17 @@ record(bo, "$(P)$(R)EnblMark3-Sel") {
   field(ZNAM, "OFF")
   field(ONAM, "ON")
   field(OUT, "@rsfsl.proto outEnblMark3($1) $(PORT)")
-  field(FLNK,"$(P)$(R)EnblMark1-Sts")
+  field(FLNK,"$(P)$(R)EnblMark3-Sts")
 }
 
 record(bi, "$(P)$(R)EnblMark4-Sts") {
   field(DESC, "Get Marker4 State")
-  field(SCAN, ".2 second")
   field(DTYP, "stream")
+  field(PINI, "YES")
   field(ZNAM, "OFF")
   field(ONAM, "ON")
   field(INP, "@rsfsl.proto inEnblMark4 $(PORT)")
+  field(FLNK, "$(P)$(R)MarkStateFout")
 }
 
 record(bo, "$(P)$(R)EnblMark4-Sel") {
@@ -771,7 +792,14 @@ record(bo, "$(P)$(R)EnblMark4-Sel") {
   field(ZNAM, "OFF")
   field(ONAM, "ON")
   field(OUT, "@rsfsl.proto outEnblMark4($1) $(PORT)")
-  field(FLNK,"$(P)$(R)EnblMark1-Sts")
+  field(FLNK,"$(P)$(R)EnblMark4-Sts")
+}
+
+record(fanout, "$(P)$(R)MarkStateFout") {
+  field(LNK1, "$(P)$(R)EnblMark1-Sts")
+  field(LNK1, "$(P)$(R)EnblMark2-Sts")
+  field(LNK1, "$(P)$(R)EnblMark3-Sts")
+  field(LNK1, "$(P)$(R)EnblMark4-Sts")
 }
 
 # Markers X Values
@@ -1435,7 +1463,7 @@ record(bo, "$(P)$(R)EnblOutp-Sel") {
   field(ZNAM, "OFF")
   field(ONAM, "ON")
   field(OUT, "@rsfsl.proto outEnblOut($1) $(PORT)")
-  field(FLNK,"$(P)$(R)OutputFout")
+  field(FLNK,"$(P)$(R)EnblOutp-Sts")
 }
 
 # Input Attenuator Value
@@ -1466,6 +1494,7 @@ record(mbbi, "$(P)$(R)AttIn-Sts") {
   field(TEST, "50 dB")
   field(TEVL, "50")
   field(INP, "@rsfsl.proto inAttIn $(PORT)")
+  field(FLNK, "$(P)$(R)RefLvl-RB")
 }
 
 record(mbbo, "$(P)$(R)AttIn-Sel") {
@@ -1493,7 +1522,7 @@ record(mbbo, "$(P)$(R)AttIn-Sel") {
   field(TEST, "50 dB")
   field(TEVL, "50")
   field(OUT, "@rsfsl.proto outAttIn(1) $(PORT)")
-  field(FLNK, "$(P)$(R)AttFout")
+  field(FLNK, "$(P)$(R)AttIn-Sts")
 }
 
 # Enable/Disable automatic coupling of the input attenuation to the
@@ -1506,6 +1535,7 @@ record(bi, "$(P)$(R)EnblAttAuto-Sts") {
   field(ZNAM, "OFF")
   field(ONAM, "ON")
   field(INP, "@rsfsl.proto inEnblAttAuto $(PORT)")
+  field(FLNK, "$(P)$(R)RefLvl-RB")
 }
 
 record(bo, "$(P)$(R)EnblAttAuto-Sel") {
@@ -1514,16 +1544,7 @@ record(bo, "$(P)$(R)EnblAttAuto-Sel") {
   field(ZNAM, "OFF")
   field(ONAM, "ON")
   field(OUT, "@rsfsl.proto outEnblAttAuto($1) $(PORT)")
-  field(FLNK,"$(P)$(R)AttFout")
-}
-
-# Input Attenuator Fanout
-
-record(fanout, "$(P)$(R)AttFout") {
-  field(LNK1, "$(P)$(R)EnblAttAuto-Sts")
-  field(LNK2, "$(P)$(R)AttIn-Sts")
-  field(LNK3, "$(P)$(R)RefLvl-RB")
-  field(SELM, "All")
+  field(FLNK,"$(P)$(R)EnblAttAuto-Sts")
 }
 
 ## Enable/Disable Input Preamplifier - Only Available on R&S FSL-B22
@@ -1595,6 +1616,7 @@ record(ai, "$(P)$(R)LvlOut-RB") {
   field(PREC, "3")
   field(EGU, "dBm")
   field(INP, "@rsfsl.proto inLvlOut $(PORT)")
+  field(FLNK, "$(P)$(R)RefLvl-RB")
 }
 
 record(ao, "$(P)$(R)LvlOut-SP") {
@@ -1617,6 +1639,7 @@ record(ai, "$(P)$(R)LvlOutOffset-RB") {
   field(PREC, "1")
   field(EGU, "dB")
   field(INP, "@rsfsl.proto inLvlOutOffset $(PORT)")
+  field(FLNK, "$(P)$(R)LvlOut-RB")
 }
 
 record(ao, "$(P)$(R)LvlOutOffset-SP") {
@@ -1627,14 +1650,7 @@ record(ao, "$(P)$(R)LvlOutOffset-SP") {
   field(DRVL, "-200")
   field(EGU, "dB")
   field(OUT, "@rsfsl.proto outLvlOutOffset(1) $(PORT)")
-  field(FLNK,"$(P)$(R)OutputFout")
-}
-
-record(fanout, "$(P)$(R)OutputFout") {
-  field(LNK1, "$(P)$(R)LvlOut-RB")
-  field(LNK2, "$(P)$(R)LvlOutOffset-RB")
-  field(LNK3, "$(P)$(R)EnblOutp-Sts")
-  field(SELM, "All")
+  field(FLNK,"$(P)$(R)LvlOutOffset-RB")
 }
 
 # Enable/Disable Spectrogram Measurement (SPECM, Option K14)
@@ -1723,6 +1739,16 @@ record(ao, "$(P)$(R)SpecBuffSize-SP") {
   field(DTYP, "stream")
   field(OUT, "@rsfsl.proto outSpecBuffSize(1) $(PORT)")
   field(FLNK,"$(P)$(R)SpecBuffSize-RB")
+}
+
+# Get Spectrum
+# Enable/Disable spectrum acquisition
+  
+record(bo, "$(P)$(R)GetSpectrum-Sel") {
+  field(DESC, "Get Spectrum")
+  field(ZNAM, "OFF")
+  field(ONAM, "ON")
+  field(FLNK,"$(P)$(R)FreqArray-Mon")
 }
 
 ######################################################################
@@ -1865,10 +1891,13 @@ record(ai, "$(P)$(R)MarkCount-Mon") {
 }
 
 # Read trace (waveform in single sweep mode)
+# Each element of the array represents the level, in dBm
 
 record(waveform, "$(P)$(R)Trace-Mon") {
   field(DESC, "Get trace waveform")
   field(SCAN, ".01 second")
+  field(SDIS, "$(P)$(R)GetSpectrum-Sel.RVAL")
+  field(DISV, "0")
   field(NELM, "32001")
   field(FTVL, "FLOAT")
   field(DTYP, "stream")
@@ -1880,9 +1909,9 @@ record(waveform, "$(P)$(R)Trace-Mon") {
 
 record(acalcout, "$(P)$(R)FreqArray-Mon") {
   field(DESC, "Set the frequency for each sweep point")
-  field(PINI, "1")
   field(PREC, "3")
   field(NELM, "32001")
+  field(EGU, "Hz")
   field(INPA, "$(P)$(R)FreqStart-RB")
   field(INPB, "$(P)$(R)FreqStop-RB")
   field(INPC, "$(P)$(R)SwePts-RB")
