@@ -185,7 +185,7 @@ record(bo, "$(P)$(R)EnblSweTimeAuto-Sel") {
   field(ONAM, "ON")
   field(OUT, "@rsfsl.proto outEnblSweTimeAuto($1) $(PORT)")
   field(FLNK,"$(P)$(R)EnblSweTimeAuto-Sts")
-}
+} 
 
 # Type of display and evaluation of trace
 
@@ -1673,6 +1673,26 @@ record(bo, "$(P)$(R)EnblSpec-Sel") {
   field(FLNK,"$(P)$(R)EnblSpec-Sts")
 }
 
+# Enable/Disable Continuous Sweep Measurement (SPECM, Option K14)
+
+record(bi, "$(P)$(R)EnblSweCont-Sts") {
+  field(DESC, "Get continuous sweep measurement state")
+  field(DTYP, "stream")
+  field(PINI, "YES")
+  field(ZNAM, "OFF")
+  field(ONAM, "ON")
+  field(INP, "@rsfsl.proto inEnblSweCont $(PORT)")
+}
+
+record(bo, "$(P)$(R)EnblSweCont-Sel") {
+  field(DESC, "Enable/Disable continuous sweep meas.")
+  field(DTYP, "stream")
+  field(ZNAM, "OFF")
+  field(ONAM, "ON")
+  field(OUT, "@rsfsl.proto outEnblSweCont($1) $(PORT)")
+  field(FLNK,"$(P)$(R)EnblSweCont-Sts")
+}
+
 # Enable/Disable Delete of Previous Measurement (SPECM, Opt. K14)
 
 record(bi, "$(P)$(R)EnblDelPrevMeas-Sts") {
@@ -1749,6 +1769,25 @@ record(bo, "$(P)$(R)GetSpectrum-Sel") {
   field(ZNAM, "OFF")
   field(ONAM, "ON")
   field(FLNK,"$(P)$(R)FreqArray-Mon")
+}
+
+# Enable/Disable Spectrogram acquisition
+
+record(bo, "$(P)$(R)EnblSpectrogram-Sel") {
+  field(DESC, "Get Spectrogram")
+  field(ZNAM, "OFF")
+  field(ONAM, "ON")
+  field(FLNK,"$(P)$(R)FreqArray-Mon")
+}
+
+# Get Spectrogram from FSL
+# The frames are stored in the FSL memory and retrieved all together
+
+record(bo, "$(P)$(R)GetFSLSpec-Sel") {
+  field(DESC, "Get Spectrogram from FSL")
+  field(ZNAM, "OFF")
+  field(ONAM, "ON")
+  field(FLNK, "$(P)$(R)FSLSpecArray-Mon")
 }
 
 ######################################################################
@@ -1916,6 +1955,43 @@ record(acalcout, "$(P)$(R)FreqArray-Mon") {
   field(INPB, "$(P)$(R)FreqStop-RB")
   field(INPC, "$(P)$(R)SwePts-RB")
   field(CALC, "IX*(B-A)/(C-1)+A")
+}
+
+# Spectrogram Array (created from level acquisition)
+
+record(waveform, "$(P)$(R)Spec-Mon") {
+  field(DESC, "Get trace waveform")
+  field(SCAN, ".1 second")
+  field(SDIS, "$(P)$(R)EnblSpectrogram-Sel.RVAL")
+  field(DISV, "0")
+  field(NELM, "32001")
+  field(FTVL, "FLOAT")
+  field(DTYP, "stream")
+  field(INP, "@rsfsl.proto monSpec $(PORT)")
+  field(FLNK, "$(P)$(R)SpecArray-Mon")
+}
+
+record(acalcout, "$(P)$(R)SpecArray-Mon") {
+  field(DESC, "Get the spectrogram")
+  field(PREC, "3")
+  field(NELM, "32001")
+#  field(EGU, "dBm")
+  field(INPA, "$(P)$(R)SwePts-RB")
+  field(INAA, "$(P)$(R)Spec-Mon")
+  field(CALC, "CAT(AA[0,(A-1)],AVAL[0,(IX*A)-1])")
+}
+
+# Spectrogram Array Acquisition (SPECM, Option K14)
+# Directly obtained from the FSL
+
+record(waveform, "$(P)$(R)FSLSpecArray-Mon") {
+  field(DESC, "Get the whole stored spectrogram")
+  field(SDIS, "$(P)$(R)GetFSLSpec-Sel")
+  field(DISV, "0")
+  field(NELM, "501")
+  field(FTVL, "FLOAT")
+  field(DTYP, "stream")
+  field(INP, "@rsfsl.proto monSpec $(PORT)")
 }
 
 ######################################################################

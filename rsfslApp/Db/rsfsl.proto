@@ -712,6 +712,18 @@ outEnblSpec {
 }
 
 ######################################################################
+# Enable/Disable continuous sweep measurement (SPECM, option K14)
+
+inEnblSweCont {
+    out "INIT:CONT?";
+    in "%i";
+}
+
+outEnblSweCont {
+    out "INIT:CONT %{ON|OFF}";
+}
+
+######################################################################
 # Enable/Disable delete of previous measurement
 
 inEnblDelMeas {
@@ -824,9 +836,17 @@ monMarkCount {
 }
 
 ######################################################################
-# Data Trace (one waveform per sweep, retrieves level information)
+# Trace Data (one waveform per sweep, retrieves level information)
 
 monTrace {
+    out "TRAC? TRACE1";
+    in "%f";
+}
+
+######################################################################
+# Level Data for Spectrogram Acquisition
+
+monSpec {
     out "TRAC? TRACE1";
     in "%f";
 }
