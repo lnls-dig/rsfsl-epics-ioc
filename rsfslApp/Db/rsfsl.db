@@ -1156,6 +1156,7 @@ record(fanout, "$(P)$(R)MarkLimitFout") {
 record(bi, "$(P)$(R)EnblDMark1-Sts") {
   field(DESC, "Get Delta Marker1 State")
   field(DTYP, "stream")
+  field(PINI, "YES")
   field(ZNAM, "OFF")
   field(ONAM, "ON")
   field(INP, "@rsfsl.proto inEnblDMark1 $(PORT)")
@@ -1174,6 +1175,7 @@ record(bo, "$(P)$(R)EnblDMark1-Sel") {
 record(bi, "$(P)$(R)EnblDMark2-Sts") {
   field(DESC, "Get Delta Marker2 State")
   field(DTYP, "stream")
+  field(PINI, "YES")
   field(ZNAM, "OFF")
   field(ONAM, "ON")
   field(INP, "@rsfsl.proto inEnblDMark2 $(PORT)")
@@ -1192,6 +1194,7 @@ record(bo, "$(P)$(R)EnblDMark2-Sel") {
 record(bi, "$(P)$(R)EnblDMark3-Sts") {
   field(DESC, "Get Delta Marker3 State")
   field(DTYP, "stream")
+  field(PINI, "YES")
   field(ZNAM, "OFF")
   field(ONAM, "ON")
   field(INP, "@rsfsl.proto inEnblDMark3 $(PORT)")
@@ -1210,6 +1213,7 @@ record(bo, "$(P)$(R)EnblDMark3-Sel") {
 record(bi, "$(P)$(R)EnblDMark4-Sts") {
   field(DESC, "Get Delta Marker4 State")
   field(DTYP, "stream")
+  field(PINI, "YES")
   field(ZNAM, "OFF")
   field(ONAM, "ON")
   field(INP, "@rsfsl.proto inEnblDMark4 $(PORT)")
