@@ -1234,6 +1234,7 @@ record(fanout, "$(P)$(R)MarkStateFout") {
   field(LNK2, "$(P)$(R)EnblMark2-Sts")
   field(LNK3, "$(P)$(R)EnblMark3-Sts")
   field(LNK4, "$(P)$(R)EnblMark4-Sts")
+  field(SELM, "All")
 }
 
 # Delta Markers X Values
@@ -1889,57 +1890,45 @@ record(bo, "$(P)$(R)Rst-Cmd") {
   field(ONAM, "1")
   field(HIGH, "1")
   field(OUT, "@rsfsl.proto cmdRst $(PORT)")
-  field(FLNK, "$(P)$(R)StatusFout1")
+  field(FLNK, "$(P)$(R)RstFout1")
 }
 
-# Status Reset Fanouts
-
-record(fanout, "$(P)$(R)StatusFout1") {
-  field(LNK1, "$(P)$(R)RefLvl-RB")
-  field(LNK2, "$(P)$(R)RefOff-RB")
-  field(LNK3, "$(P)$(R)EnblContSwe-Sts")
-  field(LNK4, "$(P)$(R)Rbw-Sts")
-  field(LNK5, "$(P)$(R)Vbw-Sts")
-  field(LNK6, "$(P)$(R)StatusFout2")
-  field(SELM, "All")
-}
-
-record(fanout, "$(P)$(R)StatusFout2") {
-  field(LNK1, "$(P)$(R)EnblVbwAuto-Sts")
-  field(LNK2, "$(P)$(R)SwePts-RB")
-  field(LNK3, "$(P)$(R)SweTime-RB")
-  field(LNK4, "$(P)$(R)EnblSweTimeAuto-Sts")
-  field(LNK5, "$(P)$(R)TraceMode-Sts")
-  field(LNK6, "$(P)$(R)StatusFout3")
-  field(SELM, "All")
-}
-
-record(fanout, "$(P)$(R)StatusFout3") {
+record(fanout, "$(P)$(R)RstFout1") {
   field(LNK1, "$(P)$(R)FreqCenter-RB")
-  field(LNK2, "$(P)$(R)FreqSpan-RB")
-  field(LNK3, "$(P)$(R)FreqStart-RB")
-  field(LNK4, "$(P)$(R)FreqStop-RB")
-  field(LNK5, "$(P)$(R)EnblMarkCount-Sts")
-  field(LNK6, "$(P)$(R)StatusFout4")
+  field(LNK2, "$(P)$(R)TraceMode-Sts")
+  field(LNK3, "$(P)$(R)LvlFout")
+  field(LNK4, "$(P)$(R)SwePts-RB")
+  field(LNK5, "$(P)$(R)DMarkStateFout")
+  field(LNK6, "$(P)$(R)RstFout2")
   field(SELM, "All")
 }
 
-record(fanout, "$(P)$(R)StatusFout4") {
-  field(LNK1, "$(P)$(R)MarkCount-Mon")
-  field(LNK2, "$(P)$(R)EnblMinAuto-Sts")
-  field(LNK3, "$(P)$(R)EnblMarkLimit-Sts")
-  field(LNK4, "$(P)$(R)EnblOutp-Sts")
+record(fanout, "$(P)$(R)RstFout2") {
+  field(LNK1, "$(P)$(R)MarkLimitFout")
+  field(LNK2, "$(P)$(R)LvlOut-RB")
+  field(LNK3, "$(P)$(R)LvlOutOffset-RB")
+#  field(LNK4, "$(P)$(R)EnblPreamp-Sts")	#PreAmp PV is commented
   field(LNK5, "$(P)$(R)AttIn-Sts")
-  field(LNK6, "$(P)$(R)StatusFout4")
+  field(LNK6, "$(P)$(R)RstFout3")
   field(SELM, "All")
 }
 
-record(fanout, "$(P)$(R)StatusFout5") {
+record(fanout, "$(P)$(R)RstFout3") {
   field(LNK1, "$(P)$(R)EnblAttAuto-Sts")
   field(LNK2, "$(P)$(R)ImpdIn-Sts")
   field(LNK3, "$(P)$(R)RoscSrc-Sts")
-  field(LNK4, "$(P)$(R)LvlOut-RB")
-  field(LNK5, "$(P)$(R)LvlOutOffset-RB")
+  field(LNK4, "$(P)$(R)EnblSpec-Sts")
+  field(LNK5, "$(P)$(R)EnblSweCont-Sts")
+  field(LNK6, "$(P)$(R)RstFout4")
+  field(SELM, "All")
+}
+
+record(fanout, "$(P)$(R)RstFout4") {
+  field(LNK1, "$(P)$(R)EnblMaxAuto1-Sts")
+  field(LNK2, "$(P)$(R)EnblMinAuto-Sts")
+  field(LNK3, "$(P)$(R)FiltType-Sts")
+  field(LNK4, "$(P)$(R)DetecType-Sts")
+  field(LNK5, "$(P)$(R)EnblContSwe-Sts")
   field(SELM, "All")
 }
 
@@ -2028,6 +2017,30 @@ record(bo, "$(P)$(R)MarkAOff-Cmd") {
   field(ONAM, "1")
   field(HIGH, "1")
   field(OUT, "@rsfsl.proto cmdMarkAOff($1) $(PORT)")
+  field(FLNK, "$(P)$(R)Calc2")
+}
+
+record(calcout, "$(P)$(R)Calc2") {
+  field(DESC, "Test MarkAOff command")
+  field(INPA, "$(P)$(R)MarkAOff-Cmd")
+  field(CALC, "A=1?0:1")
+  field(FLNK, "$(P)$(R)DataFout2")
+}
+
+record(dfanout, "$(P)$(R)DataFout2") {
+  field(DESC, "Disable Markers")
+  field(DOL, "$(P)$(R)Calc2.VAL")
+  field(OMSL, "closed_loop")		#defines that the value is retrieved from the link specified in DOL and placed into VAL
+  field(OUTA, "$(P)$(R)EnblMark1-Sts.RVAL")
+  field(OUTB, "$(P)$(R)EnblMark2-Sts.RVAL")
+  field(OUTC, "$(P)$(R)EnblMark3-Sts.RVAL")
+  field(OUTD, "$(P)$(R)EnblMark4-Sts.RVAL")
+  field(OUTD, "$(P)$(R)EnblDMark4-Sts.RVAL")
+  field(OUTD, "$(P)$(R)EnblDMark4-Sts.RVAL")
+  field(OUTD, "$(P)$(R)EnblDMark4-Sts.RVAL")
+  field(OUTD, "$(P)$(R)EnblDMark4-Sts.RVAL")
+  field(FLNK, "$(P)$(R)DMarkStateFout")
+  field(SELM, "All")
 }
 
 # Position the marker to the next smaller maximium value to the left
@@ -2652,7 +2665,7 @@ record(calcout, "$(P)$(R)Calc1") {
 }
 
 record(dfanout, "$(P)$(R)DataFout1") {
-  field(DESC, "Disable DMarkers X and Y values")
+  field(DESC, "Disable Delta Markers")
   field(DOL, "$(P)$(R)Calc1.VAL")
   field(OMSL, "closed_loop")		#defines that the value is retrieved from the link specified in DOL and placed into VAL
   field(OUTA, "$(P)$(R)EnblDMark1-Sts.RVAL")
@@ -2660,6 +2673,7 @@ record(dfanout, "$(P)$(R)DataFout1") {
   field(OUTC, "$(P)$(R)EnblDMark3-Sts.RVAL")
   field(OUTD, "$(P)$(R)EnblDMark4-Sts.RVAL")
   field(FLNK, "$(P)$(R)DMarkStateFout")
+  field(SELM, "All")
 }
 
 record(fanout, "$(P)$(R)DMarkStateFout") {
@@ -2668,6 +2682,7 @@ record(fanout, "$(P)$(R)DMarkStateFout") {
   field(LNK2, "$(P)$(R)EnblDMark2-Sts")
   field(LNK3, "$(P)$(R)EnblDMark3-Sts")
   field(LNK4, "$(P)$(R)EnblDMark4-Sts")
+  field(SELM, "All")
 }
 
 # Set Delta Marker to Min Peak on Trace (1-4)
@@ -2706,17 +2721,6 @@ record(bo, "$(P)$(R)DMarkMin4-Cmd") {
   field(ONAM, "1")
   field(HIGH, "1")
   field(OUT, "@rsfsl.proto cmdDMarkMin4($1) $(PORT)")
-}
-
-# Switch off all delta markers
-
-record(bo, "$(P)$(R)DMarkAOff-Cmd") {
-  field(DESC, "Switch off all delta markers")
-  field(DTYP, "stream")
-  field(ZNAM, "0")
-  field(ONAM, "1")
-  field(HIGH, "1")
-  field(OUT, "@rsfsl.proto cmdDMarkAOff($1) $(PORT)")
 }
 
 ## Initiate new measurement sequence in single sweep mode
@@ -2762,7 +2766,7 @@ record(bo, "$(P)$(R)DMarkAOff-Cmd") {
 #  field(OUT, "@rsfsl.proto cmdSpurEmisMeas($1) $(PORT)")
 #}
 
-# Clean Spectrogram and History Buffer
+# Clean Spectrogram and History Buffer (SPECM, K14 option)
 
 record(bo, "$(P)$(R)CleanSpec-Cmd") {
   field(DESC, "Clean spectrogram and buffer")
