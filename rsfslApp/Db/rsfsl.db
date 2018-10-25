@@ -1237,6 +1237,112 @@ record(fanout, "$(P)$(R)MarkStateFout") {
   field(SELM, "All")
 }
 
+# Enable/Disable Auto Max Peak Search for Delta Markers
+
+##### Maximum peak search for Dmarker1
+record(bo, "$(P)$(R)EnblDMaxAuto1-Sel") {
+  field(OUT, "$(P)$(R)OnOffDMark1-Sel.RVAL")
+  field(FLNK, "$(P)$(R)OnOffDMark1-Sel")
+}
+record(bo, "$(P)$(R)OnOffDMark1-Sel") {
+  field(DESC, "Place DMark1 on Max Peak")
+  field(SCAN, ".1 second")
+  field(DTYP, "stream")
+  field(ZNAM, "OFF")
+  field(ONAM, "ON")
+  field(OUT, "@rsfsl.proto outOnOffDM1($1) $(PORT)")
+  field(FLNK, "$(P)$(R)DynamicDX1-RB")
+}
+record(ai, "$(P)$(R)DynamicDX1-RB") {
+  field(DESC, "Get X value of the marker3")
+  field(DISV, "0")
+  field(SDIS, "$(P)$(R)EnblDMaxAuto1-Sel")
+  field(DTYP, "stream")
+  field(PREC, "3")
+  field(MDEL, "-1")
+  field(ADEL, "-1")
+  field(EGU, "Hz")
+  field(INP, "@rsfsl.proto inDMarkX1 $(PORT)")
+}
+
+##### Maximum peak search for Dmarker2
+record(bo, "$(P)$(R)EnblDMaxAuto2-Sel") {
+  field(OUT, "$(P)$(R)OnOffDMark2-Sel.RVAL")
+  field(FLNK, "$(P)$(R)OnOffDMark2-Sel")
+}
+record(bo, "$(P)$(R)OnOffDMark2-Sel") {
+  field(DESC, "Place DMark2 on Max Peak")
+  field(SCAN, ".1 second")
+  field(DTYP, "stream")
+  field(ZNAM, "OFF")
+  field(ONAM, "ON")
+  field(OUT, "@rsfsl.proto outOnOffDM2($1) $(PORT)")
+  field(FLNK, "$(P)$(R)DynamicDX2-RB")
+}
+record(ai, "$(P)$(R)DynamicDX2-RB") {
+  field(DESC, "Get X value of the marker2")
+  field(DISV, "0")
+  field(SDIS, "$(P)$(R)EnblDMaxAuto2-Sel")
+  field(DTYP, "stream")
+  field(PREC, "3")
+  field(MDEL, "-1")
+  field(ADEL, "-1")
+  field(EGU, "Hz")
+  field(INP, "@rsfsl.proto inDMarkX2 $(PORT)")
+}
+
+##### Maximum peak search for Dmarker3
+record(bo, "$(P)$(R)EnblDMaxAuto3-Sel") {
+  field(OUT, "$(P)$(R)OnOffDMark3-Sel.RVAL")
+  field(FLNK, "$(P)$(R)OnOffDMark3-Sel")
+}
+record(bo, "$(P)$(R)OnOffDMark3-Sel") {
+  field(DESC, "Place DMark3 on Max Peak")
+  field(SCAN, ".1 second")
+  field(DTYP, "stream")
+  field(ZNAM, "OFF")
+  field(ONAM, "ON")
+  field(OUT, "@rsfsl.proto outOnOffDM3($1) $(PORT)")
+  field(FLNK, "$(P)$(R)DynamicDX3-RB")
+}
+record(ai, "$(P)$(R)DynamicDX3-RB") {
+  field(DESC, "Get X value of the marker3")
+  field(DISV, "0")
+  field(SDIS, "$(P)$(R)EnblDMaxAuto3-Sel")
+  field(DTYP, "stream")
+  field(PREC, "3")
+  field(MDEL, "-1")
+  field(ADEL, "-1")
+  field(EGU, "Hz")
+  field(INP, "@rsfsl.proto inDMarkX3 $(PORT)")
+}
+
+##### Maximum peak search for Dmarker4
+record(bo, "$(P)$(R)EnblDMaxAuto4-Sel") {
+  field(OUT, "$(P)$(R)OnOffDMark4-Sel.RVAL")
+  field(FLNK, "$(P)$(R)OnOffDMark4-Sel")
+}
+record(bo, "$(P)$(R)OnOffDMark4-Sel") {
+  field(DESC, "Place DMark4 on Max Peak")
+  field(SCAN, ".1 second")
+  field(DTYP, "stream")
+  field(ZNAM, "OFF")
+  field(ONAM, "ON")
+  field(OUT, "@rsfsl.proto outOnOffDM4($1) $(PORT)")
+  field(FLNK, "$(P)$(R)DynamicDX4-RB")
+}
+record(ai, "$(P)$(R)DynamicDX4-RB") {
+  field(DESC, "Get X value of the marker3")
+  field(DISV, "0")
+  field(SDIS, "$(P)$(R)EnblDMaxAuto4-Sel")
+  field(DTYP, "stream")
+  field(PREC, "3")
+  field(MDEL, "-1")
+  field(ADEL, "-1")
+  field(EGU, "Hz")
+  field(INP, "@rsfsl.proto inDMarkX4 $(PORT)")
+}
+
 # Delta Markers X Values
 # The input records will only process when the respective Delta Marker
 # is ON or if a value is set to the Delta Marker (using the output xxx-SP PV)
@@ -2035,9 +2141,9 @@ record(dfanout, "$(P)$(R)DataFout2") {
   field(OUTB, "$(P)$(R)EnblMark2-Sts.RVAL")
   field(OUTC, "$(P)$(R)EnblMark3-Sts.RVAL")
   field(OUTD, "$(P)$(R)EnblMark4-Sts.RVAL")
-  field(OUTD, "$(P)$(R)EnblDMark4-Sts.RVAL")
-  field(OUTD, "$(P)$(R)EnblDMark4-Sts.RVAL")
-  field(OUTD, "$(P)$(R)EnblDMark4-Sts.RVAL")
+  field(OUTD, "$(P)$(R)EnblDMark1-Sts.RVAL")
+  field(OUTD, "$(P)$(R)EnblDMark2-Sts.RVAL")
+  field(OUTD, "$(P)$(R)EnblDMark3-Sts.RVAL")
   field(OUTD, "$(P)$(R)EnblDMark4-Sts.RVAL")
   field(FLNK, "$(P)$(R)DMarkStateFout")
   field(SELM, "All")

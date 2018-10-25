@@ -442,14 +442,24 @@ outEnblDMark1 {
     @init { inEnblDMark1; };
 }
 
+outOnOffDM1 {
+    out "CALC:DELT1:STAT %i";
+}
+
+
 inEnblDMark2 {
     out "CALC:DELT2:STAT?";
     in "%i";
 }
 
+
 outEnblDMark2 {
     out "CALC:DELT2:STAT %i";
     @init { inEnblDMark2; };
+}
+
+outOnOffDM2 {
+    out "CALC:DELT2:STAT %i";
 }
 
 inEnblDMark3 {
@@ -462,6 +472,10 @@ outEnblDMark3 {
     @init { inEnblDMark3; };
 }
 
+outOnOffDM3 {
+    out "CALC:DELT3:STAT %i";
+}
+
 inEnblDMark4 {
     out "CALC:DELT4:STAT?";
     in "%i";
@@ -470,6 +484,10 @@ inEnblDMark4 {
 outEnblDMark4 {
     out "CALC:DELT4:STAT %i";
     @init { inEnblDMark4; };
+}
+
+outOnOffDM4 {
+    out "CALC:DELT4:STAT %i";
 }
 
 ######################################################################
