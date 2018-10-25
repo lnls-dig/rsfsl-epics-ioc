@@ -10642,7 +10642,7 @@ $(pv_value)</tooltip>
       <show_scrollbar>true</show_scrollbar>
       <tooltip></tooltip>
       <transparent>true</transparent>
-      <visible>false</visible>
+      <visible>true</visible>
       <widget_type>Grouping Container</widget_type>
       <width>776</width>
       <wuid>7fb1a497:1634604385e:-6f15</wuid>
@@ -12379,7 +12379,7 @@ $(pv_value)</tooltip>
       <show_scrollbar>true</show_scrollbar>
       <tooltip></tooltip>
       <transparent>true</transparent>
-      <visible>true</visible>
+      <visible>false</visible>
       <widget_type>Grouping Container</widget_type>
       <width>776</width>
       <wuid>-28e41c55:1665515b836:-7b48</wuid>
@@ -12780,7 +12780,7 @@ $(pv_value)</tooltip>
       <include_parent_macros>true</include_parent_macros>
     </macros>
     <minimum_tab_height>10</minimum_tab_height>
-    <name>Tabbed Container_1</name>
+    <name>Settings Container</name>
     <rules />
     <scale_options>
       <width_scalable>true</width_scalable>
@@ -12914,7 +12914,7 @@ $(pv_value)</tooltip>
       <show_scrollbar>true</show_scrollbar>
       <tooltip></tooltip>
       <transparent>true</transparent>
-      <visible>true</visible>
+      <visible>false</visible>
       <widget_type>Grouping Container</widget_type>
       <width>697</width>
       <wuid>-5afe0710:163264b925c:-69a4</wuid>
@@ -14161,7 +14161,7 @@ $(pv_value)</tooltip>
       <show_scrollbar>true</show_scrollbar>
       <tooltip></tooltip>
       <transparent>true</transparent>
-      <visible>false</visible>
+      <visible>true</visible>
       <widget_type>Grouping Container</widget_type>
       <width>697</width>
       <wuid>-59f0c9c4:1668cc7b809:-7e60</wuid>
@@ -16549,77 +16549,15 @@ $(pv_value)</tooltip>
     </foreground_color>
     <height>25</height>
     <labels_from_pv>false</labels_from_pv>
-    <name>Action Button_10</name>
-    <off_color>
-      <color red="0" green="100" blue="0" />
-    </off_color>
-    <off_label>All Markers Off</off_label>
-    <on_color>
-      <color red="0" green="255" blue="0" />
-    </on_color>
-    <on_label>All Markers Off</on_label>
-    <password></password>
-    <push_action_index>1</push_action_index>
-    <pv_name>$(P)$(R)MarkAOff-Cmd</pv_name>
-    <pv_value />
-    <released_action_index>0</released_action_index>
-    <rules />
-    <scale_options>
-      <width_scalable>true</width_scalable>
-      <height_scalable>true</height_scalable>
-      <keep_wh_ratio>false</keep_wh_ratio>
-    </scale_options>
-    <scripts />
-    <show_boolean_label>true</show_boolean_label>
-    <show_confirm_dialog>0</show_confirm_dialog>
-    <show_led>false</show_led>
-    <square_button>true</square_button>
-    <toggle_button>false</toggle_button>
-    <tooltip>$(pv_name)
-$(pv_value)</tooltip>
-    <visible>true</visible>
-    <widget_type>Boolean Button</widget_type>
-    <width>150</width>
-    <wuid>-5afe0710:163264b925c:-6a5d</wuid>
-    <x>1129</x>
-    <y>304</y>
-  </widget>
-  <widget typeId="org.csstudio.opibuilder.widgets.BoolButton" version="1.0.0">
-    <actions hook="false" hook_all="false" />
-    <alarm_pulsing>false</alarm_pulsing>
-    <backcolor_alarm_sensitive>false</backcolor_alarm_sensitive>
-    <background_color>
-      <color red="240" green="240" blue="240" />
-    </background_color>
-    <bit>-1</bit>
-    <border_alarm_sensitive>false</border_alarm_sensitive>
-    <border_color>
-      <color red="0" green="128" blue="255" />
-    </border_color>
-    <border_style>0</border_style>
-    <border_width>1</border_width>
-    <confirm_message>Are you sure you want to do this?</confirm_message>
-    <data_type>0</data_type>
-    <effect_3d>true</effect_3d>
-    <enabled>true</enabled>
-    <font>
-      <opifont.name fontName="Ubuntu" height="11" style="0" pixels="false">Default</opifont.name>
-    </font>
-    <forecolor_alarm_sensitive>false</forecolor_alarm_sensitive>
-    <foreground_color>
-      <color red="0" green="0" blue="0" />
-    </foreground_color>
-    <height>25</height>
-    <labels_from_pv>false</labels_from_pv>
     <name>Action Button_20</name>
     <off_color>
       <color red="0" green="100" blue="0" />
     </off_color>
-    <off_label>All Delta Markers Off</off_label>
+    <off_label>Disable All Delta Markers</off_label>
     <on_color>
       <color red="0" green="255" blue="0" />
     </on_color>
-    <on_label>All Delta Markers Off</on_label>
+    <on_label>Disable All Delta Markers</on_label>
     <password></password>
     <push_action_index>1</push_action_index>
     <pv_name>$(P)$(R)DMarkAOff-Cmd</pv_name>
@@ -16641,9 +16579,9 @@ $(pv_value)</tooltip>
 $(pv_value)</tooltip>
     <visible>true</visible>
     <widget_type>Boolean Button</widget_type>
-    <width>150</width>
+    <width>180</width>
     <wuid>-5afe0710:163264b925c:-7226</wuid>
-    <x>1329</x>
+    <x>1314</x>
     <y>304</y>
   </widget>
   <widget typeId="org.csstudio.opibuilder.widgets.groupingContainer" version="1.0.0">
@@ -16926,5 +16864,108 @@ $(trace_0_y_pv_value)</tooltip>
       <x>0</x>
       <y>36</y>
     </widget>
+  </widget>
+  <widget typeId="org.csstudio.opibuilder.widgets.BoolButton" version="1.0.0">
+    <actions hook="false" hook_all="false" />
+    <alarm_pulsing>false</alarm_pulsing>
+    <backcolor_alarm_sensitive>false</backcolor_alarm_sensitive>
+    <background_color>
+      <color red="240" green="240" blue="240" />
+    </background_color>
+    <bit>-1</bit>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+    <border_color>
+      <color red="0" green="128" blue="255" />
+    </border_color>
+    <border_style>0</border_style>
+    <border_width>1</border_width>
+    <confirm_message>Are you sure you want to do this?</confirm_message>
+    <data_type>0</data_type>
+    <effect_3d>true</effect_3d>
+    <enabled>true</enabled>
+    <font>
+      <opifont.name fontName="Ubuntu" height="11" style="0" pixels="false">Default</opifont.name>
+    </font>
+    <forecolor_alarm_sensitive>false</forecolor_alarm_sensitive>
+    <foreground_color>
+      <color red="0" green="0" blue="0" />
+    </foreground_color>
+    <height>25</height>
+    <labels_from_pv>false</labels_from_pv>
+    <name>Action Button_21</name>
+    <off_color>
+      <color red="0" green="100" blue="0" />
+    </off_color>
+    <off_label>Disable All Markers</off_label>
+    <on_color>
+      <color red="0" green="255" blue="0" />
+    </on_color>
+    <on_label>Disable All Markers</on_label>
+    <password></password>
+    <push_action_index>1</push_action_index>
+    <pv_name>$(P)$(R)MarkAOff-Cmd</pv_name>
+    <pv_value />
+    <released_action_index>0</released_action_index>
+    <rules />
+    <scale_options>
+      <width_scalable>true</width_scalable>
+      <height_scalable>true</height_scalable>
+      <keep_wh_ratio>false</keep_wh_ratio>
+    </scale_options>
+    <scripts />
+    <show_boolean_label>true</show_boolean_label>
+    <show_confirm_dialog>0</show_confirm_dialog>
+    <show_led>false</show_led>
+    <square_button>true</square_button>
+    <toggle_button>false</toggle_button>
+    <tooltip>$(pv_name)
+$(pv_value)</tooltip>
+    <visible>true</visible>
+    <widget_type>Boolean Button</widget_type>
+    <width>150</width>
+    <wuid>668f0a4e:1668e2a1dd1:-61af</wuid>
+    <x>1129</x>
+    <y>304</y>
+  </widget>
+  <widget typeId="org.csstudio.opibuilder.widgets.Label" version="1.0.0">
+    <actions hook="false" hook_all="false" />
+    <auto_size>false</auto_size>
+    <background_color>
+      <color red="255" green="255" blue="255" />
+    </background_color>
+    <border_color>
+      <color red="0" green="0" blue="0" />
+    </border_color>
+    <border_style>1</border_style>
+    <border_width>1</border_width>
+    <enabled>true</enabled>
+    <font>
+      <opifont.name fontName="Ubuntu" height="11" style="0" pixels="false">Default</opifont.name>
+    </font>
+    <foreground_color>
+      <color red="0" green="0" blue="0" />
+    </foreground_color>
+    <height>41</height>
+    <horizontal_alignment>1</horizontal_alignment>
+    <name>Label</name>
+    <rules />
+    <scale_options>
+      <width_scalable>true</width_scalable>
+      <height_scalable>true</height_scalable>
+      <keep_wh_ratio>false</keep_wh_ratio>
+    </scale_options>
+    <scripts />
+    <show_scrollbar>false</show_scrollbar>
+    <text>If the markers are not switching off, disable all Auto Max Peaks</text>
+    <tooltip></tooltip>
+    <transparent>true</transparent>
+    <vertical_alignment>1</vertical_alignment>
+    <visible>true</visible>
+    <widget_type>Label</widget_type>
+    <width>375</width>
+    <wrap_words>true</wrap_words>
+    <wuid>668f0a4e:1668e2a1dd1:-5ee9</wuid>
+    <x>720</x>
+    <y>288</y>
   </widget>
 </display>
