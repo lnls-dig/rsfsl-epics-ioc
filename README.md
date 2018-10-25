@@ -31,7 +31,7 @@ $ make clean &&
 $ make uninstall &&
 $ make &&
 $ cd iocBoot/iocrsfsl &&
-$ procServ -n "RSFSL" -f -i ^C^D 20000 ./runrsfsl.sh -i "10.0.18.77" -P "TEST:" -R "RSFSL:"
+$ procServ -n "RSFSL" -f -i ^C^D 20000 ./runrsfsl.sh -i "xx.x.xx.xx" -P "TEST:" -R "RSFSL:"
 ```
 
 It is important to notice that the *DEVICE_IP* is passed as an argument to the
