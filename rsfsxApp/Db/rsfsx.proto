@@ -46,8 +46,8 @@ GLOBAL_TIMEOUT = 5000;
 # Communication setup
 #
 OutTerminator = CR LF;
-InTerminator = 10;
-ExtraInput = Error;
+InTerminator = LF;
+ExtraInput = Ignore;
 MaxInput = 576018;
 WriteTimeout = ${GLOBAL_TIMEOUT};
 ReadTimeout = ${GLOBAL_TIMEOUT};
@@ -121,7 +121,7 @@ outSweTime {
 }
 
 ######################################################################
-# Enable/Disable automatic coupling of the sweep time to the 
+# Enable/Disable automatic coupling of the sweep time to the
 # frequency span and bandwidth settings
 
 
@@ -147,7 +147,7 @@ outTraceMode {
     out "DISP:WIND:TRAC1:MODE %{WRIT|VIEW|AVER|MAXH|MINH|BLANK}";
     @init { inTraceMode; };
 }
- 
+
 ######################################################################
 # Center Frequency
 
