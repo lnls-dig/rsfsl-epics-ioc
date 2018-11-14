@@ -1,6 +1,6 @@
 #!/bin/sh
 
-IOC_NAME="rsfsl"
+IOC_NAME="rsfsx"
 
 IOC_BOOT_DIR="$(dirname "$0")"
 IOC_BIN_DIR="$IOC_BOOT_DIR/../../bin"

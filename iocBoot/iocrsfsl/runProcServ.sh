@@ -11,11 +11,11 @@ if [ -z "${DEVICE_TELNET_PORT}" ]; then
    DEVICE_TELNET_PORT="20000"
 fi
 
-if [ -z "${RSFSL_INSTANCE}" ]; then
-   RSFSL_INSTANCE="1"
+if [ -z "${DEVICE_TYPE}" ]; then
+   DEVICE_TYPE="FSL"
 fi
 
 set -u
 
 # Run run*.sh scripts with procServ
-/usr/local/bin/procServ -f -n rsfsl_${RSFSL_INSTANCE} -i ^C^D ${DEVICE_TELNET_PORT} ./runrsfsl.sh "$@"
+/usr/local/bin/procServ -f -n RS_${DEVICE_TYPE} -i ^C^D ${DEVICE_TELNET_PORT} ./runRSFSx.sh "$@"
