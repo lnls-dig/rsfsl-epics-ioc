@@ -1642,26 +1642,6 @@ record(ao, "$(P)$(R)LvlOutOffset-SP") {
   field(FLNK,"$(P)$(R)LvlOutOffset-RB")
 }
 
-# Enable/Disable Spectrogram Measurement (SPECM, Option K14)
-
-record(bi, "$(P)$(R)EnblSpec-Sts") {
-  field(DESC, "Get spectrogram measurement state")
-  field(DTYP, "stream")
-  field(PINI, "YES")
-  field(ZNAM, "OFF")
-  field(ONAM, "ON")
-  field(INP, "@rsfsx.proto inEnblSpec $(PORT)")
-}
-
-record(bo, "$(P)$(R)EnblSpec-Sel") {
-  field(DESC, "Enable/Disable spectrogram measurement")
-  field(DTYP, "stream")
-  field(ZNAM, "OFF")
-  field(ONAM, "ON")
-  field(OUT, "@rsfsx.proto outEnblSpec($1) $(PORT)")
-  field(FLNK,"$(P)$(R)EnblSpec-Sts")
-}
-
 # Enable/Disable Continuous Sweep Measurement (SPECM, Option K14)
 
 record(bi, "$(P)$(R)EnblSweCont-Sts") {
@@ -1682,74 +1662,6 @@ record(bo, "$(P)$(R)EnblSweCont-Sel") {
   field(FLNK,"$(P)$(R)EnblSweCont-Sts")
 }
 
-# Enable/Disable Delete of Previous Measurement (SPECM, Opt. K14)
-
-record(bi, "$(P)$(R)EnblDelPrevMeas-Sts") {
-  field(DESC, "Get previous measurement deletion state")
-  field(DTYP, "stream")
-  field(PINI, "YES")
-  field(ZNAM, "OFF")
-  field(ONAM, "ON")
-  field(INP, "@rsfsx.proto inEnblDelMeas $(PORT)")
-}
-
-record(bo, "$(P)$(R)EnblDelPrevMeas-Sel") {
-  field(DESC, "Set previous measurement deletion state")
-  field(DTYP, "stream")
-  field(ZNAM, "OFF")
-  field(ONAM, "ON")
-  field(OUT, "@rsfsx.proto outEnblDelMeas($1) $(PORT)")
-  field(FLNK,"$(P)$(R)EnblDelPrevMeas-Sts")
-}
-
-# Number of Recorded Frames in Single Sweep Mode (SPECM, Opt. K14)
-
-record(ai, "$(P)$(R)SpecFrameCount-RB") {
-  field(DESC, "Get number of recorded frames")
-  field(PINI, "YES")
-  field(DTYP, "stream")
-  field(INP, "@rsfsx.proto inSpecFrameCount $(PORT)")
-}
-
-record(ao, "$(P)$(R)SpecFrameCount-SP") {
-  field(DESC, "Set number of frames to be recorded")
-  field(DTYP, "stream")
-  field(OUT, "@rsfsx.proto outSpecFrameCount(1) $(PORT)")
-  field(FLNK,"$(P)$(R)SpecFrameCount-RB")
-}
-
-# Frame Selection (SPECM, Opt. K14)
-
-record(ai, "$(P)$(R)SpecFrame-RB") {
-  field(DESC, "Get frame number to be acquired")
-  field(PINI, "YES")
-  field(DTYP, "stream")
-  field(INP, "@rsfsx.proto inSpecFrame $(PORT)")
-}
-
-record(ao, "$(P)$(R)SpecFrame-SP") {
-  field(DESC, "Set the frame number to be acquired")
-  field(DTYP, "stream")
-  field(OUT, "@rsfsx.proto outSpecFrame(1) $(PORT)")
-  field(FLNK,"$(P)$(R)SpecFrame-RB")
-}
-
-# History Depth (SPECM, Opt. K14)
-
-record(ai, "$(P)$(R)SpecBuffSize-RB") {
-  field(DESC, "Get the buffer size")
-  field(PINI, "YES")
-  field(DTYP, "stream")
-  field(INP, "@rsfsx.proto inSpecBuffSize $(PORT)")
-}
-
-record(ao, "$(P)$(R)SpecBuffSize-SP") {
-  field(DESC, "Set the buffer size")
-  field(DTYP, "stream")
-  field(OUT, "@rsfsx.proto outSpecBuffSize(1) $(PORT)")
-  field(FLNK,"$(P)$(R)SpecBuffSize-RB")
-}
-
 # Get Spectrum
 # Enable/Disable spectrum acquisition
 
@@ -1767,16 +1679,6 @@ record(bo, "$(P)$(R)EnblSpectrogram-Sel") {
   field(ZNAM, "OFF")
   field(ONAM, "ON")
   field(FLNK,"$(P)$(R)FreqArray-Mon")
-}
-
-# Get Spectrogram from FSL
-# The frames are stored in the FSL memory and retrieved all together
-
-record(bo, "$(P)$(R)GetFSLSpec-Sel") {
-  field(DESC, "Get Spectrogram from FSL")
-  field(ZNAM, "OFF")
-  field(ONAM, "ON")
-  field(FLNK, "$(P)$(R)FSLSpecArray-Mon")
 }
 
 ######################################################################
@@ -1970,19 +1872,6 @@ record(acalcout, "$(P)$(R)SpecArray-Mon") {
   field(CALC, "CAT(AA[0,(A-1)],AVAL[0,(IX*A)-1])")
 }
 
-# Spectrogram Array Acquisition (SPECM, Option K14)
-# Directly obtained from the FSL
-
-record(waveform, "$(P)$(R)FSLSpecArray-Mon") {
-  field(DESC, "Get the whole stored spectrogram")
-  field(SDIS, "$(P)$(R)GetFSLSpec-Sel")
-  field(DISV, "0")
-  field(NELM, "501")
-  field(FTVL, "FLOAT")
-  field(DTYP, "stream")
-  field(INP, "@rsfsx.proto monSpec $(PORT)")
-}
-
 ######################################################################
 ############################ COMMAND #################################
 ######################################################################
@@ -2023,7 +1912,7 @@ record(fanout, "$(P)$(R)RstFout3") {
   field(LNK1, "$(P)$(R)EnblAttAuto-Sts")
   field(LNK2, "$(P)$(R)ImpdIn-Sts")
   field(LNK3, "$(P)$(R)RoscSrc-Sts")
-  field(LNK4, "$(P)$(R)EnblSpec-Sts")
+#  field(LNK4, "$(P)$(R)EnblSpec-Sts")
   field(LNK5, "$(P)$(R)EnblSweCont-Sts")
   field(LNK6, "$(P)$(R)RstFout4")
   field(SELM, "All")
@@ -2871,17 +2760,6 @@ record(bo, "$(P)$(R)DMarkMin4-Cmd") {
 #  field(HIGH, "1")
 #  field(OUT, "@rsfsx.proto cmdSpurEmisMeas($1) $(PORT)")
 #}
-
-# Clean Spectrogram and History Buffer (SPECM, K14 option)
-
-record(bo, "$(P)$(R)CleanSpec-Cmd") {
-  field(DESC, "Clean spectrogram and buffer")
-  field(DTYP, "stream")
-  field(ZNAM, "0")
-  field(ONAM, "1")
-  field(HIGH, "1")
-  field(OUT, "@rsfsx.proto cmdCleanSpec($1) $(PORT)")
-}
 
 ######################################################################
 ############################## SAVE ##################################

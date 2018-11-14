@@ -1,8 +1,8 @@
 #---------------------------------------------------------------------
-# Title      : Rohde & Schwarz FSL Spectrum Analyzer Epics Database File
+# Title      : Rohde & Schwarz FSL Spectrum Analyzer Epics Protocol File
 # Project    :
 #---------------------------------------------------------------------
-# File       : rsfsl.db
+# File       : rsfsl.proto
 # Author     : Leticia Garcez Capovilla
 # Company    : Brazilian Synchrotron Light Laboratory, LNLS/CNPEM
 # Created    : 2018-03-19
@@ -10,7 +10,7 @@
 #---------------------------------------------------------------------
 # Description:
 #
-# Defines database to use the device in EPICS
+# Defines protocol to use the device as a StreamDevice IOC in EPICS
 #
 #---------------------------------------------------------------------
 # Copyright (c) 2018 Brazilian Synchrotron Light Laboratory, LNLS/CNPEM
@@ -30,40 +30,47 @@
 # <http://www.gnu.org/licenses/>.
 #---------------------------------------------------------------------
 # Revisions  :
-# Date        	Version  	Author         		Description
-# 2018-mar-19 	1.0      	leticiagcapovilla       Created
+# Date        	Version  	Author          	Description
+# 2018-mar-19	1.0      	leticiagcapovilla       Created
 # 2018-apr-04	1.0		leticiagcapovilla	Updated
 #---------------------------------------------------------------------
 
+######################################################################
+#
+# Variable declaration
+#
+GLOBAL_TIMEOUT = 5000;
+
+######################################################################
+#
+# Communication setup
+#
+OutTerminator = CR LF;
+InTerminator = LF;
+ExtraInput = Ignore;
+MaxInput = 576018;
+WriteTimeout = ${GLOBAL_TIMEOUT};
+ReadTimeout = ${GLOBAL_TIMEOUT};
+ReplyTimeout = ${GLOBAL_TIMEOUT};
+Separator = ",";
+
+######################################################################
 # Auto Adjust Frequency Scale
-
-record(bo, "$(P)$(R)AutoFreq-Cmd") {
-  field(DESC, "Auto adjust center frequency")
-  field(DTYP, "stream")
-  field(ZNAM, "0")
-  field(ONAM, "1")
-  field(HIGH, "1")
-  field(OUT, "@rsfsv.proto outAutoFreq($1) $(PORT)")
+#
+outAutoFreq {
+    out "%{|ADJ:FREQ}";
 }
 
-# Auto Adjust Reference Level
-
-record(bo, "$(P)$(R)AutoLvl-Cmd") {
-  field(DESC, "Auto adjust reference level")
-  field(DTYP, "stream")
-  field(ZNAM, "0")
-  field(ONAM, "1")
-  field(HIGH, "1")
-  field(OUT, "@rsfsv.proto outAutoLvl($1) $(PORT)")
+######################################################################
+# Auto Adjust Level Scale
+#
+outAutoLvl {
+    out "%{|ADJ:LEV}";
 }
 
-# Auto Adjust Frequency and Reference Level
-
-record(bo, "$(P)$(R)AutoAll-Cmd") {
-  field(DESC, "Auto adjust freq. and reference level")
-  field(DTYP, "stream")
-  field(ZNAM, "0")
-  field(ONAM, "1")
-  field(HIGH, "1")
-  field(OUT, "@rsfsv.proto outAutoAll($1) $(PORT)")
+######################################################################
+# Auto Adjust Frequency and Level Scale
+#
+outAutoAll {
+    out "%{|ADJ:ALL}";
 }
