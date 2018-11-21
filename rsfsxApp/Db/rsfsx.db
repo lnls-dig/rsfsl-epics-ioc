@@ -1951,7 +1951,6 @@ record(fanout, "$(P)$(R)RstFout4") {
 
 record(bo, "$(P)$(R)MarkMax1-Cmd") {
   field(DESC, "Set marker1 to max peak on trace")
-  field(PINI, "YES")
   field(DTYP, "stream")
   field(ZNAM, "0")
   field(ONAM, "1")
@@ -1961,7 +1960,6 @@ record(bo, "$(P)$(R)MarkMax1-Cmd") {
 
 record(bo, "$(P)$(R)MarkMax2-Cmd") {
   field(DESC, "Set marker2 to max peak on trace")
-  field(PINI, "YES")
   field(DTYP, "stream")
   field(ZNAM, "0")
   field(ONAM, "1")
@@ -1971,7 +1969,6 @@ record(bo, "$(P)$(R)MarkMax2-Cmd") {
 
 record(bo, "$(P)$(R)MarkMax3-Cmd") {
   field(DESC, "Set marker3 to max peak on trace")
-  field(PINI, "YES")
   field(DTYP, "stream")
   field(ZNAM, "0")
   field(ONAM, "1")
@@ -1981,7 +1978,6 @@ record(bo, "$(P)$(R)MarkMax3-Cmd") {
 
 record(bo, "$(P)$(R)MarkMax4-Cmd") {
   field(DESC, "Set marker4 to max peak on trace")
-  field(PINI, "YES")
   field(DTYP, "stream")
   field(ZNAM, "0")
   field(ONAM, "1")
@@ -1993,7 +1989,6 @@ record(bo, "$(P)$(R)MarkMax4-Cmd") {
 
 record(bo, "$(P)$(R)DMarkMax1-Cmd") {
   field(DESC, "Set d.marker1 to max peak on trace")
-  field(PINI, "YES")
   field(DTYP, "stream")
   field(ZNAM, "0")
   field(ONAM, "1")
@@ -2003,7 +1998,6 @@ record(bo, "$(P)$(R)DMarkMax1-Cmd") {
 
 record(bo, "$(P)$(R)DMarkMax2-Cmd") {
   field(DESC, "Set d.marker2 to max peak on trace")
-  field(PINI, "YES")
   field(DTYP, "stream")
   field(ZNAM, "0")
   field(ONAM, "1")
@@ -2013,7 +2007,6 @@ record(bo, "$(P)$(R)DMarkMax2-Cmd") {
 
 record(bo, "$(P)$(R)DMarkMax3-Cmd") {
   field(DESC, "Set d.marker3 to max peak on trace")
-  field(PINI, "YES")
   field(DTYP, "stream")
   field(ZNAM, "0")
   field(ONAM, "1")
@@ -2023,7 +2016,6 @@ record(bo, "$(P)$(R)DMarkMax3-Cmd") {
 
 record(bo, "$(P)$(R)DMarkMax4-Cmd") {
   field(DESC, "Set d.marker4 to max peak on trace")
-  field(PINI, "YES")
   field(DTYP, "stream")
   field(ZNAM, "0")
   field(ONAM, "1")
@@ -2071,7 +2063,6 @@ record(dfanout, "$(P)$(R)DataFout2") {
 
 record(bo, "$(P)$(R)MarkMaxLeft1-Cmd") {
   field(DESC, "Position marker1 to the left ")
-  field(PINI, "YES")
   field(DISV, "0")
   field(SDIS, "$(P)$(R)EnblMark1-Sts.RVAL")
   field(DTYP, "stream")
@@ -2083,7 +2074,6 @@ record(bo, "$(P)$(R)MarkMaxLeft1-Cmd") {
 
 record(bo, "$(P)$(R)MarkMaxLeft2-Cmd") {
   field(DESC, "Position marker2 to the left ")
-  field(PINI, "YES")
   field(DISV, "0")
   field(SDIS, "$(P)$(R)EnblMark2-Sts.RVAL")
   field(DTYP, "stream")
@@ -2095,7 +2085,6 @@ record(bo, "$(P)$(R)MarkMaxLeft2-Cmd") {
 
 record(bo, "$(P)$(R)MarkMaxLeft3-Cmd") {
   field(DESC, "Position marker3 to the left ")
-  field(PINI, "YES")
   field(DISV, "0")
   field(SDIS, "$(P)$(R)EnblMark3-Sts.RVAL")
   field(DTYP, "stream")
@@ -2107,7 +2096,6 @@ record(bo, "$(P)$(R)MarkMaxLeft3-Cmd") {
 
 record(bo, "$(P)$(R)MarkMaxLeft4-Cmd") {
   field(DESC, "Position marker4 to the left ")
-  field(PINI, "YES")
   field(DISV, "0")
   field(SDIS, "$(P)$(R)EnblMark4-Sts.RVAL")
   field(DTYP, "stream")
@@ -2122,7 +2110,6 @@ record(bo, "$(P)$(R)MarkMaxLeft4-Cmd") {
 
 record(bo, "$(P)$(R)DMarkMaxLeft1-Cmd") {
   field(DESC, "Position d.marker1 to the left ")
-  field(PINI, "YES")
   field(DISV, "0")
   field(SDIS, "$(P)$(R)EnblDMark1-Sts.RVAL")
   field(DTYP, "stream")
@@ -2134,7 +2121,6 @@ record(bo, "$(P)$(R)DMarkMaxLeft1-Cmd") {
 
 record(bo, "$(P)$(R)DMarkMaxLeft2-Cmd") {
   field(DESC, "Position d.marker2 to the left ")
-  field(PINI, "YES")
   field(DISV, "0")
   field(SDIS, "$(P)$(R)EnblDMark2-Sts.RVAL")
   field(DTYP, "stream")
@@ -2146,7 +2132,6 @@ record(bo, "$(P)$(R)DMarkMaxLeft2-Cmd") {
 
 record(bo, "$(P)$(R)DMarkMaxLeft3-Cmd") {
   field(DESC, "Position d.marker3 to the left ")
-  field(PINI, "YES")
   field(DISV, "0")
   field(SDIS, "$(P)$(R)EnblDMark3-Sts.RVAL")
   field(DTYP, "stream")
@@ -2158,7 +2143,6 @@ record(bo, "$(P)$(R)DMarkMaxLeft3-Cmd") {
 
 record(bo, "$(P)$(R)DMarkMaxLeft4-Cmd") {
   field(DESC, "Position d.marker4 to the left ")
-  field(PINI, "YES")
   field(DISV, "0")
   field(SDIS, "$(P)$(R)EnblDMark4-Sts.RVAL")
   field(DTYP, "stream")
@@ -2173,7 +2157,6 @@ record(bo, "$(P)$(R)DMarkMaxLeft4-Cmd") {
 
 record(bo, "$(P)$(R)MarkMinLeft1-Cmd") {
   field(DESC, "Position marker1 to the left ")
-  field(PINI, "YES")
   field(DISV, "0")
   field(SDIS, "$(P)$(R)EnblMark1-Sts.RVAL")
   field(DTYP, "stream")
@@ -2185,7 +2168,6 @@ record(bo, "$(P)$(R)MarkMinLeft1-Cmd") {
 
 record(bo, "$(P)$(R)MarkMinLeft2-Cmd") {
   field(DESC, "Position marker2 to the left ")
-  field(PINI, "YES")
   field(DISV, "0")
   field(SDIS, "$(P)$(R)EnblMark2-Sts.RVAL")
   field(DTYP, "stream")
@@ -2197,7 +2179,6 @@ record(bo, "$(P)$(R)MarkMinLeft2-Cmd") {
 
 record(bo, "$(P)$(R)MarkMinLeft3-Cmd") {
   field(DESC, "Position marker3 to the left ")
-  field(PINI, "YES")
   field(DISV, "0")
   field(SDIS, "$(P)$(R)EnblMark3-Sts.RVAL")
   field(DTYP, "stream")
@@ -2209,7 +2190,6 @@ record(bo, "$(P)$(R)MarkMinLeft3-Cmd") {
 
 record(bo, "$(P)$(R)MarkMinLeft4-Cmd") {
   field(DESC, "Position marker4 to the left ")
-  field(PINI, "YES")
   field(DISV, "0")
   field(SDIS, "$(P)$(R)EnblMark4-Sts.RVAL")
   field(DTYP, "stream")
@@ -2224,7 +2204,6 @@ record(bo, "$(P)$(R)MarkMinLeft4-Cmd") {
 
 record(bo, "$(P)$(R)DMarkMinLeft1-Cmd") {
   field(DESC, "Position d.marker1 to the left ")
-  field(PINI, "YES")
   field(DISV, "0")
   field(SDIS, "$(P)$(R)EnblDMark1-Sts.RVAL")
   field(DTYP, "stream")
@@ -2236,7 +2215,6 @@ record(bo, "$(P)$(R)DMarkMinLeft1-Cmd") {
 
 record(bo, "$(P)$(R)DMarkMinLeft2-Cmd") {
   field(DESC, "Position d.marker2 to the left ")
-  field(PINI, "YES")
   field(DISV, "0")
   field(SDIS, "$(P)$(R)EnblDMark2-Sts.RVAL")
   field(DTYP, "stream")
@@ -2248,7 +2226,6 @@ record(bo, "$(P)$(R)DMarkMinLeft2-Cmd") {
 
 record(bo, "$(P)$(R)DMarkMinLeft3-Cmd") {
   field(DESC, "Position d.marker3 to the left ")
-  field(PINI, "YES")
   field(DISV, "0")
   field(SDIS, "$(P)$(R)EnblDMark3-Sts.RVAL")
   field(DTYP, "stream")
@@ -2260,7 +2237,6 @@ record(bo, "$(P)$(R)DMarkMinLeft3-Cmd") {
 
 record(bo, "$(P)$(R)DMarkMinLeft4-Cmd") {
   field(DESC, "Position d.marker4 to the left ")
-  field(PINI, "YES")
   field(DISV, "0")
   field(SDIS, "$(P)$(R)EnblDMark4-Sts.RVAL")
   field(DTYP, "stream")
@@ -2275,7 +2251,6 @@ record(bo, "$(P)$(R)DMarkMinLeft4-Cmd") {
 
 record(bo, "$(P)$(R)MarkMaxNext1-Cmd") {
   field(DESC, "Position mkr1 to next value on trace")
-  field(PINI, "YES")
   field(DISV, "0")
   field(SDIS, "$(P)$(R)EnblMark1-Sts.RVAL")
   field(DTYP, "stream")
@@ -2287,7 +2262,6 @@ record(bo, "$(P)$(R)MarkMaxNext1-Cmd") {
 
 record(bo, "$(P)$(R)MarkMaxNext2-Cmd") {
   field(DESC, "Position mkr2 to next value on trace")
-  field(PINI, "YES")
   field(DISV, "0")
   field(SDIS, "$(P)$(R)EnblMark2-Sts.RVAL")
   field(DTYP, "stream")
@@ -2299,7 +2273,6 @@ record(bo, "$(P)$(R)MarkMaxNext2-Cmd") {
 
 record(bo, "$(P)$(R)MarkMaxNext3-Cmd") {
   field(DESC, "Position mkr3 to next value on trace")
-  field(PINI, "YES")
   field(DISV, "0")
   field(SDIS, "$(P)$(R)EnblMark1-Sts.RVAL")
   field(DTYP, "stream")
@@ -2311,7 +2284,6 @@ record(bo, "$(P)$(R)MarkMaxNext3-Cmd") {
 
 record(bo, "$(P)$(R)MarkMaxNext4-Cmd") {
   field(DESC, "Position mkr4 to next value on trace")
-  field(PINI, "YES")
   field(DISV, "0")
   field(SDIS, "$(P)$(R)EnblMark4-Sts.RVAL")
   field(DTYP, "stream")
@@ -2326,7 +2298,6 @@ record(bo, "$(P)$(R)MarkMaxNext4-Cmd") {
 
 record(bo, "$(P)$(R)DMarkMaxNext1-Cmd") {
   field(DESC, "Position d.mkr1 to next value on trace")
-  field(PINI, "YES")
   field(DISV, "0")
   field(SDIS, "$(P)$(R)EnblDMark1-Sts.RVAL")
   field(DTYP, "stream")
@@ -2338,7 +2309,6 @@ record(bo, "$(P)$(R)DMarkMaxNext1-Cmd") {
 
 record(bo, "$(P)$(R)DMarkMaxNext2-Cmd") {
   field(DESC, "Position d.mkr2 to next value on trace")
-  field(PINI, "YES")
   field(DISV, "0")
   field(SDIS, "$(P)$(R)EnblDMark2-Sts.RVAL")
   field(DTYP, "stream")
@@ -2350,7 +2320,6 @@ record(bo, "$(P)$(R)DMarkMaxNext2-Cmd") {
 
 record(bo, "$(P)$(R)DMarkMaxNext3-Cmd") {
   field(DESC, "Position d.mkr3 to next value on trace")
-  field(PINI, "YES")
   field(DISV, "0")
   field(SDIS, "$(P)$(R)EnblDMark1-Sts.RVAL")
   field(DTYP, "stream")
@@ -2362,7 +2331,6 @@ record(bo, "$(P)$(R)DMarkMaxNext3-Cmd") {
 
 record(bo, "$(P)$(R)DMarkMaxNext4-Cmd") {
   field(DESC, "Position d.mkr4 to next value on trace")
-  field(PINI, "YES")
   field(DISV, "0")
   field(SDIS, "$(P)$(R)EnblDMark4-Sts.RVAL")
   field(DTYP, "stream")
@@ -2377,7 +2345,6 @@ record(bo, "$(P)$(R)DMarkMaxNext4-Cmd") {
 
 record(bo, "$(P)$(R)MarkMinNext1-Cmd") {
   field(DESC, "Position mkr1 to the next value of trace")
-  field(PINI, "YES")
   field(DISV, "0")
   field(SDIS, "$(P)$(R)EnblMark1-Sts.RVAL")
   field(DTYP, "stream")
@@ -2389,7 +2356,6 @@ record(bo, "$(P)$(R)MarkMinNext1-Cmd") {
 
 record(bo, "$(P)$(R)MarkMinNext2-Cmd") {
   field(DESC, "Position mkr2 to the next value of trace")
-  field(PINI, "YES")
   field(DISV, "0")
   field(SDIS, "$(P)$(R)EnblMark2-Sts.RVAL")
   field(DTYP, "stream")
@@ -2401,7 +2367,6 @@ record(bo, "$(P)$(R)MarkMinNext2-Cmd") {
 
 record(bo, "$(P)$(R)MarkMinNext3-Cmd") {
   field(DESC, "Position mkr3 to the next value of trace")
-  field(PINI, "YES")
   field(DISV, "0")
   field(SDIS, "$(P)$(R)EnblMark3-Sts.RVAL")
   field(DTYP, "stream")
@@ -2413,7 +2378,6 @@ record(bo, "$(P)$(R)MarkMinNext3-Cmd") {
 
 record(bo, "$(P)$(R)MarkMinNext4-Cmd") {
   field(DESC, "Position mkr4 to the next value of trace")
-  field(PINI, "YES")
   field(DISV, "0")
   field(SDIS, "$(P)$(R)EnblMark4-Sts.RVAL")
   field(DTYP, "stream")
@@ -2428,7 +2392,6 @@ record(bo, "$(P)$(R)MarkMinNext4-Cmd") {
 
 record(bo, "$(P)$(R)DMarkMinNext1-Cmd") {
   field(DESC, "Position d.mkr1 to next value of trace")
-  field(PINI, "YES")
   field(DISV, "0")
   field(SDIS, "$(P)$(R)EnblDMark1-Sts.RVAL")
   field(DTYP, "stream")
@@ -2440,7 +2403,6 @@ record(bo, "$(P)$(R)DMarkMinNext1-Cmd") {
 
 record(bo, "$(P)$(R)DMarkMinNext2-Cmd") {
   field(DESC, "Position d.mkr2 to next value of trace")
-  field(PINI, "YES")
   field(DISV, "0")
   field(SDIS, "$(P)$(R)EnblDMark2-Sts.RVAL")
   field(DTYP, "stream")
@@ -2452,7 +2414,6 @@ record(bo, "$(P)$(R)DMarkMinNext2-Cmd") {
 
 record(bo, "$(P)$(R)DMarkMinNext3-Cmd") {
   field(DESC, "Position d.mkr3 to next value of trace")
-  field(PINI, "YES")
   field(DISV, "0")
   field(SDIS, "$(P)$(R)EnblDMark3-Sts.RVAL")
   field(DTYP, "stream")
@@ -2464,7 +2425,6 @@ record(bo, "$(P)$(R)DMarkMinNext3-Cmd") {
 
 record(bo, "$(P)$(R)DMarkMinNext4-Cmd") {
   field(DESC, "Position d.mkr4 to next value of trace")
-  field(PINI, "YES")
   field(DISV, "0")
   field(SDIS, "$(P)$(R)EnblDMark4-Sts.RVAL")
   field(DTYP, "stream")
@@ -2479,7 +2439,6 @@ record(bo, "$(P)$(R)DMarkMinNext4-Cmd") {
 
 record(bo, "$(P)$(R)MarkMaxRight1-Cmd") {
   field(DESC, "Position marker1 to the right ")
-  field(PINI, "YES")
   field(DISV, "0")
   field(SDIS, "$(P)$(R)EnblMark1-Sts.RVAL")
   field(DTYP, "stream")
@@ -2491,7 +2450,6 @@ record(bo, "$(P)$(R)MarkMaxRight1-Cmd") {
 
 record(bo, "$(P)$(R)MarkMaxRight2-Cmd") {
   field(DESC, "Position marker2 to the right ")
-  field(PINI, "YES")
   field(DISV, "0")
   field(SDIS, "$(P)$(R)EnblMark2-Sts.RVAL")
   field(DTYP, "stream")
@@ -2503,7 +2461,6 @@ record(bo, "$(P)$(R)MarkMaxRight2-Cmd") {
 
 record(bo, "$(P)$(R)MarkMaxRight3-Cmd") {
   field(DESC, "Position marker3 to the right ")
-  field(PINI, "YES")
   field(DISV, "0")
   field(SDIS, "$(P)$(R)EnblMark3-Sts.RVAL")
   field(DTYP, "stream")
@@ -2515,7 +2472,6 @@ record(bo, "$(P)$(R)MarkMaxRight3-Cmd") {
 
 record(bo, "$(P)$(R)MarkMaxRight4-Cmd") {
   field(DESC, "Position marker4 to the right ")
-  field(PINI, "YES")
   field(DISV, "0")
   field(SDIS, "$(P)$(R)EnblMark4-Sts.RVAL")
   field(DTYP, "stream")
@@ -2530,7 +2486,6 @@ record(bo, "$(P)$(R)MarkMaxRight4-Cmd") {
 
 record(bo, "$(P)$(R)DMarkMaxRight1-Cmd") {
   field(DESC, "Position d.marker1 to the right ")
-  field(PINI, "YES")
   field(DISV, "0")
   field(SDIS, "$(P)$(R)EnblDMark1-Sts.RVAL")
   field(DTYP, "stream")
@@ -2542,7 +2497,6 @@ record(bo, "$(P)$(R)DMarkMaxRight1-Cmd") {
 
 record(bo, "$(P)$(R)DMarkMaxRight2-Cmd") {
   field(DESC, "Position d.marker2 to the right ")
-  field(PINI, "YES")
   field(DISV, "0")
   field(SDIS, "$(P)$(R)EnblDMark2-Sts.RVAL")
   field(DTYP, "stream")
@@ -2554,7 +2508,6 @@ record(bo, "$(P)$(R)DMarkMaxRight2-Cmd") {
 
 record(bo, "$(P)$(R)DMarkMaxRight3-Cmd") {
   field(DESC, "Position d.marker3 to the right ")
-  field(PINI, "YES")
   field(DISV, "0")
   field(SDIS, "$(P)$(R)EnblDMark3-Sts.RVAL")
   field(DTYP, "stream")
@@ -2566,7 +2519,6 @@ record(bo, "$(P)$(R)DMarkMaxRight3-Cmd") {
 
 record(bo, "$(P)$(R)DMarkMaxRight4-Cmd") {
   field(DESC, "Position d.marker4 to the right ")
-  field(PINI, "YES")
   field(DISV, "0")
   field(SDIS, "$(P)$(R)EnblDMark4-Sts.RVAL")
   field(DTYP, "stream")
@@ -2581,7 +2533,6 @@ record(bo, "$(P)$(R)DMarkMaxRight4-Cmd") {
 
 record(bo, "$(P)$(R)MarkMinRight1-Cmd") {
   field(DESC, "Position marker1 to the right ")
-  field(PINI, "YES")
   field(DISV, "0")
   field(SDIS, "$(P)$(R)EnblMark1-Sts.RVAL")
   field(DTYP, "stream")
@@ -2593,7 +2544,6 @@ record(bo, "$(P)$(R)MarkMinRight1-Cmd") {
 
 record(bo, "$(P)$(R)MarkMinRight2-Cmd") {
   field(DESC, "Position marker2 to the right ")
-  field(PINI, "YES")
   field(DISV, "0")
   field(SDIS, "$(P)$(R)EnblMark2-Sts.RVAL")
   field(DTYP, "stream")
@@ -2605,7 +2555,6 @@ record(bo, "$(P)$(R)MarkMinRight2-Cmd") {
 
 record(bo, "$(P)$(R)MarkMinRight3-Cmd") {
   field(DESC, "Position marker3 to the right ")
-  field(PINI, "YES")
   field(DISV, "0")
   field(SDIS, "$(P)$(R)EnblMark3-Sts.RVAL")
   field(DTYP, "stream")
@@ -2617,7 +2566,6 @@ record(bo, "$(P)$(R)MarkMinRight3-Cmd") {
 
 record(bo, "$(P)$(R)MarkMinRight4-Cmd") {
   field(DESC, "Position marker4 to the right ")
-  field(PINI, "YES")
   field(DISV, "0")
   field(SDIS, "$(P)$(R)EnblMark4-Sts.RVAL")
   field(DTYP, "stream")
@@ -2632,7 +2580,6 @@ record(bo, "$(P)$(R)MarkMinRight4-Cmd") {
 
 record(bo, "$(P)$(R)DMarkMinRight1-Cmd") {
   field(DESC, "Position d.marker1 to the right ")
-  field(PINI, "YES")
   field(DISV, "0")
   field(SDIS, "$(P)$(R)EnblDMark1-Sts.RVAL")
   field(DTYP, "stream")
@@ -2644,7 +2591,6 @@ record(bo, "$(P)$(R)DMarkMinRight1-Cmd") {
 
 record(bo, "$(P)$(R)DMarkMinRight2-Cmd") {
   field(DESC, "Position d.marker2 to the right ")
-  field(PINI, "YES")
   field(DISV, "0")
   field(SDIS, "$(P)$(R)EnblDMark2-Sts.RVAL")
   field(DTYP, "stream")
@@ -2656,7 +2602,6 @@ record(bo, "$(P)$(R)DMarkMinRight2-Cmd") {
 
 record(bo, "$(P)$(R)DMarkMinRight3-Cmd") {
   field(DESC, "Position d.marker3 to the right ")
-  field(PINI, "YES")
   field(DISV, "0")
   field(SDIS, "$(P)$(R)EnblDMark3-Sts.RVAL")
   field(DTYP, "stream")
@@ -2668,7 +2613,6 @@ record(bo, "$(P)$(R)DMarkMinRight3-Cmd") {
 
 record(bo, "$(P)$(R)DMarkMinRight4-Cmd") {
   field(DESC, "Position d.marker4 to the right ")
-  field(PINI, "YES")
   field(DISV, "0")
   field(SDIS, "$(P)$(R)EnblDMark4-Sts.RVAL")
   field(DTYP, "stream")
@@ -2682,7 +2626,6 @@ record(bo, "$(P)$(R)DMarkMinRight4-Cmd") {
 
 record(bo, "$(P)$(R)MarkMin1-Cmd") {
   field(DESC, "Set marker1 to min peak on trace")
-  field(PINI, "YES")
   field(DTYP, "stream")
   field(ZNAM, "0")
   field(ONAM, "1")
@@ -2692,7 +2635,6 @@ record(bo, "$(P)$(R)MarkMin1-Cmd") {
 
 record(bo, "$(P)$(R)MarkMin2-Cmd") {
   field(DESC, "Set marker2 to min peak on trace")
-  field(PINI, "YES")
   field(DTYP, "stream")
   field(ZNAM, "0")
   field(ONAM, "1")
@@ -2702,7 +2644,6 @@ record(bo, "$(P)$(R)MarkMin2-Cmd") {
 
 record(bo, "$(P)$(R)MarkMin3-Cmd") {
   field(DESC, "Set marker3 to min peak on trace")
-  field(PINI, "YES")
   field(DTYP, "stream")
   field(ZNAM, "0")
   field(ONAM, "1")
@@ -2712,7 +2653,6 @@ record(bo, "$(P)$(R)MarkMin3-Cmd") {
 
 record(bo, "$(P)$(R)MarkMin4-Cmd") {
   field(DESC, "Set marker4 to min peak on trace")
-  field(PINI, "YES")
   field(DTYP, "stream")
   field(ZNAM, "0")
   field(ONAM, "1")
@@ -2764,7 +2704,6 @@ record(fanout, "$(P)$(R)DMarkStateFout") {
 
 record(bo, "$(P)$(R)DMarkMin1-Cmd") {
   field(DESC, "Set d.marker1 to min peak on trace")
-  field(PINI, "YES")
   field(DTYP, "stream")
   field(ZNAM, "0")
   field(ONAM, "1")
@@ -2774,7 +2713,6 @@ record(bo, "$(P)$(R)DMarkMin1-Cmd") {
 
 record(bo, "$(P)$(R)DMarkMin2-Cmd") {
   field(DESC, "Set d.marker2 to min peak on trace")
-  field(PINI, "YES")
   field(DTYP, "stream")
   field(ZNAM, "0")
   field(ONAM, "1")
@@ -2784,7 +2722,6 @@ record(bo, "$(P)$(R)DMarkMin2-Cmd") {
 
 record(bo, "$(P)$(R)DMarkMin3-Cmd") {
   field(DESC, "Set d.marker3 to min peak on trace")
-  field(PINI, "YES")
   field(DTYP, "stream")
   field(ZNAM, "0")
   field(ONAM, "1")
@@ -2794,7 +2731,6 @@ record(bo, "$(P)$(R)DMarkMin3-Cmd") {
 
 record(bo, "$(P)$(R)DMarkMin4-Cmd") {
   field(DESC, "Set d.marker4 to min peak on trace")
-  field(PINI, "YES")
   field(DTYP, "stream")
   field(ZNAM, "0")
   field(ONAM, "1")
