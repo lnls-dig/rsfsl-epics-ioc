@@ -41,7 +41,6 @@
 record(bi, "$(P)$(R)EnblSpec-Sts") {
   field(DESC, "Get spectrogram measurement state")
   field(DTYP, "stream")
-  field(PINI, "YES")
   field(ZNAM, "OFF")
   field(ONAM, "ON")
   field(INP, "@rsfsx.proto inEnblSpec $(PORT)")
@@ -49,6 +48,7 @@ record(bi, "$(P)$(R)EnblSpec-Sts") {
 
 record(bo, "$(P)$(R)EnblSpec-Sel") {
   field(DESC, "Enable/Disable spectrogram measurement")
+  field(PINI, "YES")
   field(DTYP, "stream")
   field(ZNAM, "OFF")
   field(ONAM, "ON")
@@ -61,7 +61,6 @@ record(bo, "$(P)$(R)EnblSpec-Sel") {
 record(bi, "$(P)$(R)EnblDelPrevMeas-Sts") {
   field(DESC, "Get previous measurement deletion state")
   field(DTYP, "stream")
-  field(PINI, "YES")
   field(ZNAM, "OFF")
   field(ONAM, "ON")
   field(INP, "@rsfsx.proto inEnblDelMeas $(PORT)")
@@ -69,6 +68,7 @@ record(bi, "$(P)$(R)EnblDelPrevMeas-Sts") {
 
 record(bo, "$(P)$(R)EnblDelPrevMeas-Sel") {
   field(DESC, "Set previous measurement deletion state")
+  field(PINI, "YES")
   field(DTYP, "stream")
   field(ZNAM, "OFF")
   field(ONAM, "ON")
@@ -80,13 +80,13 @@ record(bo, "$(P)$(R)EnblDelPrevMeas-Sel") {
 
 record(ai, "$(P)$(R)SpecFrameCount-RB") {
   field(DESC, "Get number of recorded frames")
-  field(PINI, "YES")
   field(DTYP, "stream")
   field(INP, "@rsfsx.proto inSpecFrameCount $(PORT)")
 }
 
 record(ao, "$(P)$(R)SpecFrameCount-SP") {
   field(DESC, "Set number of frames to be recorded")
+  field(PINI, "YES")
   field(DTYP, "stream")
   field(OUT, "@rsfsx.proto outSpecFrameCount(1) $(PORT)")
   field(FLNK,"$(P)$(R)SpecFrameCount-RB")
@@ -96,13 +96,13 @@ record(ao, "$(P)$(R)SpecFrameCount-SP") {
 
 record(ai, "$(P)$(R)SpecFrame-RB") {
   field(DESC, "Get frame number to be acquired")
-  field(PINI, "YES")
   field(DTYP, "stream")
   field(INP, "@rsfsx.proto inSpecFrame $(PORT)")
 }
 
 record(ao, "$(P)$(R)SpecFrame-SP") {
   field(DESC, "Set the frame number to be acquired")
+  field(PINI, "YES")
   field(DTYP, "stream")
   field(OUT, "@rsfsx.proto outSpecFrame(1) $(PORT)")
   field(FLNK,"$(P)$(R)SpecFrame-RB")
@@ -112,13 +112,13 @@ record(ao, "$(P)$(R)SpecFrame-SP") {
 
 record(ai, "$(P)$(R)SpecBuffSize-RB") {
   field(DESC, "Get the buffer size")
-  field(PINI, "YES")
   field(DTYP, "stream")
   field(INP, "@rsfsx.proto inSpecBuffSize $(PORT)")
 }
 
 record(ao, "$(P)$(R)SpecBuffSize-SP") {
   field(DESC, "Set the buffer size")
+  field(PINI, "YES")
   field(DTYP, "stream")
   field(OUT, "@rsfsx.proto outSpecBuffSize(1) $(PORT)")
   field(FLNK,"$(P)$(R)SpecBuffSize-RB")
@@ -129,6 +129,7 @@ record(ao, "$(P)$(R)SpecBuffSize-SP") {
 
 record(bo, "$(P)$(R)GetFSLSpec-Sel") {
   field(DESC, "Get Spectrogram from FSL")
+  field(PINI, "YES")
   field(ZNAM, "OFF")
   field(ONAM, "ON")
   field(FLNK, "$(P)$(R)FSLSpecArray-Mon")

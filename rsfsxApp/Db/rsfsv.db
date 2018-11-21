@@ -39,6 +39,7 @@
 
 record(bo, "$(P)$(R)AutoFreq-Cmd") {
   field(DESC, "Auto adjust center frequency")
+  field(PINI, "YES")
   field(DTYP, "stream")
   field(ZNAM, "0")
   field(ONAM, "1")
@@ -50,6 +51,7 @@ record(bo, "$(P)$(R)AutoFreq-Cmd") {
 
 record(bo, "$(P)$(R)AutoLvl-Cmd") {
   field(DESC, "Auto adjust reference level")
+  field(PINI, "YES")
   field(DTYP, "stream")
   field(ZNAM, "0")
   field(ONAM, "1")
@@ -61,6 +63,7 @@ record(bo, "$(P)$(R)AutoLvl-Cmd") {
 
 record(bo, "$(P)$(R)AutoAll-Cmd") {
   field(DESC, "Auto adjust freq. and reference level")
+  field(PINI, "YES")
   field(DTYP, "stream")
   field(ZNAM, "0")
   field(ONAM, "1")
