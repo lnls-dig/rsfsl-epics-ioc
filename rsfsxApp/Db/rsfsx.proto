@@ -140,11 +140,11 @@ outEnblSweTimeAuto {
 
 inTraceMode {
     out "DISP:WIND:TRAC1:MODE?";
-    in "%{WRIT|VIEW|AVER|MAXH|MINH|BLANK}";
+    in "%{WRIT|VIEW|AVER|MAXH|MINH|BLAN}";
 }
 
 outTraceMode {
-    out "DISP:WIND:TRAC1:MODE %{WRIT|VIEW|AVER|MAXH|MINH|BLANK}";
+    out "DISP:WIND:TRAC1:MODE %{WRIT|VIEW|AVER|MAXH|MINH|BLAN}";
     @init { inTraceMode; };
 }
 
