@@ -690,18 +690,6 @@ outDetecType {
 }
 
 ######################################################################
-# Enable/Disable spectrogram measurement (SPECM, option K14)
-
-inEnblSpec {
-    out "CALC:SPEC:STAT?";
-    in "%i";
-}
-
-outEnblSpec {
-    out "CALC:SPEC:STAT %{OFF|ON}";
-}
-
-######################################################################
 # Enable/Disable continuous sweep measurement (SPECM, option K14)
 
 inEnblSweCont {
@@ -711,54 +699,6 @@ inEnblSweCont {
 
 outEnblSweCont {
     out "INIT:CONT %{OFF|ON}";
-}
-
-######################################################################
-# Enable/Disable delete of previous measurement
-
-inEnblDelMeas {
-    out "CALC:SPEC:CONT?";
-    in "%i";
-}
-
-outEnblDelMeas {
-    out "CALC:SPEC:CONT %{OFF|ON}";
-}
-
-######################################################################
-# Number of frames recorded (SPECM, Opt. K14)
-
-inSpecFrameCount {
-    out "CALC:SPEC:FRAM:COUN?";
-    in "%f";
-}
-
-outSpecFrameCount {
-    out "CALC:SPEC:FRAM:COUN %f";
-}
-
-######################################################################
-# Frame selection (SPECM, Opt. K14)
-
-inSpecFrame {
-    out "CALC:SPEC:FRAM:SEL?";
-    in "%f";
-}
-
-outSpecFrame {
-    out "CALC:SPEC:FRAM:SEL %f";
-}
-
-######################################################################
-# History Depth
-
-inSpecBuffSize {
-    out "CALC:SPEC:HDEP?";
-    in "%f";
-}
-
-outSpecBuffSize {
-    out "CALC:SPEC:HDEP %f";
 }
 
 ######################################################################

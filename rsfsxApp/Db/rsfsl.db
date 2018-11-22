@@ -43,7 +43,7 @@ record(bi, "$(P)$(R)EnblSpec-Sts") {
   field(DTYP, "stream")
   field(ZNAM, "OFF")
   field(ONAM, "ON")
-  field(INP, "@rsfsx.proto inEnblSpec $(PORT)")
+  field(INP, "@rsfsl.proto inEnblSpec $(PORT)")
 }
 
 record(bo, "$(P)$(R)EnblSpec-Sel") {
@@ -52,7 +52,7 @@ record(bo, "$(P)$(R)EnblSpec-Sel") {
   field(DTYP, "stream")
   field(ZNAM, "OFF")
   field(ONAM, "ON")
-  field(OUT, "@rsfsx.proto outEnblSpec($1) $(PORT)")
+  field(OUT, "@rsfsl.proto outEnblSpec($1) $(PORT)")
   field(FLNK,"$(P)$(R)EnblSpec-Sts")
 }
 
@@ -63,7 +63,7 @@ record(bi, "$(P)$(R)EnblDelPrevMeas-Sts") {
   field(DTYP, "stream")
   field(ZNAM, "OFF")
   field(ONAM, "ON")
-  field(INP, "@rsfsx.proto inEnblDelMeas $(PORT)")
+  field(INP, "@rsfsl.proto inEnblDelMeas $(PORT)")
 }
 
 record(bo, "$(P)$(R)EnblDelPrevMeas-Sel") {
@@ -72,7 +72,7 @@ record(bo, "$(P)$(R)EnblDelPrevMeas-Sel") {
   field(DTYP, "stream")
   field(ZNAM, "OFF")
   field(ONAM, "ON")
-  field(OUT, "@rsfsx.proto outEnblDelMeas($1) $(PORT)")
+  field(OUT, "@rsfsl.proto outEnblDelMeas($1) $(PORT)")
   field(FLNK,"$(P)$(R)EnblDelPrevMeas-Sts")
 }
 
@@ -81,14 +81,14 @@ record(bo, "$(P)$(R)EnblDelPrevMeas-Sel") {
 record(ai, "$(P)$(R)SpecFrameCount-RB") {
   field(DESC, "Get number of recorded frames")
   field(DTYP, "stream")
-  field(INP, "@rsfsx.proto inSpecFrameCount $(PORT)")
+  field(INP, "@rsfsl.proto inSpecFrameCount $(PORT)")
 }
 
 record(ao, "$(P)$(R)SpecFrameCount-SP") {
   field(DESC, "Set number of frames to be recorded")
   field(PINI, "YES")
   field(DTYP, "stream")
-  field(OUT, "@rsfsx.proto outSpecFrameCount(1) $(PORT)")
+  field(OUT, "@rsfsl.proto outSpecFrameCount($1) $(PORT)")
   field(FLNK,"$(P)$(R)SpecFrameCount-RB")
 }
 
@@ -97,14 +97,14 @@ record(ao, "$(P)$(R)SpecFrameCount-SP") {
 record(ai, "$(P)$(R)SpecFrame-RB") {
   field(DESC, "Get frame number to be acquired")
   field(DTYP, "stream")
-  field(INP, "@rsfsx.proto inSpecFrame $(PORT)")
+  field(INP, "@rsfsl.proto inSpecFrame $(PORT)")
 }
 
 record(ao, "$(P)$(R)SpecFrame-SP") {
   field(DESC, "Set the frame number to be acquired")
   field(PINI, "YES")
   field(DTYP, "stream")
-  field(OUT, "@rsfsx.proto outSpecFrame(1) $(PORT)")
+  field(OUT, "@rsfsl.proto outSpecFrame($1) $(PORT)")
   field(FLNK,"$(P)$(R)SpecFrame-RB")
 }
 
@@ -113,14 +113,14 @@ record(ao, "$(P)$(R)SpecFrame-SP") {
 record(ai, "$(P)$(R)SpecBuffSize-RB") {
   field(DESC, "Get the buffer size")
   field(DTYP, "stream")
-  field(INP, "@rsfsx.proto inSpecBuffSize $(PORT)")
+  field(INP, "@rsfsl.proto inSpecBuffSize $(PORT)")
 }
 
 record(ao, "$(P)$(R)SpecBuffSize-SP") {
   field(DESC, "Set the buffer size")
   field(PINI, "YES")
   field(DTYP, "stream")
-  field(OUT, "@rsfsx.proto outSpecBuffSize(1) $(PORT)")
+  field(OUT, "@rsfsl.proto outSpecBuffSize($1) $(PORT)")
   field(FLNK,"$(P)$(R)SpecBuffSize-RB")
 }
 
