@@ -1,5 +1,5 @@
 [Unit]
-Description=RSFSL IOC %p%I
+Description=RSFSX IOC %p%I
 After=rc-local.service
 Wants=rc-local.service
 After=network-online.target
@@ -7,16 +7,16 @@ Wants=network-online.target
 
 [Service]
 # Source environment
-EnvironmentFile=/etc/sysconfig/rsfsl-epics-ioc
-EnvironmentFile=/etc/sysconfig/rsfsl-epics-ioc-mapping
+EnvironmentFile=/etc/sysconfig/rsfsx-epics-ioc
+EnvironmentFile=/etc/sysconfig/rsfsx-epics-ioc-mapping
 # Execute pre with root
 PermissionsStartOnly=true
-Environment=RSFSL_INSTANCE=%i
+Environment=RSFSX_INSTANCE=%i
 ExecStartPre=/bin/mkdir -p /var/log/procServ/%p%i
 ExecStartPre=/bin/mkdir -p /var/run/procServ/%p%i
-WorkingDirectory=<INSTALL_PREFIX>/<IOC_NAME>/iocBoot/iocrsfsl
+WorkingDirectory=<INSTALL_PREFIX>/<IOC_NAME>/iocBoot/iocrsfsx
 # Run procServ with IOC
-ExecStart="/usr/local/bin/runRSFSL.sh"
+ExecStart="/usr/local/bin/runRSFSx.sh"
 
 [Install]
 WantedBy=multi-user.target

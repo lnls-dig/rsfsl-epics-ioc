@@ -1,0 +1,10 @@
+# This file specifies which PVs of the corresponding database should be saved.
+file "rsfsx_settings.req",                P=$(P),  R=$(R)
+
+$(P)$(R)FiltType-Sel
+$(P)$(R)EnblSpec-Sel
+$(P)$(R)EnblDelPrevMeas-Sel
+$(P)$(R)SpecFrameCount-SP
+$(P)$(R)SpecFrame-SP
+$(P)$(R)SpecBuffSize-SP
+$(P)$(R)GetFSLSpec-Sel

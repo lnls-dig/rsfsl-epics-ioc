@@ -46,8 +46,8 @@ GLOBAL_TIMEOUT = 5000;
 # Communication setup
 #
 OutTerminator = CR LF;
-InTerminator = 10;
-ExtraInput = Error;
+InTerminator = LF;
+ExtraInput = Ignore;
 MaxInput = 576018;
 WriteTimeout = ${GLOBAL_TIMEOUT};
 ReadTimeout = ${GLOBAL_TIMEOUT};
@@ -121,7 +121,7 @@ outSweTime {
 }
 
 ######################################################################
-# Enable/Disable automatic coupling of the sweep time to the 
+# Enable/Disable automatic coupling of the sweep time to the
 # frequency span and bandwidth settings
 
 
@@ -140,14 +140,14 @@ outEnblSweTimeAuto {
 
 inTraceMode {
     out "DISP:WIND:TRAC1:MODE?";
-    in "%{WRIT|VIEW|AVER|MAXH|MINH|BLANK}";
+    in "%{WRIT|VIEW|AVER|MAXH|MINH|BLAN}";
 }
 
 outTraceMode {
-    out "DISP:WIND:TRAC1:MODE %{WRIT|VIEW|AVER|MAXH|MINH|BLANK}";
+    out "DISP:WIND:TRAC1:MODE %{WRIT|VIEW|AVER|MAXH|MINH|BLAN}";
     @init { inTraceMode; };
 }
- 
+
 ######################################################################
 # Center Frequency
 
@@ -678,18 +678,6 @@ outEnblVbwAuto {
 }
 
 ######################################################################
-# Select Filter Type
-
-inFiltType {
-    out "SENS:BWID:RES:TYPE?";
-    in "%s";
-}
-
-outFiltType {
-    out "SENS:BWID:RES:TYPE %{NORM|FFT|CFIL|RRC|PULS}";
-}
-
-######################################################################
 # Select Detector Type Manually
 
 inDetecType {
@@ -702,18 +690,6 @@ outDetecType {
 }
 
 ######################################################################
-# Enable/Disable spectrogram measurement (SPECM, option K14)
-
-inEnblSpec {
-    out "CALC:SPEC:STAT?";
-    in "%i";
-}
-
-outEnblSpec {
-    out "CALC:SPEC:STAT %{OFF|ON}";
-}
-
-######################################################################
 # Enable/Disable continuous sweep measurement (SPECM, option K14)
 
 inEnblSweCont {
@@ -722,55 +698,7 @@ inEnblSweCont {
 }
 
 outEnblSweCont {
-    out "INIT:CONT %{ON|OFF}";
-}
-
-######################################################################
-# Enable/Disable delete of previous measurement
-
-inEnblDelMeas {
-    out "CALC:SPEC:CONT?";
-    in "%i";
-}
-
-outEnblDelMeas {
-    out "CALC:SPEC:CONT %{OFF|ON}";
-}
-
-######################################################################
-# Number of frames recorded (SPECM, Opt. K14)
-
-inSpecFrameCount {
-    out "CALC:SPEC:FRAM:COUN?";
-    in "%f";
-}
-
-outSpecFrameCount {
-    out "CALC:SPEC:FRAM:COUN %f";
-}
-
-######################################################################
-# Frame selection (SPECM, Opt. K14)
-
-inSpecFrame {
-    out "CALC:SPEC:FRAM:SEL?";
-    in "%f";
-}
-
-outSpecFrame {
-    out "CALC:SPEC:FRAM:SEL %f";
-}
-
-######################################################################
-# History Depth
-
-inSpecBuffSize {
-    out "CALC:SPEC:HDEP?";
-    in "%f";
-}
-
-outSpecBuffSize {
-    out "CALC:SPEC:HDEP %f";
+    out "INIT:CONT %{OFF|ON}";
 }
 
 ######################################################################

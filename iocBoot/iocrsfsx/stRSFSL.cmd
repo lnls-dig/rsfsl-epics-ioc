@@ -1,20 +1,24 @@
 < envPaths
+
 epicsEnvSet("TOP", "../..")
-< rsfsl.config
+epicsEnvSet("STREAM_PROTOCOL_PATH", "$(TOP)/rsfsxApp/Db")
+
+< RSFSX.config
+< RSFSL.config
 
 ####################################################
 
-epicsEnvSet("STREAM_PROTOCOL_PATH", "$(TOP)/rsfslApp/Db")
 
 ## Register all support components
-dbLoadDatabase("$(TOP)/dbd/rsfsl.dbd",0,0)
-rsfsl_registerRecordDeviceDriver pdbbase
+dbLoadDatabase("$(TOP)/dbd/rsfsx.dbd",0,0)
+rsfsx_registerRecordDeviceDriver pdbbase
 
 ## Load record instances
-dbLoadRecords("${TOP}/rsfslApp/Db/rsfsl.db", "P=$(P), R=$(R), PORT=rsfsl_port, ADDR=0, TIMEOUT=1")
+dbLoadRecords("${TOP}/rsfsxApp/Db/rsfsx.db", "P=$(P), R=$(R), PORT=$(RSFSX_PORT), ADDR=0, TIMEOUT=1")
+dbLoadRecords("${TOP}/rsfsxApp/Db/rsfsl.db", "P=$(P), R=$(R), PORT=$(RSFSX_PORT), ADDR=0, TIMEOUT=1")
 
 # Create the asyn port to use the VXI11 protocol
-vxi11Configure("rsfsl_port","$(DEVICE_IP)",0,"0.0","inst0",0,0)
+vxi11Configure("$(RSFSX_PORT)","$(IPADDR)",0,"0.0","inst0",0,0)
 
 < save_restore.cmd
 
