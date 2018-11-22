@@ -70,3 +70,36 @@ record(bo, "$(P)$(R)AutoAll-Cmd") {
   field(HIGH, "1")
   field(OUT, "@rsfsv.proto outAutoAll($1) $(PORT)")
 }
+
+# Select Filter Type
+
+record(mbbi, "$(P)$(R)FiltType-Sts") {
+  field(DESC, "Get Filter Type")
+  field(DTYP, "stream")
+  field(ZRST, "NORM")
+  field(ZRVL, "0")
+  field(ONST, "CFIL")
+  field(ONVL, "1")
+  field(TWST, "RRC")
+  field(TWVL, "2")
+  field(THST, "P5")
+  field(THVL, "3")
+  field(INP, "@rsfsv.proto inFiltType $(PORT)")
+}
+
+record(mbbo, "$(P)$(R)FiltType-Sel") {
+  field(DESC, "Set Filter Type")
+  field(PINI, "YES")
+  field(DTYP, "stream")
+  field(ZRST, "NORM")
+  field(ZRVL, "0")
+  field(ONST, "CFIL")
+  field(ONVL, "1")
+  field(TWST, "RRC")
+  field(TWVL, "2")
+  field(THST, "P5")
+  field(THVL, "3")
+  field(OUT, "@rsfsv.proto outFiltType($1) $(PORT)")
+  field(FLNK, "$(P)$(R)FiltType-Sts")
+}
+

@@ -74,3 +74,16 @@ outAutoLvl {
 outAutoAll {
     out "%{|ADJ:ALL}";
 }
+
+######################################################################
+# Select Filter Type
+
+inFiltType {
+    out "SENS:BWID:RES:TYPE?";
+    in "%s";
+}
+
+outFiltType {
+    out "SENS:BWID:RES:TYPE %{NORM|CFIL|RRC|P5}";
+}
+

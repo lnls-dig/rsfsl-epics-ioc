@@ -53,3 +53,16 @@ WriteTimeout = ${GLOBAL_TIMEOUT};
 ReadTimeout = ${GLOBAL_TIMEOUT};
 ReplyTimeout = ${GLOBAL_TIMEOUT};
 Separator = ",";
+
+######################################################################
+# Select Filter Type
+
+inFiltType {
+    out "SENS:BWID:RES:TYPE?";
+    in "%s";
+}
+
+outFiltType {
+    out "SENS:BWID:RES:TYPE %{NORM|FFT|CFIL|RRC|PULS}";
+}
+

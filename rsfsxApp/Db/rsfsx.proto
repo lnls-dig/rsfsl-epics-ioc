@@ -678,18 +678,6 @@ outEnblVbwAuto {
 }
 
 ######################################################################
-# Select Filter Type
-
-inFiltType {
-    out "SENS:BWID:RES:TYPE?";
-    in "%s";
-}
-
-outFiltType {
-    out "SENS:BWID:RES:TYPE %{NORM|FFT|CFIL|RRC|PULS}";
-}
-
-######################################################################
 # Select Detector Type Manually
 
 inDetecType {

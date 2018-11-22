@@ -158,3 +158,40 @@ record(bo, "$(P)$(R)CleanSpec-Cmd") {
   field(HIGH, "1")
   field(OUT, "@rsfsx.proto cmdCleanSpec($1) $(PORT)")
 }
+
+# Select Filter Type
+
+record(mbbi, "$(P)$(R)FiltType-Sts") {
+  field(DESC, "Get Filter Type")
+  field(DTYP, "stream")
+  field(ZRST, "NORM")
+  field(ZRVL, "0")
+  field(ONST, "FFT")
+  field(ONVL, "1")
+  field(TWST, "CFIL")
+  field(TWVL, "2")
+  field(THST, "RRC")
+  field(THVL, "3")
+  field(FRST, "PULS")
+  field(FRVL, "4")
+  field(INP, "@rsfsl.proto inFiltType $(PORT)")
+}
+
+record(mbbo, "$(P)$(R)FiltType-Sel") {
+  field(DESC, "Set Filter Type")
+  field(PINI, "YES")
+  field(DTYP, "stream")
+  field(ZRST, "NORM")
+  field(ZRVL, "0")
+  field(ONST, "FFT")
+  field(ONVL, "1")
+  field(TWST, "CFIL")
+  field(TWVL, "2")
+  field(THST, "RRC")
+  field(THVL, "3")
+  field(FRST, "PULS")
+  field(FRVL, "4")
+  field(OUT, "@rsfsl.proto outFiltType($1) $(PORT)")
+  field(FLNK, "$(P)$(R)FiltType-Sts")
+}
+
