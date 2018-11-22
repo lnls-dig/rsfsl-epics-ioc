@@ -710,7 +710,7 @@ inEnblSweCont {
 }
 
 outEnblSweCont {
-    out "INIT:CONT %{ON|OFF}";
+    out "INIT:CONT %{OFF|ON}";
 }
 
 ######################################################################
