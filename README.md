@@ -1,7 +1,7 @@
-# rsfsl-epics-ioc
+# rsfsx-epics-ioc
 ## Overall
 
-Repository containing the EPICS IOC support for the R&S FSL spectrum
+Repository containing the EPICS IOC support for the R&S FSV/FSL spectrum
 analyzer.
 
 ## Example
@@ -16,8 +16,8 @@ the following commands starting at the top level directory:
 $ make clean &&
 $ make uninstall &&
 $ make &&
-$ cd iocBoot/iocrsfsl &&
-$ DEVICE_IP="10.0.18.77" P="TEST:" R="RSFSL:" ../../bin/linux-x86_64/rsfsl ./strsfsl.cmd
+$ cd iocBoot/iocrsfsx &&
+$ DEVICE_IP="10.0.18.77" P="TEST:" R="RSFSX:" ../../bin/linux-x86_64/rsfsx ./stRSFSL.cmd
 ```
 
 The *DEVICE_IP* specifies the instrument IP.
@@ -30,8 +30,8 @@ through the following commands:
 $ make clean &&
 $ make uninstall &&
 $ make &&
-$ cd iocBoot/iocrsfsl &&
-$ procServ -n "RSFSL" -f -i ^C^D 20000 ./runrsfsl.sh -i "xx.x.xx.xx" -P "TEST:" -R "RSFSL:"
+$ cd iocBoot/iocrsfsx &&
+$ procServ -n "RSFSX" -f -i ^C^D 20000 ./runRSFSx.sh -i "xx.x.xx.xx" -P "TEST:" -R "RSFSX:"
 ```
 
 It is important to notice that the *DEVICE_IP* is passed as an argument to the
@@ -54,5 +54,3 @@ An example of reading span is given below:
 ```
 $ caget ${P}${R}FreqSpan-RB
 ```
-"README.md" 88L, 2842C                                                                                                                                           2,0-1         Top
-
