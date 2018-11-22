@@ -488,7 +488,7 @@ record(mbbo, "$(P)$(R)Rbw-Sel") {
   field(ELVL, "3000000")
   field(TVST, "10 MHz")
   field(TVVL, "10000000")
-  field(OUT, "@rsfsx.proto outRbw(1) $(PORT)")
+  field(OUT, "@rsfsx.proto outRbw($1) $(PORT)")
   field(FLNK, "$(P)$(R)Rbw-Sts")
 }
 
@@ -572,7 +572,7 @@ record(mbbo, "$(P)$(R)Vbw-Sel") {
   field(TTVL, "3000000")
   field(FTST, "10 MHz")
   field(FTVL, "10000000")
-  field(OUT, "@rsfsx.proto outVbw(1) $(PORT)")
+  field(OUT, "@rsfsx.proto outVbw($1) $(PORT)")
   field(FLNK, "$(P)$(R)Vbw-Sts")
 }
 
@@ -652,7 +652,7 @@ record(mbbo, "$(P)$(R)DetecType-Sel") {
   field(FVVL, "5")
   field(SXST, "QPE")
   field(SXVL, "6")
-  field(OUT, "@rsfsx.proto outDetecType(1) $(PORT)")
+  field(OUT, "@rsfsx.proto outDetecType($1) $(PORT)")
   field(FLNK, "$(P)$(R)DetecType-Sts")
 }
 
@@ -1492,7 +1492,7 @@ record(mbbo, "$(P)$(R)AttIn-Sel") {
   field(NIVL, "45")
   field(TEST, "50 dB")
   field(TEVL, "50")
-  field(OUT, "@rsfsx.proto outAttIn(1) $(PORT)")
+  field(OUT, "@rsfsx.proto outAttIn($1) $(PORT)")
   field(FLNK, "$(P)$(R)AttIn-Sts")
 }
 
@@ -1597,7 +1597,7 @@ record(ao, "$(P)$(R)LvlOut-SP") {
   field(DRVH, "0")
   field(DRVL, "-50")
   field(EGU, "dBm")
-  field(OUT, "@rsfsx.proto outLvlOut(1) $(PORT)")
+  field(OUT, "@rsfsx.proto outLvlOut($1) $(PORT)")
   field(FLNK,"$(P)$(R)LvlOut-RB")
 }
 
@@ -1620,7 +1620,7 @@ record(ao, "$(P)$(R)LvlOutOffset-SP") {
   field(DRVH, "200")
   field(DRVL, "-200")
   field(EGU, "dB")
-  field(OUT, "@rsfsx.proto outLvlOutOffset(1) $(PORT)")
+  field(OUT, "@rsfsx.proto outLvlOutOffset($1) $(PORT)")
   field(FLNK,"$(P)$(R)LvlOutOffset-RB")
 }
 
