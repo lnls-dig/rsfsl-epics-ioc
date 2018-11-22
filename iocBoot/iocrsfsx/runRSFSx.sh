@@ -25,9 +25,11 @@ if [ -z "${DEVICE_TYPE}" ]; then
     exit 3
 fi
 
-if [ "${DEVICE_TYPE}" != "FSL" ] && [ "${DEVICE_TYPE}" != "FSV" ]; then
-    echo "Device must be either \"FSL\" or \"FSV.\" Please use -d option or set \$DEVICE_TYPE environment variable" >&2
-    exit 4
+RSFSX_TYPE=$(echo ${DEVICE_TYPE} | grep -Eo "[^0-9]+");
+
+if [ -z "$RSFSX_TYPE" ]; then
+    echo "RSFSX device type is not valid. Please check the -d option" >&2
+    exit 6
 fi
 
 if [ -z "$EPICS_CA_MAX_ARRAY_BYTES" ]; then
@@ -35,7 +37,7 @@ if [ -z "$EPICS_CA_MAX_ARRAY_BYTES" ]; then
 fi
 
 ST_CMD_FILE=
-case ${DEVICE_TYPE} in
+case ${RSFSX_TYPE} in
     FSL)
         ST_CMD_FILE=stRSFSL.cmd
         ;;
@@ -45,7 +47,7 @@ case ${DEVICE_TYPE} in
         ;;
 
     *)
-        echo "Invalid Device type: "${DEVICE_TYPE} >&2
+        echo "Invalid Device type: "${RSFSX_TYPE} >&2
         exit 1
         ;;
 esac
