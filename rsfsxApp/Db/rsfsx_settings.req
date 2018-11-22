@@ -12,7 +12,6 @@ $(P)$(R)FreqStop-SP
 $(P)$(R)Rbw-Sel
 $(P)$(R)Vbw-Sel
 $(P)$(R)EnblVbwAuto-Sel
-$(P)$(R)FiltType-Sel
 $(P)$(R)DetecType-Sel
 $(P)$(R)EnblMark1-Sel
 $(P)$(R)EnblMark2-Sel

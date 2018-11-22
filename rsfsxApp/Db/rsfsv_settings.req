@@ -1,6 +1,7 @@
 # This file specifies which PVs of the corresponding database should be saved.
 file "rsfsx_settings.req",                P=$(P),  R=$(R)
 
+$(P)$(R)FiltType-Sel
 $(P)$(R)AutoFreq-Cmd
 $(P)$(R)AutoLvl-Cmd
 $(P)$(R)AutoAll-Cmd
