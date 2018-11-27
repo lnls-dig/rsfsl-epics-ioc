@@ -641,6 +641,19 @@ outLvlOutOffset {
 }
 
 ######################################################################
+# Trigger source for the start of a sweep
+
+inTrigSrc {
+    out "TRIG:SEQ:SOUR?";
+    in "%s";
+}
+
+outTrigSrc {
+    out "TRIG:SEQ:SOUR %{IMM|EXT|IFP|TIME}";
+    @init{ inTrigSrc; };
+}
+
+######################################################################
 # Resolution Bandwidth
 
 inRbw {

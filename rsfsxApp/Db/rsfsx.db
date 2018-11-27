@@ -1624,26 +1624,6 @@ record(ao, "$(P)$(R)LvlOutOffset-SP") {
   field(FLNK,"$(P)$(R)LvlOutOffset-RB")
 }
 
-# Enable/Disable Continuous Sweep Measurement (SPECM, Option K14)
-
-record(bi, "$(P)$(R)EnblSweCont-Sts") {
-  field(DESC, "Get continuous sweep measurement state")
-  field(DTYP, "stream")
-  field(ZNAM, "OFF")
-  field(ONAM, "ON")
-  field(INP, "@rsfsx.proto inEnblSweCont $(PORT)")
-}
-
-record(bo, "$(P)$(R)EnblSweCont-Sel") {
-  field(DESC, "Enable/Disable continuous sweep meas.")
-  field(PINI, "YES")
-  field(DTYP, "stream")
-  field(ZNAM, "OFF")
-  field(ONAM, "ON")
-  field(OUT, "@rsfsx.proto outEnblSweCont($1) $(PORT)")
-  field(FLNK,"$(P)$(R)EnblSweCont-Sts")
-}
-
 # Get Spectrum
 # Enable/Disable spectrum acquisition
 
@@ -1664,6 +1644,39 @@ record(bo, "$(P)$(R)EnblSpectrogram-Sel") {
   field(ONAM, "ON")
   field(FLNK,"$(P)$(R)FreqArray-Mon")
 }
+
+# Trigger Source for the start os a sweep
+
+record(mbbi, "$(P)$(R)TrigSrc-Sts") {
+  field(DESC, "Get Sweep Trigger Source")
+  field(DTYP, "stream")
+  field(ZRVL, "0")
+  field(ZRST, "IMM")
+  field(ONVL, "1")
+  field(ONST, "EXT")
+  field(TWVL, "2")
+  field(TWST, "IFP")
+  field(THVL, "3")
+  field(THST, "TIME")
+  field(INP, "@rsfsx.proto inTrigSrc $(PORT)")
+}
+
+record(mbbo, "$(P)$(R)TrigSrc-Sel") {
+  field(DESC, "Set Sweep Trigger Source")
+  field(PINI, "YES")
+  field(DTYP, "stream")
+  field(ZRVL, "0")
+  field(ZRST, "IMM")
+  field(ONVL, "1")
+  field(ONST, "EXT")
+  field(TWVL, "2")
+  field(TWST, "IFP")
+  field(THVL, "3")
+  field(THST, "TIME")
+  field(OUT, "@rsfsx.proto outTrigSrc($1) $(PORT)")
+  field(FLNK, "$(P)$(R)TrigSrc-Sts")
+}
+
 
 ######################################################################
 ########################## MONITOR ###################################
@@ -1897,8 +1910,7 @@ record(fanout, "$(P)$(R)RstFout3") {
   field(LNK2, "$(P)$(R)ImpdIn-Sts")
   field(LNK3, "$(P)$(R)RoscSrc-Sts")
 #  field(LNK4, "$(P)$(R)EnblSpec-Sts")
-  field(LNK5, "$(P)$(R)EnblSweCont-Sts")
-  field(LNK6, "$(P)$(R)RstFout4")
+  field(LNK5, "$(P)$(R)RstFout4")
   field(SELM, "All")
 }
 
@@ -2761,7 +2773,7 @@ record(bo, "$(P)$(R)Save-Cmd"){
 }
 
 # This PV is monitored by autosave
-record(calc, "$(P)$(R)SaveTrg"){
+record(calc, "$(P)$(R)SaveTrig"){
   field(ASG, "Reserved")
   field(DESC, "Save PV values trigger")
   field(INPA, "$(P)$(R)Save-Cmd.VAL")
