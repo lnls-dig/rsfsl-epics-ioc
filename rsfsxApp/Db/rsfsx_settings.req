@@ -49,6 +49,7 @@ $(P)$(R)ImpdIn-Sel
 $(P)$(R)RoscSrc-Sel
 $(P)$(R)LvlOut-SP
 $(P)$(R)LvlOutOffset-SP
-$(P)$(R)EnblSweCont-Sel
 $(P)$(R)GetSpectrum-Sel
 $(P)$(R)EnblSpectrogram-Sel
+$(P)$(R)TrigSrc-Sel
+$(P)$(R)SaveTrig

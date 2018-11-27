@@ -28,5 +28,6 @@ iocInit
 # No sequencer program
 
 # Create manual trigger for Autosave
-create_triggered_set("auto_settings_rsfsv.req", "${P}${R}SaveTrg", "P=${P}, R=${R}")
+create_monitor_set("auto_settings_rsfsv.req", 30, "P=${P}, R=${R}")
+create_triggered_set("auto_settings_rsfsv.req", "${P}${R}SaveTrig", "P=${P}, R=${R}")
 set_savefile_name("auto_settings_rsfsv.req", "auto_settings_${P}${R}.sav")
