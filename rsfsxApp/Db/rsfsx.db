@@ -258,73 +258,73 @@ record(fanout, "$(P)$(R)FCenterFout") {
   field(SELM, "All")
 }
 
-## Frequency Step
-#
-#record(ai, "$(P)$(R)FreqStep-RB") {
-#  field(DESC, "Get the frequency step size")
-#  field(DTYP, "stream")
-#  field(PREC, "1")
-#  field(MDEL, "-1")
-#  field(ADEL, "-1")
-#  field(EGU, "Hz")
-#  field(INP, "@rsfsx.proto inFreqStep $(PORT)")
-#}
-#
-#record(ao, "$(P)$(R)FreqStep-SP") {
-#  field(DESC, "Set the frequency step size")
-#  field(PINI, "YES")
-#  field(DTYP, "stream")
-#  field(EGU, "Hz")
-#  field(OUT, "@rsfsx.proto outFreqStep($1) $(PORT)")
-#  field(FLNK,"$(P)$(R)FreqStep-RB")
-#}
-#
-## Frequency Step Link
-#
-#record(mbbi, "$(P)$(R)StepLink-Sts") {
-#  field(DESC, "Get the step size coupling")
-#  field(DTYP, "stream")
-#  field(ZRVL, "0")
-#  field(ZRST, "SPAN")
-#  field(ONVL, "1")
-#  field(ONST, "RBW")
-#  field(TWVL, "2")
-#  field(TWST, "OFF")
-#  field(INP, "@rsfsx.proto inStepLink $(PORT)")
-#}
-#
-#record(mbbo, "$(P)$(R)StepLink-Sel") {
-#  field(DESC, "Set the step size coupling")
-#  field(PINI, "YES")
-#  field(DTYP, "stream")
-#  field(ZRVL, "0")
-#  field(ZRST, "SPAN")
-#  field(ONVL, "1")
-#  field(ONST, "RBW")
-#  field(TWVL, "2")
-#  field(TWST, "OFF")
-#  field(OUT, "@rsfsx.proto outStepLink($1) $(PORT)")
-#  field(FLNK, "$(P)$(R)StepLink-Sts")
-#}
-#
-## Enable/Disable Auto Frequency Step Size (step coupled to span)
-#
-#record(bi, "$(P)$(R)AutoStep-Sts") {
-#  field(DESC, "Get automatic step size state")
-#  field(DTYP, "stream")
-#  field(ZNAM, "OFF")
-#  field(ONAM, "ON")
-#  field(INP, "@rsfsx.proto inAutoStep $(PORT)")
-#}
-#
-#record(bo, "$(P)$(R)AutoStep-Sel") {
-#  field(DESC, "Enable/Disable automatic step size state")
-#  field(DTYP, "stream")
-#  field(ZNAM, "OFF")
-#  field(ONAM, "ON")
-#  field(OUT, "@rsfsx.proto outAutoStep($1) $(PORT)")
-#  field(FLNK, "$(P)$(R)AutoStep-Sts")
-#}
+# Frequency Step
+
+record(ai, "$(P)$(R)FreqStep-RB") {
+  field(DESC, "Get the frequency step size")
+  field(DTYP, "stream")
+  field(PREC, "1")
+  field(MDEL, "-1")
+  field(ADEL, "-1")
+  field(EGU, "Hz")
+  field(INP, "@rsfsx.proto inFreqStep $(PORT)")
+}
+
+record(ao, "$(P)$(R)FreqStep-SP") {
+  field(DESC, "Set the frequency step size")
+  field(PINI, "YES")
+  field(DTYP, "stream")
+  field(EGU, "Hz")
+  field(OUT, "@rsfsx.proto outFreqStep($1) $(PORT)")
+  field(FLNK,"$(P)$(R)FreqStep-RB")
+}
+
+# Frequency Step Link
+
+record(mbbi, "$(P)$(R)StepLink-Sts") {
+  field(DESC, "Get the step size coupling")
+  field(DTYP, "stream")
+  field(ZRVL, "0")
+  field(ZRST, "SPAN")
+  field(ONVL, "1")
+  field(ONST, "RBW")
+  field(TWVL, "2")
+  field(TWST, "OFF")
+  field(INP, "@rsfsx.proto inStepLink $(PORT)")
+}
+
+record(mbbo, "$(P)$(R)StepLink-Sel") {
+  field(DESC, "Set the step size coupling")
+  field(PINI, "YES")
+  field(DTYP, "stream")
+  field(ZRVL, "0")
+  field(ZRST, "SPAN")
+  field(ONVL, "1")
+  field(ONST, "RBW")
+  field(TWVL, "2")
+  field(TWST, "OFF")
+  field(OUT, "@rsfsx.proto outStepLink($1) $(PORT)")
+  field(FLNK, "$(P)$(R)StepLink-Sts")
+}
+
+# Enable/Disable Auto Frequency Step Size (step coupled to span)
+
+record(bi, "$(P)$(R)AutoStep-Sts") {
+  field(DESC, "Get automatic step size state")
+  field(DTYP, "stream")
+  field(ZNAM, "OFF")
+  field(ONAM, "ON")
+  field(INP, "@rsfsx.proto inAutoStep $(PORT)")
+}
+
+record(bo, "$(P)$(R)AutoStep-Sel") {
+  field(DESC, "Enable/Disable automatic step size state")
+  field(DTYP, "stream")
+  field(ZNAM, "OFF")
+  field(ONAM, "ON")
+  field(OUT, "@rsfsx.proto outAutoStep($1) $(PORT)")
+  field(FLNK, "$(P)$(R)AutoStep-Sts")
+}
 
 # Frequency Span
 
