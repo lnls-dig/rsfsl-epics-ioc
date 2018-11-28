@@ -52,4 +52,3 @@ $(P)$(R)LvlOutOffset-SP
 $(P)$(R)GetSpectrum-Sel
 $(P)$(R)EnblSpectrogram-Sel
 $(P)$(R)TrigSrc-Sel
-$(P)$(R)SaveTrig

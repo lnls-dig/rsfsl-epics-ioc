@@ -2,4 +2,3 @@
 file "rsfsx_settings.req",                P=$(P),  R=$(R)
 
 $(P)$(R)FiltType-Sel
-$(P)$(R)SaveTrig
