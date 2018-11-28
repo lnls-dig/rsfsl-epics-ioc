@@ -6,6 +6,9 @@ $(P)$(R)SweTime-SP
 $(P)$(R)EnblSweTimeAuto-Sel
 $(P)$(R)TraceMode-Sel
 $(P)$(R)FreqCenter-SP
+$(P)$(R)FreqStep-SP
+$(P)$(R)StepLink-Sel
+$(P)$(R)AutoStep-Sel
 $(P)$(R)FreqSpan-SP
 $(P)$(R)FreqStart-SP
 $(P)$(R)FreqStop-SP
