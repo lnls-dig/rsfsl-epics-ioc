@@ -42,8 +42,6 @@ record(ai, "$(P)$(R)RefLvl-RB") {
   field(DESC, "Get reference level")
   field(DTYP, "stream")
   field(PREC, "1")
-  field(MDEL, "-1")
-  field(ADEL, "-1")
   field(EGU, "dBm")
   field(INP, "@rsfsx.proto inRefLvl $(PORT)")
 }
@@ -65,8 +63,6 @@ record(ai, "$(P)$(R)RefOff-RB") {
   field(DESC, "Get reference level offset")
   field(DTYP, "stream")
   field(PREC, "1")
-  field(MDEL, "-1")
-  field(ADEL, "-1")
   field(EGU, "dB")
   field(INP, "@rsfsx.proto inRefOff $(PORT)")
 }
@@ -111,13 +107,11 @@ record(bo, "$(P)$(R)EnblContSwe-Sel") {
   field(FLNK,"$(P)$(R)EnblContSwe-Sts")
 }
 
-# Sweep Points Number
+# Number of Swee Points
 
 record(ai, "$(P)$(R)SwePts-RB") {
   field(DESC, "Get number of points in one sweep")
   field(DTYP, "stream")
-  field(MDEL, "-1")
-  field(ADEL, "-1")
   field(EGU, "points")
   field(INP, "@rsfsx.proto inSwePts $(PORT)")
   field(FLNK, "$(P)$(R)FreqArray-Mon")
@@ -140,8 +134,6 @@ record(ai, "$(P)$(R)SweTime-RB") {
   field(DESC, "Get Sweep Time")
   field(DTYP, "stream")
   field(PREC, "3")
-  field(MDEL, "-1")
-  field(ADEL, "-1")
   field(EGU, "s")
   field(INP, "@rsfsx.proto inSweTime $(PORT)")
   field(FLNK, "$(P)$(R)SweTimeFout")
@@ -233,8 +225,6 @@ record(ai, "$(P)$(R)FreqCenter-RB") {
   field(DESC, "Get center frequency")
   field(DTYP, "stream")
   field(PREC, "3")
-  field(MDEL, "-1")
-  field(ADEL, "-1")
   field(EGU, "Hz")
   field(INP, "@rsfsx.proto inFrqCent $(PORT)")
   field(FLNK, "$(P)$(R)FCenterFout")
@@ -264,8 +254,6 @@ record(ai, "$(P)$(R)FreqStep-RB") {
   field(DESC, "Get the frequency step size")
   field(DTYP, "stream")
   field(PREC, "1")
-  field(MDEL, "-1")
-  field(ADEL, "-1")
   field(EGU, "Hz")
   field(INP, "@rsfsx.proto inFreqStep $(PORT)")
 }
@@ -332,8 +320,6 @@ record(ai, "$(P)$(R)FreqSpan-RB") {
   field(DESC, "Get frequency span")
   field(DTYP, "stream")
   field(PREC, "1")
-  field(MDEL, "-1")
-  field(ADEL, "-1")
   field(EGU, "Hz")
   field(INP, "@rsfsx.proto inFrqSpan $(PORT)")
   field(FLNK, "$(P)$(R)FSpanFout")
@@ -363,8 +349,6 @@ record(ai, "$(P)$(R)FreqStart-RB") {
   field(DESC, "Get start frequency")
   field(DTYP, "stream")
   field(PREC, "1")
-  field(MDEL, "-1")
-  field(ADEL, "-1")
   field(EGU, "Hz")
   field(INP, "@rsfsx.proto inFrqStart $(PORT)")
   field(FLNK, "$(P)$(R)FStartFout")
@@ -396,8 +380,6 @@ record(ai, "$(P)$(R)FreqStop-RB") {
   field(DESC, "Get stop frequency")
   field(DTYP, "stream")
   field(PREC, "1")
-  field(MDEL, "-1")
-  field(ADEL, "-1")
   field(EGU, "Hz")
   field(INP, "@rsfsx.proto inFrqStop $(PORT)")
   field(FLNK, "$(P)$(R)FStopFout")
