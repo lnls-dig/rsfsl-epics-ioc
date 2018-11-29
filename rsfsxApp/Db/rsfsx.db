@@ -2747,18 +2747,9 @@ record(bo, "$(P)$(R)DMarkMin4-Cmd") {
 # Desc: Save '-Sel' and '-SP' PV values.
 
 record(bo, "$(P)$(R)Save-Cmd"){
-  field(DESC, "Save PV values cmd")
-  field(ZNAM, "OFF")
-  field(ONAM, "ON")
+  field(DESC, "Manual 'Save Settings' command")
+  field(MASK, "1")
+  field(ZNAM, "Dsbl")
+  field(ONAM, "Enbl")
   field(HIGH, "1")
-  field(FLNK, "$(P)$(R)SaveTrg")
-}
-
-# This PV is monitored by autosave
-record(calc, "$(P)$(R)SaveTrig"){
-  field(ASG, "Reserved")
-  field(DESC, "Save PV values trigger")
-  field(INPA, "$(P)$(R)Save-Cmd.VAL")
-  field(CALC, "A=1?!VAL:VAL")
-  field(VAL, "0")
 }

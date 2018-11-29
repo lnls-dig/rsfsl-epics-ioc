@@ -29,5 +29,5 @@ iocInit
 
 # Create manual trigger for Autosave
 create_monitor_set("auto_settings_rsfsv.req", 30, "P=${P}, R=${R}")
-create_triggered_set("auto_settings_rsfsv.req", "${P}${R}SaveTrig", "P=${P}, R=${R}")
+create_triggered_set("auto_settings_rsfsv.req", "${P}${R}Save-Cmd", "P=${P}, R=${R}")
 set_savefile_name("auto_settings_rsfsv.req", "auto_settings_${P}${R}.sav")
