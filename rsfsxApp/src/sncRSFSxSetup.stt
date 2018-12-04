@@ -1,0 +1,90 @@
+program sncRSFSxSetup
+
+double CenterFreqSP;
+assign CenterFreqSP to "{P}{R}FreqCenter-SP";
+monitor CenterFreqSP;
+evflag CenterFreqFlag;
+sync CenterFreqSP CenterFreqFlag;
+
+double CenterFreqRB;
+assign CenterFreqRB to "{P}{R}FreqCenter-RB";
+
+double SpanSP;
+assign SpanSP to "{P}{R}FreqSpan-SP";
+monitor SpanSP;
+evflag SpanFlag;
+sync SpanSP SpanFlag;
+
+double SpanRB;
+assign SpanRB to "{P}{R}FreqSpan-RB";
+
+double FreqStartSP;
+assign FreqStartSP to "{P}{R}FreqStart-SP";
+monitor FreqStartSP;
+evflag FreqStartFlag;
+sync FreqStartSP FreqStartFlag;
+
+double FreqStartRB;
+assign FreqStartRB to "{P}{R}FreqStart-RB";
+
+double FreqStopSP;
+assign FreqStopSP to "{P}{R}FreqStop-SP";
+monitor FreqStopSP;
+evflag FreqStopFlag;
+sync FreqStopSP FreqStopFlag;
+
+double FreqStopRB;
+assign FreqStopRB to "{P}{R}FreqStop-RB";
+
+ss ss1 {
+    state opr {
+
+	when (efTestAndClear(CenterFreqFlag)) {
+	    SpanSP = SpanRB;
+	    pvPut(SpanSP);
+
+	    FreqStartSP = FreqStartRB;
+	    pvPut(FreqStartSP);
+
+	    FreqStopSP = FreqStopRB;
+	    pvPut(FreqStopSP);
+
+	} state opr
+
+	when (efTestAndClear(SpanFlag)) {
+	    CenterFreqSP = CenterFreqRB;
+	    pvPut(CenterFreqSP);
+
+	    FreqStartSP = FreqStartRB;
+	    pvPut(FreqStartSP);
+
+	    FreqStopSP = FreqStopRB;
+	    pvPut(FreqStopSP);
+
+	} state opr
+
+	when (efTestAndClear(FreqStartFlag)) {
+	    CenterFreqSP = CenterFreqRB;
+	    pvPut(CenterFreqSP);
+    
+	    SpanSP = SpanRB;
+	    pvPut(SpanSP);
+
+	    FreqStopSP = FreqStopRB;
+	    pvPut(FreqStopSP);
+
+	} state opr
+
+	when (efTestAndClear(FreqStopFlag)) {
+	    CenterFreqSP = CenterFreqRB;
+	    pvPut(CenterFreqSP);
+    
+	    SpanSP = SpanRB;
+	    pvPut(SpanSP);
+
+	    FreqStartSP = FreqStartRB;
+	    pvPut(FreqStartSP);
+
+	} state opr
+    } 
+}

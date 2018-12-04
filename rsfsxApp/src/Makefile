@@ -4,6 +4,10 @@ include $(TOP)/configure/CONFIG
 #----------------------------------------
 #  ADD MACRO DEFINITIONS AFTER THIS LINE
 #=============================
+# Build the IOC support library
+
+LIBRARY_IOC += rsfsxSupport
+rsfsxSupport_LIBS += $(EPICS_BASE_IOC_LIBS)
 
 #=============================
 # Build the IOC application
@@ -30,6 +34,25 @@ rsfsx_SRCS_vxWorks += -nil-
 
 # Add support from base/src/vxWorks if needed
 #rsfsx_OBJS_vxWorks += $(EPICS_BASE_BIN)/vxComLibrary
+
+# Link in the code from the support library
+rsfsx_LIBS += rsfsxSupport
+
+ifneq ($(SNCSEQ),)
+  
+    sncRSFSxSetup_SNCFLAGS += +r
+    rsfsx_DBD += sncRSFSxSetup.dbd
+    rsfsxSupport_SRCS += sncRSFSxSetup.stt
+    rsfsxSupport_LIBS += seq pv
+    rsfsx_LIBS += seq pv
+
+    PROD_HOST += sncRSFSxProgram
+    sncRSFSxProgram_SNCFLAGS += +m
+    sncRSFSxProgram_SRCS += sncRSFSxProgram.st
+    sncRSFSxProgram_LIBS += seq pv
+    sncRSFSxProgram_LIBS += $(EPICS_BASE_HOST_LIBS)
+
+endif
 
 # Finally link to the EPICS Base libraries
 rsfsx_LIBS += $(EPICS_BASE_IOC_LIBS)
