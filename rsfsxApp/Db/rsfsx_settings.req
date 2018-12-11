@@ -45,13 +45,13 @@ $(P)$(R)DMarkX1-SP
 $(P)$(R)DMarkX2-SP
 $(P)$(R)DMarkX3-SP
 $(P)$(R)DMarkX4-SP
-$(P)$(R)EnblOutp-Sel
+$(P)$(R)EnblTrkGen-Sel
 $(P)$(R)AttIn-Sel
 $(P)$(R)EnblAttAuto-Sel
 $(P)$(R)ImpdIn-Sel
 $(P)$(R)RoscSrc-Sel
-$(P)$(R)LvlOut-SP
-$(P)$(R)LvlOutOffset-SP
+$(P)$(R)TrkGenLvl-SP
+$(P)$(R)TrkGenLvlOffset-SP
 $(P)$(R)GetSpectrum-Sel
 $(P)$(R)EnblSpectrogram-Sel
 $(P)$(R)TrigSrc-Sel

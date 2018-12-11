@@ -1401,7 +1401,7 @@ record(ao, "$(P)$(R)DMarkX4-SP") {
 
 # State of the tracking generator output
 
-record(bi, "$(P)$(R)EnblOutp-Sts") {
+record(bi, "$(P)$(R)EnblTrkGen-Sts") {
   field(DESC, "Get Tracking Generator State")
   field(DTYP, "stream")
   field(ZNAM, "OFF")
@@ -1409,14 +1409,14 @@ record(bi, "$(P)$(R)EnblOutp-Sts") {
   field(INP, "@rsfsx.proto inEnblOut $(PORT)")
 }
 
-record(bo, "$(P)$(R)EnblOutp-Sel") {
+record(bo, "$(P)$(R)EnblTrkGen-Sel") {
   field(DESC, "Enable or Disable Tracking Generator")
   field(PINI, "YES")
   field(DTYP, "stream")
   field(ZNAM, "OFF")
   field(ONAM, "ON")
   field(OUT, "@rsfsx.proto outEnblOut($1) $(PORT)")
-  field(FLNK,"$(P)$(R)EnblOutp-Sts")
+  field(FLNK,"$(P)$(R)EnblTrkGen-Sts")
 }
 
 # Input Attenuator Value
@@ -1562,7 +1562,7 @@ record(bo, "$(P)$(R)RoscSrc-Sel") {
 
 # Tracking Generator level
 
-record(ai, "$(P)$(R)LvlOut-RB") {
+record(ai, "$(P)$(R)TrkGenLvl-RB") {
   field(DESC, "Get Tracking Generators Level")
   field(DTYP, "stream")
   field(PREC, "3")
@@ -1571,7 +1571,7 @@ record(ai, "$(P)$(R)LvlOut-RB") {
   field(FLNK, "$(P)$(R)RefLvl-RB")
 }
 
-record(ao, "$(P)$(R)LvlOut-SP") {
+record(ao, "$(P)$(R)TrkGenLvl-SP") {
   field(DESC, "Set Tracking Generators Level")
   field(PINI, "NO")
   field(DTYP, "stream")
@@ -1580,21 +1580,21 @@ record(ao, "$(P)$(R)LvlOut-SP") {
   field(DRVL, "-50")
   field(EGU, "dBm")
   field(OUT, "@rsfsx.proto outLvlOut($1) $(PORT)")
-  field(FLNK,"$(P)$(R)LvlOut-RB")
+  field(FLNK,"$(P)$(R)TrkGenLvl-RB")
 }
 
 # Tracking Generator Offset Level
 
-record(ai, "$(P)$(R)LvlOutOffset-RB") {
+record(ai, "$(P)$(R)TrkGenLvlOffset-RB") {
   field(DESC, "Get Tracking Generator Offset Level")
   field(DTYP, "stream")
   field(PREC, "1")
   field(EGU, "dB")
   field(INP, "@rsfsx.proto inLvlOutOffset $(PORT)")
-  field(FLNK, "$(P)$(R)LvlOut-RB")
+  field(FLNK, "$(P)$(R)TrkGenLvl-RB")
 }
 
-record(ao, "$(P)$(R)LvlOutOffset-SP") {
+record(ao, "$(P)$(R)TrkGenLvlOffset-SP") {
   field(DESC, "Set Tracking Generator Offset Level")
   field(PINI, "YES")
   field(DTYP, "stream")
@@ -1603,7 +1603,7 @@ record(ao, "$(P)$(R)LvlOutOffset-SP") {
   field(DRVL, "-200")
   field(EGU, "dB")
   field(OUT, "@rsfsx.proto outLvlOutOffset($1) $(PORT)")
-  field(FLNK,"$(P)$(R)LvlOutOffset-RB")
+  field(FLNK,"$(P)$(R)TrkGenLvlOffset-RB")
 }
 
 # Get Spectrum
@@ -1879,8 +1879,8 @@ record(fanout, "$(P)$(R)RstFout1") {
 
 record(fanout, "$(P)$(R)RstFout2") {
   field(LNK1, "$(P)$(R)MarkLimitFout")
-  field(LNK2, "$(P)$(R)LvlOut-RB")
-  field(LNK3, "$(P)$(R)LvlOutOffset-RB")
+  field(LNK2, "$(P)$(R)TrkGenLvl-RB")
+  field(LNK3, "$(P)$(R)TrkGenLvlOffset-RB")
 #  field(LNK4, "$(P)$(R)EnblPreamp-Sts")	#PreAmp PV is commented
   field(LNK5, "$(P)$(R)AttIn-Sts")
   field(LNK6, "$(P)$(R)RstFout3")
