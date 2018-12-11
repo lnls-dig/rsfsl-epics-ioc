@@ -134,7 +134,8 @@ record(ai, "$(P)$(R)SweTime-RB") {
   field(DESC, "Get Sweep Time")
   field(DTYP, "stream")
   field(PREC, "3")
-  field(EGU, "s")
+  field(ASLO, "1000")
+  field(EGU, "ms")
   field(INP, "@rsfsx.proto inSweTime $(PORT)")
   field(FLNK, "$(P)$(R)SweTimeFout")
 }
