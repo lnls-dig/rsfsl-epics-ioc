@@ -479,6 +479,7 @@ record(fanout, "$(P)$(R)RbwFout"){
   field(LNK1, "$(P)$(R)SweTime-RB")
   field(LNK2, "$(P)$(R)Vbw-Sts")
   field(LNK3, "$(P)$(R)EnblVbwAuto-Sts")
+  field(LNK4, "$(P)$(R)FiltType-Sts")
   field(SELM, "All")
 }
 
@@ -563,6 +564,7 @@ record(fanout, "$(P)$(R)VbwFout") {
   field(LNK1, "$(P)$(R)SweTime-RB")
   field(LNK2, "$(P)$(R)Rbw-Sts")
   field(LNK3, "$(P)$(R)EnblVbwAuto-Sts")
+  field(LNK4, "$(P)$(R)FiltType-Sts")
   field(SELM, "All")
 }
 
@@ -592,6 +594,7 @@ record(fanout, "$(P)$(R)VbwAutoFout") {
   field(LNK1, "$(P)$(R)Vbw-Sts")
   field(LNK2, "$(P)$(R)Rbw-Sts")
   field(LNK3, "$(P)$(R)SweTime-RB")
+  field(LNK4, "$(P)$(R)FiltType-Sts")
   field(SELM, "All")
 }
 
