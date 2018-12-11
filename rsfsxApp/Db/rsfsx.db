@@ -1322,7 +1322,7 @@ record(ai, "$(P)$(R)DMarkX1-RB") {
 
 record(ao, "$(P)$(R)DMarkX1-SP") {
   field(DESC, "Set X value of the marker1")
-  field(PINI, "YES")
+  field(PINI, "NO")
   field(DTYP, "stream")
   field(PREC, "3")
   field(EGU, "Hz")
@@ -1345,7 +1345,7 @@ record(ai, "$(P)$(R)DMarkX2-RB") {
 
 record(ao, "$(P)$(R)DMarkX2-SP") {
   field(DESC, "Set X value of the marker2")
-  field(PINI, "YES")
+  field(PINI, "NO")
   field(DTYP, "stream")
   field(PREC, "3")
   field(EGU, "Hz")
@@ -1368,7 +1368,7 @@ record(ai, "$(P)$(R)DMarkX3-RB") {
 
 record(ao, "$(P)$(R)DMarkX3-SP") {
   field(DESC, "Set X value of the marker3")
-  field(PINI, "YES")
+  field(PINI, "NO")
   field(DTYP, "stream")
   field(PREC, "3")
   field(EGU, "Hz")
@@ -1391,7 +1391,7 @@ record(ai, "$(P)$(R)DMarkX4-RB") {
 
 record(ao, "$(P)$(R)DMarkX4-SP") {
   field(DESC, "Set X value of the marker4")
-  field(PINI, "YES")
+  field(PINI, "NO")
   field(DTYP, "stream")
   field(PREC, "3")
   field(EGU, "Hz")
