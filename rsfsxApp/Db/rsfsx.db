@@ -756,7 +756,7 @@ record(ai, "$(P)$(R)MarkX1-RB") {
 
 record(ao, "$(P)$(R)MarkX1-SP") {
   field(DESC, "Set X value of the marker1")
-  field(PINI, "YES")
+  field(PINI, "NO")
   field(DTYP, "stream")
   field(PREC, "3")
   field(EGU, "Hz")
@@ -779,7 +779,7 @@ record(ai, "$(P)$(R)MarkX2-RB") {
 
 record(ao, "$(P)$(R)MarkX2-SP") {
   field(DESC, "Set X value of the marker2")
-  field(PINI, "YES")
+  field(PINI, "NO")
   field(DTYP, "stream")
   field(PREC, "3")
   field(EGU, "Hz")
@@ -802,7 +802,7 @@ record(ai, "$(P)$(R)MarkX3-RB") {
 
 record(ao, "$(P)$(R)MarkX3-SP") {
   field(DESC, "Set X value of the marker3")
-  field(PINI, "YES")
+  field(PINI, "NO")
   field(DTYP, "stream")
   field(PREC, "3")
   field(EGU, "Hz")
@@ -825,7 +825,7 @@ record(ai, "$(P)$(R)MarkX4-RB") {
 
 record(ao, "$(P)$(R)MarkX4-SP") {
   field(DESC, "Set X value of the marker4")
-  field(PINI, "YES")
+  field(PINI, "NO")
   field(DTYP, "stream")
   field(PREC, "3")
   field(EGU, "Hz")
