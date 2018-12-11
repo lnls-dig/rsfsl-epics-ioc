@@ -1573,7 +1573,7 @@ record(ai, "$(P)$(R)LvlOut-RB") {
 
 record(ao, "$(P)$(R)LvlOut-SP") {
   field(DESC, "Set Tracking Generators Level")
-  field(PINI, "YES")
+  field(PINI, "NO")
   field(DTYP, "stream")
   field(PREC, "3")
   field(DRVH, "0")
