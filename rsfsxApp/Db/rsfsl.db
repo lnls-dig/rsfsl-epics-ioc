@@ -175,6 +175,7 @@ record(mbbi, "$(P)$(R)FiltType-Sts") {
   field(FRST, "PULS")
   field(FRVL, "4")
   field(INP, "@rsfsl.proto inFiltType $(PORT)")
+  field(FLNK, "$(P)$(R)SweTime-RB")
 }
 
 record(mbbo, "$(P)$(R)FiltType-Sel") {
