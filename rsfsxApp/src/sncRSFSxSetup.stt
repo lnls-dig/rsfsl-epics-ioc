@@ -2,88 +2,175 @@ program sncRSFSxSetup
 
 double CenterFreqSP;
 assign CenterFreqSP to "{P}{R}FreqCenter-SP";
-monitor CenterFreqSP;
-evflag CenterFreqFlag;
-sync CenterFreqSP CenterFreqFlag;
 
 double CenterFreqRB;
 assign CenterFreqRB to "{P}{R}FreqCenter-RB";
+monitor CenterFreqRB;
+evflag CenterFreqFlag;
+sync CenterFreqRB CenterFreqFlag;
+
+double CenterFreqProc = 1;
+assign CenterFreqProc to "{P}{R}FreqCenter-RB.PROC";
 
 double SpanSP;
 assign SpanSP to "{P}{R}FreqSpan-SP";
-monitor SpanSP;
-evflag SpanFlag;
-sync SpanSP SpanFlag;
 
 double SpanRB;
 assign SpanRB to "{P}{R}FreqSpan-RB";
+monitor SpanRB;
+evflag SpanFlag;
+sync SpanRB SpanFlag;
+
+double SpanProc = 1;
+assign SpanProc to "{P}{R}FreqSpan-RB.PROC";
 
 double FreqStartSP;
 assign FreqStartSP to "{P}{R}FreqStart-SP";
-monitor FreqStartSP;
-evflag FreqStartFlag;
-sync FreqStartSP FreqStartFlag;
 
 double FreqStartRB;
 assign FreqStartRB to "{P}{R}FreqStart-RB";
+monitor FreqStartRB;
+evflag FreqStartFlag;
+sync FreqStartRB FreqStartFlag;
+
+double FreqStartProc = 1;
+assign FreqStartProc to "{P}{R}FreqStart-RB.PROC";
 
 double FreqStopSP;
 assign FreqStopSP to "{P}{R}FreqStop-SP";
-monitor FreqStopSP;
-evflag FreqStopFlag;
-sync FreqStopSP FreqStopFlag;
 
 double FreqStopRB;
 assign FreqStopRB to "{P}{R}FreqStop-RB";
+monitor FreqStopRB;
+evflag FreqStopFlag;
+sync FreqStopRB FreqStopFlag;
+
+double FreqStopProc = 1;
+assign FreqStopProc to "{P}{R}FreqStop-RB.PROC";
+
+double SweTimeProc = 1;
+assign SweTimeProc to "{P}{R}SweTime-RB.PROC";
+
+double FreqArrayProc = 1;
+assign FreqArrayProc to "{P}{R}FreqArray-Mon.PROC";
 
 ss ss1 {
     state opr {
 
-	when (efTestAndClear(CenterFreqFlag)) {
-	    SpanSP = SpanRB;
-	    pvPut(SpanSP);
+	when (efTest(CenterFreqFlag)) {
+	    
+	    pvPut(FreqStartProc, SYNC);
+	    efClear(FreqStartFlag);
+
+	    pvPut(SpanProc, SYNC);
+	    efClear(SpanFlag);
+
+	    pvPut(FreqStopProc, SYNC);
+	    efClear(FreqStopFlag);
 
 	    FreqStartSP = FreqStartRB;
-	    pvPut(FreqStartSP);
+	    pvPut(FreqStartSP, SYNC);
+	    efClear(FreqStartFlag);
+
+	    SpanSP = SpanRB;
+	    pvPut(SpanSP, SYNC);
+	    efClear(SpanFlag);
 
 	    FreqStopSP = FreqStopRB;
-	    pvPut(FreqStopSP);
+	    pvPut(FreqStopSP, SYNC);
+	    efClear(FreqStopFlag);
+
+	    pvPut(FreqArrayProc, SYNC);
+	    pvPut(SweTimeProc, SYNC);
+
+	    efClear(CenterFreqFlag);
 
 	} state opr
 
-	when (efTestAndClear(SpanFlag)) {
+	when (efTest(SpanFlag)) {
+
+	    pvPut(CenterFreqProc, SYNC);
+	    efClear(CenterFreqFlag);
+
+	    pvPut(FreqStartProc, SYNC);
+	    efClear(FreqStartFlag);
+
+	    pvPut(FreqStopProc, SYNC);
+ 	    efClear(FreqStopFlag);
+
 	    CenterFreqSP = CenterFreqRB;
-	    pvPut(CenterFreqSP);
+	    pvPut(CenterFreqSP, SYNC);
+	    efClear(CenterFreqFlag);
 
 	    FreqStartSP = FreqStartRB;
-	    pvPut(FreqStartSP);
+	    pvPut(FreqStartSP, SYNC);
+	    efClear(FreqStartFlag);
 
 	    FreqStopSP = FreqStopRB;
-	    pvPut(FreqStopSP);
+   	    pvPut(FreqStopSP, SYNC);
+	    efClear(FreqStopFlag);
+
+	    pvPut(FreqArrayProc, SYNC);
+	    pvPut(SweTimeProc, SYNC);
+
+	    efClear(SpanFlag);
 
 	} state opr
 
-	when (efTestAndClear(FreqStartFlag)) {
-	    CenterFreqSP = CenterFreqRB;
-	    pvPut(CenterFreqSP);
-    
+	when (efTest(FreqStartFlag)) {
+   
+	    pvPut(SpanProc, SYNC);
+	    efClear(SpanFlag);
+
+	    pvPut(CenterFreqProc, SYNC);
+ 	    efClear(CenterFreqFlag);
+
+	    pvPut(FreqStopProc, SYNC);
+	    efClear(FreqStopFlag);
+	
 	    SpanSP = SpanRB;
-	    pvPut(SpanSP);
+	    pvPut(SpanSP, SYNC);
+	    efClear(SpanFlag);
+
+	    CenterFreqSP = CenterFreqRB;
+	    pvPut(CenterFreqSP, SYNC);
+	    efClear(CenterFreqFlag);
 
 	    FreqStopSP = FreqStopRB;
-	    pvPut(FreqStopSP);
+	    pvPut(FreqStopSP, SYNC);
+	    efClear(FreqStopFlag);
+
+	    pvPut(FreqArrayProc, SYNC);
+	    pvPut(SweTimeProc, SYNC);
+
+	    efClear(FreqStartFlag);
 
 	} state opr
 
-	when (efTestAndClear(FreqStopFlag)) {
-	    CenterFreqSP = CenterFreqRB;
-	    pvPut(CenterFreqSP);
-    
+	when (efTest(FreqStopFlag)) {
+
+	    pvPut(SpanProc, SYNC);
+	    efClear(SpanFlag);
+
+	    pvPut(FreqStartProc, SYNC);
+	    efClear(FreqStartFlag);
+
+	    pvPut(CenterFreqProc, SYNC);
+     	    efClear(CenterFreqFlag);
+
 	    SpanSP = SpanRB;
-	    pvPut(SpanSP);
+	    pvPut(SpanSP, SYNC);
 
 	    FreqStartSP = FreqStartRB;
-	    pvPut(FreqStartSP);
+	    pvPut(FreqStartSP, SYNC);
+
+ 	    CenterFreqSP = CenterFreqRB;
+	    pvPut(CenterFreqSP, SYNC);
+
+	    pvPut(FreqArrayProc, SYNC);
+	    pvPut(SweTimeProc, SYNC);
+
+	    efClear(FreqStopFlag);
 
 	} state opr
     } 
