@@ -228,7 +228,6 @@ record(ai, "$(P)$(R)FreqCenter-RB") {
   field(PREC, "3")
   field(EGU, "Hz")
   field(INP, "@rsfsx.proto inFrqCent $(PORT)")
-  field(FLNK, "$(P)$(R)FCenterFout")
 }
 
 record(ao, "$(P)$(R)FreqCenter-SP") {
@@ -238,15 +237,6 @@ record(ao, "$(P)$(R)FreqCenter-SP") {
   field(EGU, "Hz")
   field(OUT, "@rsfsx.proto outFrqCent($1) $(PORT)")
   field(FLNK,"$(P)$(R)FreqCenter-RB")
-}
-
-record(fanout, "$(P)$(R)FCenterFout") {
-  field(LNK1, "$(P)$(R)FreqArray-Mon")
-  field(LNK2, "$(P)$(R)FreqSpan-RB")	#sometimes, changes in Center Frequency will also affect the Span
-  field(LNK3, "$(P)$(R)FreqStart-RB")
-  field(LNK4, "$(P)$(R)FreqStop-RB")
-  field(LNK5, "$(P)$(R)SweTime-RB")
-  field(SELM, "All")
 }
 
 # Frequency Step
@@ -323,7 +313,6 @@ record(ai, "$(P)$(R)FreqSpan-RB") {
   field(PREC, "1")
   field(EGU, "Hz")
   field(INP, "@rsfsx.proto inFrqSpan $(PORT)")
-  field(FLNK, "$(P)$(R)FSpanFout")
 }
 
 record(ao, "$(P)$(R)FreqSpan-SP") {
@@ -335,15 +324,6 @@ record(ao, "$(P)$(R)FreqSpan-SP") {
   field(FLNK,"$(P)$(R)FreqSpan-RB")
 }
 
-record(fanout, "$(P)$(R)FSpanFout") {
-  field(LNK1, "$(P)$(R)FreqArray-Mon")
-  field(LNK2, "$(P)$(R)SweTime-RB")
-  field(LNK3, "$(P)$(R)FreqStart-RB")
-  field(LNK4, "$(P)$(R)FreqStop-RB")
-  field(LNK5, "$(P)$(R)FreqCenter-RB")	#if the span is too big, it will affect the Center Frequency
-  field(SELM, "All")
-}
-
 # Start Frequency
 
 record(ai, "$(P)$(R)FreqStart-RB") {
@@ -352,27 +332,15 @@ record(ai, "$(P)$(R)FreqStart-RB") {
   field(PREC, "1")
   field(EGU, "Hz")
   field(INP, "@rsfsx.proto inFrqStart $(PORT)")
-  field(FLNK, "$(P)$(R)FStartFout")
 }
 
 record(ao, "$(P)$(R)FreqStart-SP") {
   field(DESC, "Set start frequency")
   field(PINI, "YES")
   field(DTYP, "stream")
-  field(DRVH, "3000000000")
-  field(DRVL, "9000")
   field(EGU, "Hz")
   field(OUT, "@rsfsx.proto outFrqStart($1) $(PORT)")
   field(FLNK,"$(P)$(R)FreqStart-RB")
-}
-
-record(fanout, "$(P)$(R)FStartFout") {
-  field(LNK1, "$(P)$(R)FreqArray-Mon")
-  field(LNK2, "$(P)$(R)FreqStop-RB")
-  field(LNK3, "$(P)$(R)FreqSpan-RB")
-  field(LNK4, "$(P)$(R)FreqCenter-RB")
-  field(LNK5, "$(P)$(R)SweTime-RB")
-  field(SELM, "All")
 }
 
 # Stop Frequency
@@ -383,27 +351,15 @@ record(ai, "$(P)$(R)FreqStop-RB") {
   field(PREC, "1")
   field(EGU, "Hz")
   field(INP, "@rsfsx.proto inFrqStop $(PORT)")
-  field(FLNK, "$(P)$(R)FStopFout")
 }
 
 record(ao, "$(P)$(R)FreqStop-SP") {
   field(DESC, "Set stop frequency")
   field(PINI, "YES")
   field(DTYP, "stream")
-  field(DRVH, "3000000000")
-  field(DRVL, "9000")
   field(EGU, "Hz")
   field(OUT, "@rsfsx.proto outFrqStop($1) $(PORT)")
   field(FLNK,"$(P)$(R)FreqStop-RB")
-}
-
-record(fanout, "$(P)$(R)FStopFout") {
-  field(LNK1, "$(P)$(R)FreqArray-Mon")
-  field(LNK2, "$(P)$(R)FreqStart-RB")
-  field(LNK3, "$(P)$(R)FreqSpan-RB")
-  field(LNK4, "$(P)$(R)FreqCenter-RB")
-  field(LNK5, "$(P)$(R)SweTime-RB")
-  field(SELM, "All")
 }
 
 # Resolution Bandwidth
