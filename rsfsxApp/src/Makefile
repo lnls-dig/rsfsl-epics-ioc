@@ -7,6 +7,9 @@ include $(TOP)/configure/CONFIG
 # Build the IOC support library
 
 LIBRARY_IOC += rsfsxSupport
+
+# Link locally-provided code into the support library,
+# rather than directly into the IOC application.
 rsfsxSupport_LIBS += $(EPICS_BASE_IOC_LIBS)
 
 #=============================
@@ -38,8 +41,18 @@ rsfsx_SRCS_vxWorks += -nil-
 # Link in the code from the support library
 rsfsx_LIBS += rsfsxSupport
 
+# NOTE: To build SNL programs, SNCSEQ must be defined
+# in the <top>/configure/RELEASE file
+
 ifneq ($(SNCSEQ),)
-  
+
+    # Build sncSpec into rsfsxSupport
+    sncSpec_SNCFLAGS += +r
+    rsfsx_DBD += sncSpec.dbd
+    rsfsxSupport_SRCS += sncSpecProgram.st
+    rsfsxSupport_LIBS += seq pv
+    rsfsx_LIBS += seq pv
+
     sncRSFSxSetup_SNCFLAGS += +r
     rsfsx_DBD += sncRSFSxSetup.dbd
     rsfsxSupport_SRCS += sncRSFSxSetup.stt

@@ -1601,16 +1601,6 @@ record(bo, "$(P)$(R)GetSpectrum-Sel") {
   field(FLNK,"$(P)$(R)FreqArray-Mon")
 }
 
-# Enable/Disable Spectrogram acquisition
-
-record(bo, "$(P)$(R)EnblSpectrogram-Sel") {
-  field(DESC, "Get Spectrogram")
-  field(PINI, "YES")
-  field(ZNAM, "OFF")
-  field(ONAM, "ON")
-  field(FLNK,"$(P)$(R)FreqArray-Mon")
-}
-
 # Trigger Source for the start os a sweep
 
 record(mbbi, "$(P)$(R)TrigSrc-Sts") {
@@ -1788,14 +1778,38 @@ record(ai, "$(P)$(R)MarkCount-Mon") {
 
 record(waveform, "$(P)$(R)Trace-Mon") {
   field(DESC, "Get trace waveform")
-  field(SCAN, ".01 second")
+  field(SCAN, ".001 second")
   field(SDIS, "$(P)$(R)GetSpectrum-Sel.RVAL")
   field(DISV, "0")
+  field(MPST, "On Change")
+  field(APST, "On Change")
+  field(PRIO, "HIGH")
   field(NELM, "32001")
   field(FTVL, "FLOAT")
   field(DTYP, "stream")
   field(INP, "@rsfsx.proto monTrace $(PORT)")
+  field(FLNK, "$(P)$(R)TimeStamp")
+}
 
+record(ai, "$(P)$(R)TimeStamp") {
+  field(DESC, "Get Timestamp")
+  field(PRIO, "HIGH")
+  field(DTYP, "Soft Timestamp")
+  field(INP, "@%H%M%S.%03f")
+}
+
+record(ai, "$(P)$(R)SpecTime-SP") {
+  field(DESC, "Spectrogram time window")
+  field(PREC, "3")
+  field(EGU, "ms")
+  field(VAL, "450")
+}
+
+record(bo, "$(P)$(R)SpecMode-Sel") {
+  field(DESC, "Spectrogram mode")
+  field(PINI, "YES")
+  field(ZNAM, "Time Window")
+  field(ONAM, "Continuous")
 }
 
 # Frequency Array
@@ -1813,26 +1827,29 @@ record(acalcout, "$(P)$(R)FreqArray-Mon") {
 
 # Spectrogram Array (created from level acquisition)
 
-record(waveform, "$(P)$(R)Spec-Mon") {
-  field(DESC, "Get trace waveform")
-  field(SCAN, ".1 second")
-  field(SDIS, "$(P)$(R)EnblSpectrogram-Sel.RVAL")
-  field(DISV, "0")
-  field(NELM, "32001")
+record(waveform, "$(P)$(R)SpecArray-Mon") {
+  field(DESC, "Spectrogram")
+  field(NELM, "160005")
   field(FTVL, "FLOAT")
-  field(DTYP, "stream")
-  field(INP, "@rsfsx.proto monSpec $(PORT)")
-  field(FLNK, "$(P)$(R)SpecArray-Mon")
 }
 
-record(acalcout, "$(P)$(R)SpecArray-Mon") {
-  field(DESC, "Get the spectrogram")
+record(longout, "$(P)$(R)FrameCount-Mon") {
+  field(DESC, "Frame counter")
+}
+
+record(ao, "$(P)$(R)TimeStampInit-Mon") {
+  field(DESC, "Initial frame timestamp")
   field(PREC, "3")
-  field(NELM, "32001")
-#  field(EGU, "dBm")
-  field(INPA, "$(P)$(R)SwePts-RB")
-  field(INAA, "$(P)$(R)Spec-Mon")
-  field(CALC, "CAT(AA[0,(A-1)],AVAL[0,(IX*A)-1])")
+}
+
+record(ao, "$(P)$(R)TimeStampEnd-Mon") {
+  field(DESC, "End frame timestamp")
+  field(PREC, "3")
+}
+
+record(ao, "$(P)$(R)TimeDelta-Mon") {
+  field(DESC, "Delta time from init to the end")
+  field(PREC, "0")
 }
 
 ######################################################################
