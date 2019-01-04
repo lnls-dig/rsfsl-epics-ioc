@@ -82,6 +82,18 @@ outRefOff {
 }
 
 ######################################################################
+# Display range of the y-axis
+
+inDispRange {
+    out "DISP:TRAC:Y?";
+    in "%f";
+}
+
+outDispRange {
+    out "DISP:TRAC:Y %f";
+}
+
+######################################################################
 # Enable Continuous Sweep Mode
 
 inEnblContSwe {

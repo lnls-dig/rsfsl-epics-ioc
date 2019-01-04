@@ -55,3 +55,4 @@ $(P)$(R)TrkGenLvlOffset-SP
 $(P)$(R)GetSpectrum-Sel
 $(P)$(R)EnblSpectrogram-Sel
 $(P)$(R)TrigSrc-Sel
+$(P)$(R)DispRange-SP

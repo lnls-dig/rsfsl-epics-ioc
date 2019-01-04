@@ -78,6 +78,28 @@ record(ao, "$(P)$(R)RefOff-SP") {
   field(FLNK,"$(P)$(R)LvlFout")
 }
 
+# Display range of the y-axis
+
+record(ai, "$(P)$(R)DispRange-RB") {
+  field(DESC, "Get display range of the y-axis")
+  field(DTYP, "stream")
+  field(PREC, "0")
+  field(EGU, "dB")
+  field(INP, "@rsfsx.proto inDispRange $(PORT)")
+}
+
+record(ao, "$(P)$(R)DispRange-SP") {
+  field(DESC, "Set display range of the y-axis")
+  field(PINI, "YES")
+  field(PREC, "0")
+  field(DTYP, "stream")
+  field(DRVH, "200")
+  field(DRVL, "10")
+  field(EGU, "dB")
+  field(OUT, "@rsfsx.proto outDispRange($1) $(PORT)")
+  field(FLNK,"$(P)$(R)DispRange-RB")
+}
+
 # Reference Level Fanout
 
 record(fanout, "$(P)$(R)LvlFout") {
@@ -107,7 +129,7 @@ record(bo, "$(P)$(R)EnblContSwe-Sel") {
   field(FLNK,"$(P)$(R)EnblContSwe-Sts")
 }
 
-# Number of Swee Points
+# Number of Sweep Points
 
 record(ai, "$(P)$(R)SwePts-RB") {
   field(DESC, "Get number of points in one sweep")
