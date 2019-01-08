@@ -1573,7 +1573,7 @@ record(ao, "$(P)$(R)TrkGenLvl-SP") {
   field(DESC, "Set Tracking Generators Level")
   field(PINI, "NO")
   field(DTYP, "stream")
-  field(DISA, "$(P)$(R)EnblTrkGen-Sts.RVAL")
+  field(SDIS, "$(P)$(R)EnblTrkGen-Sts.RVAL")
   field(DISV, "0")
   field(PREC, "3")
   field(DRVH, "0")
