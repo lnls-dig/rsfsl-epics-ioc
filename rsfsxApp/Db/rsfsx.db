@@ -691,8 +691,6 @@ record(bo, "$(P)$(R)EnblMark2-Sel") {
   field(DESC, "Enable or Disable Marker2 State")
   field(PINI, "YES")
   field(DTYP, "stream")
-  field(DISV, "1")
-  field(SDIS, "$(P)$(R)OnOffM2-Sts.RVAL")
   field(ZNAM, "OFF")
   field(ONAM, "ON")
   field(OUT, "@rsfsx.proto outEnblMark2($1) $(PORT)")
