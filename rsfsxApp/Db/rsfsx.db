@@ -911,10 +911,10 @@ record(bo, "$(P)$(R)OnOffMark2-Sel") {
   field(ZNAM, "OFF")
   field(ONAM, "ON")
   field(OUT, "@rsfsx.proto outOnOffM2($1) $(PORT)")
-  field(FLNK, "$(P)$(R)DynamicX2-RB")
+  field(FLNK, "$(P)$(R)DynamicX2-Mon")
 }
 
-record(ai, "$(P)$(R)DynamicX2-RB") {
+record(ai, "$(P)$(R)DynamicX2-Mon") {
   field(DESC, "Get X value of the marker2")
   field(DISV, "0")
   field(SDIS, "$(P)$(R)EnblMaxAuto2-Sel")
@@ -943,10 +943,10 @@ record(bo, "$(P)$(R)OnOffMark3-Sel") {
   field(ZNAM, "OFF")
   field(ONAM, "ON")
   field(OUT, "@rsfsx.proto outOnOffM3($1) $(PORT)")
-  field(FLNK, "$(P)$(R)DynamicX3-RB")
+  field(FLNK, "$(P)$(R)DynamicX3-Mon")
 }
 
-record(ai, "$(P)$(R)DynamicX3-RB") {
+record(ai, "$(P)$(R)DynamicX3-Mon") {
   field(DESC, "Get X value of the marker3")
   field(DISV, "0")
   field(SDIS, "$(P)$(R)EnblMaxAuto3-Sel")
@@ -975,10 +975,10 @@ record(bo, "$(P)$(R)OnOffMark4-Sel") {
   field(ZNAM, "OFF")
   field(ONAM, "ON")
   field(OUT, "@rsfsx.proto outOnOffM4($1) $(PORT)")
-  field(FLNK, "$(P)$(R)DynamicX4-RB")
+  field(FLNK, "$(P)$(R)DynamicX4-Mon")
 }
 
-record(ai, "$(P)$(R)DynamicX4-RB") {
+record(ai, "$(P)$(R)DynamicX4-Mon") {
   field(DESC, "Get X value of the marker3")
   field(DISV, "0")
   field(SDIS, "$(P)$(R)EnblMaxAuto4-Sel")
