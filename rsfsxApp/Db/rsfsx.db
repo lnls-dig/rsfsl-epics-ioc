@@ -1814,18 +1814,35 @@ record(ai, "$(P)$(R)TimeStamp") {
   field(INP, "@%H%M%S.%03f")
 }
 
-record(ai, "$(P)$(R)SpecTime-SP") {
-  field(DESC, "Spectrogram time window")
+record(ao, "$(P)$(R)SpecTime-SP") {
+  field(DESC, "Set spectrogram time window")
   field(PREC, "3")
   field(EGU, "ms")
   field(VAL, "450")
+  field(FLNK, "$(P)$(R)SpecTime-RB")
+}
+
+record(ai, "$(P)$(R)SpecTime-RB") {
+  field(DESC, "Get spectrogram time window")
+  field(PREC, "3")
+  field(EGU, "ms")
+  field(INP, "$(P)$(R)SpecTime-SP")
 }
 
 record(bo, "$(P)$(R)SpecMode-Sel") {
-  field(DESC, "Spectrogram mode")
+  field(DESC, "Set spectrogram mode")
   field(PINI, "YES")
   field(ZNAM, "Time Window")
   field(ONAM, "Continuous")
+  field(FLNK, "$(P)$(R)SpecMode-Sts")
+}
+
+record(bi, "$(P)$(R)SpecMode-Sts") {
+  field(DESC, "Get spectrogram mode")
+  field(PINI, "YES")
+  field(ZNAM, "Time Window")
+  field(ONAM, "Continuous")
+  field(INP, "$(P)$(R)SpecMode-Sel")
 }
 
 # Frequency Array
