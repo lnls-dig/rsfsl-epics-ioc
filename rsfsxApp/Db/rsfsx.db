@@ -744,8 +744,6 @@ record(ai, "$(P)$(R)MarkX1-RB") {
   field(SDIS, "$(P)$(R)EnblMark1-Sts.RVAL")
   field(DTYP, "stream")
   field(PREC, "3")
-  field(MDEL, "-1")
-  field(ADEL, "-1")
   field(EGU, "Hz")
   field(INP, "@rsfsx.proto inMarkX1 $(PORT)")
 }
@@ -767,8 +765,6 @@ record(ai, "$(P)$(R)MarkX2-RB") {
   field(SDIS, "$(P)$(R)EnblMark2-Sts.RVAL")
   field(DTYP, "stream")
   field(PREC, "3")
-  field(MDEL, "-1")
-  field(ADEL, "-1")
   field(EGU, "Hz")
   field(INP, "@rsfsx.proto inMarkX2 $(PORT)")
 }
@@ -790,8 +786,6 @@ record(ai, "$(P)$(R)MarkX3-RB") {
   field(SDIS, "$(P)$(R)EnblMark3-Sts.RVAL")
   field(DTYP, "stream")
   field(PREC, "3")
-  field(MDEL, "-1")
-  field(ADEL, "-1")
   field(EGU, "Hz")
   field(INP, "@rsfsx.proto inMarkX3 $(PORT)")
 }
@@ -813,8 +807,6 @@ record(ai, "$(P)$(R)MarkX4-RB") {
   field(SDIS, "$(P)$(R)EnblMark4-Sts.RVAL")
   field(DTYP, "stream")
   field(PREC, "3")
-  field(MDEL, "-1")
-  field(ADEL, "-1")
   field(EGU, "Hz")
   field(INP, "@rsfsx.proto inMarkX4 $(PORT)")
 }
@@ -918,8 +910,6 @@ record(ai, "$(P)$(R)DynamicX2-Mon") {
   field(SDIS, "$(P)$(R)EnblMaxAuto2-Sel")
   field(DTYP, "stream")
   field(PREC, "3")
-  field(MDEL, "-1")
-  field(ADEL, "-1")
   field(EGU, "Hz")
   field(INP, "@rsfsx.proto inMarkX2 $(PORT)")
 }
@@ -950,8 +940,6 @@ record(ai, "$(P)$(R)DynamicX3-Mon") {
   field(SDIS, "$(P)$(R)EnblMaxAuto3-Sel")
   field(DTYP, "stream")
   field(PREC, "3")
-  field(MDEL, "-1")
-  field(ADEL, "-1")
   field(EGU, "Hz")
   field(INP, "@rsfsx.proto inMarkX3 $(PORT)")
 }
@@ -982,8 +970,6 @@ record(ai, "$(P)$(R)DynamicX4-Mon") {
   field(SDIS, "$(P)$(R)EnblMaxAuto4-Sel")
   field(DTYP, "stream")
   field(PREC, "3")
-  field(MDEL, "-1")
-  field(ADEL, "-1")
   field(EGU, "Hz")
   field(INP, "@rsfsx.proto inMarkX4 $(PORT)")
 }
@@ -1212,8 +1198,6 @@ record(ai, "$(P)$(R)DynamicDX1-RB") {
   field(SDIS, "$(P)$(R)EnblDMaxAuto1-Sel")
   field(DTYP, "stream")
   field(PREC, "3")
-  field(MDEL, "-1")
-  field(ADEL, "-1")
   field(EGU, "Hz")
   field(INP, "@rsfsx.proto inDMarkX1 $(PORT)")
 }
@@ -1239,8 +1223,6 @@ record(ai, "$(P)$(R)DynamicDX2-RB") {
   field(SDIS, "$(P)$(R)EnblDMaxAuto2-Sel")
   field(DTYP, "stream")
   field(PREC, "3")
-  field(MDEL, "-1")
-  field(ADEL, "-1")
   field(EGU, "Hz")
   field(INP, "@rsfsx.proto inDMarkX2 $(PORT)")
 }
@@ -1266,8 +1248,6 @@ record(ai, "$(P)$(R)DynamicDX3-RB") {
   field(SDIS, "$(P)$(R)EnblDMaxAuto3-Sel")
   field(DTYP, "stream")
   field(PREC, "3")
-  field(MDEL, "-1")
-  field(ADEL, "-1")
   field(EGU, "Hz")
   field(INP, "@rsfsx.proto inDMarkX3 $(PORT)")
 }
@@ -1293,8 +1273,6 @@ record(ai, "$(P)$(R)DynamicDX4-RB") {
   field(SDIS, "$(P)$(R)EnblDMaxAuto4-Sel")
   field(DTYP, "stream")
   field(PREC, "3")
-  field(MDEL, "-1")
-  field(ADEL, "-1")
   field(EGU, "Hz")
   field(INP, "@rsfsx.proto inDMarkX4 $(PORT)")
 }
@@ -1310,8 +1288,6 @@ record(ai, "$(P)$(R)DMarkX1-RB") {
   field(SDIS, "$(P)$(R)EnblDMark1-Sts.RVAL")
   field(DTYP, "stream")
   field(PREC, "3")
-  field(MDEL, "-1")
-  field(ADEL, "-1")
   field(EGU, "Hz")
   field(INP, "@rsfsx.proto inDMarkX1 $(PORT)")
 }
@@ -1333,8 +1309,6 @@ record(ai, "$(P)$(R)DMarkX2-RB") {
   field(SDIS, "$(P)$(R)EnblDMark2-Sts.RVAL")
   field(DTYP, "stream")
   field(PREC, "3")
-  field(MDEL, "-1")
-  field(ADEL, "-1")
   field(EGU, "Hz")
   field(INP, "@rsfsx.proto inDMarkX2 $(PORT)")
 }
@@ -1356,8 +1330,6 @@ record(ai, "$(P)$(R)DMarkX3-RB") {
   field(SDIS, "$(P)$(R)EnblDMark3-Sts.RVAL")
   field(DTYP, "stream")
   field(PREC, "3")
-  field(MDEL, "-1")
-  field(ADEL, "-1")
   field(EGU, "Hz")
   field(INP, "@rsfsx.proto inDMarkX3 $(PORT)")
 }
@@ -1379,8 +1351,6 @@ record(ai, "$(P)$(R)DMarkX4-RB") {
   field(SDIS, "$(P)$(R)EnblDMark4-Sts.RVAL")
   field(DTYP, "stream")
   field(PREC, "3")
-  field(MDEL, "-1")
-  field(ADEL, "-1")
   field(EGU, "Hz")
   field(INP, "@rsfsx.proto inDMarkX4 $(PORT)")
 }
@@ -1670,8 +1640,6 @@ record(ai, "$(P)$(R)MarkY1-Mon") {
   field(SDIS, "$(P)$(R)EnblMark1-Sts.RVAL")
   field(DTYP, "stream")
   field(PREC, "3")
-  field(MDEL, "-1")
-  field(ADEL, "-1")
   field(EGU, "dBm")
   field(INP, "@rsfsx.proto monMarkY1 $(PORT)")
 }
@@ -1683,8 +1651,6 @@ record(ai, "$(P)$(R)MarkY2-Mon") {
   field(SDIS, "$(P)$(R)EnblMark2-Sts.RVAL")
   field(DTYP, "stream")
   field(PREC, "3")
-  field(MDEL, "-1")
-  field(ADEL, "-1")
   field(EGU, "dBm")
   field(INP, "@rsfsx.proto monMarkY2 $(PORT)")
 }
@@ -1696,8 +1662,6 @@ record(ai, "$(P)$(R)MarkY3-Mon") {
   field(SDIS, "$(P)$(R)EnblMark3-Sts.RVAL")
   field(DTYP, "stream")
   field(PREC, "3")
-  field(MDEL, "-1")
-  field(ADEL, "-1")
   field(EGU, "dBm")
   field(INP, "@rsfsx.proto monMarkY3 $(PORT)")
 }
@@ -1709,8 +1673,6 @@ record(ai, "$(P)$(R)MarkY4-Mon") {
   field(SDIS, "$(P)$(R)EnblMark4-Sts.RVAL")
   field(DTYP, "stream")
   field(PREC, "3")
-  field(MDEL, "-1")
-  field(ADEL, "-1")
   field(EGU, "dBm")
   field(INP, "@rsfsx.proto monMarkY4 $(PORT)")
 }
@@ -1725,8 +1687,6 @@ record(ai, "$(P)$(R)DMarkY1-Mon") {
   field(SDIS, "$(P)$(R)EnblDMark1-Sts.RVAL")
   field(DTYP, "stream")
   field(PREC, "3")
-  field(MDEL, "-1")
-  field(ADEL, "-1")
   field(EGU, "dB")
   field(INP, "@rsfsx.proto monDMarkY1 $(PORT)")
 }
@@ -1738,8 +1698,6 @@ record(ai, "$(P)$(R)DMarkY2-Mon") {
   field(SDIS, "$(P)$(R)EnblDMark2-Sts.RVAL")
   field(DTYP, "stream")
   field(PREC, "3")
-  field(MDEL, "-1")
-  field(ADEL, "-1")
   field(EGU, "dB")
   field(INP, "@rsfsx.proto monDMarkY2 $(PORT)")
 }
@@ -1751,8 +1709,6 @@ record(ai, "$(P)$(R)DMarkY3-Mon") {
   field(SDIS, "$(P)$(R)EnblDMark3-Sts.RVAL")
   field(DTYP, "stream")
   field(PREC, "3")
-  field(MDEL, "-1")
-  field(ADEL, "-1")
   field(EGU, "dB")
   field(INP, "@rsfsx.proto monDMarkY3 $(PORT)")
 }
@@ -1764,8 +1720,6 @@ record(ai, "$(P)$(R)DMarkY4-Mon") {
   field(SDIS, "$(P)$(R)EnblDMark4-Sts.RVAL")
   field(DTYP, "stream")
   field(PREC, "3")
-  field(MDEL, "-1")
-  field(ADEL, "-1")
   field(EGU, "dB")
   field(INP, "@rsfsx.proto monDMarkY4 $(PORT)")
 }
