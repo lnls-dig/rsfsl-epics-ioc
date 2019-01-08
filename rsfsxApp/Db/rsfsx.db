@@ -1449,7 +1449,6 @@ record(mbbi, "$(P)$(R)AttIn-Sts") {
 
 record(mbbo, "$(P)$(R)AttIn-Sel") {
   field(DTYP, "stream")
-  field(PINI, "YES")
   field(ZRST, "0 dB")
   field(ZRVL, "0")
   field(ONST, "5 dB")
