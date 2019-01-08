@@ -18,8 +18,6 @@
   <height>850</height>
   <macros>
     <include_parent_macros>true</include_parent_macros>
-    <P>JAO:</P>
-    <R>RSFSL:</R>
   </macros>
   <name></name>
   <rules />
@@ -12441,13 +12439,13 @@ $(pv_value)</tooltip>
             <exp bool_exp="1">
               <value>pv0</value>
             </exp>
-            <pv trig="true">$(P)$(R)FreqStart-RB</pv>
+            <pv trig="true">$(P)$(R)FreqStartDisp-Mon</pv>
           </rule>
           <rule name="X Max Rule" prop_id="x_axis_maximum" out_exp="true">
             <exp bool_exp="1">
               <value>pv0</value>
             </exp>
-            <pv trig="true">$(P)$(R)FreqStop-RB</pv>
+            <pv trig="true">$(P)$(R)FreqStopDisp-Mon</pv>
           </rule>
           <rule name="Data_Width Rule" prop_id="data_width" out_exp="true">
             <exp bool_exp="1">
@@ -12507,8 +12505,8 @@ $(pv_value)</tooltip>
         <x_axis_axis_color>
           <color red="0" green="0" blue="0" />
         </x_axis_axis_color>
-        <x_axis_axis_title>Frequency [Hz]</x_axis_axis_title>
-        <x_axis_major_tick_step_hint>50</x_axis_major_tick_step_hint>
+        <x_axis_axis_title>Frequency [MHz]</x_axis_axis_title>
+        <x_axis_major_tick_step_hint>100</x_axis_major_tick_step_hint>
         <x_axis_maximum>100.0</x_axis_maximum>
         <x_axis_minimum>50.0</x_axis_minimum>
         <x_axis_scale_font>
@@ -12663,13 +12661,13 @@ $(pv_value)</tooltip>
           <keep_wh_ratio>false</keep_wh_ratio>
         </scale_options>
         <scripts />
-        <text>Time Windon</text>
+        <text>Time Window</text>
         <tooltip></tooltip>
         <transparent>true</transparent>
         <vertical_alignment>1</vertical_alignment>
         <visible>true</visible>
         <widget_type>Label</widget_type>
-        <width>90</width>
+        <width>93</width>
         <wrap_words>false</wrap_words>
         <wuid>17b82f85:1675505c8f7:-361a</wuid>
         <x>10</x>
@@ -16425,7 +16423,7 @@ $(pv_value)</tooltip>
       <axis_0_axis_color>
         <color red="0" green="0" blue="0" />
       </axis_0_axis_color>
-      <axis_0_axis_title>Frequency [Hz]</axis_0_axis_title>
+      <axis_0_axis_title>Frequency [MHz]</axis_0_axis_title>
       <axis_0_dash_grid_line>true</axis_0_dash_grid_line>
       <axis_0_grid_color>
         <color red="200" green="200" blue="200" />
