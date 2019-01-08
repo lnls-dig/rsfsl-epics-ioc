@@ -518,7 +518,7 @@ record(mbbi, "$(P)$(R)Vbw-Sts") {
 
 record(mbbo, "$(P)$(R)Vbw-Sel") {
   field(DESC, "Set Video Bandwidth")
-  field(PINI, "YES")
+  field(PINI, "NO")
   field(DTYP, "stream")
   field(ZRST, "1 Hz")
   field(ZRVL, "1")
