@@ -520,6 +520,8 @@ record(mbbo, "$(P)$(R)Vbw-Sel") {
   field(DESC, "Set Video Bandwidth")
   field(PINI, "NO")
   field(DTYP, "stream")
+  field(SDIS, "$(P)$(R)FiltType-Sts")
+  field(DISV, "1")
   field(ZRST, "1 Hz")
   field(ZRVL, "1")
   field(ONST, "3 Hz")
