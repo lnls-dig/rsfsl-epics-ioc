@@ -72,6 +72,24 @@ assign EnblM3 to "{P}{R}EnblMark3-Sel";
 int EnblM4;
 assign EnblM4 to "{P}{R}EnblMark4-Sel";
 
+int DMarkAOff;
+assign DMarkAOff to "{P}{R}DMarkAOff-Cmd";
+monitor DMarkAOff;
+evflag DMarkAOffFlag;
+sync DMarkAOff DMarkAOffFlag;
+
+int EnblDM1;
+assign EnblDM1 to "{P}{R}EnblDMark1-Sel";
+
+int EnblDM2;
+assign EnblDM2 to "{P}{R}EnblDMark2-Sel";
+
+int EnblDM3;
+assign EnblDM3 to "{P}{R}EnblDMark3-Sel";
+
+int EnblDM4;
+assign EnblDM4 to "{P}{R}EnblDMark4-Sel";
+
 ss ss1 {
     state opr {
 
@@ -205,6 +223,22 @@ ss ss1 {
 
 	    EnblM4 = 0;
 	    pvPut(EnblM4, SYNC);
+
+	} state opr
+
+	when (efTestAndClear(DMarkAOffFlag)) {
+
+	    EnblDM1 = 0;
+	    pvPut(EnblDM1, SYNC);
+
+	    EnblDM2 = 0;
+	    pvPut(EnblDM2, SYNC);
+
+	    EnblDM3 = 0;
+	    pvPut(EnblDM3, SYNC);
+
+	    EnblDM4 = 0;
+	    pvPut(EnblDM4, SYNC);
 
 	} state opr
     } 

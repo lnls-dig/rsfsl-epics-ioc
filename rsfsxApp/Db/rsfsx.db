@@ -2630,35 +2630,6 @@ record(bo, "$(P)$(R)DMarkAOff-Cmd") {
   field(ONAM, "1")
   field(HIGH, "1")
   field(OUT, "@rsfsx.proto cmdDMarkAOff($1) $(PORT)")
-  field(FLNK, "$(P)$(R)Calc1")
-}
-
-record(calcout, "$(P)$(R)Calc1") {
-  field(DESC, "Test DMarkAOff command")
-  field(INPA, "$(P)$(R)DMarkAOff-Cmd")
-  field(CALC, "A=1?0:1")
-  field(FLNK, "$(P)$(R)DataFout1")
-}
-
-record(dfanout, "$(P)$(R)DataFout1") {
-  field(DESC, "Disable Delta Markers")
-  field(DOL, "$(P)$(R)Calc1.VAL")
-  field(OMSL, "closed_loop")		#defines that the value is retrieved from the link specified in DOL and placed into VAL
-  field(OUTA, "$(P)$(R)EnblDMark1-Sts.RVAL")
-  field(OUTB, "$(P)$(R)EnblDMark2-Sts.RVAL")
-  field(OUTC, "$(P)$(R)EnblDMark3-Sts.RVAL")
-  field(OUTD, "$(P)$(R)EnblDMark4-Sts.RVAL")
-  field(FLNK, "$(P)$(R)DMarkStateFout")
-  field(SELM, "All")
-}
-
-record(fanout, "$(P)$(R)DMarkStateFout") {
-  field(DESC, "Process DMarkers States")
-  field(LNK1, "$(P)$(R)EnblDMark1-Sts")
-  field(LNK2, "$(P)$(R)EnblDMark2-Sts")
-  field(LNK3, "$(P)$(R)EnblDMark3-Sts")
-  field(LNK4, "$(P)$(R)EnblDMark4-Sts")
-  field(SELM, "All")
 }
 
 # Set Delta Marker to Min Peak on Trace (1-4)
