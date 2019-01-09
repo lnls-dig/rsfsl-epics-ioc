@@ -2009,30 +2009,6 @@ record(bo, "$(P)$(R)MarkAOff-Cmd") {
   field(ONAM, "1")
   field(HIGH, "1")
   field(OUT, "@rsfsx.proto cmdMarkAOff($1) $(PORT)")
-  field(FLNK, "$(P)$(R)Calc2")
-}
-
-record(calcout, "$(P)$(R)Calc2") {
-  field(DESC, "Test MarkAOff command")
-  field(INPA, "$(P)$(R)MarkAOff-Cmd")
-  field(CALC, "A=1?0:1")
-  field(FLNK, "$(P)$(R)DataFout2")
-}
-
-record(dfanout, "$(P)$(R)DataFout2") {
-  field(DESC, "Disable Markers")
-  field(DOL, "$(P)$(R)Calc2.VAL")
-  field(OMSL, "closed_loop")		#defines that the value is retrieved from the link specified in DOL and placed into VAL
-  field(OUTA, "$(P)$(R)EnblMark1-Sts.RVAL")
-  field(OUTB, "$(P)$(R)EnblMark2-Sts.RVAL")
-  field(OUTC, "$(P)$(R)EnblMark3-Sts.RVAL")
-  field(OUTD, "$(P)$(R)EnblMark4-Sts.RVAL")
-  field(OUTD, "$(P)$(R)EnblDMark1-Sts.RVAL")
-  field(OUTD, "$(P)$(R)EnblDMark2-Sts.RVAL")
-  field(OUTD, "$(P)$(R)EnblDMark3-Sts.RVAL")
-  field(OUTD, "$(P)$(R)EnblDMark4-Sts.RVAL")
-  field(FLNK, "$(P)$(R)DMarkStateFout")
-  field(SELM, "All")
 }
 
 # Position the marker to the next smaller maximium value to the left

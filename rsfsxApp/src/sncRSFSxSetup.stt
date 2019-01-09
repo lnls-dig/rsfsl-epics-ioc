@@ -54,6 +54,24 @@ assign SweTimeProc to "{P}{R}SweTime-RB.PROC";
 double FreqArrayProc = 1;
 assign FreqArrayProc to "{P}{R}FreqArray-Mon.PROC";
 
+int MarkAOff;
+assign MarkAOff to "{P}{R}MarkAOff-Cmd";
+monitor MarkAOff;
+evflag MarkAOffFlag;
+sync MarkAOff MarkAOffFlag;
+
+int EnblM1;
+assign EnblM1 to "{P}{R}EnblMark1-Sel";
+
+int EnblM2;
+assign EnblM2 to "{P}{R}EnblMark2-Sel";
+
+int EnblM3;
+assign EnblM3 to "{P}{R}EnblMark3-Sel";
+
+int EnblM4;
+assign EnblM4 to "{P}{R}EnblMark4-Sel";
+
 ss ss1 {
     state opr {
 
@@ -171,6 +189,22 @@ ss ss1 {
 	    pvPut(SweTimeProc, SYNC);
 
 	    efClear(FreqStopFlag);
+
+	} state opr
+
+	when (efTestAndClear(MarkAOffFlag)) {
+
+	    EnblM1 = 0;
+	    pvPut(EnblM1, SYNC);
+
+	    EnblM2 = 0;
+	    pvPut(EnblM2, SYNC);
+
+	    EnblM3 = 0;
+	    pvPut(EnblM3, SYNC);
+
+	    EnblM4 = 0;
+	    pvPut(EnblM4, SYNC);
 
 	} state opr
     } 
