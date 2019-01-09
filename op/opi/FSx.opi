@@ -2571,7 +2571,7 @@ $(pv_value)</tooltip>
       <show_scrollbar>true</show_scrollbar>
       <tooltip></tooltip>
       <transparent>true</transparent>
-      <visible>false</visible>
+      <visible>true</visible>
       <widget_type>Grouping Container</widget_type>
       <width>776</width>
       <wuid>-5afe0710:163264b925c:-7a8a</wuid>
@@ -12377,7 +12377,7 @@ $(pv_value)</tooltip>
       <show_scrollbar>true</show_scrollbar>
       <tooltip></tooltip>
       <transparent>true</transparent>
-      <visible>true</visible>
+      <visible>false</visible>
       <widget_type>Grouping Container</widget_type>
       <width>776</width>
       <wuid>-28e41c55:1665515b836:-7b48</wuid>
@@ -16584,7 +16584,7 @@ $(trace_0_y_pv_value)</tooltip>
       <trace_1_update_mode>0</trace_1_update_mode>
       <trace_1_visible>false</trace_1_visible>
       <trace_1_x_axis_index>0</trace_1_x_axis_index>
-      <trace_1_x_pv>$(P)$(R)MarkX1-RB</trace_1_x_pv>
+      <trace_1_x_pv>$(P)$(R)MarkX1Disp-Mon</trace_1_x_pv>
       <trace_1_x_pv_value />
       <trace_1_y_axis_index>1</trace_1_y_axis_index>
       <trace_1_y_pv>$(P)$(R)MarkY1-Mon</trace_1_y_pv>
@@ -16605,7 +16605,7 @@ $(trace_0_y_pv_value)</tooltip>
       <trace_2_update_mode>0</trace_2_update_mode>
       <trace_2_visible>false</trace_2_visible>
       <trace_2_x_axis_index>0</trace_2_x_axis_index>
-      <trace_2_x_pv>$(P)$(R)MarkX2-RB</trace_2_x_pv>
+      <trace_2_x_pv>$(P)$(R)MarkX2Disp-Mon</trace_2_x_pv>
       <trace_2_x_pv_value />
       <trace_2_y_axis_index>1</trace_2_y_axis_index>
       <trace_2_y_pv>$(P)$(R)MarkY2-Mon</trace_2_y_pv>
@@ -16626,7 +16626,7 @@ $(trace_0_y_pv_value)</tooltip>
       <trace_3_update_mode>0</trace_3_update_mode>
       <trace_3_visible>false</trace_3_visible>
       <trace_3_x_axis_index>0</trace_3_x_axis_index>
-      <trace_3_x_pv>$(P)$(R)MarkX3-RB</trace_3_x_pv>
+      <trace_3_x_pv>$(P)$(R)MarkX3Disp-Mon</trace_3_x_pv>
       <trace_3_x_pv_value />
       <trace_3_y_axis_index>1</trace_3_y_axis_index>
       <trace_3_y_pv>$(P)$(R)MarkY3-Mon</trace_3_y_pv>
@@ -16647,7 +16647,7 @@ $(trace_0_y_pv_value)</tooltip>
       <trace_4_update_mode>0</trace_4_update_mode>
       <trace_4_visible>false</trace_4_visible>
       <trace_4_x_axis_index>0</trace_4_x_axis_index>
-      <trace_4_x_pv>$(P)$(R)MarkX4-RB</trace_4_x_pv>
+      <trace_4_x_pv>$(P)$(R)MarkX4Disp-Mon</trace_4_x_pv>
       <trace_4_x_pv_value />
       <trace_4_y_axis_index>1</trace_4_y_axis_index>
       <trace_4_y_pv>$(P)$(R)MarkY4-Mon</trace_4_y_pv>

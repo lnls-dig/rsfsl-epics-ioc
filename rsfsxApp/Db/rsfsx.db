@@ -760,6 +760,14 @@ record(ao, "$(P)$(R)MarkX1-SP") {
   field(FLNK,"$(P)$(R)MarkX1-RB")
 }
 
+record(calc, "$(P)$(R)MarkX1Disp-Mon") {
+  field(DESC, "Marker1 x value display")
+  field(PREC, "1")
+  field(EGU, "MHz")
+  field(INPA, "$(P)$(R)MarkX1-RB CPP")
+  field(CALC, "A/1000000")
+}
+
 record(ai, "$(P)$(R)MarkX2-RB") {
   field(DESC, "Get X value of the marker2")
   field(SCAN, "1 second")
@@ -779,6 +787,14 @@ record(ao, "$(P)$(R)MarkX2-SP") {
   field(EGU, "Hz")
   field(OUT, "@rsfsx.proto outMarkX2($1) $(PORT)")
   field(FLNK,"$(P)$(R)MarkX2-RB")
+}
+
+record(calc, "$(P)$(R)MarkX2Disp-Mon") {
+  field(DESC, "Marker2 x value display")
+  field(PREC, "1")
+  field(EGU, "MHz")
+  field(INPA, "$(P)$(R)MarkX2-RB CPP")
+  field(CALC, "A/1000000")
 }
 
 record(ai, "$(P)$(R)MarkX3-RB") {
@@ -802,6 +818,14 @@ record(ao, "$(P)$(R)MarkX3-SP") {
   field(FLNK,"$(P)$(R)MarkX3-RB")
 }
 
+record(calc, "$(P)$(R)MarkX3Disp-Mon") {
+  field(DESC, "Marker3 x value display")
+  field(PREC, "1")
+  field(EGU, "MHz")
+  field(INPA, "$(P)$(R)MarkX3-RB CPP")
+  field(CALC, "A/1000000")
+}
+
 record(ai, "$(P)$(R)MarkX4-RB") {
   field(DESC, "Get X value of the marker4")
   field(SCAN, "1 second")
@@ -821,6 +845,14 @@ record(ao, "$(P)$(R)MarkX4-SP") {
   field(EGU, "Hz")
   field(OUT, "@rsfsx.proto outMarkX4($1) $(PORT)")
   field(FLNK,"$(P)$(R)MarkX4-RB")
+}
+
+record(calc, "$(P)$(R)MarkX4Disp-Mon") {
+  field(DESC, "Marker4 x value display")
+  field(PREC, "1")
+  field(EGU, "MHz")
+  field(INPA, "$(P)$(R)MarkX4-RB CPP")
+  field(CALC, "A/1000000")
 }
 
 # Enable/Disable Marker Frequency Counter (only available for Marker1)
