@@ -1918,8 +1918,7 @@ record(fanout, "$(P)$(R)RstFout3") {
   field(LNK1, "$(P)$(R)EnblAttAuto-Sts")
   field(LNK2, "$(P)$(R)ImpdIn-Sts")
   field(LNK3, "$(P)$(R)RoscSrc-Sts")
-#  field(LNK4, "$(P)$(R)EnblSpec-Sts")
-  field(LNK5, "$(P)$(R)RstFout4")
+  field(LNK4, "$(P)$(R)RstFout4")
   field(SELM, "All")
 }
 
