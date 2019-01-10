@@ -90,6 +90,48 @@ assign EnblDM3 to "{P}{R}EnblDMark3-Sel";
 int EnblDM4;
 assign EnblDM4 to "{P}{R}EnblDMark4-Sel";
 
+int EnblMaxAuto2;
+assign EnblMaxAuto2 to "{P}{R}EnblMaxAuto2-Sel";
+monitor EnblMaxAuto2;
+evflag EnblMaxAuto2Flag;
+sync EnblMaxAuto2 EnblMaxAuto2Flag;
+
+int EnblMaxAuto3;
+assign EnblMaxAuto3 to "{P}{R}EnblMaxAuto3-Sel";
+monitor EnblMaxAuto3;
+evflag EnblMaxAuto3Flag;
+sync EnblMaxAuto3 EnblMaxAuto3Flag;
+
+int EnblMaxAuto4;
+assign EnblMaxAuto4 to "{P}{R}EnblMaxAuto4-Sel";
+monitor EnblMaxAuto4;
+evflag EnblMaxAuto4Flag;
+sync EnblMaxAuto4 EnblMaxAuto4Flag;
+
+int EnblDMaxAuto1;
+assign EnblDMaxAuto1 to "{P}{R}EnblDMaxAuto1-Sel";
+monitor EnblDMaxAuto1;
+evflag EnblDMaxAuto1Flag;
+sync EnblDMaxAuto1 EnblDMaxAuto1Flag;
+
+int EnblDMaxAuto2;
+assign EnblDMaxAuto2 to "{P}{R}EnblDMaxAuto2-Sel";
+monitor EnblDMaxAuto2;
+evflag EnblDMaxAuto2Flag;
+sync EnblDMaxAuto2 EnblDMaxAuto2Flag;
+
+int EnblDMaxAuto3;
+assign EnblDMaxAuto3 to "{P}{R}EnblDMaxAuto3-Sel";
+monitor EnblDMaxAuto3;
+evflag EnblDMaxAuto3Flag;
+sync EnblDMaxAuto3 EnblDMaxAuto3Flag;
+
+int EnblDMaxAuto4;
+assign EnblDMaxAuto4 to "{P}{R}EnblDMaxAuto4-Sel";
+monitor EnblDMaxAuto4;
+evflag EnblDMaxAuto4Flag;
+sync EnblDMaxAuto4 EnblDMaxAuto4Flag;
+
 ss ss1 {
     state opr {
 
@@ -241,5 +283,104 @@ ss ss1 {
 	    pvPut(EnblDM4, SYNC);
 
 	} state opr
+
+	when (efTestAndClear(EnblMaxAuto2Flag)) {
+
+	    if (EnblMaxAuto2 == 1) {
+		
+		EnblDM2 = 0;
+		pvPut(EnblDM2, SYNC);
+
+		EnblM2 = 1;
+		pvPut(EnblM2, SYNC);
+	
+	    }
+
+	} state opr
+
+	when (efTestAndClear(EnblMaxAuto3Flag)) {
+
+	    if (EnblMaxAuto3 == 1) {
+
+		EnblDM3 = 0;
+		pvPut(EnblDM3, SYNC);
+
+		EnblM3 = 1;
+		pvPut(EnblM3, SYNC);
+
+	    }
+
+	} state opr
+
+	when (efTestAndClear(EnblMaxAuto4Flag)) {
+
+	    if (EnblMaxAuto4 == 1) {
+
+		EnblDM4 = 0;
+		pvPut(EnblDM4, SYNC);
+
+		EnblM4 = 1;
+		pvPut(EnblM4, SYNC);
+
+	    }
+
+	} state opr
+
+	when (efTestAndClear(EnblDMaxAuto1Flag)) {
+
+	    if (EnblDMaxAuto1 == 1) {
+	
+		EnblM1 = 0;
+		pvPut(EnblM1, SYNC);
+	
+		EnblDM1 = 1;
+		pvPut(EnblDM1, SYNC);
+	
+	    }
+
+	} state opr
+
+	when (efTestAndClear(EnblDMaxAuto2Flag)) {
+
+	    if (EnblDMaxAuto2 == 1) {
+	
+		EnblM2 = 0;
+		pvPut(EnblM2, SYNC);
+	
+		EnblDM2 = 1;
+		pvPut(EnblDM2, SYNC);
+	
+	    }
+
+	} state opr
+
+	when (efTestAndClear(EnblDMaxAuto3Flag)) {
+
+	    if (EnblDMaxAuto3 == 1) {
+
+		EnblM3 = 0;
+		pvPut(EnblM3, SYNC);
+
+		EnblDM3 = 1;
+		pvPut(EnblDM3, SYNC);
+
+	    }
+
+	} state opr
+
+	when (efTestAndClear(EnblDMaxAuto4Flag)) {
+
+	    if (EnblDMaxAuto4 == 1) {
+
+		EnblM4 = 0;
+		pvPut(EnblM4, SYNC);
+
+		EnblDM4 = 1;
+		pvPut(EnblDM4, SYNC);
+
+	    }
+
+	} state opr
+
     } 
 }
