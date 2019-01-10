@@ -2571,7 +2571,7 @@ $(pv_value)</tooltip>
       <show_scrollbar>true</show_scrollbar>
       <tooltip></tooltip>
       <transparent>true</transparent>
-      <visible>true</visible>
+      <visible>false</visible>
       <widget_type>Grouping Container</widget_type>
       <width>776</width>
       <wuid>-5afe0710:163264b925c:-7a8a</wuid>
@@ -10640,7 +10640,7 @@ $(pv_value)</tooltip>
       <show_scrollbar>true</show_scrollbar>
       <tooltip></tooltip>
       <transparent>true</transparent>
-      <visible>false</visible>
+      <visible>true</visible>
       <widget_type>Grouping Container</widget_type>
       <width>776</width>
       <wuid>7fb1a497:1634604385e:-6f15</wuid>
@@ -11666,7 +11666,7 @@ $(pv_value)</tooltip>
           <name>Text Update</name>
           <precision>0</precision>
           <precision_from_pv>true</precision_from_pv>
-          <pv_name>$(P)$(R)DynamicDX2-RB</pv_name>
+          <pv_name>$(P)$(R)DynamicDX2-Mon</pv_name>
           <pv_value />
           <rotation_angle>0.0</rotation_angle>
           <rules />
@@ -11852,7 +11852,7 @@ $(pv_value)</tooltip>
           <name>Text Update</name>
           <precision>0</precision>
           <precision_from_pv>true</precision_from_pv>
-          <pv_name>$(P)$(R)DynamicDX3-RB</pv_name>
+          <pv_name>$(P)$(R)DynamicDX3-Mon</pv_name>
           <pv_value />
           <rotation_angle>0.0</rotation_angle>
           <rules />
@@ -11945,7 +11945,7 @@ $(pv_value)</tooltip>
           <name>Text Update</name>
           <precision>0</precision>
           <precision_from_pv>true</precision_from_pv>
-          <pv_name>$(P)$(R)DynamicDX4-RB</pv_name>
+          <pv_name>$(P)$(R)DynamicDX4-Mon</pv_name>
           <pv_value />
           <rotation_angle>0.0</rotation_angle>
           <rules />
@@ -12224,7 +12224,7 @@ $(pv_value)</tooltip>
           <name>Text Update</name>
           <precision>0</precision>
           <precision_from_pv>true</precision_from_pv>
-          <pv_name>$(P)$(R)DynamicDX1-RB</pv_name>
+          <pv_name>$(P)$(R)DynamicDX1-Mon</pv_name>
           <pv_value />
           <rotation_angle>0.0</rotation_angle>
           <rules />
