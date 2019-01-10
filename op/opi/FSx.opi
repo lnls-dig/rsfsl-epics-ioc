@@ -18,6 +18,8 @@
   <height>850</height>
   <macros>
     <include_parent_macros>true</include_parent_macros>
+    <P>DIGOFF:</P>
+    <R>RSFSL:</R>
   </macros>
   <name></name>
   <rules />
@@ -6566,315 +6568,6 @@ $(pv_value)</tooltip>
         <border_style>13</border_style>
         <border_width>1</border_width>
         <enabled>true</enabled>
-        <fc>true</fc>
-        <font>
-          <opifont.name fontName="Ubuntu" height="11" style="0" pixels="false">Default</opifont.name>
-        </font>
-        <foreground_color>
-          <color red="192" green="192" blue="192" />
-        </foreground_color>
-        <height>57</height>
-        <lock_children>false</lock_children>
-        <macros>
-          <include_parent_macros>true</include_parent_macros>
-        </macros>
-        <name>Auto Max Peak 2</name>
-        <rules />
-        <scale_options>
-          <width_scalable>true</width_scalable>
-          <height_scalable>true</height_scalable>
-          <keep_wh_ratio>false</keep_wh_ratio>
-        </scale_options>
-        <scripts />
-        <show_scrollbar>true</show_scrollbar>
-        <tooltip></tooltip>
-        <transparent>false</transparent>
-        <visible>true</visible>
-        <widget_type>Grouping Container</widget_type>
-        <width>180</width>
-        <wuid>7fb1a497:1634604385e:-5c34</wuid>
-        <x>200</x>
-        <y>18</y>
-        <widget typeId="org.csstudio.opibuilder.widgets.BoolButton" version="1.0.0">
-          <actions hook="false" hook_all="false" />
-          <alarm_pulsing>false</alarm_pulsing>
-          <backcolor_alarm_sensitive>false</backcolor_alarm_sensitive>
-          <background_color>
-            <color red="240" green="240" blue="240" />
-          </background_color>
-          <bit>-1</bit>
-          <border_alarm_sensitive>true</border_alarm_sensitive>
-          <border_color>
-            <color red="0" green="128" blue="255" />
-          </border_color>
-          <border_style>0</border_style>
-          <border_width>1</border_width>
-          <confirm_message>Are you sure you want to do this?</confirm_message>
-          <data_type>0</data_type>
-          <effect_3d>true</effect_3d>
-          <enabled>true</enabled>
-          <font>
-            <opifont.name fontName="Ubuntu" height="11" style="0" pixels="false">Default</opifont.name>
-          </font>
-          <forecolor_alarm_sensitive>false</forecolor_alarm_sensitive>
-          <foreground_color>
-            <color red="0" green="0" blue="0" />
-          </foreground_color>
-          <height>23</height>
-          <labels_from_pv>false</labels_from_pv>
-          <name>Boolean Button</name>
-          <off_color>
-            <color red="0" green="100" blue="0" />
-          </off_color>
-          <off_label>ON/OFF          </off_label>
-          <on_color>
-            <color red="0" green="255" blue="0" />
-          </on_color>
-          <on_label>ON/OFF          </on_label>
-          <password></password>
-          <push_action_index>0</push_action_index>
-          <pv_name>$(P)$(R)EnblMaxAuto2-Sel</pv_name>
-          <pv_value />
-          <released_action_index>0</released_action_index>
-          <rules />
-          <scale_options>
-            <width_scalable>true</width_scalable>
-            <height_scalable>true</height_scalable>
-            <keep_wh_ratio>true</keep_wh_ratio>
-          </scale_options>
-          <scripts />
-          <show_boolean_label>true</show_boolean_label>
-          <show_confirm_dialog>0</show_confirm_dialog>
-          <show_led>true</show_led>
-          <square_button>true</square_button>
-          <toggle_button>true</toggle_button>
-          <tooltip>$(pv_name)
-$(pv_value)</tooltip>
-          <visible>true</visible>
-          <widget_type>Boolean Button</widget_type>
-          <width>146</width>
-          <wuid>7fb1a497:1634604385e:-5c33</wuid>
-          <x>0</x>
-          <y>0</y>
-        </widget>
-      </widget>
-      <widget typeId="org.csstudio.opibuilder.widgets.groupingContainer" version="1.0.0">
-        <actions hook="false" hook_all="false" />
-        <background_color>
-          <color red="240" green="240" blue="240" />
-        </background_color>
-        <border_color>
-          <color red="0" green="0" blue="0" />
-        </border_color>
-        <border_style>13</border_style>
-        <border_width>1</border_width>
-        <enabled>true</enabled>
-        <fc>true</fc>
-        <font>
-          <opifont.name fontName="Ubuntu" height="11" style="0" pixels="false">Default</opifont.name>
-        </font>
-        <foreground_color>
-          <color red="192" green="192" blue="192" />
-        </foreground_color>
-        <height>57</height>
-        <lock_children>false</lock_children>
-        <macros>
-          <include_parent_macros>true</include_parent_macros>
-        </macros>
-        <name>Auto Max Peak 3</name>
-        <rules />
-        <scale_options>
-          <width_scalable>true</width_scalable>
-          <height_scalable>true</height_scalable>
-          <keep_wh_ratio>false</keep_wh_ratio>
-        </scale_options>
-        <scripts />
-        <show_scrollbar>true</show_scrollbar>
-        <tooltip></tooltip>
-        <transparent>false</transparent>
-        <visible>true</visible>
-        <widget_type>Grouping Container</widget_type>
-        <width>180</width>
-        <wuid>7fb1a497:1634604385e:-5c32</wuid>
-        <x>394</x>
-        <y>18</y>
-        <widget typeId="org.csstudio.opibuilder.widgets.BoolButton" version="1.0.0">
-          <actions hook="false" hook_all="false" />
-          <alarm_pulsing>false</alarm_pulsing>
-          <backcolor_alarm_sensitive>false</backcolor_alarm_sensitive>
-          <background_color>
-            <color red="240" green="240" blue="240" />
-          </background_color>
-          <bit>-1</bit>
-          <border_alarm_sensitive>true</border_alarm_sensitive>
-          <border_color>
-            <color red="0" green="128" blue="255" />
-          </border_color>
-          <border_style>0</border_style>
-          <border_width>1</border_width>
-          <confirm_message>Are you sure you want to do this?</confirm_message>
-          <data_type>0</data_type>
-          <effect_3d>true</effect_3d>
-          <enabled>true</enabled>
-          <font>
-            <opifont.name fontName="Ubuntu" height="11" style="0" pixels="false">Default</opifont.name>
-          </font>
-          <forecolor_alarm_sensitive>false</forecolor_alarm_sensitive>
-          <foreground_color>
-            <color red="0" green="0" blue="0" />
-          </foreground_color>
-          <height>23</height>
-          <labels_from_pv>false</labels_from_pv>
-          <name>Boolean Button</name>
-          <off_color>
-            <color red="0" green="100" blue="0" />
-          </off_color>
-          <off_label>ON/OFF          </off_label>
-          <on_color>
-            <color red="0" green="255" blue="0" />
-          </on_color>
-          <on_label>ON/OFF          </on_label>
-          <password></password>
-          <push_action_index>0</push_action_index>
-          <pv_name>$(P)$(R)EnblMaxAuto3-Sel</pv_name>
-          <pv_value />
-          <released_action_index>0</released_action_index>
-          <rules />
-          <scale_options>
-            <width_scalable>true</width_scalable>
-            <height_scalable>true</height_scalable>
-            <keep_wh_ratio>true</keep_wh_ratio>
-          </scale_options>
-          <scripts />
-          <show_boolean_label>true</show_boolean_label>
-          <show_confirm_dialog>0</show_confirm_dialog>
-          <show_led>true</show_led>
-          <square_button>true</square_button>
-          <toggle_button>true</toggle_button>
-          <tooltip>$(pv_name)
-$(pv_value)</tooltip>
-          <visible>true</visible>
-          <widget_type>Boolean Button</widget_type>
-          <width>146</width>
-          <wuid>7fb1a497:1634604385e:-5c31</wuid>
-          <x>0</x>
-          <y>0</y>
-        </widget>
-      </widget>
-      <widget typeId="org.csstudio.opibuilder.widgets.groupingContainer" version="1.0.0">
-        <actions hook="false" hook_all="false" />
-        <background_color>
-          <color red="240" green="240" blue="240" />
-        </background_color>
-        <border_color>
-          <color red="0" green="0" blue="0" />
-        </border_color>
-        <border_style>13</border_style>
-        <border_width>1</border_width>
-        <enabled>true</enabled>
-        <fc>true</fc>
-        <font>
-          <opifont.name fontName="Ubuntu" height="11" style="0" pixels="false">Default</opifont.name>
-        </font>
-        <foreground_color>
-          <color red="192" green="192" blue="192" />
-        </foreground_color>
-        <height>57</height>
-        <lock_children>false</lock_children>
-        <macros>
-          <include_parent_macros>true</include_parent_macros>
-        </macros>
-        <name>Auto Max Peak 4</name>
-        <rules />
-        <scale_options>
-          <width_scalable>true</width_scalable>
-          <height_scalable>true</height_scalable>
-          <keep_wh_ratio>false</keep_wh_ratio>
-        </scale_options>
-        <scripts />
-        <show_scrollbar>true</show_scrollbar>
-        <tooltip></tooltip>
-        <transparent>false</transparent>
-        <visible>true</visible>
-        <widget_type>Grouping Container</widget_type>
-        <width>180</width>
-        <wuid>7fb1a497:1634604385e:-5c30</wuid>
-        <x>588</x>
-        <y>18</y>
-        <widget typeId="org.csstudio.opibuilder.widgets.BoolButton" version="1.0.0">
-          <actions hook="false" hook_all="false" />
-          <alarm_pulsing>false</alarm_pulsing>
-          <backcolor_alarm_sensitive>false</backcolor_alarm_sensitive>
-          <background_color>
-            <color red="240" green="240" blue="240" />
-          </background_color>
-          <bit>-1</bit>
-          <border_alarm_sensitive>true</border_alarm_sensitive>
-          <border_color>
-            <color red="0" green="128" blue="255" />
-          </border_color>
-          <border_style>0</border_style>
-          <border_width>1</border_width>
-          <confirm_message>Are you sure you want to do this?</confirm_message>
-          <data_type>0</data_type>
-          <effect_3d>true</effect_3d>
-          <enabled>true</enabled>
-          <font>
-            <opifont.name fontName="Ubuntu" height="11" style="0" pixels="false">Default</opifont.name>
-          </font>
-          <forecolor_alarm_sensitive>false</forecolor_alarm_sensitive>
-          <foreground_color>
-            <color red="0" green="0" blue="0" />
-          </foreground_color>
-          <height>23</height>
-          <labels_from_pv>false</labels_from_pv>
-          <name>Boolean Button</name>
-          <off_color>
-            <color red="0" green="100" blue="0" />
-          </off_color>
-          <off_label>ON/OFF          </off_label>
-          <on_color>
-            <color red="0" green="255" blue="0" />
-          </on_color>
-          <on_label>ON/OFF          </on_label>
-          <password></password>
-          <push_action_index>0</push_action_index>
-          <pv_name>$(P)$(R)EnblMaxAuto4-Sel</pv_name>
-          <pv_value />
-          <released_action_index>0</released_action_index>
-          <rules />
-          <scale_options>
-            <width_scalable>true</width_scalable>
-            <height_scalable>true</height_scalable>
-            <keep_wh_ratio>true</keep_wh_ratio>
-          </scale_options>
-          <scripts />
-          <show_boolean_label>true</show_boolean_label>
-          <show_confirm_dialog>0</show_confirm_dialog>
-          <show_led>true</show_led>
-          <square_button>true</square_button>
-          <toggle_button>true</toggle_button>
-          <tooltip>$(pv_name)
-$(pv_value)</tooltip>
-          <visible>true</visible>
-          <widget_type>Boolean Button</widget_type>
-          <width>146</width>
-          <wuid>7fb1a497:1634604385e:-5c2f</wuid>
-          <x>0</x>
-          <y>0</y>
-        </widget>
-      </widget>
-      <widget typeId="org.csstudio.opibuilder.widgets.groupingContainer" version="1.0.0">
-        <actions hook="false" hook_all="false" />
-        <background_color>
-          <color red="240" green="240" blue="240" />
-        </background_color>
-        <border_color>
-          <color red="0" green="0" blue="0" />
-        </border_color>
-        <border_style>13</border_style>
-        <border_width>1</border_width>
-        <enabled>true</enabled>
         <fc>false</fc>
         <font>
           <opifont.name fontName="Ubuntu" height="11" style="0" pixels="false">Default</opifont.name>
@@ -7606,6 +7299,489 @@ $(pv_value)</tooltip>
           <wuid>7fb1a497:1634604385e:-5b33</wuid>
           <x>0</x>
           <y>6</y>
+        </widget>
+      </widget>
+      <widget typeId="org.csstudio.opibuilder.widgets.groupingContainer" version="1.0.0">
+        <actions hook="false" hook_all="false" />
+        <background_color>
+          <color red="240" green="240" blue="240" />
+        </background_color>
+        <border_color>
+          <color red="0" green="0" blue="0" />
+        </border_color>
+        <border_style>13</border_style>
+        <border_width>1</border_width>
+        <enabled>true</enabled>
+        <fc>true</fc>
+        <font>
+          <opifont.name fontName="Ubuntu" height="11" style="0" pixels="false">Default</opifont.name>
+        </font>
+        <foreground_color>
+          <color red="192" green="192" blue="192" />
+        </foreground_color>
+        <height>57</height>
+        <lock_children>false</lock_children>
+        <macros>
+          <include_parent_macros>true</include_parent_macros>
+        </macros>
+        <name>Auto Max Peak 2</name>
+        <rules />
+        <scale_options>
+          <width_scalable>true</width_scalable>
+          <height_scalable>true</height_scalable>
+          <keep_wh_ratio>false</keep_wh_ratio>
+        </scale_options>
+        <scripts />
+        <show_scrollbar>true</show_scrollbar>
+        <tooltip></tooltip>
+        <transparent>false</transparent>
+        <visible>true</visible>
+        <widget_type>Grouping Container</widget_type>
+        <width>180</width>
+        <wuid>-74763e47:16837ccc7e1:-7c11</wuid>
+        <x>200</x>
+        <y>18</y>
+        <widget typeId="org.csstudio.opibuilder.widgets.LED" version="1.0.0">
+          <actions hook="false" hook_all="false" />
+          <alarm_pulsing>false</alarm_pulsing>
+          <backcolor_alarm_sensitive>false</backcolor_alarm_sensitive>
+          <background_color>
+            <color red="240" green="240" blue="240" />
+          </background_color>
+          <bit>-1</bit>
+          <border_alarm_sensitive>true</border_alarm_sensitive>
+          <border_color>
+            <color red="0" green="128" blue="255" />
+          </border_color>
+          <border_style>0</border_style>
+          <border_width>1</border_width>
+          <bulb_border>3</bulb_border>
+          <bulb_border_color>
+            <color red="150" green="150" blue="150" />
+          </bulb_border_color>
+          <data_type>0</data_type>
+          <effect_3d>true</effect_3d>
+          <enabled>true</enabled>
+          <font>
+            <opifont.name fontName="Ubuntu" height="11" style="0" pixels="false">Default</opifont.name>
+          </font>
+          <forecolor_alarm_sensitive>false</forecolor_alarm_sensitive>
+          <foreground_color>
+            <color red="192" green="192" blue="192" />
+          </foreground_color>
+          <height>20</height>
+          <name>LED</name>
+          <off_color>
+            <color red="0" green="100" blue="0" />
+          </off_color>
+          <off_label>OFF</off_label>
+          <on_color>
+            <color red="0" green="255" blue="0" />
+          </on_color>
+          <on_label>ON</on_label>
+          <pv_name>$(P)$(R)EnblMaxAuto2-Sts</pv_name>
+          <pv_value />
+          <rules />
+          <scale_options>
+            <width_scalable>true</width_scalable>
+            <height_scalable>true</height_scalable>
+            <keep_wh_ratio>true</keep_wh_ratio>
+          </scale_options>
+          <scripts />
+          <show_boolean_label>false</show_boolean_label>
+          <square_led>false</square_led>
+          <tooltip>$(pv_name)
+$(pv_value)</tooltip>
+          <visible>true</visible>
+          <widget_type>LED</widget_type>
+          <width>20</width>
+          <wuid>-74763e47:16837ccc7e1:-7c10</wuid>
+          <x>12</x>
+          <y>2</y>
+        </widget>
+        <widget typeId="org.csstudio.opibuilder.widgets.BoolButton" version="1.0.0">
+          <actions hook="false" hook_all="false" />
+          <alarm_pulsing>false</alarm_pulsing>
+          <backcolor_alarm_sensitive>false</backcolor_alarm_sensitive>
+          <background_color>
+            <color red="240" green="240" blue="240" />
+          </background_color>
+          <bit>-1</bit>
+          <border_alarm_sensitive>false</border_alarm_sensitive>
+          <border_color>
+            <color red="0" green="128" blue="255" />
+          </border_color>
+          <border_style>0</border_style>
+          <border_width>1</border_width>
+          <confirm_message>Are you sure you want to do this?</confirm_message>
+          <data_type>0</data_type>
+          <effect_3d>true</effect_3d>
+          <enabled>true</enabled>
+          <font>
+            <opifont.name fontName="Ubuntu" height="11" style="0" pixels="false">Default</opifont.name>
+          </font>
+          <forecolor_alarm_sensitive>false</forecolor_alarm_sensitive>
+          <foreground_color>
+            <color red="0" green="0" blue="0" />
+          </foreground_color>
+          <height>20</height>
+          <labels_from_pv>false</labels_from_pv>
+          <name>Action Button</name>
+          <off_color>
+            <color red="0" green="100" blue="0" />
+          </off_color>
+          <off_label>ON/OFF</off_label>
+          <on_color>
+            <color red="0" green="255" blue="0" />
+          </on_color>
+          <on_label>ON/OFF</on_label>
+          <password></password>
+          <push_action_index>0</push_action_index>
+          <pv_name>$(P)$(R)EnblMaxAuto2-Sel</pv_name>
+          <pv_value />
+          <released_action_index>0</released_action_index>
+          <rules />
+          <scale_options>
+            <width_scalable>true</width_scalable>
+            <height_scalable>true</height_scalable>
+            <keep_wh_ratio>false</keep_wh_ratio>
+          </scale_options>
+          <scripts />
+          <show_boolean_label>true</show_boolean_label>
+          <show_confirm_dialog>0</show_confirm_dialog>
+          <show_led>false</show_led>
+          <square_button>true</square_button>
+          <toggle_button>true</toggle_button>
+          <tooltip>$(pv_name)
+$(pv_value)</tooltip>
+          <visible>true</visible>
+          <widget_type>Boolean Button</widget_type>
+          <width>80</width>
+          <wuid>-74763e47:16837ccc7e1:-7c0f</wuid>
+          <x>66</x>
+          <y>2</y>
+        </widget>
+      </widget>
+      <widget typeId="org.csstudio.opibuilder.widgets.groupingContainer" version="1.0.0">
+        <actions hook="false" hook_all="false" />
+        <background_color>
+          <color red="240" green="240" blue="240" />
+        </background_color>
+        <border_color>
+          <color red="0" green="0" blue="0" />
+        </border_color>
+        <border_style>13</border_style>
+        <border_width>1</border_width>
+        <enabled>true</enabled>
+        <fc>true</fc>
+        <font>
+          <opifont.name fontName="Ubuntu" height="11" style="0" pixels="false">Default</opifont.name>
+        </font>
+        <foreground_color>
+          <color red="192" green="192" blue="192" />
+        </foreground_color>
+        <height>57</height>
+        <lock_children>false</lock_children>
+        <macros>
+          <include_parent_macros>true</include_parent_macros>
+        </macros>
+        <name>Auto Max Peak 3</name>
+        <rules />
+        <scale_options>
+          <width_scalable>true</width_scalable>
+          <height_scalable>true</height_scalable>
+          <keep_wh_ratio>false</keep_wh_ratio>
+        </scale_options>
+        <scripts />
+        <show_scrollbar>true</show_scrollbar>
+        <tooltip></tooltip>
+        <transparent>false</transparent>
+        <visible>true</visible>
+        <widget_type>Grouping Container</widget_type>
+        <width>180</width>
+        <wuid>-74763e47:16837ccc7e1:-7aba</wuid>
+        <x>396</x>
+        <y>18</y>
+        <widget typeId="org.csstudio.opibuilder.widgets.LED" version="1.0.0">
+          <actions hook="false" hook_all="false" />
+          <alarm_pulsing>false</alarm_pulsing>
+          <backcolor_alarm_sensitive>false</backcolor_alarm_sensitive>
+          <background_color>
+            <color red="240" green="240" blue="240" />
+          </background_color>
+          <bit>-1</bit>
+          <border_alarm_sensitive>true</border_alarm_sensitive>
+          <border_color>
+            <color red="0" green="128" blue="255" />
+          </border_color>
+          <border_style>0</border_style>
+          <border_width>1</border_width>
+          <bulb_border>3</bulb_border>
+          <bulb_border_color>
+            <color red="150" green="150" blue="150" />
+          </bulb_border_color>
+          <data_type>0</data_type>
+          <effect_3d>true</effect_3d>
+          <enabled>true</enabled>
+          <font>
+            <opifont.name fontName="Ubuntu" height="11" style="0" pixels="false">Default</opifont.name>
+          </font>
+          <forecolor_alarm_sensitive>false</forecolor_alarm_sensitive>
+          <foreground_color>
+            <color red="192" green="192" blue="192" />
+          </foreground_color>
+          <height>20</height>
+          <name>LED</name>
+          <off_color>
+            <color red="0" green="100" blue="0" />
+          </off_color>
+          <off_label>OFF</off_label>
+          <on_color>
+            <color red="0" green="255" blue="0" />
+          </on_color>
+          <on_label>ON</on_label>
+          <pv_name>$(P)$(R)EnblMaxAuto3-Sts</pv_name>
+          <pv_value />
+          <rules />
+          <scale_options>
+            <width_scalable>true</width_scalable>
+            <height_scalable>true</height_scalable>
+            <keep_wh_ratio>true</keep_wh_ratio>
+          </scale_options>
+          <scripts />
+          <show_boolean_label>false</show_boolean_label>
+          <square_led>false</square_led>
+          <tooltip>$(pv_name)
+$(pv_value)</tooltip>
+          <visible>true</visible>
+          <widget_type>LED</widget_type>
+          <width>20</width>
+          <wuid>-74763e47:16837ccc7e1:-7ab9</wuid>
+          <x>12</x>
+          <y>2</y>
+        </widget>
+        <widget typeId="org.csstudio.opibuilder.widgets.BoolButton" version="1.0.0">
+          <actions hook="false" hook_all="false" />
+          <alarm_pulsing>false</alarm_pulsing>
+          <backcolor_alarm_sensitive>false</backcolor_alarm_sensitive>
+          <background_color>
+            <color red="240" green="240" blue="240" />
+          </background_color>
+          <bit>-1</bit>
+          <border_alarm_sensitive>false</border_alarm_sensitive>
+          <border_color>
+            <color red="0" green="128" blue="255" />
+          </border_color>
+          <border_style>0</border_style>
+          <border_width>1</border_width>
+          <confirm_message>Are you sure you want to do this?</confirm_message>
+          <data_type>0</data_type>
+          <effect_3d>true</effect_3d>
+          <enabled>true</enabled>
+          <font>
+            <opifont.name fontName="Ubuntu" height="11" style="0" pixels="false">Default</opifont.name>
+          </font>
+          <forecolor_alarm_sensitive>false</forecolor_alarm_sensitive>
+          <foreground_color>
+            <color red="0" green="0" blue="0" />
+          </foreground_color>
+          <height>20</height>
+          <labels_from_pv>false</labels_from_pv>
+          <name>Action Button</name>
+          <off_color>
+            <color red="0" green="100" blue="0" />
+          </off_color>
+          <off_label>ON/OFF</off_label>
+          <on_color>
+            <color red="0" green="255" blue="0" />
+          </on_color>
+          <on_label>ON/OFF</on_label>
+          <password></password>
+          <push_action_index>0</push_action_index>
+          <pv_name>$(P)$(R)EnblMaxAuto3-Sel</pv_name>
+          <pv_value />
+          <released_action_index>0</released_action_index>
+          <rules />
+          <scale_options>
+            <width_scalable>true</width_scalable>
+            <height_scalable>true</height_scalable>
+            <keep_wh_ratio>false</keep_wh_ratio>
+          </scale_options>
+          <scripts />
+          <show_boolean_label>true</show_boolean_label>
+          <show_confirm_dialog>0</show_confirm_dialog>
+          <show_led>false</show_led>
+          <square_button>true</square_button>
+          <toggle_button>true</toggle_button>
+          <tooltip>$(pv_name)
+$(pv_value)</tooltip>
+          <visible>true</visible>
+          <widget_type>Boolean Button</widget_type>
+          <width>80</width>
+          <wuid>-74763e47:16837ccc7e1:-7ab8</wuid>
+          <x>66</x>
+          <y>2</y>
+        </widget>
+      </widget>
+      <widget typeId="org.csstudio.opibuilder.widgets.groupingContainer" version="1.0.0">
+        <actions hook="false" hook_all="false" />
+        <background_color>
+          <color red="240" green="240" blue="240" />
+        </background_color>
+        <border_color>
+          <color red="0" green="0" blue="0" />
+        </border_color>
+        <border_style>13</border_style>
+        <border_width>1</border_width>
+        <enabled>true</enabled>
+        <fc>true</fc>
+        <font>
+          <opifont.name fontName="Ubuntu" height="11" style="0" pixels="false">Default</opifont.name>
+        </font>
+        <foreground_color>
+          <color red="192" green="192" blue="192" />
+        </foreground_color>
+        <height>57</height>
+        <lock_children>false</lock_children>
+        <macros>
+          <include_parent_macros>true</include_parent_macros>
+        </macros>
+        <name>Auto Max Peak 4</name>
+        <rules />
+        <scale_options>
+          <width_scalable>true</width_scalable>
+          <height_scalable>true</height_scalable>
+          <keep_wh_ratio>false</keep_wh_ratio>
+        </scale_options>
+        <scripts />
+        <show_scrollbar>true</show_scrollbar>
+        <tooltip></tooltip>
+        <transparent>false</transparent>
+        <visible>true</visible>
+        <widget_type>Grouping Container</widget_type>
+        <width>180</width>
+        <wuid>-74763e47:16837ccc7e1:-7a9e</wuid>
+        <x>588</x>
+        <y>18</y>
+        <widget typeId="org.csstudio.opibuilder.widgets.LED" version="1.0.0">
+          <actions hook="false" hook_all="false" />
+          <alarm_pulsing>false</alarm_pulsing>
+          <backcolor_alarm_sensitive>false</backcolor_alarm_sensitive>
+          <background_color>
+            <color red="240" green="240" blue="240" />
+          </background_color>
+          <bit>-1</bit>
+          <border_alarm_sensitive>true</border_alarm_sensitive>
+          <border_color>
+            <color red="0" green="128" blue="255" />
+          </border_color>
+          <border_style>0</border_style>
+          <border_width>1</border_width>
+          <bulb_border>3</bulb_border>
+          <bulb_border_color>
+            <color red="150" green="150" blue="150" />
+          </bulb_border_color>
+          <data_type>0</data_type>
+          <effect_3d>true</effect_3d>
+          <enabled>true</enabled>
+          <font>
+            <opifont.name fontName="Ubuntu" height="11" style="0" pixels="false">Default</opifont.name>
+          </font>
+          <forecolor_alarm_sensitive>false</forecolor_alarm_sensitive>
+          <foreground_color>
+            <color red="192" green="192" blue="192" />
+          </foreground_color>
+          <height>20</height>
+          <name>LED</name>
+          <off_color>
+            <color red="0" green="100" blue="0" />
+          </off_color>
+          <off_label>OFF</off_label>
+          <on_color>
+            <color red="0" green="255" blue="0" />
+          </on_color>
+          <on_label>ON</on_label>
+          <pv_name>$(P)$(R)EnblMaxAuto4-Sts</pv_name>
+          <pv_value />
+          <rules />
+          <scale_options>
+            <width_scalable>true</width_scalable>
+            <height_scalable>true</height_scalable>
+            <keep_wh_ratio>true</keep_wh_ratio>
+          </scale_options>
+          <scripts />
+          <show_boolean_label>false</show_boolean_label>
+          <square_led>false</square_led>
+          <tooltip>$(pv_name)
+$(pv_value)</tooltip>
+          <visible>true</visible>
+          <widget_type>LED</widget_type>
+          <width>20</width>
+          <wuid>-74763e47:16837ccc7e1:-7a9d</wuid>
+          <x>12</x>
+          <y>2</y>
+        </widget>
+        <widget typeId="org.csstudio.opibuilder.widgets.BoolButton" version="1.0.0">
+          <actions hook="false" hook_all="false" />
+          <alarm_pulsing>false</alarm_pulsing>
+          <backcolor_alarm_sensitive>false</backcolor_alarm_sensitive>
+          <background_color>
+            <color red="240" green="240" blue="240" />
+          </background_color>
+          <bit>-1</bit>
+          <border_alarm_sensitive>false</border_alarm_sensitive>
+          <border_color>
+            <color red="0" green="128" blue="255" />
+          </border_color>
+          <border_style>0</border_style>
+          <border_width>1</border_width>
+          <confirm_message>Are you sure you want to do this?</confirm_message>
+          <data_type>0</data_type>
+          <effect_3d>true</effect_3d>
+          <enabled>true</enabled>
+          <font>
+            <opifont.name fontName="Ubuntu" height="11" style="0" pixels="false">Default</opifont.name>
+          </font>
+          <forecolor_alarm_sensitive>false</forecolor_alarm_sensitive>
+          <foreground_color>
+            <color red="0" green="0" blue="0" />
+          </foreground_color>
+          <height>20</height>
+          <labels_from_pv>false</labels_from_pv>
+          <name>Action Button</name>
+          <off_color>
+            <color red="0" green="100" blue="0" />
+          </off_color>
+          <off_label>ON/OFF</off_label>
+          <on_color>
+            <color red="0" green="255" blue="0" />
+          </on_color>
+          <on_label>ON/OFF</on_label>
+          <password></password>
+          <push_action_index>0</push_action_index>
+          <pv_name>$(P)$(R)EnblMaxAuto4-Sel</pv_name>
+          <pv_value />
+          <released_action_index>0</released_action_index>
+          <rules />
+          <scale_options>
+            <width_scalable>true</width_scalable>
+            <height_scalable>true</height_scalable>
+            <keep_wh_ratio>false</keep_wh_ratio>
+          </scale_options>
+          <scripts />
+          <show_boolean_label>true</show_boolean_label>
+          <show_confirm_dialog>0</show_confirm_dialog>
+          <show_led>false</show_led>
+          <square_button>true</square_button>
+          <toggle_button>true</toggle_button>
+          <tooltip>$(pv_name)
+$(pv_value)</tooltip>
+          <visible>true</visible>
+          <widget_type>Boolean Button</widget_type>
+          <width>80</width>
+          <wuid>-74763e47:16837ccc7e1:-7a9c</wuid>
+          <x>66</x>
+          <y>2</y>
         </widget>
       </widget>
     </widget>
@@ -10657,109 +10833,6 @@ $(pv_value)</tooltip>
         <border_style>13</border_style>
         <border_width>1</border_width>
         <enabled>true</enabled>
-        <fc>true</fc>
-        <font>
-          <opifont.name fontName="Ubuntu" height="11" style="0" pixels="false">Default</opifont.name>
-        </font>
-        <foreground_color>
-          <color red="192" green="192" blue="192" />
-        </foreground_color>
-        <height>57</height>
-        <lock_children>false</lock_children>
-        <macros>
-          <include_parent_macros>true</include_parent_macros>
-        </macros>
-        <name>Auto Max Peak 1</name>
-        <rules />
-        <scale_options>
-          <width_scalable>true</width_scalable>
-          <height_scalable>true</height_scalable>
-          <keep_wh_ratio>false</keep_wh_ratio>
-        </scale_options>
-        <scripts />
-        <show_scrollbar>true</show_scrollbar>
-        <tooltip></tooltip>
-        <transparent>false</transparent>
-        <visible>true</visible>
-        <widget_type>Grouping Container</widget_type>
-        <width>180</width>
-        <wuid>7fb1a497:1634604385e:-6d6e</wuid>
-        <x>6</x>
-        <y>18</y>
-        <widget typeId="org.csstudio.opibuilder.widgets.BoolButton" version="1.0.0">
-          <actions hook="false" hook_all="false" />
-          <alarm_pulsing>false</alarm_pulsing>
-          <backcolor_alarm_sensitive>false</backcolor_alarm_sensitive>
-          <background_color>
-            <color red="240" green="240" blue="240" />
-          </background_color>
-          <bit>-1</bit>
-          <border_alarm_sensitive>true</border_alarm_sensitive>
-          <border_color>
-            <color red="0" green="128" blue="255" />
-          </border_color>
-          <border_style>0</border_style>
-          <border_width>1</border_width>
-          <confirm_message>Are you sure you want to do this?</confirm_message>
-          <data_type>0</data_type>
-          <effect_3d>true</effect_3d>
-          <enabled>true</enabled>
-          <font>
-            <opifont.name fontName="Ubuntu" height="11" style="0" pixels="false">Default</opifont.name>
-          </font>
-          <forecolor_alarm_sensitive>false</forecolor_alarm_sensitive>
-          <foreground_color>
-            <color red="0" green="0" blue="0" />
-          </foreground_color>
-          <height>23</height>
-          <labels_from_pv>false</labels_from_pv>
-          <name>Boolean Button</name>
-          <off_color>
-            <color red="0" green="100" blue="0" />
-          </off_color>
-          <off_label>ON/OFF          </off_label>
-          <on_color>
-            <color red="0" green="255" blue="0" />
-          </on_color>
-          <on_label>ON/OFF          </on_label>
-          <password></password>
-          <push_action_index>0</push_action_index>
-          <pv_name>$(P)$(R)EnblDMaxAuto1-Sel</pv_name>
-          <pv_value />
-          <released_action_index>0</released_action_index>
-          <rules />
-          <scale_options>
-            <width_scalable>true</width_scalable>
-            <height_scalable>true</height_scalable>
-            <keep_wh_ratio>true</keep_wh_ratio>
-          </scale_options>
-          <scripts />
-          <show_boolean_label>true</show_boolean_label>
-          <show_confirm_dialog>0</show_confirm_dialog>
-          <show_led>true</show_led>
-          <square_button>true</square_button>
-          <toggle_button>true</toggle_button>
-          <tooltip>$(pv_name)
-$(pv_value)</tooltip>
-          <visible>true</visible>
-          <widget_type>Boolean Button</widget_type>
-          <width>146</width>
-          <wuid>7fb1a497:1634604385e:-5da0</wuid>
-          <x>0</x>
-          <y>0</y>
-        </widget>
-      </widget>
-      <widget typeId="org.csstudio.opibuilder.widgets.groupingContainer" version="1.0.0">
-        <actions hook="false" hook_all="false" />
-        <background_color>
-          <color red="240" green="240" blue="240" />
-        </background_color>
-        <border_color>
-          <color red="0" green="0" blue="0" />
-        </border_color>
-        <border_style>13</border_style>
-        <border_width>1</border_width>
-        <enabled>true</enabled>
         <fc>false</fc>
         <font>
           <opifont.name fontName="Ubuntu" height="11" style="0" pixels="false">Default</opifont.name>
@@ -11287,315 +11360,6 @@ $(pv_value)</tooltip>
           <wuid>7fb1a497:1634604385e:-5f11</wuid>
           <x>0</x>
           <y>32</y>
-        </widget>
-      </widget>
-      <widget typeId="org.csstudio.opibuilder.widgets.groupingContainer" version="1.0.0">
-        <actions hook="false" hook_all="false" />
-        <background_color>
-          <color red="240" green="240" blue="240" />
-        </background_color>
-        <border_color>
-          <color red="0" green="0" blue="0" />
-        </border_color>
-        <border_style>13</border_style>
-        <border_width>1</border_width>
-        <enabled>true</enabled>
-        <fc>true</fc>
-        <font>
-          <opifont.name fontName="Ubuntu" height="11" style="0" pixels="false">Default</opifont.name>
-        </font>
-        <foreground_color>
-          <color red="192" green="192" blue="192" />
-        </foreground_color>
-        <height>57</height>
-        <lock_children>false</lock_children>
-        <macros>
-          <include_parent_macros>true</include_parent_macros>
-        </macros>
-        <name>Auto Max Peak 2</name>
-        <rules />
-        <scale_options>
-          <width_scalable>true</width_scalable>
-          <height_scalable>true</height_scalable>
-          <keep_wh_ratio>false</keep_wh_ratio>
-        </scale_options>
-        <scripts />
-        <show_scrollbar>true</show_scrollbar>
-        <tooltip></tooltip>
-        <transparent>false</transparent>
-        <visible>true</visible>
-        <widget_type>Grouping Container</widget_type>
-        <width>180</width>
-        <wuid>7fb1a497:1634604385e:-5c82</wuid>
-        <x>200</x>
-        <y>18</y>
-        <widget typeId="org.csstudio.opibuilder.widgets.BoolButton" version="1.0.0">
-          <actions hook="false" hook_all="false" />
-          <alarm_pulsing>false</alarm_pulsing>
-          <backcolor_alarm_sensitive>false</backcolor_alarm_sensitive>
-          <background_color>
-            <color red="240" green="240" blue="240" />
-          </background_color>
-          <bit>-1</bit>
-          <border_alarm_sensitive>true</border_alarm_sensitive>
-          <border_color>
-            <color red="0" green="128" blue="255" />
-          </border_color>
-          <border_style>0</border_style>
-          <border_width>1</border_width>
-          <confirm_message>Are you sure you want to do this?</confirm_message>
-          <data_type>0</data_type>
-          <effect_3d>true</effect_3d>
-          <enabled>true</enabled>
-          <font>
-            <opifont.name fontName="Ubuntu" height="11" style="0" pixels="false">Default</opifont.name>
-          </font>
-          <forecolor_alarm_sensitive>false</forecolor_alarm_sensitive>
-          <foreground_color>
-            <color red="0" green="0" blue="0" />
-          </foreground_color>
-          <height>23</height>
-          <labels_from_pv>false</labels_from_pv>
-          <name>Boolean Button</name>
-          <off_color>
-            <color red="0" green="100" blue="0" />
-          </off_color>
-          <off_label>ON/OFF          </off_label>
-          <on_color>
-            <color red="0" green="255" blue="0" />
-          </on_color>
-          <on_label>ON/OFF          </on_label>
-          <password></password>
-          <push_action_index>0</push_action_index>
-          <pv_name>$(P)$(R)EnblDMaxAuto2-Sel</pv_name>
-          <pv_value />
-          <released_action_index>0</released_action_index>
-          <rules />
-          <scale_options>
-            <width_scalable>true</width_scalable>
-            <height_scalable>true</height_scalable>
-            <keep_wh_ratio>true</keep_wh_ratio>
-          </scale_options>
-          <scripts />
-          <show_boolean_label>true</show_boolean_label>
-          <show_confirm_dialog>0</show_confirm_dialog>
-          <show_led>true</show_led>
-          <square_button>true</square_button>
-          <toggle_button>true</toggle_button>
-          <tooltip>$(pv_name)
-$(pv_value)</tooltip>
-          <visible>true</visible>
-          <widget_type>Boolean Button</widget_type>
-          <width>146</width>
-          <wuid>7fb1a497:1634604385e:-5c81</wuid>
-          <x>0</x>
-          <y>0</y>
-        </widget>
-      </widget>
-      <widget typeId="org.csstudio.opibuilder.widgets.groupingContainer" version="1.0.0">
-        <actions hook="false" hook_all="false" />
-        <background_color>
-          <color red="240" green="240" blue="240" />
-        </background_color>
-        <border_color>
-          <color red="0" green="0" blue="0" />
-        </border_color>
-        <border_style>13</border_style>
-        <border_width>1</border_width>
-        <enabled>true</enabled>
-        <fc>true</fc>
-        <font>
-          <opifont.name fontName="Ubuntu" height="11" style="0" pixels="false">Default</opifont.name>
-        </font>
-        <foreground_color>
-          <color red="192" green="192" blue="192" />
-        </foreground_color>
-        <height>57</height>
-        <lock_children>false</lock_children>
-        <macros>
-          <include_parent_macros>true</include_parent_macros>
-        </macros>
-        <name>Auto Max Peak 3</name>
-        <rules />
-        <scale_options>
-          <width_scalable>true</width_scalable>
-          <height_scalable>true</height_scalable>
-          <keep_wh_ratio>false</keep_wh_ratio>
-        </scale_options>
-        <scripts />
-        <show_scrollbar>true</show_scrollbar>
-        <tooltip></tooltip>
-        <transparent>false</transparent>
-        <visible>true</visible>
-        <widget_type>Grouping Container</widget_type>
-        <width>180</width>
-        <wuid>7fb1a497:1634604385e:-5c6a</wuid>
-        <x>394</x>
-        <y>18</y>
-        <widget typeId="org.csstudio.opibuilder.widgets.BoolButton" version="1.0.0">
-          <actions hook="false" hook_all="false" />
-          <alarm_pulsing>false</alarm_pulsing>
-          <backcolor_alarm_sensitive>false</backcolor_alarm_sensitive>
-          <background_color>
-            <color red="240" green="240" blue="240" />
-          </background_color>
-          <bit>-1</bit>
-          <border_alarm_sensitive>true</border_alarm_sensitive>
-          <border_color>
-            <color red="0" green="128" blue="255" />
-          </border_color>
-          <border_style>0</border_style>
-          <border_width>1</border_width>
-          <confirm_message>Are you sure you want to do this?</confirm_message>
-          <data_type>0</data_type>
-          <effect_3d>true</effect_3d>
-          <enabled>true</enabled>
-          <font>
-            <opifont.name fontName="Ubuntu" height="11" style="0" pixels="false">Default</opifont.name>
-          </font>
-          <forecolor_alarm_sensitive>false</forecolor_alarm_sensitive>
-          <foreground_color>
-            <color red="0" green="0" blue="0" />
-          </foreground_color>
-          <height>23</height>
-          <labels_from_pv>false</labels_from_pv>
-          <name>Boolean Button</name>
-          <off_color>
-            <color red="0" green="100" blue="0" />
-          </off_color>
-          <off_label>ON/OFF          </off_label>
-          <on_color>
-            <color red="0" green="255" blue="0" />
-          </on_color>
-          <on_label>ON/OFF          </on_label>
-          <password></password>
-          <push_action_index>0</push_action_index>
-          <pv_name>$(P)$(R)EnblDMaxAuto3-Sel</pv_name>
-          <pv_value />
-          <released_action_index>0</released_action_index>
-          <rules />
-          <scale_options>
-            <width_scalable>true</width_scalable>
-            <height_scalable>true</height_scalable>
-            <keep_wh_ratio>true</keep_wh_ratio>
-          </scale_options>
-          <scripts />
-          <show_boolean_label>true</show_boolean_label>
-          <show_confirm_dialog>0</show_confirm_dialog>
-          <show_led>true</show_led>
-          <square_button>true</square_button>
-          <toggle_button>true</toggle_button>
-          <tooltip>$(pv_name)
-$(pv_value)</tooltip>
-          <visible>true</visible>
-          <widget_type>Boolean Button</widget_type>
-          <width>146</width>
-          <wuid>7fb1a497:1634604385e:-5c69</wuid>
-          <x>0</x>
-          <y>0</y>
-        </widget>
-      </widget>
-      <widget typeId="org.csstudio.opibuilder.widgets.groupingContainer" version="1.0.0">
-        <actions hook="false" hook_all="false" />
-        <background_color>
-          <color red="240" green="240" blue="240" />
-        </background_color>
-        <border_color>
-          <color red="0" green="0" blue="0" />
-        </border_color>
-        <border_style>13</border_style>
-        <border_width>1</border_width>
-        <enabled>true</enabled>
-        <fc>true</fc>
-        <font>
-          <opifont.name fontName="Ubuntu" height="11" style="0" pixels="false">Default</opifont.name>
-        </font>
-        <foreground_color>
-          <color red="192" green="192" blue="192" />
-        </foreground_color>
-        <height>57</height>
-        <lock_children>false</lock_children>
-        <macros>
-          <include_parent_macros>true</include_parent_macros>
-        </macros>
-        <name>Auto Max Peak 4</name>
-        <rules />
-        <scale_options>
-          <width_scalable>true</width_scalable>
-          <height_scalable>true</height_scalable>
-          <keep_wh_ratio>false</keep_wh_ratio>
-        </scale_options>
-        <scripts />
-        <show_scrollbar>true</show_scrollbar>
-        <tooltip></tooltip>
-        <transparent>false</transparent>
-        <visible>true</visible>
-        <widget_type>Grouping Container</widget_type>
-        <width>180</width>
-        <wuid>7fb1a497:1634604385e:-5c5e</wuid>
-        <x>588</x>
-        <y>18</y>
-        <widget typeId="org.csstudio.opibuilder.widgets.BoolButton" version="1.0.0">
-          <actions hook="false" hook_all="false" />
-          <alarm_pulsing>false</alarm_pulsing>
-          <backcolor_alarm_sensitive>false</backcolor_alarm_sensitive>
-          <background_color>
-            <color red="240" green="240" blue="240" />
-          </background_color>
-          <bit>-1</bit>
-          <border_alarm_sensitive>true</border_alarm_sensitive>
-          <border_color>
-            <color red="0" green="128" blue="255" />
-          </border_color>
-          <border_style>0</border_style>
-          <border_width>1</border_width>
-          <confirm_message>Are you sure you want to do this?</confirm_message>
-          <data_type>0</data_type>
-          <effect_3d>true</effect_3d>
-          <enabled>true</enabled>
-          <font>
-            <opifont.name fontName="Ubuntu" height="11" style="0" pixels="false">Default</opifont.name>
-          </font>
-          <forecolor_alarm_sensitive>false</forecolor_alarm_sensitive>
-          <foreground_color>
-            <color red="0" green="0" blue="0" />
-          </foreground_color>
-          <height>23</height>
-          <labels_from_pv>false</labels_from_pv>
-          <name>Boolean Button</name>
-          <off_color>
-            <color red="0" green="100" blue="0" />
-          </off_color>
-          <off_label>ON/OFF          </off_label>
-          <on_color>
-            <color red="0" green="255" blue="0" />
-          </on_color>
-          <on_label>ON/OFF          </on_label>
-          <password></password>
-          <push_action_index>0</push_action_index>
-          <pv_name>$(P)$(R)EnblDMaxAuto4-Sel</pv_name>
-          <pv_value />
-          <released_action_index>0</released_action_index>
-          <rules />
-          <scale_options>
-            <width_scalable>true</width_scalable>
-            <height_scalable>true</height_scalable>
-            <keep_wh_ratio>true</keep_wh_ratio>
-          </scale_options>
-          <scripts />
-          <show_boolean_label>true</show_boolean_label>
-          <show_confirm_dialog>0</show_confirm_dialog>
-          <show_led>true</show_led>
-          <square_button>true</square_button>
-          <toggle_button>true</toggle_button>
-          <tooltip>$(pv_name)
-$(pv_value)</tooltip>
-          <visible>true</visible>
-          <widget_type>Boolean Button</widget_type>
-          <width>146</width>
-          <wuid>7fb1a497:1634604385e:-5c5d</wuid>
-          <x>0</x>
-          <y>0</y>
         </widget>
       </widget>
       <widget typeId="org.csstudio.opibuilder.widgets.groupingContainer" version="1.0.0">
@@ -12340,6 +12104,650 @@ $(pv_value)</tooltip>
           <wuid>7fb1a497:1634604385e:-5bb1</wuid>
           <x>0</x>
           <y>6</y>
+        </widget>
+      </widget>
+      <widget typeId="org.csstudio.opibuilder.widgets.groupingContainer" version="1.0.0">
+        <actions hook="false" hook_all="false" />
+        <background_color>
+          <color red="240" green="240" blue="240" />
+        </background_color>
+        <border_color>
+          <color red="0" green="0" blue="0" />
+        </border_color>
+        <border_style>13</border_style>
+        <border_width>1</border_width>
+        <enabled>true</enabled>
+        <fc>true</fc>
+        <font>
+          <opifont.name fontName="Ubuntu" height="11" style="0" pixels="false">Default</opifont.name>
+        </font>
+        <foreground_color>
+          <color red="192" green="192" blue="192" />
+        </foreground_color>
+        <height>57</height>
+        <lock_children>false</lock_children>
+        <macros>
+          <include_parent_macros>true</include_parent_macros>
+        </macros>
+        <name>Auto Max Peak 1</name>
+        <rules />
+        <scale_options>
+          <width_scalable>true</width_scalable>
+          <height_scalable>true</height_scalable>
+          <keep_wh_ratio>false</keep_wh_ratio>
+        </scale_options>
+        <scripts />
+        <show_scrollbar>true</show_scrollbar>
+        <tooltip></tooltip>
+        <transparent>false</transparent>
+        <visible>true</visible>
+        <widget_type>Grouping Container</widget_type>
+        <width>180</width>
+        <wuid>-74763e47:16837ccc7e1:-7941</wuid>
+        <x>6</x>
+        <y>18</y>
+        <widget typeId="org.csstudio.opibuilder.widgets.LED" version="1.0.0">
+          <actions hook="false" hook_all="false" />
+          <alarm_pulsing>false</alarm_pulsing>
+          <backcolor_alarm_sensitive>false</backcolor_alarm_sensitive>
+          <background_color>
+            <color red="240" green="240" blue="240" />
+          </background_color>
+          <bit>-1</bit>
+          <border_alarm_sensitive>true</border_alarm_sensitive>
+          <border_color>
+            <color red="0" green="128" blue="255" />
+          </border_color>
+          <border_style>0</border_style>
+          <border_width>1</border_width>
+          <bulb_border>3</bulb_border>
+          <bulb_border_color>
+            <color red="150" green="150" blue="150" />
+          </bulb_border_color>
+          <data_type>0</data_type>
+          <effect_3d>true</effect_3d>
+          <enabled>true</enabled>
+          <font>
+            <opifont.name fontName="Ubuntu" height="11" style="0" pixels="false">Default</opifont.name>
+          </font>
+          <forecolor_alarm_sensitive>false</forecolor_alarm_sensitive>
+          <foreground_color>
+            <color red="192" green="192" blue="192" />
+          </foreground_color>
+          <height>20</height>
+          <name>LED</name>
+          <off_color>
+            <color red="0" green="100" blue="0" />
+          </off_color>
+          <off_label>OFF</off_label>
+          <on_color>
+            <color red="0" green="255" blue="0" />
+          </on_color>
+          <on_label>ON</on_label>
+          <pv_name>$(P)$(R)EnblDMaxAuto1-Sts</pv_name>
+          <pv_value />
+          <rules />
+          <scale_options>
+            <width_scalable>true</width_scalable>
+            <height_scalable>true</height_scalable>
+            <keep_wh_ratio>true</keep_wh_ratio>
+          </scale_options>
+          <scripts />
+          <show_boolean_label>false</show_boolean_label>
+          <square_led>false</square_led>
+          <tooltip>$(pv_name)
+$(pv_value)</tooltip>
+          <visible>true</visible>
+          <widget_type>LED</widget_type>
+          <width>20</width>
+          <wuid>-74763e47:16837ccc7e1:-7940</wuid>
+          <x>12</x>
+          <y>2</y>
+        </widget>
+        <widget typeId="org.csstudio.opibuilder.widgets.BoolButton" version="1.0.0">
+          <actions hook="false" hook_all="false" />
+          <alarm_pulsing>false</alarm_pulsing>
+          <backcolor_alarm_sensitive>false</backcolor_alarm_sensitive>
+          <background_color>
+            <color red="240" green="240" blue="240" />
+          </background_color>
+          <bit>-1</bit>
+          <border_alarm_sensitive>false</border_alarm_sensitive>
+          <border_color>
+            <color red="0" green="128" blue="255" />
+          </border_color>
+          <border_style>0</border_style>
+          <border_width>1</border_width>
+          <confirm_message>Are you sure you want to do this?</confirm_message>
+          <data_type>0</data_type>
+          <effect_3d>true</effect_3d>
+          <enabled>true</enabled>
+          <font>
+            <opifont.name fontName="Ubuntu" height="11" style="0" pixels="false">Default</opifont.name>
+          </font>
+          <forecolor_alarm_sensitive>false</forecolor_alarm_sensitive>
+          <foreground_color>
+            <color red="0" green="0" blue="0" />
+          </foreground_color>
+          <height>20</height>
+          <labels_from_pv>false</labels_from_pv>
+          <name>Action Button</name>
+          <off_color>
+            <color red="0" green="100" blue="0" />
+          </off_color>
+          <off_label>ON/OFF</off_label>
+          <on_color>
+            <color red="0" green="255" blue="0" />
+          </on_color>
+          <on_label>ON/OFF</on_label>
+          <password></password>
+          <push_action_index>0</push_action_index>
+          <pv_name>$(P)$(R)EnblDMaxAuto1-Sel</pv_name>
+          <pv_value />
+          <released_action_index>0</released_action_index>
+          <rules />
+          <scale_options>
+            <width_scalable>true</width_scalable>
+            <height_scalable>true</height_scalable>
+            <keep_wh_ratio>false</keep_wh_ratio>
+          </scale_options>
+          <scripts />
+          <show_boolean_label>true</show_boolean_label>
+          <show_confirm_dialog>0</show_confirm_dialog>
+          <show_led>false</show_led>
+          <square_button>true</square_button>
+          <toggle_button>true</toggle_button>
+          <tooltip>$(pv_name)
+$(pv_value)</tooltip>
+          <visible>true</visible>
+          <widget_type>Boolean Button</widget_type>
+          <width>80</width>
+          <wuid>-74763e47:16837ccc7e1:-793f</wuid>
+          <x>66</x>
+          <y>2</y>
+        </widget>
+      </widget>
+      <widget typeId="org.csstudio.opibuilder.widgets.groupingContainer" version="1.0.0">
+        <actions hook="false" hook_all="false" />
+        <background_color>
+          <color red="240" green="240" blue="240" />
+        </background_color>
+        <border_color>
+          <color red="0" green="0" blue="0" />
+        </border_color>
+        <border_style>13</border_style>
+        <border_width>1</border_width>
+        <enabled>true</enabled>
+        <fc>true</fc>
+        <font>
+          <opifont.name fontName="Ubuntu" height="11" style="0" pixels="false">Default</opifont.name>
+        </font>
+        <foreground_color>
+          <color red="192" green="192" blue="192" />
+        </foreground_color>
+        <height>57</height>
+        <lock_children>false</lock_children>
+        <macros>
+          <include_parent_macros>true</include_parent_macros>
+        </macros>
+        <name>Auto Max Peak 2</name>
+        <rules />
+        <scale_options>
+          <width_scalable>true</width_scalable>
+          <height_scalable>true</height_scalable>
+          <keep_wh_ratio>false</keep_wh_ratio>
+        </scale_options>
+        <scripts />
+        <show_scrollbar>true</show_scrollbar>
+        <tooltip></tooltip>
+        <transparent>false</transparent>
+        <visible>true</visible>
+        <widget_type>Grouping Container</widget_type>
+        <width>180</width>
+        <wuid>-74763e47:16837ccc7e1:-7931</wuid>
+        <x>200</x>
+        <y>18</y>
+        <widget typeId="org.csstudio.opibuilder.widgets.LED" version="1.0.0">
+          <actions hook="false" hook_all="false" />
+          <alarm_pulsing>false</alarm_pulsing>
+          <backcolor_alarm_sensitive>false</backcolor_alarm_sensitive>
+          <background_color>
+            <color red="240" green="240" blue="240" />
+          </background_color>
+          <bit>-1</bit>
+          <border_alarm_sensitive>true</border_alarm_sensitive>
+          <border_color>
+            <color red="0" green="128" blue="255" />
+          </border_color>
+          <border_style>0</border_style>
+          <border_width>1</border_width>
+          <bulb_border>3</bulb_border>
+          <bulb_border_color>
+            <color red="150" green="150" blue="150" />
+          </bulb_border_color>
+          <data_type>0</data_type>
+          <effect_3d>true</effect_3d>
+          <enabled>true</enabled>
+          <font>
+            <opifont.name fontName="Ubuntu" height="11" style="0" pixels="false">Default</opifont.name>
+          </font>
+          <forecolor_alarm_sensitive>false</forecolor_alarm_sensitive>
+          <foreground_color>
+            <color red="192" green="192" blue="192" />
+          </foreground_color>
+          <height>20</height>
+          <name>LED</name>
+          <off_color>
+            <color red="0" green="100" blue="0" />
+          </off_color>
+          <off_label>OFF</off_label>
+          <on_color>
+            <color red="0" green="255" blue="0" />
+          </on_color>
+          <on_label>ON</on_label>
+          <pv_name>$(P)$(R)EnblDMaxAuto2-Sts</pv_name>
+          <pv_value />
+          <rules />
+          <scale_options>
+            <width_scalable>true</width_scalable>
+            <height_scalable>true</height_scalable>
+            <keep_wh_ratio>true</keep_wh_ratio>
+          </scale_options>
+          <scripts />
+          <show_boolean_label>false</show_boolean_label>
+          <square_led>false</square_led>
+          <tooltip>$(pv_name)
+$(pv_value)</tooltip>
+          <visible>true</visible>
+          <widget_type>LED</widget_type>
+          <width>20</width>
+          <wuid>-74763e47:16837ccc7e1:-7930</wuid>
+          <x>12</x>
+          <y>2</y>
+        </widget>
+        <widget typeId="org.csstudio.opibuilder.widgets.BoolButton" version="1.0.0">
+          <actions hook="false" hook_all="false" />
+          <alarm_pulsing>false</alarm_pulsing>
+          <backcolor_alarm_sensitive>false</backcolor_alarm_sensitive>
+          <background_color>
+            <color red="240" green="240" blue="240" />
+          </background_color>
+          <bit>-1</bit>
+          <border_alarm_sensitive>false</border_alarm_sensitive>
+          <border_color>
+            <color red="0" green="128" blue="255" />
+          </border_color>
+          <border_style>0</border_style>
+          <border_width>1</border_width>
+          <confirm_message>Are you sure you want to do this?</confirm_message>
+          <data_type>0</data_type>
+          <effect_3d>true</effect_3d>
+          <enabled>true</enabled>
+          <font>
+            <opifont.name fontName="Ubuntu" height="11" style="0" pixels="false">Default</opifont.name>
+          </font>
+          <forecolor_alarm_sensitive>false</forecolor_alarm_sensitive>
+          <foreground_color>
+            <color red="0" green="0" blue="0" />
+          </foreground_color>
+          <height>20</height>
+          <labels_from_pv>false</labels_from_pv>
+          <name>Action Button</name>
+          <off_color>
+            <color red="0" green="100" blue="0" />
+          </off_color>
+          <off_label>ON/OFF</off_label>
+          <on_color>
+            <color red="0" green="255" blue="0" />
+          </on_color>
+          <on_label>ON/OFF</on_label>
+          <password></password>
+          <push_action_index>0</push_action_index>
+          <pv_name>$(P)$(R)EnblDMaxAuto2-Sel</pv_name>
+          <pv_value />
+          <released_action_index>0</released_action_index>
+          <rules />
+          <scale_options>
+            <width_scalable>true</width_scalable>
+            <height_scalable>true</height_scalable>
+            <keep_wh_ratio>false</keep_wh_ratio>
+          </scale_options>
+          <scripts />
+          <show_boolean_label>true</show_boolean_label>
+          <show_confirm_dialog>0</show_confirm_dialog>
+          <show_led>false</show_led>
+          <square_button>true</square_button>
+          <toggle_button>true</toggle_button>
+          <tooltip>$(pv_name)
+$(pv_value)</tooltip>
+          <visible>true</visible>
+          <widget_type>Boolean Button</widget_type>
+          <width>80</width>
+          <wuid>-74763e47:16837ccc7e1:-792f</wuid>
+          <x>66</x>
+          <y>2</y>
+        </widget>
+      </widget>
+      <widget typeId="org.csstudio.opibuilder.widgets.groupingContainer" version="1.0.0">
+        <actions hook="false" hook_all="false" />
+        <background_color>
+          <color red="240" green="240" blue="240" />
+        </background_color>
+        <border_color>
+          <color red="0" green="0" blue="0" />
+        </border_color>
+        <border_style>13</border_style>
+        <border_width>1</border_width>
+        <enabled>true</enabled>
+        <fc>true</fc>
+        <font>
+          <opifont.name fontName="Ubuntu" height="11" style="0" pixels="false">Default</opifont.name>
+        </font>
+        <foreground_color>
+          <color red="192" green="192" blue="192" />
+        </foreground_color>
+        <height>57</height>
+        <lock_children>false</lock_children>
+        <macros>
+          <include_parent_macros>true</include_parent_macros>
+        </macros>
+        <name>Auto Max Peak 3</name>
+        <rules />
+        <scale_options>
+          <width_scalable>true</width_scalable>
+          <height_scalable>true</height_scalable>
+          <keep_wh_ratio>false</keep_wh_ratio>
+        </scale_options>
+        <scripts />
+        <show_scrollbar>true</show_scrollbar>
+        <tooltip></tooltip>
+        <transparent>false</transparent>
+        <visible>true</visible>
+        <widget_type>Grouping Container</widget_type>
+        <width>180</width>
+        <wuid>-74763e47:16837ccc7e1:-7915</wuid>
+        <x>394</x>
+        <y>18</y>
+        <widget typeId="org.csstudio.opibuilder.widgets.LED" version="1.0.0">
+          <actions hook="false" hook_all="false" />
+          <alarm_pulsing>false</alarm_pulsing>
+          <backcolor_alarm_sensitive>false</backcolor_alarm_sensitive>
+          <background_color>
+            <color red="240" green="240" blue="240" />
+          </background_color>
+          <bit>-1</bit>
+          <border_alarm_sensitive>true</border_alarm_sensitive>
+          <border_color>
+            <color red="0" green="128" blue="255" />
+          </border_color>
+          <border_style>0</border_style>
+          <border_width>1</border_width>
+          <bulb_border>3</bulb_border>
+          <bulb_border_color>
+            <color red="150" green="150" blue="150" />
+          </bulb_border_color>
+          <data_type>0</data_type>
+          <effect_3d>true</effect_3d>
+          <enabled>true</enabled>
+          <font>
+            <opifont.name fontName="Ubuntu" height="11" style="0" pixels="false">Default</opifont.name>
+          </font>
+          <forecolor_alarm_sensitive>false</forecolor_alarm_sensitive>
+          <foreground_color>
+            <color red="192" green="192" blue="192" />
+          </foreground_color>
+          <height>20</height>
+          <name>LED</name>
+          <off_color>
+            <color red="0" green="100" blue="0" />
+          </off_color>
+          <off_label>OFF</off_label>
+          <on_color>
+            <color red="0" green="255" blue="0" />
+          </on_color>
+          <on_label>ON</on_label>
+          <pv_name>$(P)$(R)EnblDMaxAuto3-Sts</pv_name>
+          <pv_value />
+          <rules />
+          <scale_options>
+            <width_scalable>true</width_scalable>
+            <height_scalable>true</height_scalable>
+            <keep_wh_ratio>true</keep_wh_ratio>
+          </scale_options>
+          <scripts />
+          <show_boolean_label>false</show_boolean_label>
+          <square_led>false</square_led>
+          <tooltip>$(pv_name)
+$(pv_value)</tooltip>
+          <visible>true</visible>
+          <widget_type>LED</widget_type>
+          <width>20</width>
+          <wuid>-74763e47:16837ccc7e1:-7914</wuid>
+          <x>12</x>
+          <y>2</y>
+        </widget>
+        <widget typeId="org.csstudio.opibuilder.widgets.BoolButton" version="1.0.0">
+          <actions hook="false" hook_all="false" />
+          <alarm_pulsing>false</alarm_pulsing>
+          <backcolor_alarm_sensitive>false</backcolor_alarm_sensitive>
+          <background_color>
+            <color red="240" green="240" blue="240" />
+          </background_color>
+          <bit>-1</bit>
+          <border_alarm_sensitive>false</border_alarm_sensitive>
+          <border_color>
+            <color red="0" green="128" blue="255" />
+          </border_color>
+          <border_style>0</border_style>
+          <border_width>1</border_width>
+          <confirm_message>Are you sure you want to do this?</confirm_message>
+          <data_type>0</data_type>
+          <effect_3d>true</effect_3d>
+          <enabled>true</enabled>
+          <font>
+            <opifont.name fontName="Ubuntu" height="11" style="0" pixels="false">Default</opifont.name>
+          </font>
+          <forecolor_alarm_sensitive>false</forecolor_alarm_sensitive>
+          <foreground_color>
+            <color red="0" green="0" blue="0" />
+          </foreground_color>
+          <height>20</height>
+          <labels_from_pv>false</labels_from_pv>
+          <name>Action Button</name>
+          <off_color>
+            <color red="0" green="100" blue="0" />
+          </off_color>
+          <off_label>ON/OFF</off_label>
+          <on_color>
+            <color red="0" green="255" blue="0" />
+          </on_color>
+          <on_label>ON/OFF</on_label>
+          <password></password>
+          <push_action_index>0</push_action_index>
+          <pv_name>$(P)$(R)EnblDMaxAuto3-Sel</pv_name>
+          <pv_value />
+          <released_action_index>0</released_action_index>
+          <rules />
+          <scale_options>
+            <width_scalable>true</width_scalable>
+            <height_scalable>true</height_scalable>
+            <keep_wh_ratio>false</keep_wh_ratio>
+          </scale_options>
+          <scripts />
+          <show_boolean_label>true</show_boolean_label>
+          <show_confirm_dialog>0</show_confirm_dialog>
+          <show_led>false</show_led>
+          <square_button>true</square_button>
+          <toggle_button>true</toggle_button>
+          <tooltip>$(pv_name)
+$(pv_value)</tooltip>
+          <visible>true</visible>
+          <widget_type>Boolean Button</widget_type>
+          <width>80</width>
+          <wuid>-74763e47:16837ccc7e1:-7913</wuid>
+          <x>66</x>
+          <y>2</y>
+        </widget>
+      </widget>
+      <widget typeId="org.csstudio.opibuilder.widgets.groupingContainer" version="1.0.0">
+        <actions hook="false" hook_all="false" />
+        <background_color>
+          <color red="240" green="240" blue="240" />
+        </background_color>
+        <border_color>
+          <color red="0" green="0" blue="0" />
+        </border_color>
+        <border_style>13</border_style>
+        <border_width>1</border_width>
+        <enabled>true</enabled>
+        <fc>true</fc>
+        <font>
+          <opifont.name fontName="Ubuntu" height="11" style="0" pixels="false">Default</opifont.name>
+        </font>
+        <foreground_color>
+          <color red="192" green="192" blue="192" />
+        </foreground_color>
+        <height>57</height>
+        <lock_children>false</lock_children>
+        <macros>
+          <include_parent_macros>true</include_parent_macros>
+        </macros>
+        <name>Auto Max Peak 4</name>
+        <rules />
+        <scale_options>
+          <width_scalable>true</width_scalable>
+          <height_scalable>true</height_scalable>
+          <keep_wh_ratio>false</keep_wh_ratio>
+        </scale_options>
+        <scripts />
+        <show_scrollbar>true</show_scrollbar>
+        <tooltip></tooltip>
+        <transparent>false</transparent>
+        <visible>true</visible>
+        <widget_type>Grouping Container</widget_type>
+        <width>180</width>
+        <wuid>-74763e47:16837ccc7e1:-78f9</wuid>
+        <x>588</x>
+        <y>18</y>
+        <widget typeId="org.csstudio.opibuilder.widgets.LED" version="1.0.0">
+          <actions hook="false" hook_all="false" />
+          <alarm_pulsing>false</alarm_pulsing>
+          <backcolor_alarm_sensitive>false</backcolor_alarm_sensitive>
+          <background_color>
+            <color red="240" green="240" blue="240" />
+          </background_color>
+          <bit>-1</bit>
+          <border_alarm_sensitive>true</border_alarm_sensitive>
+          <border_color>
+            <color red="0" green="128" blue="255" />
+          </border_color>
+          <border_style>0</border_style>
+          <border_width>1</border_width>
+          <bulb_border>3</bulb_border>
+          <bulb_border_color>
+            <color red="150" green="150" blue="150" />
+          </bulb_border_color>
+          <data_type>0</data_type>
+          <effect_3d>true</effect_3d>
+          <enabled>true</enabled>
+          <font>
+            <opifont.name fontName="Ubuntu" height="11" style="0" pixels="false">Default</opifont.name>
+          </font>
+          <forecolor_alarm_sensitive>false</forecolor_alarm_sensitive>
+          <foreground_color>
+            <color red="192" green="192" blue="192" />
+          </foreground_color>
+          <height>20</height>
+          <name>LED</name>
+          <off_color>
+            <color red="0" green="100" blue="0" />
+          </off_color>
+          <off_label>OFF</off_label>
+          <on_color>
+            <color red="0" green="255" blue="0" />
+          </on_color>
+          <on_label>ON</on_label>
+          <pv_name>$(P)$(R)EnblDMaxAuto4-Sts</pv_name>
+          <pv_value />
+          <rules />
+          <scale_options>
+            <width_scalable>true</width_scalable>
+            <height_scalable>true</height_scalable>
+            <keep_wh_ratio>true</keep_wh_ratio>
+          </scale_options>
+          <scripts />
+          <show_boolean_label>false</show_boolean_label>
+          <square_led>false</square_led>
+          <tooltip>$(pv_name)
+$(pv_value)</tooltip>
+          <visible>true</visible>
+          <widget_type>LED</widget_type>
+          <width>20</width>
+          <wuid>-74763e47:16837ccc7e1:-78f8</wuid>
+          <x>12</x>
+          <y>2</y>
+        </widget>
+        <widget typeId="org.csstudio.opibuilder.widgets.BoolButton" version="1.0.0">
+          <actions hook="false" hook_all="false" />
+          <alarm_pulsing>false</alarm_pulsing>
+          <backcolor_alarm_sensitive>false</backcolor_alarm_sensitive>
+          <background_color>
+            <color red="240" green="240" blue="240" />
+          </background_color>
+          <bit>-1</bit>
+          <border_alarm_sensitive>false</border_alarm_sensitive>
+          <border_color>
+            <color red="0" green="128" blue="255" />
+          </border_color>
+          <border_style>0</border_style>
+          <border_width>1</border_width>
+          <confirm_message>Are you sure you want to do this?</confirm_message>
+          <data_type>0</data_type>
+          <effect_3d>true</effect_3d>
+          <enabled>true</enabled>
+          <font>
+            <opifont.name fontName="Ubuntu" height="11" style="0" pixels="false">Default</opifont.name>
+          </font>
+          <forecolor_alarm_sensitive>false</forecolor_alarm_sensitive>
+          <foreground_color>
+            <color red="0" green="0" blue="0" />
+          </foreground_color>
+          <height>20</height>
+          <labels_from_pv>false</labels_from_pv>
+          <name>Action Button</name>
+          <off_color>
+            <color red="0" green="100" blue="0" />
+          </off_color>
+          <off_label>ON/OFF</off_label>
+          <on_color>
+            <color red="0" green="255" blue="0" />
+          </on_color>
+          <on_label>ON/OFF</on_label>
+          <password></password>
+          <push_action_index>0</push_action_index>
+          <pv_name>$(P)$(R)EnblDMaxAuto4-Sel</pv_name>
+          <pv_value />
+          <released_action_index>0</released_action_index>
+          <rules />
+          <scale_options>
+            <width_scalable>true</width_scalable>
+            <height_scalable>true</height_scalable>
+            <keep_wh_ratio>false</keep_wh_ratio>
+          </scale_options>
+          <scripts />
+          <show_boolean_label>true</show_boolean_label>
+          <show_confirm_dialog>0</show_confirm_dialog>
+          <show_led>false</show_led>
+          <square_button>true</square_button>
+          <toggle_button>true</toggle_button>
+          <tooltip>$(pv_name)
+$(pv_value)</tooltip>
+          <visible>true</visible>
+          <widget_type>Boolean Button</widget_type>
+          <width>80</width>
+          <wuid>-74763e47:16837ccc7e1:-78f7</wuid>
+          <x>66</x>
+          <y>2</y>
         </widget>
       </widget>
     </widget>
@@ -16333,7 +16741,7 @@ $(pv_value)</tooltip>
         <color red="0" green="255" blue="0" />
       </on_color>
       <on_label>ON</on_label>
-      <pv_name>$(P)$(R)GetSpectrum-Sel</pv_name>
+      <pv_name>$(P)$(R)GetSpectrum-Sts</pv_name>
       <pv_value />
       <rules />
       <scale_options>

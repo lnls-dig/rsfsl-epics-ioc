@@ -922,7 +922,11 @@ record(bo, "$(P)$(R)EnblMaxAuto1-Sel") {
 
 record(bo, "$(P)$(R)EnblMaxAuto2-Sel") {
   field(OUT, "$(P)$(R)OnOffMark2-Sel.RVAL")
-  field(FLNK, "$(P)$(R)OnOffMark2-Sel")
+  field(FLNK, "$(P)$(R)EnblMaxAuto2-Sts")
+}
+
+record(bi, "$(P)$(R)EnblMaxAuto2-Sts") {
+  field(INP, "$(P)$(R)EnblMaxAuto2-Sel.RVAL")
 }
 
 record(bo, "$(P)$(R)OnOffMark2-Sel") {
@@ -952,7 +956,11 @@ record(ai, "$(P)$(R)DynamicX2-Mon") {
 
 record(bo, "$(P)$(R)EnblMaxAuto3-Sel") {
   field(OUT, "$(P)$(R)OnOffMark3-Sel.RVAL")
-  field(FLNK, "$(P)$(R)OnOffMark3-Sel")
+  field(FLNK, "$(P)$(R)EnblMaxAuto3-Sts")
+}
+
+record(bi, "$(P)$(R)EnblMaxAuto3-Sts") {
+  field(INP, "$(P)$(R)EnblMaxAuto3-Sel.RVAL")
 }
 
 record(bo, "$(P)$(R)OnOffMark3-Sel") {
@@ -982,7 +990,11 @@ record(ai, "$(P)$(R)DynamicX3-Mon") {
 
 record(bo, "$(P)$(R)EnblMaxAuto4-Sel") {
   field(OUT, "$(P)$(R)OnOffMark4-Sel.RVAL")
-  field(FLNK, "$(P)$(R)OnOffMark4-Sel")
+  field(FLNK, "$(P)$(R)EnblMaxAuto4-Sts")
+}
+
+record(bi, "$(P)$(R)EnblMaxAuto4-Sts") {
+  field(INP, "$(P)$(R)EnblMaxAuto4-Sel.RVAL")
 }
 
 record(bo, "$(P)$(R)OnOffMark4-Sel") {
@@ -1212,10 +1224,16 @@ record(fanout, "$(P)$(R)MarkStateFout") {
 # Enable/Disable Auto Max Peak Search for Delta Markers
 
 ##### Maximum peak search for Dmarker1
+
 record(bo, "$(P)$(R)EnblDMaxAuto1-Sel") {
   field(OUT, "$(P)$(R)OnOffDMark1-Sel.RVAL")
-  field(FLNK, "$(P)$(R)OnOffDMark1-Sel")
+  field(FLNK, "$(P)$(R)EnblDMaxAuto1-Sts")
 }
+
+record(bi, "$(P)$(R)EnblDMaxAuto1-Sts") {
+  field(INP, "$(P)$(R)EnblDMaxAuto1-Sel.RVAL")
+}
+
 record(bo, "$(P)$(R)OnOffDMark1-Sel") {
   field(DESC, "Place DMark1 on Max Peak")
   field(PINI, "YES")
@@ -1239,10 +1257,16 @@ record(ai, "$(P)$(R)DynamicDX1-Mon") {
 }
 
 ##### Maximum peak search for Dmarker2
+
 record(bo, "$(P)$(R)EnblDMaxAuto2-Sel") {
   field(OUT, "$(P)$(R)OnOffDMark2-Sel.RVAL")
-  field(FLNK, "$(P)$(R)OnOffDMark2-Sel")
+  field(FLNK, "$(P)$(R)EnblDMaxAuto2-Sts")
 }
+
+record(bi, "$(P)$(R)EnblDMaxAuto2-Sts") {
+  field(INP, "$(P)$(R)EnblDMaxAuto2-Sel.RVAL")
+}
+
 record(bo, "$(P)$(R)OnOffDMark2-Sel") {
   field(DESC, "Place DMark2 on Max Peak")
   field(PINI, "YES")
@@ -1266,10 +1290,16 @@ record(ai, "$(P)$(R)DynamicDX2-Mon") {
 }
 
 ##### Maximum peak search for Dmarker3
+
 record(bo, "$(P)$(R)EnblDMaxAuto3-Sel") {
   field(OUT, "$(P)$(R)OnOffDMark3-Sel.RVAL")
-  field(FLNK, "$(P)$(R)OnOffDMark3-Sel")
+  field(FLNK, "$(P)$(R)EnblDMaxAuto3-Sts")
 }
+
+record(bi, "$(P)$(R)EnblDMaxAuto3-Sts") {
+  field(INP, "$(P)$(R)EnblDMaxAuto3-Sel.RVAL")
+}
+
 record(bo, "$(P)$(R)OnOffDMark3-Sel") {
   field(DESC, "Place DMark3 on Max Peak")
   field(PINI, "YES")
@@ -1293,10 +1323,16 @@ record(ai, "$(P)$(R)DynamicDX3-Mon") {
 }
 
 ##### Maximum peak search for Dmarker4
+
 record(bo, "$(P)$(R)EnblDMaxAuto4-Sel") {
   field(OUT, "$(P)$(R)OnOffDMark4-Sel.RVAL")
-  field(FLNK, "$(P)$(R)OnOffDMark4-Sel")
+  field(FLNK, "$(P)$(R)EnblDMaxAuto4-Sts")
 }
+
+record(bi, "$(P)$(R)EnblDMaxAuto4-Sts") {
+  field(INP, "$(P)$(R)EnblDMaxAuto4-Sel.RVAL")
+}
+
 record(bo, "$(P)$(R)OnOffDMark4-Sel") {
   field(DESC, "Place DMark4 on Max Peak")
   field(PINI, "YES")
@@ -1623,6 +1659,11 @@ record(bo, "$(P)$(R)GetSpectrum-Sel") {
   field(PINI, "YES")
   field(ZNAM, "OFF")
   field(ONAM, "ON")
+  field(FLNK, "$(P)$(R)GetSpectrum-Sts")
+}
+
+record(bi, "$(P)$(R)GetSpectrum-Sts") {
+  field(INP, "$(P)$(R)GetSpectrum-Sel.RVAL")
   field(FLNK,"$(P)$(R)FreqArray-Mon")
 }
 
