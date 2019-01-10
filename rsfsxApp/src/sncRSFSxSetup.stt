@@ -90,6 +90,9 @@ assign EnblDM3 to "{P}{R}EnblDMark3-Sel";
 int EnblDM4;
 assign EnblDM4 to "{P}{R}EnblDMark4-Sel";
 
+int EnblMaxAuto1;
+assign EnblMaxAuto1 to "{P}{R}EnblMaxAuto1-Sel";
+
 int EnblMaxAuto2;
 assign EnblMaxAuto2 to "{P}{R}EnblMaxAuto2-Sel";
 monitor EnblMaxAuto2;
@@ -254,6 +257,18 @@ ss ss1 {
 
 	when (efTestAndClear(MarkAOffFlag)) {
 
+	    EnblMaxAuto1 = 0;
+	    pvPut(EnblMaxAuto1, SYNC);
+
+	    EnblMaxAuto2 = 0;
+	    pvPut(EnblMaxAuto2, SYNC);
+
+	    EnblMaxAuto3 = 0;
+	    pvPut(EnblMaxAuto3, SYNC);
+
+	    EnblMaxAuto4 = 0;
+	    pvPut(EnblMaxAuto4, SYNC);
+
 	    EnblM1 = 0;
 	    pvPut(EnblM1, SYNC);
 
@@ -269,6 +284,18 @@ ss ss1 {
 	} state opr
 
 	when (efTestAndClear(DMarkAOffFlag)) {
+
+	    EnblDMaxAuto1 = 0;
+	    pvPut(EnblDMaxAuto1, SYNC);
+
+	    EnblDMaxAuto2 = 0;
+	    pvPut(EnblDMaxAuto2, SYNC);
+
+	    EnblDMaxAuto3 = 0;
+	    pvPut(EnblDMaxAuto3, SYNC);
+
+	    EnblDMaxAuto4 = 0;
+	    pvPut(EnblDMaxAuto4, SYNC);
 
 	    EnblDM1 = 0;
 	    pvPut(EnblDM1, SYNC);
