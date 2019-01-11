@@ -1380,6 +1380,14 @@ record(ao, "$(P)$(R)DMarkX1-SP") {
   field(FLNK,"$(P)$(R)DMarkX1-RB")
 }
 
+record(calc, "$(P)$(R)DMarkX1Disp-Mon") {
+  field(DESC, "DMarker1 x value display")
+  field(PREC, "1")
+  field(EGU, "MHz")
+  field(INPA, "$(P)$(R)DMarkX1-RB CPP")
+  field(CALC, "A/1000000")
+}
+
 record(ai, "$(P)$(R)DMarkX2-RB") {
   field(DESC, "Get X value of the marker2")
   field(SCAN, "1 second")
@@ -1399,6 +1407,14 @@ record(ao, "$(P)$(R)DMarkX2-SP") {
   field(EGU, "Hz")
   field(OUT, "@rsfsx.proto outDMarkX2($1) $(PORT)")
   field(FLNK,"$(P)$(R)DMarkX2-RB")
+}
+
+record(calc, "$(P)$(R)DMarkX2Disp-Mon") {
+  field(DESC, "DMarker2 x value display")
+  field(PREC, "2")
+  field(EGU, "MHz")
+  field(INPA, "$(P)$(R)DMarkX2-RB CPP")
+  field(CALC, "A/1000000")
 }
 
 record(ai, "$(P)$(R)DMarkX3-RB") {
@@ -1422,6 +1438,14 @@ record(ao, "$(P)$(R)DMarkX3-SP") {
   field(FLNK,"$(P)$(R)DMarkX3-RB")
 }
 
+record(calc, "$(P)$(R)DMarkX3Disp-Mon") {
+  field(DESC, "DMarker3 x value display")
+  field(PREC, "3")
+  field(EGU, "MHz")
+  field(INPA, "$(P)$(R)DMarkX3-RB CPP")
+  field(CALC, "A/1000000")
+}
+
 record(ai, "$(P)$(R)DMarkX4-RB") {
   field(DESC, "Get X value of the marker4")
   field(SCAN, "1 second")
@@ -1441,6 +1465,14 @@ record(ao, "$(P)$(R)DMarkX4-SP") {
   field(EGU, "Hz")
   field(OUT, "@rsfsx.proto outDMarkX4($1) $(PORT)")
   field(FLNK,"$(P)$(R)DMarkX4-RB")
+}
+
+record(calc, "$(P)$(R)DMarkX4Disp-Mon") {
+  field(DESC, "DMarker4 x value display")
+  field(PREC, "4")
+  field(EGU, "MHz")
+  field(INPA, "$(P)$(R)DMarkX4-RB CPP")
+  field(CALC, "A/1000000")
 }
 
 # State of the tracking generator output
@@ -1774,6 +1806,15 @@ record(ai, "$(P)$(R)DMarkY1-Mon") {
   field(INP, "@rsfsx.proto monDMarkY1 $(PORT)")
 }
 
+record(calc, "$(P)$(R)DMarkY1Disp-Mon") {
+  field(DESC, "DMarker1 y value display")
+  field(PREC, "1")
+  field(EGU, "MHz")
+  field(INPA, "$(P)$(R)DMarkY1-Mon CPP")
+  field(INPB, "$(P)$(R)MarkY1-Mon")
+  field(CALC, "A+B")
+}
+
 record(ai, "$(P)$(R)DMarkY2-Mon") {
   field(DESC, "Get Y value of the marker2")
   field(SCAN, "1 second")
@@ -1783,6 +1824,15 @@ record(ai, "$(P)$(R)DMarkY2-Mon") {
   field(PREC, "3")
   field(EGU, "dB")
   field(INP, "@rsfsx.proto monDMarkY2 $(PORT)")
+}
+
+record(calc, "$(P)$(R)DMarkY2Disp-Mon") {
+  field(DESC, "DMarker2 y value display")
+  field(PREC, "2")
+  field(EGU, "MHz")
+  field(INPA, "$(P)$(R)DMarkY2-Mon CPP")
+  field(INPB, "$(P)$(R)MarkY1-Mon")
+  field(CALC, "A+B")
 }
 
 record(ai, "$(P)$(R)DMarkY3-Mon") {
@@ -1796,6 +1846,15 @@ record(ai, "$(P)$(R)DMarkY3-Mon") {
   field(INP, "@rsfsx.proto monDMarkY3 $(PORT)")
 }
 
+record(calc, "$(P)$(R)DMarkY3Disp-Mon") {
+  field(DESC, "DMarker3 y value display")
+  field(PREC, "3")
+  field(EGU, "MHz")
+  field(INPA, "$(P)$(R)DMarkY3-Mon CPP")
+  field(INPB, "$(P)$(R)MarkY1-Mon")
+  field(CALC, "A+B")
+}
+
 record(ai, "$(P)$(R)DMarkY4-Mon") {
   field(DESC, "Get Y value of the marker4")
   field(SCAN, "1 second")
@@ -1805,6 +1864,15 @@ record(ai, "$(P)$(R)DMarkY4-Mon") {
   field(PREC, "3")
   field(EGU, "dB")
   field(INP, "@rsfsx.proto monDMarkY4 $(PORT)")
+}
+
+record(calc, "$(P)$(R)DMarkY4Disp-Mon") {
+  field(DESC, "DMarker4 y value display")
+  field(PREC, "4")
+  field(EGU, "MHz")
+  field(INPA, "$(P)$(R)DMarkY4-Mon CPP")
+  field(INPB, "$(P)$(R)MarkY1-Mon")
+  field(CALC, "A+B")
 }
 
 
