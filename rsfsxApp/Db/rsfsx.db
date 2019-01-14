@@ -931,7 +931,6 @@ record(bi, "$(P)$(R)EnblMaxAuto2-Sts") {
 
 record(bo, "$(P)$(R)OnOffMark2-Sel") {
   field(DESC, "Place Mark2 on Max Peak")
-  field(PINI, "YES")
   field(SCAN, ".1 second")
   field(DISV, "0")
   field(SDIS, "$(P)$(R)EnblMaxAuto2-Sel")
@@ -965,7 +964,6 @@ record(bi, "$(P)$(R)EnblMaxAuto3-Sts") {
 
 record(bo, "$(P)$(R)OnOffMark3-Sel") {
   field(DESC, "Place Mark3 on Max Peak")
-  field(PINI, "YES")
   field(SCAN, ".1 second")
   field(DISV, "0")
   field(SDIS, "$(P)$(R)EnblMaxAuto3-Sel")
@@ -999,7 +997,6 @@ record(bi, "$(P)$(R)EnblMaxAuto4-Sts") {
 
 record(bo, "$(P)$(R)OnOffMark4-Sel") {
   field(DESC, "Place Mark4 on Max Peak")
-  field(PINI, "YES")
   field(SCAN, ".1 second")
   field(DISV, "0")
   field(SDIS, "$(P)$(R)EnblMaxAuto4-Sel")
@@ -1236,7 +1233,6 @@ record(bi, "$(P)$(R)EnblDMaxAuto1-Sts") {
 
 record(bo, "$(P)$(R)OnOffDMark1-Sel") {
   field(DESC, "Place DMark1 on Max Peak")
-  field(PINI, "YES")
   field(SCAN, ".1 second")
   field(DISV, "0")
   field(SDIS, "$(P)$(R)EnblDMaxAuto1-Sel")
@@ -1269,7 +1265,6 @@ record(bi, "$(P)$(R)EnblDMaxAuto2-Sts") {
 
 record(bo, "$(P)$(R)OnOffDMark2-Sel") {
   field(DESC, "Place DMark2 on Max Peak")
-  field(PINI, "YES")
   field(SCAN, ".1 second")
   field(DISV, "0")
   field(SDIS, "$(P)$(R)EnblDMaxAuto2-Sel")
@@ -1302,7 +1297,6 @@ record(bi, "$(P)$(R)EnblDMaxAuto3-Sts") {
 
 record(bo, "$(P)$(R)OnOffDMark3-Sel") {
   field(DESC, "Place DMark3 on Max Peak")
-  field(PINI, "YES")
   field(SCAN, ".1 second")
   field(DISV, "0")
   field(SDIS, "$(P)$(R)EnblDMaxAuto3-Sel")
@@ -1335,7 +1329,6 @@ record(bi, "$(P)$(R)EnblDMaxAuto4-Sts") {
 
 record(bo, "$(P)$(R)OnOffDMark4-Sel") {
   field(DESC, "Place DMark4 on Max Peak")
-  field(PINI, "YES")
   field(SCAN, ".1 second")
   field(DISV, "0")
   field(SDIS, "$(P)$(R)EnblDMaxAuto4-Sel")
