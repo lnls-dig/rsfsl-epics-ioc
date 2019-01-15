@@ -151,25 +151,6 @@ record(ai, "$(P)$(R)SweTime-RB") {
   field(ASLO, "1000")
   field(EGU, "ms")
   field(INP, "@rsfsx.proto inSweTime $(PORT)")
-  field(FLNK, "$(P)$(R)SweTimeFout")
-}
-
-record(ao, "$(P)$(R)SweTime-SP") {
-  field(DESC, "Set Sweep Time")
-  field(PINI, "YES")
-  field(DTYP, "stream")
-  field(PREC, "3")
-  field(EGU, "s")
-  field(OUT, "@rsfsx.proto outSweTime($1) $(PORT)")
-  field(FLNK, "$(P)$(R)SweTime-RB")
-}
-
-record(fanout, "$(P)$(R)SweTimeFout") {
-  field(LNK1, "$(P)$(R)Rbw-Sts")
-  field(LNK2, "$(P)$(R)Vbw-Sts")
-  field(LNK3, "$(P)$(R)EnblSweTimeAuto-Sts")
-  field(LNK4, "$(P)$(R)EnblVbwAuto-Sts")
-  field(SELM, "All")
 }
 
 # Enable/Disable automatic coupling of the sweep time to the
@@ -630,27 +611,6 @@ record(mbbo, "$(P)$(R)DetecType-Sel") {
   field(FLNK, "$(P)$(R)DetecType-Sts")
 }
 
-## Enable/Disable Tracking Generator Normalization of the measurement
-## results
-#
-#record(bi, "$(P)$(R)EnblOutCorrect-Sts") {
-#  field(DESC, "Get Tracking Generator State")
-#  field(SCAN, "1 second")
-#  field(DTYP, "stream")
-#  field(ZNAM, "OFF")
-#  field(ONAM, "ON")
-#  field(INP, "@rsfsx.proto inEnblOutCorrect $(PORT)")
-#}
-#
-#record(bo, "$(P)$(R)EnblOutCorrect-Sel") {
-#  field(DESC, "Enable or Disable Tracking Generator")
-#  field(DTYP, "stream")
-#  field(ZNAM, "OFF")
-#  field(ONAM, "ON")
-#  field(OUT, "@rsfsx.proto outEnblOutCorrect($1) $(PORT)")
-#  field(FLNK,"$(P)$(R)EnblOutCorrect-Sts")
-#}
-
 #Enable/Disable Markers (1-4)
 
 # The Marker1 will stay ON if any Delta Marker is also ON or if the Limited Search ($(P)$(R)EnblMarkLimit-Sts) is ON
@@ -869,25 +829,6 @@ record(bo, "$(P)$(R)EnblMarkCount-Sel") {
   field(FLNK,"$(P)$(R)EnblMarkCount-Sts")
 }
 
-# Enable/Disable local oscillator supression for peak search
-#
-#record(bi, "$(P)$(R)EnblLocalOscSupr-Sts") {
-#  field(DESC, "Get Oscillator Supression State")
-#  field(DTYP, "stream")
-#  field(ZNAM, "OFF")
-#  field(ONAM, "ON")
-#  field(INP, "@rsfsx.proto inEnblLocalOscSupr $(PORT)")
-#}
-#
-#record(bo, "$(P)$(R)EnblLocalOscSupr-Sel") {
-#  field(DESC, "Enable/Disable Oscillator Supression")
-#  field(DTYP, "stream")
-#  field(ZNAM, "OFF")
-#  field(ONAM, "ON")
-#  field(OUT, "@rsfsx.proto outEnblLocalOscSupr($1) $(PORT)")
-#  field(FLNK,"$(P)$(R)EnblLocalOscSupr-Sts")
-#}
-#
 # Enable/Disable automatic maximum peak search
 
 ###### Maximum peak search for marker 1
@@ -1029,28 +970,6 @@ record(bo, "$(P)$(R)EnblMinAuto-Sel") {
   field(FLNK,"$(P)$(R)EnblMinAuto-Sts")
 }
 
-## Define the peak excursion
-#
-#record(ai, "$(P)$(R)MarkPExcursion-RB") {
-#  field(DESC, "Get Peak Excursion")
-#  field(DTYP, "stream")
-#  field(PREC, "1")
-#  field(MDEL, "-1")
-#  field(ADEL, "-1")
-#  field(EGU, "dB")
-#  field(INP, "@rsfsx.proto inMarkPExcursion $(PORT)")
-#}
-#
-#record(ao, "$(P)$(R)MarkPExcursion-SP") {
-#  field(DESC, "Set Peak Excursion")
-#  field(PINI, "YES")
-#  field(DTYP, "stream")
-#  field(PREC, "1")
-#  field(EGU, "dB")
-#  field(OUT, "@rsfsx.proto outMarkPExcursion($1) $(PORT)")
-#  field(FLNK,"$(P)$(R)RefLvl-RB")
-#}
-#
 # Enable/Disable marker limited search range
 
 record(bi, "$(P)$(R)EnblMarkLimit-Sts") {
@@ -1717,11 +1636,6 @@ record(mbbo, "$(P)$(R)TrigSrc-Sel") {
   field(FLNK, "$(P)$(R)TrigSrc-Sts")
 }
 
-
-######################################################################
-########################## MONITOR ###################################
-######################################################################
-
 # Get identification
 
 record(stringin, "$(P)$(R)Idn-Cte") {
@@ -1993,8 +1907,7 @@ record(fanout, "$(P)$(R)RstFout1") {
   field(LNK1, "$(P)$(R)FreqCenter-RB")
   field(LNK2, "$(P)$(R)TraceMode-Sts")
   field(LNK3, "$(P)$(R)SwePts-RB")
-  field(LNK4, "$(P)$(R)DMarkStateFout")
-  field(LNK5, "$(P)$(R)RstFout2")
+  field(LNK4, "$(P)$(R)RstFout2")
   field(SELM, "All")
 }
 
@@ -2762,49 +2675,6 @@ record(bo, "$(P)$(R)DMarkMin4-Cmd") {
   field(HIGH, "1")
   field(OUT, "@rsfsx.proto cmdDMarkMin4($1) $(PORT)")
 }
-
-## Initiate new measurement sequence in single sweep mode
-#
-#record(bo, "$(P)$(R)InitMeas-Cmd") {
-#  field(DESC, "Initiate new measurement sequence")
-#  field(DTYP, "stream")
-#  field(ZNAM, "0")
-#  field(ONAM, "1")
-#  field(HIGH, "1")
-#  field(OUT, "@rsfsx.proto cmdInitMeas($1) $(PORT)")
-#}
-#
-## Continue a stopped measurement at the current position in
-## single sweep mode
-#
-#record(bo, "$(P)$(R)ConMeas-Cmd") {
-#  field(DESC, "Continue measurement")
-#  field(DTYP, "stream")
-#  field(ZNAM, "0")
-#  field(ONAM, "1")
-#  field(HIGH, "1")
-#  field(OUT, "@rsfsx.proto cmdConMeas($1) $(PORT)")
-#}
-## Start a Spectrum Emission Mask measurement
-#
-#record(bo, "$(P)$(R)SpecEmisMeas-Cmd") {
-#  field(DESC, "Start Spectrum Emission Mask Meas.")
-#  field(DTYP, "stream")
-#  field(ZNAM, "0")
-#  field(ONAM, "1")
-#  field(HIGH, "1")
-#  field(OUT, "@rsfsx.proto cmdSpecEmisMeas($1) $(PORT)")
-#}
-## Start a Spurious Emissions measurement
-#
-#record(bo, "$(P)$(R)SpurEmisMeas-Cmd") {
-#  field(DESC, "Start Spurious Measurement")
-#  field(DTYP, "stream")
-#  field(ZNAM, "0")
-#  field(ONAM, "1")
-#  field(HIGH, "1")
-#  field(OUT, "@rsfsx.proto cmdSpurEmisMeas($1) $(PORT)")
-#}
 
 ######################################################################
 ############################## SAVE ##################################

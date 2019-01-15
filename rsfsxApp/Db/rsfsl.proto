@@ -125,3 +125,11 @@ inSpecBuffSize {
 outSpecBuffSize {
     out "CALC:SPEC:HDEP %f";
 }
+
+######################################################################
+# Clean spectrogram and history buffer
+
+cmdCleanSpec {
+    out "CALC:SPEC:CLE:IMM";
+}
+

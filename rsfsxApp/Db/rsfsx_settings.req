@@ -2,7 +2,6 @@ $(P)$(R)RefLvl-SP
 $(P)$(R)RefOff-SP
 $(P)$(R)EnblContSwe-Sel
 $(P)$(R)SwePts-SP
-$(P)$(R)SweTime-SP
 $(P)$(R)EnblSweTimeAuto-Sel
 $(P)$(R)TraceMode-Sel
 $(P)$(R)FreqCenter-SP
