@@ -53,17 +53,12 @@ ifneq ($(SNCSEQ),)
     rsfsxSupport_LIBS += seq pv
     rsfsx_LIBS += seq pv
 
+    # Build sncRSFSx into rsfsxSupport
     sncRSFSxSetup_SNCFLAGS += +r
     rsfsx_DBD += sncRSFSxSetup.dbd
     rsfsxSupport_SRCS += sncRSFSxSetup.stt
     rsfsxSupport_LIBS += seq pv
     rsfsx_LIBS += seq pv
-
-    PROD_HOST += sncRSFSxProgram
-    sncRSFSxProgram_SNCFLAGS += +m
-    sncRSFSxProgram_SRCS += sncRSFSxProgram.st
-    sncRSFSxProgram_LIBS += seq pv
-    sncRSFSxProgram_LIBS += $(EPICS_BASE_HOST_LIBS)
 
 endif
 
