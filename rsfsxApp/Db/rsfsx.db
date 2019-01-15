@@ -1809,11 +1809,22 @@ record(waveform, "$(P)$(R)Trace-Mon") {
   field(FLNK, "$(P)$(R)TimeStamp")
 }
 
+# Timestamp for the Trace Array Acquisition
+
 record(ai, "$(P)$(R)TimeStamp") {
   field(DESC, "Get Timestamp")
   field(PRIO, "HIGH")
   field(DTYP, "Soft Timestamp")
   field(INP, "@%H%M%S.%03f")
+}
+
+# Spectrogram Time Window
+
+record(ai, "$(P)$(R)SpecTime-RB") {
+  field(DESC, "Get spectrogram time window")
+  field(PREC, "3")
+  field(EGU, "ms")
+  field(INP, "$(P)$(R)SpecTime-SP")
 }
 
 record(ao, "$(P)$(R)SpecTime-SP") {
@@ -1824,11 +1835,14 @@ record(ao, "$(P)$(R)SpecTime-SP") {
   field(FLNK, "$(P)$(R)SpecTime-RB")
 }
 
-record(ai, "$(P)$(R)SpecTime-RB") {
-  field(DESC, "Get spectrogram time window")
-  field(PREC, "3")
-  field(EGU, "ms")
-  field(INP, "$(P)$(R)SpecTime-SP")
+# Spectrogram Mode
+
+record(bi, "$(P)$(R)SpecMode-Sts") {
+  field(DESC, "Get spectrogram mode")
+  field(PINI, "YES")
+  field(ZNAM, "Time Window")
+  field(ONAM, "Continuous")
+  field(INP, "$(P)$(R)SpecMode-Sel")
 }
 
 record(bo, "$(P)$(R)SpecMode-Sel") {
@@ -1837,14 +1851,6 @@ record(bo, "$(P)$(R)SpecMode-Sel") {
   field(ZNAM, "Time Window")
   field(ONAM, "Continuous")
   field(FLNK, "$(P)$(R)SpecMode-Sts")
-}
-
-record(bi, "$(P)$(R)SpecMode-Sts") {
-  field(DESC, "Get spectrogram mode")
-  field(PINI, "YES")
-  field(ZNAM, "Time Window")
-  field(ONAM, "Continuous")
-  field(INP, "$(P)$(R)SpecMode-Sel")
 }
 
 # Frequency Array
@@ -1868,9 +1874,13 @@ record(waveform, "$(P)$(R)SpecArray-Mon") {
   field(FTVL, "FLOAT")
 }
 
+# Frame Counter (implemented on sequencer)
+
 record(longout, "$(P)$(R)FrameCount-Mon") {
   field(DESC, "Frame counter")
 }
+
+# Timestamp Limits (implemented on sequencer)
 
 record(ao, "$(P)$(R)TimeStampInit-Mon") {
   field(DESC, "Initial frame timestamp")
@@ -1881,6 +1891,8 @@ record(ao, "$(P)$(R)TimeStampEnd-Mon") {
   field(DESC, "End frame timestamp")
   field(PREC, "3")
 }
+
+# Delta Time (implemented on sequencer)
 
 record(ao, "$(P)$(R)TimeDelta-Mon") {
   field(DESC, "Delta time from init to the end")
