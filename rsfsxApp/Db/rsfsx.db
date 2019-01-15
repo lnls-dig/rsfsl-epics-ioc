@@ -44,6 +44,7 @@ record(ai, "$(P)$(R)RefLvl-RB") {
   field(PREC, "1")
   field(EGU, "dBm")
   field(INP, "@rsfsx.proto inRefLvl $(PORT)")
+  field(FLNK, "$(P)$(R)AttIn-Sts")
 }
 
 record(ao, "$(P)$(R)RefLvl-SP") {
@@ -75,7 +76,7 @@ record(ao, "$(P)$(R)RefOff-SP") {
   field(DRVL, "-200")
   field(EGU, "dB")
   field(OUT, "@rsfsx.proto outRefOff($1) $(PORT)")
-  field(FLNK,"$(P)$(R)LvlFout")
+  field(FLNK,"$(P)$(R)RefOff-RB")
 }
 
 # Display range of the y-axis
@@ -98,15 +99,6 @@ record(ao, "$(P)$(R)DispRange-SP") {
   field(EGU, "dB")
   field(OUT, "@rsfsx.proto outDispRange($1) $(PORT)")
   field(FLNK,"$(P)$(R)DispRange-RB")
-}
-
-# Reference Level Fanout
-
-record(fanout, "$(P)$(R)LvlFout") {
-  field(DESC, "Reference Level Fanout")
-  field(LNK1, "$(P)$(R)RefOff-RB")
-  field(LNK2, "$(P)$(R)RefLvl-RB")
-  field(SELM, "All")
 }
 
 # Enable Continuous Sweep Mode
@@ -1515,11 +1507,12 @@ record(mbbi, "$(P)$(R)AttIn-Sts") {
   field(TEST, "50 dB")
   field(TEVL, "50")
   field(INP, "@rsfsx.proto inAttIn $(PORT)")
-  field(FLNK, "$(P)$(R)RefLvl-RB")
 }
 
 record(mbbo, "$(P)$(R)AttIn-Sel") {
   field(DTYP, "stream")
+  field(SDIS, "$(P)$(R)EnblAttAuto-Sts.RVAL")
+  field(DISV, "1")
   field(ZRST, "0 dB")
   field(ZRVL, "0")
   field(ONST, "5 dB")
@@ -1555,7 +1548,7 @@ record(bi, "$(P)$(R)EnblAttAuto-Sts") {
   field(ZNAM, "OFF")
   field(ONAM, "ON")
   field(INP, "@rsfsx.proto inEnblAttAuto $(PORT)")
-  field(FLNK, "$(P)$(R)RefLvl-RB")
+  field(FLNK, "$(P)$(R)AttIn-Sts")
 }
 
 record(bo, "$(P)$(R)EnblAttAuto-Sel") {
@@ -1999,10 +1992,9 @@ record(bo, "$(P)$(R)Rst-Cmd") {
 record(fanout, "$(P)$(R)RstFout1") {
   field(LNK1, "$(P)$(R)FreqCenter-RB")
   field(LNK2, "$(P)$(R)TraceMode-Sts")
-  field(LNK3, "$(P)$(R)LvlFout")
-  field(LNK4, "$(P)$(R)SwePts-RB")
-  field(LNK5, "$(P)$(R)DMarkStateFout")
-  field(LNK6, "$(P)$(R)RstFout2")
+  field(LNK3, "$(P)$(R)SwePts-RB")
+  field(LNK4, "$(P)$(R)DMarkStateFout")
+  field(LNK5, "$(P)$(R)RstFout2")
   field(SELM, "All")
 }
 

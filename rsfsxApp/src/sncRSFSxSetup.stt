@@ -135,6 +135,27 @@ monitor EnblDMaxAuto4;
 evflag EnblDMaxAuto4Flag;
 sync EnblDMaxAuto4 EnblDMaxAuto4Flag;
 
+double RefOffRB;
+assign RefOffRB to "{P}{R}RefOff-RB";
+monitor RefOffRB;
+evflag RefOffFlag;
+sync RefOffRB RefOffFlag;
+
+double RefLvlSP;
+assign RefLvlSP to "{P}{R}RefLvl-SP";
+
+double RefLvlRB;
+assign RefLvlRB to "{P}{R}RefLvl-RB";
+monitor RefLvlRB;
+evflag RefLvlFlag;
+sync RefLvlRB RefLvlFlag;
+
+double RefLvlProc = 1;
+assign RefLvlProc to "{P}{R}RefLvl-RB.PROC";
+
+int AttAutoSts;
+assign AttAutoSts to "{P}{R}EnblAttAuto-Sts.RVAL";
+
 ss ss1 {
     state opr {
 
@@ -406,6 +427,14 @@ ss ss1 {
 		pvPut(EnblDM4, SYNC);
 
 	    }
+
+	} state opr
+
+	when (efTestAndClear(RefOffFlag)) {
+
+	    pvPut(RefLvlProc, SYNC);
+	    RefLvlSP = RefLvlRB;
+	    pvPut(RefLvlSP, SYNC);
 
 	} state opr
 
