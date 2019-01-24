@@ -82,6 +82,18 @@ outRefOff {
 }
 
 ######################################################################
+# Display range of the y-axis
+
+inDispRange {
+    out "DISP:TRAC:Y?";
+    in "%f";
+}
+
+outDispRange {
+    out "DISP:TRAC:Y %f";
+}
+
+######################################################################
 # Enable Continuous Sweep Mode
 
 inEnblContSwe {
@@ -113,11 +125,6 @@ outSwePts {
 inSweTime {
     out "SENS:SWE:TIME?";
     in "%f";
-}
-
-outSweTime {
-    out "SENS:SWE:TIME %f";
-    @init { inSweTime; };
 }
 
 ######################################################################
@@ -346,18 +353,6 @@ outEnblMarkCount {
 }
 
 #######################################################################
-## Enable local oscillator supression for peak search
-#
-#inEnblLocalOscSupr {
-#    out "CALC:MARK:LOEX?";
-#    in "%i";
-#}
-#
-#outEnblLocalOscSupr {
-#    out "CALC:MARK:LOEX %i";
-#}
-#
-#######################################################################
 # Enable automatic peak search (only available for Marker1)
 
 inEnblMaxAuto {
@@ -379,18 +374,6 @@ inEnblMinAuto {
 
 outEnblMinAuto {
     out "CALC:MARK:MIN:AUTO %{OFF|ON}";
-}
-
-######################################################################
-# Define the peak excursion
-
-inMarkPExcursion {
-    out "CALC:MARK:PEXC?";
-    in "%f";
-}
-
-outMarkPExcursion {
-    out "CALC:MARK:PEXC %f";
 }
 
 ######################################################################
@@ -542,19 +525,6 @@ outEnblOut {
     @init { inEnblOut; };
 }
 
-#######################################################################
-## Enable/Disable Tracking Generator Normalization of the measurement
-## results
-#
-#inEnblOutCorrect {
-#    out "SENS:CORR:STAT?";
-#    in "%i";
-#}
-#
-#outEnblOutCorrect {
-#    out "SENS:CORR:STAT %{OFF|ON}";
-#}
-#
 ######################################################################
 # Input Attenuator Value
 
@@ -641,6 +611,19 @@ outLvlOutOffset {
 }
 
 ######################################################################
+# Trigger source for the start of a sweep
+
+inTrigSrc {
+    out "TRIG:SEQ:SOUR?";
+    in "%s";
+}
+
+outTrigSrc {
+    out "TRIG:SEQ:SOUR %{IMM|EXT|IFP|TIME}";
+    @init{ inTrigSrc; };
+}
+
+######################################################################
 # Resolution Bandwidth
 
 inRbw {
@@ -689,20 +672,6 @@ outDetecType {
     out "SENS:DET:FUNC %{APE|NEG|POS|SAMP|RMS|AVER|QPE}";
 }
 
-######################################################################
-# Enable/Disable continuous sweep measurement (SPECM, option K14)
-
-inEnblSweCont {
-    out "INIT:CONT?";
-    in "%i";
-}
-
-outEnblSweCont {
-    out "INIT:CONT %{OFF|ON}";
-}
-
-######################################################################
-########################### MONITOR ##################################
 ######################################################################
 # Get identification
 
@@ -769,14 +738,6 @@ monMarkCount {
 # Trace Data (one waveform per sweep, retrieves level information)
 
 monTrace {
-    out "TRAC? TRACE1";
-    in "%f";
-}
-
-######################################################################
-# Level Data for Spectrogram Acquisition
-
-monSpec {
     out "TRAC? TRACE1";
     in "%f";
 }
@@ -1126,42 +1087,6 @@ cmdDMarkMin4 {
 
 cmdDMarkAOff {
     out "%{|CALC:DELT:AOFF}";
-}
-
-#######################################################################
-## Initiate a new measurement sequence
-#
-#cmdInitMeas {
-#    out "%{|INIT:IMM}";
-#}
-#
-#######################################################################
-## Continue a stopped measurement in single sweep mode
-#
-#cmdConMeas {
-#    out "%{|INIT:CONM}";
-#}
-#
-#######################################################################
-## Start a Spectrum Emission Mask Measurement
-#
-#cmdSpecEmisMeas {
-#    out "%{|INIT:ESP}";
-#}
-#
-#######################################################################
-## Start a Spurious Emissions Measurement
-#
-#cmdSpurEmisMeas {
-#    out "%{|INIT:SPUR}";
-#}
-#
-
-######################################################################
-# Clean spectrogram and history buffer
-
-cmdCleanSpec {
-    out "CALC:SPEC:CLE:IMM";
 }
 
 ######################################################################

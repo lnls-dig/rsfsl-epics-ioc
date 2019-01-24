@@ -1,0 +1,442 @@
+program sncRSFSxSetup
+
+double CenterFreqSP;
+assign CenterFreqSP to "{P}{R}FreqCenter-SP";
+
+double CenterFreqRB;
+assign CenterFreqRB to "{P}{R}FreqCenter-RB";
+monitor CenterFreqRB;
+evflag CenterFreqFlag;
+sync CenterFreqRB CenterFreqFlag;
+
+double CenterFreqProc = 1;
+assign CenterFreqProc to "{P}{R}FreqCenter-RB.PROC";
+
+double SpanSP;
+assign SpanSP to "{P}{R}FreqSpan-SP";
+
+double SpanRB;
+assign SpanRB to "{P}{R}FreqSpan-RB";
+monitor SpanRB;
+evflag SpanFlag;
+sync SpanRB SpanFlag;
+
+double SpanProc = 1;
+assign SpanProc to "{P}{R}FreqSpan-RB.PROC";
+
+double FreqStartSP;
+assign FreqStartSP to "{P}{R}FreqStart-SP";
+
+double FreqStartRB;
+assign FreqStartRB to "{P}{R}FreqStart-RB";
+monitor FreqStartRB;
+evflag FreqStartFlag;
+sync FreqStartRB FreqStartFlag;
+
+double FreqStartProc = 1;
+assign FreqStartProc to "{P}{R}FreqStart-RB.PROC";
+
+double FreqStopSP;
+assign FreqStopSP to "{P}{R}FreqStop-SP";
+
+double FreqStopRB;
+assign FreqStopRB to "{P}{R}FreqStop-RB";
+monitor FreqStopRB;
+evflag FreqStopFlag;
+sync FreqStopRB FreqStopFlag;
+
+double FreqStopProc = 1;
+assign FreqStopProc to "{P}{R}FreqStop-RB.PROC";
+
+double SweTimeProc = 1;
+assign SweTimeProc to "{P}{R}SweTime-RB.PROC";
+
+double FreqArrayProc = 1;
+assign FreqArrayProc to "{P}{R}FreqArray-Mon.PROC";
+
+int MarkAOff;
+assign MarkAOff to "{P}{R}MarkAOff-Cmd";
+monitor MarkAOff;
+evflag MarkAOffFlag;
+sync MarkAOff MarkAOffFlag;
+
+int EnblM1;
+assign EnblM1 to "{P}{R}EnblMark1-Sel";
+
+int EnblM2;
+assign EnblM2 to "{P}{R}EnblMark2-Sel";
+
+int EnblM3;
+assign EnblM3 to "{P}{R}EnblMark3-Sel";
+
+int EnblM4;
+assign EnblM4 to "{P}{R}EnblMark4-Sel";
+
+int DMarkAOff;
+assign DMarkAOff to "{P}{R}DMarkAOff-Cmd";
+monitor DMarkAOff;
+evflag DMarkAOffFlag;
+sync DMarkAOff DMarkAOffFlag;
+
+int EnblDM1;
+assign EnblDM1 to "{P}{R}EnblDMark1-Sel";
+
+int EnblDM2;
+assign EnblDM2 to "{P}{R}EnblDMark2-Sel";
+
+int EnblDM3;
+assign EnblDM3 to "{P}{R}EnblDMark3-Sel";
+
+int EnblDM4;
+assign EnblDM4 to "{P}{R}EnblDMark4-Sel";
+
+int EnblMaxAuto1;
+assign EnblMaxAuto1 to "{P}{R}EnblMaxAuto1-Sel";
+
+int EnblMaxAuto2;
+assign EnblMaxAuto2 to "{P}{R}EnblMaxAuto2-Sel";
+monitor EnblMaxAuto2;
+evflag EnblMaxAuto2Flag;
+sync EnblMaxAuto2 EnblMaxAuto2Flag;
+
+int EnblMaxAuto3;
+assign EnblMaxAuto3 to "{P}{R}EnblMaxAuto3-Sel";
+monitor EnblMaxAuto3;
+evflag EnblMaxAuto3Flag;
+sync EnblMaxAuto3 EnblMaxAuto3Flag;
+
+int EnblMaxAuto4;
+assign EnblMaxAuto4 to "{P}{R}EnblMaxAuto4-Sel";
+monitor EnblMaxAuto4;
+evflag EnblMaxAuto4Flag;
+sync EnblMaxAuto4 EnblMaxAuto4Flag;
+
+int EnblDMaxAuto1;
+assign EnblDMaxAuto1 to "{P}{R}EnblDMaxAuto1-Sel";
+monitor EnblDMaxAuto1;
+evflag EnblDMaxAuto1Flag;
+sync EnblDMaxAuto1 EnblDMaxAuto1Flag;
+
+int EnblDMaxAuto2;
+assign EnblDMaxAuto2 to "{P}{R}EnblDMaxAuto2-Sel";
+monitor EnblDMaxAuto2;
+evflag EnblDMaxAuto2Flag;
+sync EnblDMaxAuto2 EnblDMaxAuto2Flag;
+
+int EnblDMaxAuto3;
+assign EnblDMaxAuto3 to "{P}{R}EnblDMaxAuto3-Sel";
+monitor EnblDMaxAuto3;
+evflag EnblDMaxAuto3Flag;
+sync EnblDMaxAuto3 EnblDMaxAuto3Flag;
+
+int EnblDMaxAuto4;
+assign EnblDMaxAuto4 to "{P}{R}EnblDMaxAuto4-Sel";
+monitor EnblDMaxAuto4;
+evflag EnblDMaxAuto4Flag;
+sync EnblDMaxAuto4 EnblDMaxAuto4Flag;
+
+double RefOffRB;
+assign RefOffRB to "{P}{R}RefOff-RB";
+monitor RefOffRB;
+evflag RefOffFlag;
+sync RefOffRB RefOffFlag;
+
+double RefLvlSP;
+assign RefLvlSP to "{P}{R}RefLvl-SP";
+
+double RefLvlRB;
+assign RefLvlRB to "{P}{R}RefLvl-RB";
+monitor RefLvlRB;
+evflag RefLvlFlag;
+sync RefLvlRB RefLvlFlag;
+
+double RefLvlProc = 1;
+assign RefLvlProc to "{P}{R}RefLvl-RB.PROC";
+
+int AttAutoSts;
+assign AttAutoSts to "{P}{R}EnblAttAuto-Sts.RVAL";
+
+ss ss1 {
+    state opr {
+
+	when (efTest(CenterFreqFlag)) {
+	    
+	    pvPut(FreqStartProc, SYNC);
+	    efClear(FreqStartFlag);
+
+	    pvPut(SpanProc, SYNC);
+	    efClear(SpanFlag);
+
+	    pvPut(FreqStopProc, SYNC);
+	    efClear(FreqStopFlag);
+
+	    FreqStartSP = FreqStartRB;
+	    pvPut(FreqStartSP, SYNC);
+	    efClear(FreqStartFlag);
+
+	    SpanSP = SpanRB;
+	    pvPut(SpanSP, SYNC);
+	    efClear(SpanFlag);
+
+	    FreqStopSP = FreqStopRB;
+	    pvPut(FreqStopSP, SYNC);
+	    efClear(FreqStopFlag);
+
+	    pvPut(FreqArrayProc, SYNC);
+	    pvPut(SweTimeProc, SYNC);
+
+	    efClear(CenterFreqFlag);
+
+	} state opr
+
+	when (efTest(SpanFlag)) {
+
+	    pvPut(CenterFreqProc, SYNC);
+	    efClear(CenterFreqFlag);
+
+	    pvPut(FreqStartProc, SYNC);
+	    efClear(FreqStartFlag);
+
+	    pvPut(FreqStopProc, SYNC);
+ 	    efClear(FreqStopFlag);
+
+	    CenterFreqSP = CenterFreqRB;
+	    pvPut(CenterFreqSP, SYNC);
+	    efClear(CenterFreqFlag);
+
+	    FreqStartSP = FreqStartRB;
+	    pvPut(FreqStartSP, SYNC);
+	    efClear(FreqStartFlag);
+
+	    FreqStopSP = FreqStopRB;
+   	    pvPut(FreqStopSP, SYNC);
+	    efClear(FreqStopFlag);
+
+	    pvPut(FreqArrayProc, SYNC);
+	    pvPut(SweTimeProc, SYNC);
+
+	    efClear(SpanFlag);
+
+	} state opr
+
+	when (efTest(FreqStartFlag)) {
+   
+	    pvPut(SpanProc, SYNC);
+	    efClear(SpanFlag);
+
+	    pvPut(CenterFreqProc, SYNC);
+ 	    efClear(CenterFreqFlag);
+
+	    pvPut(FreqStopProc, SYNC);
+	    efClear(FreqStopFlag);
+	
+	    SpanSP = SpanRB;
+	    pvPut(SpanSP, SYNC);
+	    efClear(SpanFlag);
+
+	    CenterFreqSP = CenterFreqRB;
+	    pvPut(CenterFreqSP, SYNC);
+	    efClear(CenterFreqFlag);
+
+	    FreqStopSP = FreqStopRB;
+	    pvPut(FreqStopSP, SYNC);
+	    efClear(FreqStopFlag);
+
+	    pvPut(FreqArrayProc, SYNC);
+	    pvPut(SweTimeProc, SYNC);
+
+	    efClear(FreqStartFlag);
+
+	} state opr
+
+	when (efTest(FreqStopFlag)) {
+
+	    pvPut(SpanProc, SYNC);
+	    efClear(SpanFlag);
+
+	    pvPut(FreqStartProc, SYNC);
+	    efClear(FreqStartFlag);
+
+	    pvPut(CenterFreqProc, SYNC);
+     	    efClear(CenterFreqFlag);
+
+	    SpanSP = SpanRB;
+	    pvPut(SpanSP, SYNC);
+
+	    FreqStartSP = FreqStartRB;
+	    pvPut(FreqStartSP, SYNC);
+
+ 	    CenterFreqSP = CenterFreqRB;
+	    pvPut(CenterFreqSP, SYNC);
+
+	    pvPut(FreqArrayProc, SYNC);
+	    pvPut(SweTimeProc, SYNC);
+
+	    efClear(FreqStopFlag);
+
+	} state opr
+
+	when (efTestAndClear(MarkAOffFlag)) {
+
+	    EnblMaxAuto1 = 0;
+	    pvPut(EnblMaxAuto1, SYNC);
+
+	    EnblMaxAuto2 = 0;
+	    pvPut(EnblMaxAuto2, SYNC);
+
+	    EnblMaxAuto3 = 0;
+	    pvPut(EnblMaxAuto3, SYNC);
+
+	    EnblMaxAuto4 = 0;
+	    pvPut(EnblMaxAuto4, SYNC);
+
+	    EnblM1 = 0;
+	    pvPut(EnblM1, SYNC);
+
+	    EnblM2 = 0;
+	    pvPut(EnblM2, SYNC);
+
+	    EnblM3 = 0;
+	    pvPut(EnblM3, SYNC);
+
+	    EnblM4 = 0;
+	    pvPut(EnblM4, SYNC);
+
+	} state opr
+
+	when (efTestAndClear(DMarkAOffFlag)) {
+
+	    EnblDMaxAuto1 = 0;
+	    pvPut(EnblDMaxAuto1, SYNC);
+
+	    EnblDMaxAuto2 = 0;
+	    pvPut(EnblDMaxAuto2, SYNC);
+
+	    EnblDMaxAuto3 = 0;
+	    pvPut(EnblDMaxAuto3, SYNC);
+
+	    EnblDMaxAuto4 = 0;
+	    pvPut(EnblDMaxAuto4, SYNC);
+
+	    EnblDM1 = 0;
+	    pvPut(EnblDM1, SYNC);
+
+	    EnblDM2 = 0;
+	    pvPut(EnblDM2, SYNC);
+
+	    EnblDM3 = 0;
+	    pvPut(EnblDM3, SYNC);
+
+	    EnblDM4 = 0;
+	    pvPut(EnblDM4, SYNC);
+
+	} state opr
+
+	when (efTestAndClear(EnblMaxAuto2Flag)) {
+
+	    if (EnblMaxAuto2 == 1) {
+		
+		EnblDM2 = 0;
+		pvPut(EnblDM2, SYNC);
+
+		EnblM2 = 1;
+		pvPut(EnblM2, SYNC);
+	
+	    }
+
+	} state opr
+
+	when (efTestAndClear(EnblMaxAuto3Flag)) {
+
+	    if (EnblMaxAuto3 == 1) {
+
+		EnblDM3 = 0;
+		pvPut(EnblDM3, SYNC);
+
+		EnblM3 = 1;
+		pvPut(EnblM3, SYNC);
+
+	    }
+
+	} state opr
+
+	when (efTestAndClear(EnblMaxAuto4Flag)) {
+
+	    if (EnblMaxAuto4 == 1) {
+
+		EnblDM4 = 0;
+		pvPut(EnblDM4, SYNC);
+
+		EnblM4 = 1;
+		pvPut(EnblM4, SYNC);
+
+	    }
+
+	} state opr
+
+	when (efTestAndClear(EnblDMaxAuto1Flag)) {
+
+	    if (EnblDMaxAuto1 == 1) {
+	
+		EnblM1 = 0;
+		pvPut(EnblM1, SYNC);
+	
+		EnblDM1 = 1;
+		pvPut(EnblDM1, SYNC);
+	
+	    }
+
+	} state opr
+
+	when (efTestAndClear(EnblDMaxAuto2Flag)) {
+
+	    if (EnblDMaxAuto2 == 1) {
+	
+		EnblM2 = 0;
+		pvPut(EnblM2, SYNC);
+	
+		EnblDM2 = 1;
+		pvPut(EnblDM2, SYNC);
+	
+	    }
+
+	} state opr
+
+	when (efTestAndClear(EnblDMaxAuto3Flag)) {
+
+	    if (EnblDMaxAuto3 == 1) {
+
+		EnblM3 = 0;
+		pvPut(EnblM3, SYNC);
+
+		EnblDM3 = 1;
+		pvPut(EnblDM3, SYNC);
+
+	    }
+
+	} state opr
+
+	when (efTestAndClear(EnblDMaxAuto4Flag)) {
+
+	    if (EnblDMaxAuto4 == 1) {
+
+		EnblM4 = 0;
+		pvPut(EnblM4, SYNC);
+
+		EnblDM4 = 1;
+		pvPut(EnblDM4, SYNC);
+
+	    }
+
+	} state opr
+
+	when (efTestAndClear(RefOffFlag)) {
+
+	    pvPut(RefLvlProc, SYNC);
+	    RefLvlSP = RefLvlRB;
+	    pvPut(RefLvlSP, SYNC);
+
+	} state opr
+
+    } 
+}

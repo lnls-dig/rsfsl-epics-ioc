@@ -124,30 +124,6 @@ record(ao, "$(P)$(R)SpecBuffSize-SP") {
   field(FLNK,"$(P)$(R)SpecBuffSize-RB")
 }
 
-# Get Spectrogram from FSL
-# The frames are stored in the FSL memory and retrieved all together
-
-record(bo, "$(P)$(R)GetFSLSpec-Sel") {
-  field(DESC, "Get Spectrogram from FSL")
-  field(PINI, "YES")
-  field(ZNAM, "OFF")
-  field(ONAM, "ON")
-  field(FLNK, "$(P)$(R)FSLSpecArray-Mon")
-}
-
-# Spectrogram Array Acquisition (SPECM, Option K14)
-# Directly obtained from the FSL
-
-record(waveform, "$(P)$(R)FSLSpecArray-Mon") {
-  field(DESC, "Get the whole stored spectrogram")
-  field(SDIS, "$(P)$(R)GetFSLSpec-Sel")
-  field(DISV, "0")
-  field(NELM, "501")
-  field(FTVL, "FLOAT")
-  field(DTYP, "stream")
-  field(INP, "@rsfsx.proto monSpec $(PORT)")
-}
-
 # Clean Spectrogram and History Buffer (SPECM, K14 option)
 
 record(bo, "$(P)$(R)CleanSpec-Cmd") {
@@ -156,7 +132,7 @@ record(bo, "$(P)$(R)CleanSpec-Cmd") {
   field(ZNAM, "0")
   field(ONAM, "1")
   field(HIGH, "1")
-  field(OUT, "@rsfsx.proto cmdCleanSpec($1) $(PORT)")
+  field(OUT, "@rsfsl.proto cmdCleanSpec($1) $(PORT)")
 }
 
 # Select Filter Type
@@ -175,6 +151,7 @@ record(mbbi, "$(P)$(R)FiltType-Sts") {
   field(FRST, "PULS")
   field(FRVL, "4")
   field(INP, "@rsfsl.proto inFiltType $(PORT)")
+  field(FLNK, "$(P)$(R)SweTime-RB")
 }
 
 record(mbbo, "$(P)$(R)FiltType-Sel") {
