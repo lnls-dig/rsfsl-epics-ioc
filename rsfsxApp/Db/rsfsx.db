@@ -1580,6 +1580,8 @@ record(ao, "$(P)$(R)TrkGenLvlOffset-SP") {
   field(DESC, "Set Tracking Generator Offset Level")
   field(PINI, "YES")
   field(DTYP, "stream")
+  field(SDIS, "$(P)$(R)EnblTrkGen-Sts.RVAL")
+  field(DISV, "0")
   field(PREC, "1")
   field(DRVH, "200")
   field(DRVL, "-200")

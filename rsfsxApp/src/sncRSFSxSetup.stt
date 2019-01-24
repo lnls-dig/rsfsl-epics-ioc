@@ -208,8 +208,21 @@ assign EnblTrkGen to "{P}{R}EnblTrkGen-Sel";
 double TrkGenLvlSP;
 assign TrkGenLvlSP to "{P}{R}TrkGenLvl-SP";
 
+double TrkGenLvlRB;
+assign TrkGenLvlRB to "{P}{R}TrkGenLvl-RB";
+monitor TrkGenLvlRB;
+
+int TrkGenLvlProc;
+assign TrkGenLvlProc to "{P}{R}TrkGenLvl-RB.PROC";
+
 double TrkGenOffsetSP;
 assign TrkGenOffsetSP to "{P}{R}TrkGenLvlOffset-SP";
+
+double TrkGenOffsetRB;
+assign TrkGenOffsetRB to "{P}{R}TrkGenLvlOffset-RB";
+monitor TrkGenOffsetRB;
+evflag TrkGenOffFlag;
+sync TrkGenOffsetRB TrkGenOffFlag;
 
 int EnblAttAuto;
 assign EnblAttAuto to "{P}{R}EnblAttAuto-Sel";
@@ -649,6 +662,14 @@ ss ss1 {
 	    pvPut(RefLvlProc, SYNC);
 	    RefLvlSP = RefLvlRB;
 	    pvPut(RefLvlSP, SYNC);
+
+	} state opr
+
+	when (efTestAndClear(TrkGenOffFlag)) {
+
+	    pvPut(TrkGenLvlProc, SYNC);
+	    TrkGenLvlSP = TrkGenLvlRB;
+	    pvPut(TrkGenLvlSP, SYNC);
 
 	} state opr
 
