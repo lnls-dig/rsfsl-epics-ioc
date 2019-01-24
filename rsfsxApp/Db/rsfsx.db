@@ -1912,42 +1912,13 @@ record(bo, "$(P)$(R)Rst-Cmd") {
   field(ONAM, "1")
   field(HIGH, "1")
   field(OUT, "@rsfsx.proto cmdRst $(PORT)")
-  field(FLNK, "$(P)$(R)RstFout1")
+  field(FLNK, "$(P)$(R)RstReady")
 }
 
-record(fanout, "$(P)$(R)RstFout1") {
-  field(LNK1, "$(P)$(R)FreqCenter-RB")
-  field(LNK2, "$(P)$(R)TraceMode-Sts")
-  field(LNK3, "$(P)$(R)SwePts-RB")
-  field(LNK4, "$(P)$(R)RstFout2")
-  field(SELM, "All")
-}
-
-record(fanout, "$(P)$(R)RstFout2") {
-  field(LNK1, "$(P)$(R)MarkLimitFout")
-  field(LNK2, "$(P)$(R)TrkGenLvl-RB")
-  field(LNK3, "$(P)$(R)TrkGenLvlOffset-RB")
-#  field(LNK4, "$(P)$(R)EnblPreamp-Sts")	#PreAmp PV is commented
-  field(LNK5, "$(P)$(R)AttIn-Sts")
-  field(LNK6, "$(P)$(R)RstFout3")
-  field(SELM, "All")
-}
-
-record(fanout, "$(P)$(R)RstFout3") {
-  field(LNK1, "$(P)$(R)EnblAttAuto-Sts")
-  field(LNK2, "$(P)$(R)ImpdIn-Sts")
-  field(LNK3, "$(P)$(R)RoscSrc-Sts")
-  field(LNK4, "$(P)$(R)RstFout4")
-  field(SELM, "All")
-}
-
-record(fanout, "$(P)$(R)RstFout4") {
-  field(LNK1, "$(P)$(R)EnblMaxAuto1-Sts")
-  field(LNK2, "$(P)$(R)EnblMinAuto-Sts")
-  field(LNK3, "$(P)$(R)FiltType-Sts")
-  field(LNK4, "$(P)$(R)DetecType-Sts")
-  field(LNK5, "$(P)$(R)EnblContSwe-Sts")
-  field(SELM, "All")
+record(calc, "$(P)$(R)RstReady") {
+  field(INPA, "$(P)$(R)RstReady")
+  field(INPB, "$(P)$(R)Rst-Cmd")
+  field(CALC, "A+B")
 }
 
 # Set Marker to Max Peak on Trace (1-4)

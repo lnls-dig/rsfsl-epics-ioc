@@ -135,6 +135,9 @@ monitor EnblDMaxAuto4;
 evflag EnblDMaxAuto4Flag;
 sync EnblDMaxAuto4 EnblDMaxAuto4Flag;
 
+double RefOffSP;
+assign RefOffSP to "{P}{R}RefOff-SP";
+
 double RefOffRB;
 assign RefOffRB to "{P}{R}RefOff-RB";
 monitor RefOffRB;
@@ -147,17 +150,228 @@ assign RefLvlSP to "{P}{R}RefLvl-SP";
 double RefLvlRB;
 assign RefLvlRB to "{P}{R}RefLvl-RB";
 monitor RefLvlRB;
-evflag RefLvlFlag;
-sync RefLvlRB RefLvlFlag;
 
 double RefLvlProc = 1;
 assign RefLvlProc to "{P}{R}RefLvl-RB.PROC";
 
 int AttAutoSts;
-assign AttAutoSts to "{P}{R}EnblAttAuto-Sts.RVAL";
+assign AttAutoSts to "{P}{R}EnblAttAuto-Sts";
+
+int Rst;
+assign Rst to "{P}{R}RstReady";
+monitor Rst;
+evflag RstFlag;
+sync Rst RstFlag;
+
+double DispRangeSP;
+assign DispRangeSP to "{P}{R}DispRange-SP";
+
+int GetSpectrum;
+assign GetSpectrum to "{P}{R}GetSpectrum-Sel";
+
+int EnblContSwe;
+assign EnblContSwe to "{P}{R}EnblContSwe-Sel";
+
+int EnblSweTimeAuto;
+assign EnblSweTimeAuto to "{P}{R}EnblSweTimeAuto-Sel";
+
+double SwePtsSP;
+assign SwePtsSP to "{P}{R}SwePts-SP";
+
+double FiltType;
+assign FiltType to "{P}{R}FiltType-Sel";
+
+int TraceMode;
+assign TraceMode to "{P}{R}TraceMode-Sel";
+
+int StepLink;
+assign StepLink to "{P}{R}StepLink-Sel";
+
+int AutoStep;
+assign AutoStep to "{P}{R}AutoStep-Sel";
+
+int EnblMinAuto;
+assign EnblMinAuto to "{P}{R}EnblMinAuto-Sel";
+
+int EnblMarkCount;
+assign EnblMarkCount to "{P}{R}EnblMarkCount-Sel";
+
+int EnblMarkLimit;
+assign EnblMarkLimit to "{P}{R}EnblMarkLimit-Sel";
+
+int ImpdIn;
+assign ImpdIn to "{P}{R}ImpdIn-Sel";
+
+int EnblTrkGen;
+assign EnblTrkGen to "{P}{R}EnblTrkGen-Sel";
+
+double TrkGenLvlSP;
+assign TrkGenLvlSP to "{P}{R}TrkGenLvl-SP";
+
+double TrkGenOffsetSP;
+assign TrkGenOffsetSP to "{P}{R}TrkGenLvlOffset-SP";
+
+int EnblAttAuto;
+assign EnblAttAuto to "{P}{R}EnblAttAuto-Sel";
+
+int RoscSrc;
+assign RoscSrc to "{P}{R}RoscSrc-Sel";
+
+int TrigSrc;
+assign TrigSrc to "{P}{R}TrigSrc-Sel";
+
+int DetecType;
+assign DetecType to "{P}{R}DetecType-Sel";
+
+double FreqStepSP;
+assign FreqStepSP to "{P}{R}FreqStep-SP";
 
 ss ss1 {
     state opr {
+
+	when (efTestAndClear(RstFlag)) {
+
+	    // Disable spectrum acquisition
+	    GetSpectrum = 0;
+	    pvPut(GetSpectrum, SYNC);
+
+	    TrkGenLvlSP = -20;
+	    pvPut(TrkGenLvlSP, SYNC);
+
+	    TrkGenOffsetSP = 0;
+	    pvPut(TrkGenOffsetSP, SYNC);
+
+	    // Disable tracking generator
+	    EnblTrkGen = 0;
+	    pvPut(EnblTrkGen, SYNC);
+
+	    // Disable all delta peak searches
+	    EnblDMaxAuto1 = 0;
+	    pvPut(EnblDMaxAuto1, SYNC);
+
+	    EnblDMaxAuto2 = 0;
+	    pvPut(EnblDMaxAuto2, SYNC);
+
+	    EnblDMaxAuto3 = 0;
+	    pvPut(EnblDMaxAuto3, SYNC);
+
+	    EnblDMaxAuto4 = 0;
+	    pvPut(EnblDMaxAuto4, SYNC);
+
+	    // Disable all delta markers
+	    EnblDM1 = 0;
+	    pvPut(EnblDM1, SYNC);
+
+	    EnblDM2 = 0;
+	    pvPut(EnblDM2, SYNC);
+
+	    EnblDM3 = 0;
+	    pvPut(EnblDM3, SYNC);
+
+	    EnblDM4 = 0;
+	    pvPut(EnblDM4, SYNC);
+
+	    EnblMarkCount = 0;
+	    pvPut(EnblMarkCount, SYNC);
+
+	    // Disable minimum peak search
+	    EnblMinAuto = 0;
+	    pvPut(EnblMinAuto, SYNC);
+
+	    // Disable mark limit
+	    EnblMarkLimit = 0;
+	    pvPut(EnblMarkLimit, SYNC);
+
+	    // Disable all max peak searches
+	    EnblMaxAuto1 = 0;
+	    pvPut(EnblMaxAuto1, SYNC);
+
+	    EnblMaxAuto2 = 0;
+	    pvPut(EnblMaxAuto2, SYNC);
+
+	    EnblMaxAuto3 = 0;
+	    pvPut(EnblMaxAuto3, SYNC);
+
+	    EnblMaxAuto4 = 0;
+	    pvPut(EnblMaxAuto4, SYNC);
+
+	    // Disable all markers
+	    EnblM1 = 0;
+	    pvPut(EnblM1, SYNC);
+
+	    EnblM2 = 0;
+	    pvPut(EnblM2, SYNC);
+
+	    EnblM3 = 0;
+	    pvPut(EnblM3, SYNC);
+
+	    EnblM4 = 0;
+	    pvPut(EnblM4, SYNC);
+
+	    RefLvlSP = -20;
+	    pvPut(RefLvlSP, SYNC);
+
+	    RefOffSP = 0;
+	    pvPut(RefOffSP, SYNC);
+	    efClear(RefOffFlag);
+
+	    DispRangeSP = 100;
+	    pvPut(DispRangeSP, SYNC);
+
+	    // Select continuoua sweep mode
+	    EnblContSwe = 1;
+	    pvPut(EnblContSwe, SYNC);
+
+	    // Enable automatic sweep time update
+	    EnblSweTimeAuto = 1;
+	    pvPut(EnblSweTimeAuto, SYNC);
+
+	    SwePtsSP = 501;
+	    pvPut(SwePtsSP, SYNC);
+
+	    // Return to WRITe mode
+	    TraceMode = 0;
+	    pvPut(TraceMode, SYNC);
+
+	    // Couple the frequency step size
+	    StepLink = 0;
+	    pvPut(StepLink, SYNC);
+
+	    // Enable automatic frequency step size
+	    AutoStep = 0;
+	    pvPut(AutoStep, SYNC);
+
+	    // Return trigger source to free run mode
+	    TrigSrc = 0;
+	    pvPut(TrigSrc, SYNC);
+
+	    // Return input impedance to 50 ohms
+	    ImpdIn = 0;
+	    pvPut(ImpdIn, SYNC);
+
+	    // Enable automatic attenuation
+	    EnblAttAuto = 1;
+	    pvPut(EnblAttAuto, SYNC);
+
+	    // Return to INTernal reference oscillator
+	    RoscSrc = 0;
+	    pvPut(RoscSrc, SYNC);
+
+	    // Return filter type to NORMal
+	    FiltType = 0;
+	    pvPut(FiltType, SYNC);
+
+	    // Return detector type to automatic peak mode
+	    DetecType = 0;
+	    pvPut(DetecType, SYNC);
+
+	    CenterFreqSP = 1500000000;
+	    pvPut(CenterFreqSP, SYNC);
+
+	    FreqStepSP = 1000000;
+	    pvPut(FreqStepSP, SYNC);
+
+	} state opr
 
 	when (efTest(CenterFreqFlag)) {
 	    
