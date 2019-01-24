@@ -33,9 +33,6 @@ ASYN=$(SUPPORT)/asyn-R4-33
 #STREAM=$(SUPPORT)/stream-2-6/StreamDevice
 STREAM=$(SUPPORT)/stream-R2-7-7
 
-# Specify the standard synApps configuration.
-include $(SUPPORT)/configure/RELEASE
-
 #EPICS_BASE=/opt/epics/base-3.14.12.4
 EPICS_BASE=/opt/epics/base
 
