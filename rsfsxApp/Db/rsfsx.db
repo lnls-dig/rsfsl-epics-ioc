@@ -450,6 +450,26 @@ record(fanout, "$(P)$(R)RbwFout"){
   field(SELM, "All")
 }
 
+# Automatic Resolution Bandwidth
+
+record(bi, "$(P)$(R)EnblRbwAuto-Sts") {
+  field(DESC, "Enable/Disable Rbw Coupling to span")
+  field(DTYP, "stream")
+  field(ZNAM, "OFF")
+  field(ONAM, "ON")
+  field(INP, "@rsfsx.proto inRbwAuto $(PORT)")
+ }
+
+record(bo, "$(P)$(R)EnblRbwAuto-Sel") {
+  field(DESC, "Enable/Disable Rbw Coupling to span")
+  field(PINI, "YES")
+  field(DTYP, "stream")
+  field(ZNAM, "OFF")
+  field(ONAM, "ON")
+  field(OUT, "@rsfsx.proto outRbwAuto($1) $(PORT)")
+  field(FLNK, "$(P)$(R)EnblRbwAuto-Sts")
+}
+
 # Video Bandwidth
 
 record(mbbi, "$(P)$(R)Vbw-Sts") {

@@ -636,6 +636,18 @@ outRbw {
 }
 
 ######################################################################
+# Automatic Resolution Bandwidth
+
+inRbwAuto {
+    out "SENS:BWID:RES:AUTO?";
+    in "%i";
+}
+
+outRbwAuto {
+    out "SENS:BWID:RES:AUTO %i";
+}
+
+######################################################################
 # Video Bandwidth
 
 inVbw {
