@@ -239,6 +239,13 @@ assign DetecType to "{P}{R}DetecType-Sel";
 double FreqStepSP;
 assign FreqStepSP to "{P}{R}FreqStep-SP";
 
+int AutoDetec;
+assign AutoDetec to "{P}{R}EnblAutoDetec-Sel";
+
+int RbwAuto;
+assign RbwAuto to "{P}{R}EnblRbwAuto-Sel";
+monitor RbwAuto;
+
 ss ss1 {
     state opr {
 
@@ -370,9 +377,13 @@ ss ss1 {
 	    FiltType = 0;
 	    pvPut(FiltType, SYNC);
 
-	    // Return detector type to automatic peak mode
-	    DetecType = 0;
-	    pvPut(DetecType, SYNC);
+	    // Turn automatic detector type ON
+	    AutoDetec = 1;
+	    pvPut(AutoDetec, SYNC);
+
+	    // Turn auto Rbw ON
+	    RbwAuto = 1;
+	    pvPut(RbwAuto, SYNC);
 
 	    CenterFreqSP = 1500000000;
 	    pvPut(CenterFreqSP, SYNC);
