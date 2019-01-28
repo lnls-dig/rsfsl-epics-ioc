@@ -335,10 +335,6 @@ ss ss1 {
 	    EnblContSwe = 1;
 	    pvPut(EnblContSwe, SYNC);
 
-	    // Enable automatic sweep time update
-	    EnblSweTimeAuto = 1;
-	    pvPut(EnblSweTimeAuto, SYNC);
-
 	    SwePtsSP = 501;
 	    pvPut(SwePtsSP, SYNC);
 
@@ -383,6 +379,10 @@ ss ss1 {
 
 	    FreqStepSP = 1000000;
 	    pvPut(FreqStepSP, SYNC);
+
+	    // Enable automatic sweep time update
+	    EnblSweTimeAuto = 1;
+	    pvPut(EnblSweTimeAuto, SYNC);
 
 	} state opr
 
