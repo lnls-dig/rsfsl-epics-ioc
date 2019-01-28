@@ -685,6 +685,19 @@ outDetecType {
 }
 
 ######################################################################
+# Automatic Detector Type
+
+inAutoDetec {
+    out "SENS:DET:FUNC:AUTO?";
+    in "%i";
+}
+
+outAutoDetec {
+    out "SENS:DET:FUNC:AUTO %{OFF|ON}";
+}
+
+
+######################################################################
 # Get identification
 
 inIdn {

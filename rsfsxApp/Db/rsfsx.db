@@ -631,6 +631,26 @@ record(mbbo, "$(P)$(R)DetecType-Sel") {
   field(FLNK, "$(P)$(R)DetecType-Sts")
 }
 
+# Automatic Detector Type Selection
+
+record(bi, "$(P)$(R)EnblAutoDetec-Sts") {
+  field(DESC, "Get Automatic Detector Type State")
+  field(DTYP, "stream")
+  field(ZNAM, "OFF")
+  field(ONAM, "ON")
+  field(INP, "@rsfsx.proto inAutoDetec $(PORT)")
+}
+
+record(bo, "$(P)$(R)EnblAutoDetec-Sel") {
+  field(DESC, "Enable/Disable Auto Detector Type State")
+  field(PINI, "YES")
+  field(DTYP, "stream")
+  field(ZNAM, "OFF")
+  field(ONAM, "ON")
+  field(OUT, "@rsfsx.proto outAutoDetec($1) $(PORT)")
+  field(FLNK, "$(P)$(R)EnblAutoDetec-Sts")
+}
+
 #Enable/Disable Markers (1-4)
 
 # The Marker1 will stay ON if any Delta Marker is also ON or if the Limited Search ($(P)$(R)EnblMarkLimit-Sts) is ON
