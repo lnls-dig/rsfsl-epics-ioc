@@ -14713,7 +14713,7 @@ $(pv_value)</tooltip>
       <show_scrollbar>true</show_scrollbar>
       <tooltip></tooltip>
       <transparent>true</transparent>
-      <visible>true</visible>
+      <visible>false</visible>
       <widget_type>Grouping Container</widget_type>
       <width>697</width>
       <wuid>-59f0c9c4:1668cc7b809:-7e60</wuid>
@@ -15862,7 +15862,7 @@ $(pv_value)</tooltip>
       <show_scrollbar>true</show_scrollbar>
       <tooltip></tooltip>
       <transparent>true</transparent>
-      <visible>false</visible>
+      <visible>true</visible>
       <widget_type>Grouping Container</widget_type>
       <width>697</width>
       <wuid>7fb1a497:1634604385e:-51d8</wuid>
@@ -16256,7 +16256,14 @@ $(pv_value)</tooltip>
           <name>Text Input</name>
           <pv_name>$(P)$(R)DetecType-Sel</pv_name>
           <pv_value />
-          <rules />
+          <rules>
+            <rule name="Visible Rule" prop_id="visible" out_exp="false">
+              <exp bool_exp="pv0==1">
+                <value>false</value>
+              </exp>
+              <pv trig="true">$(P)$(R)EnblAutoDetec-Sts</pv>
+            </rule>
+          </rules>
           <scale_options>
             <width_scalable>true</width_scalable>
             <height_scalable>true</height_scalable>
