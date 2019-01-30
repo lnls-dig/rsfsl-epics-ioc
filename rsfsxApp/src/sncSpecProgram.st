@@ -66,7 +66,7 @@ ss spectrogram {
 		when (efTestAndClear(specModeFlag) && specMode == 1) {
       printf("\nSpectrogram Mode: Continuous\n");
     } state ContinuousACQ
-    
+
 		when (efTestAndClear(traceHashFlag)) {
 
       pvGet(trace, SYNC);
@@ -86,12 +86,12 @@ ss spectrogram {
         timeStampInit = timestampTrace;
         pvPut(timeStampInit, SYNC);
       }
-      
+
       timestamp_prev = timestampTrace;
       frameCount = frameCount + 1;
       shiftArrayFloat(specArray, trace, swePts, specArraySize);
       efClear(timeStampFlag);
-      
+
 		} state TimeWindowACQ
 
 		when (efTestAndClear(timeStampFlag)) {
@@ -109,30 +109,30 @@ ss spectrogram {
         pvPut(timeStampEnd, SYNC);
       }
       efClear(traceHashFlag);
-      
+
 		} state TimeWindowACQ
 
 	}
-  
+
 	state ContinuousACQ {
 
     entry {
       frameCount = 0;
       pvPut(frameCount, SYNC);
     }
-    
+
 		when (efTestAndClear(specModeFlag) && specMode == 0) {
 
       printf("\nSpectrogram Mode: Time Window\n");
 
     } state TimeWindowACQ
-    
+
 		when (efTestAndClear(swePtsFlag)) {
 
       frameCount = 0;
 
     } state ContinuousACQ
-    
+
 		when (efTestAndClear(traceHashFlag)) {
 
       pvGet(trace, SYNC);
@@ -144,7 +144,7 @@ ss spectrogram {
         timeStampInit = timestampTrace;
         pvPut(timeStampInit, SYNC);
       }
-      
+
       if ((frameCount + 1)*swePts < specArraySize) {
         frameCount = frameCount + 1;
         pvPut(frameCount, SYNC);
@@ -153,10 +153,10 @@ ss spectrogram {
         timeDelta = round((timeStampEnd - timeStampInit)*1000);
         pvPut(timeDelta, SYNC);
       }
-      
+
 		} state ContinuousACQ
 
-  }  
+  }
 }
 
 %{
