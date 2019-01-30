@@ -405,7 +405,6 @@ record(mbbi, "$(P)$(R)Rbw-Sts") {
   field(TVST, "10 MHz")
   field(TVVL, "10000000")
   field(INP, "@rsfsx.proto inRbw $(PORT)")
-  field(FLNK, "$(P)$(R)RbwFout")
 }
 
 record(mbbo, "$(P)$(R)Rbw-Sel") {
@@ -440,14 +439,6 @@ record(mbbo, "$(P)$(R)Rbw-Sel") {
   field(TVVL, "10000000")
   field(OUT, "@rsfsx.proto outRbw($1) $(PORT)")
   field(FLNK, "$(P)$(R)Rbw-Sts")
-}
-
-record(fanout, "$(P)$(R)RbwFout"){
-  field(LNK1, "$(P)$(R)SweTime-RB")
-  field(LNK2, "$(P)$(R)Vbw-Sts")
-  field(LNK3, "$(P)$(R)EnblVbwAuto-Sts")
-  field(LNK4, "$(P)$(R)FiltType-Sts")
-  field(SELM, "All")
 }
 
 # Automatic Resolution Bandwidth
@@ -506,7 +497,6 @@ record(mbbi, "$(P)$(R)Vbw-Sts") {
   field(FTST, "10 MHz")
   field(FTVL, "10000000")
   field(INP, "@rsfsx.proto inVbw $(PORT)")
-  field(FLNK, "$(P)$(R)VbwFout")
 }
 
 record(mbbo, "$(P)$(R)Vbw-Sel") {
@@ -549,14 +539,6 @@ record(mbbo, "$(P)$(R)Vbw-Sel") {
   field(FLNK, "$(P)$(R)Vbw-Sts")
 }
 
-record(fanout, "$(P)$(R)VbwFout") {
-  field(LNK1, "$(P)$(R)SweTime-RB")
-  field(LNK2, "$(P)$(R)Rbw-Sts")
-  field(LNK3, "$(P)$(R)EnblVbwAuto-Sts")
-  field(LNK4, "$(P)$(R)FiltType-Sts")
-  field(SELM, "All")
-}
-
 # Enable/Disable automatic coupling of the video bandwidth to the
 # resolution bandwidth
 
@@ -566,7 +548,6 @@ record(bi, "$(P)$(R)EnblVbwAuto-Sts") {
   field(ZNAM, "OFF")
   field(ONAM, "ON")
   field(INP, "@rsfsx.proto inEnblVbwAuto $(PORT)")
-  field(FLNK, "$(P)$(R)VbwAutoFout")
  }
 
 record(bo, "$(P)$(R)EnblVbwAuto-Sel") {
@@ -577,14 +558,6 @@ record(bo, "$(P)$(R)EnblVbwAuto-Sel") {
   field(ONAM, "ON")
   field(OUT, "@rsfsx.proto outEnblVbwAuto($1) $(PORT)")
   field(FLNK, "$(P)$(R)EnblVbwAuto-Sts")
-}
-
-record(fanout, "$(P)$(R)VbwAutoFout") {
-  field(LNK1, "$(P)$(R)Vbw-Sts")
-  field(LNK2, "$(P)$(R)Rbw-Sts")
-  field(LNK3, "$(P)$(R)SweTime-RB")
-  field(LNK4, "$(P)$(R)FiltType-Sts")
-  field(SELM, "All")
 }
 
 # Select Detector Type Manually

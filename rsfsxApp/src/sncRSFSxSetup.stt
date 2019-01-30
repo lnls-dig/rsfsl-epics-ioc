@@ -233,8 +233,11 @@ assign RoscSrc to "{P}{R}RoscSrc-Sel";
 int TrigSrc;
 assign TrigSrc to "{P}{R}TrigSrc-Sel";
 
-int DetecType;
-assign DetecType to "{P}{R}DetecType-Sel";
+int DetecTypeSel;
+assign DetecTypeSel to "{P}{R}DetecType-Sel";
+
+int DetecTypeSts;
+assign DetecTypeSts to "{P}{R}DetecType-Sts";
 
 double FreqStepSP;
 assign FreqStepSP to "{P}{R}FreqStep-SP";
@@ -242,9 +245,29 @@ assign FreqStepSP to "{P}{R}FreqStep-SP";
 int AutoDetec;
 assign AutoDetec to "{P}{R}EnblAutoDetec-Sel";
 
-int RbwAuto;
-assign RbwAuto to "{P}{R}EnblRbwAuto-Sel";
-monitor RbwAuto;
+int RbwAutoSel;
+assign RbwAutoSel to "{P}{R}EnblRbwAuto-Sel";
+
+int RbwAutoSts;
+assign RbwAutoSts to "{P}{R}EnblRbwAuto-Sts";
+monitor RbwAutoSts;
+evflag RbwAutoFlag;
+sync RbwAutoSts RbwAutoFlag;
+
+int RbwProc;
+assign RbwProc to "{P}{R}Rbw-Sts.PROC";
+
+int VbwProc;
+assign VbwProc to "{P}{R}Vbw-Sts.PROC";
+
+int VbwAutoSel;
+assign VbwAutoSel to "{P}{R}EnblVbwAuto-Sel";
+
+int VbwAutoSts;
+assign VbwAutoSts to "{P}{R}EnblVbwAuto-Sts";
+monitor VbwAutoSts;
+evflag VbwAutoFlag;
+sync VbwAutoSts VbwAutoFlag;
 
 ss ss1 {
     state opr {
@@ -382,8 +405,12 @@ ss ss1 {
 	    pvPut(AutoDetec, SYNC);
 
 	    // Turn auto Rbw ON
-	    RbwAuto = 1;
-	    pvPut(RbwAuto, SYNC);
+	    RbwAutoSel = 1;
+	    pvPut(RbwAutoSel, SYNC);
+
+	    // Turn auto Vbw ON
+	    VbwAutoSel = 1;
+	    pvPut(VbwAutoSel, SYNC);
 
 	    CenterFreqSP = 1500000000;
 	    pvPut(CenterFreqSP, SYNC);
@@ -423,6 +450,9 @@ ss ss1 {
 	    pvPut(FreqArrayProc, SYNC);
 	    pvPut(SweTimeProc, SYNC);
 
+	    pvPut(RbwProc, SYNC);
+	    pvPut(VbwProc, SYNC);
+
 	    efClear(CenterFreqFlag);
 
 	} state opr
@@ -452,6 +482,9 @@ ss ss1 {
 
 	    pvPut(FreqArrayProc, SYNC);
 	    pvPut(SweTimeProc, SYNC);
+
+	    pvPut(RbwProc, SYNC);
+	    pvPut(VbwProc, SYNC);
 
 	    efClear(SpanFlag);
 
@@ -483,6 +516,9 @@ ss ss1 {
 	    pvPut(FreqArrayProc, SYNC);
 	    pvPut(SweTimeProc, SYNC);
 
+	    pvPut(RbwProc, SYNC);
+	    pvPut(VbwProc, SYNC);
+
 	    efClear(FreqStartFlag);
 
 	} state opr
@@ -509,6 +545,9 @@ ss ss1 {
 
 	    pvPut(FreqArrayProc, SYNC);
 	    pvPut(SweTimeProc, SYNC);
+
+	    pvPut(RbwProc, SYNC);
+	    pvPut(VbwProc, SYNC);
 
 	    efClear(FreqStopFlag);
 
@@ -681,6 +720,20 @@ ss ss1 {
 	    pvPut(TrkGenLvlProc, SYNC);
 	    TrkGenLvlSP = TrkGenLvlRB;
 	    pvPut(TrkGenLvlSP, SYNC);
+
+	} state opr
+
+	when (efTestAndClear(RbwAutoFlag)) {
+
+	    pvPut(RbwProc, SYNC);
+	    pvPut(VbwProc, SYNC);
+
+	} state opr
+
+	when (efTestAndClear(VbwAutoFlag)) {
+
+	    pvPut(RbwProc, SYNC);
+	    pvPut(VbwProc, SYNC);
 
 	} state opr
 
