@@ -165,6 +165,3 @@ void shiftArrayFloat(float des[], float src[], int shift, int arraySize) {
   memcpy(des, src, shift*sizeof(float));
 }
 }%
-
-
-
