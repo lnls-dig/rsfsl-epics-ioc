@@ -68,7 +68,6 @@ ss spectrogram {
         } state ContinuousACQ
 
         when (efTestAndClear(traceHashFlag)) {
-
             pvGet(trace, SYNC);
             timestampTrace = pvTimeStamp(trace).secPastEpoch + (double)(pvTimeStamp(trace).nsec)/1000000000;
 
@@ -91,11 +90,9 @@ ss spectrogram {
             frameCount = frameCount + 1;
             shiftArrayFloat(specArray, trace, swePts, specArraySize);
             efClear(timeStampFlag);
-
         } state TimeWindowACQ
 
         when (efTestAndClear(timeStampFlag)) {
-
             timestampGlobal = pvTimeStamp(timeStamp).secPastEpoch + (double)(pvTimeStamp(timeStamp).nsec)/1000000000;
 
             // Energy ramp ended
@@ -109,7 +106,6 @@ ss spectrogram {
                 pvPut(timeStampEnd, SYNC);
             }
             efClear(traceHashFlag);
-
         } state TimeWindowACQ
 
     }
@@ -122,19 +118,14 @@ ss spectrogram {
         }
 
         when (efTestAndClear(specModeFlag) && specMode == 0) {
-
             printf("\nSpectrogram Mode: Time Window\n");
-
         } state TimeWindowACQ
 
         when (efTestAndClear(swePtsFlag)) {
-
             frameCount = 0;
-
         } state ContinuousACQ
 
         when (efTestAndClear(traceHashFlag)) {
-
             pvGet(trace, SYNC);
             timestampTrace = pvTimeStamp(trace).secPastEpoch + (double)(pvTimeStamp(trace).nsec)/1000000000;
             shiftArrayFloat(specArray, trace, swePts, specArraySize);
@@ -153,7 +144,6 @@ ss spectrogram {
                 timeDelta = round((timeStampEnd - timeStampInit)*1000);
                 pvPut(timeDelta, SYNC);
             }
-
         } state ContinuousACQ
 
     }
