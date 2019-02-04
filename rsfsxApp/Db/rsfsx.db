@@ -2,11 +2,11 @@
 # Title      : Rohde & Schwarz FSL Spectrum Analyzer Epics Database File
 # Project    :
 #---------------------------------------------------------------------
-# File       : rsfsl.db
+# File       : rsfsx.db
 # Author     : Leticia Garcez Capovilla
 # Company    : Brazilian Synchrotron Light Laboratory, LNLS/CNPEM
 # Created    : 2018-03-19
-# Last update: 2018-04-04
+# Last update: 2019-02-04
 #---------------------------------------------------------------------
 # Description:
 #
@@ -32,7 +32,7 @@
 # Revisions  :
 # Date        	Version  	Author         		Description
 # 2018-mar-19 	1.0      	leticiagcapovilla       Created
-# 2018-apr-04	1.0		leticiagcapovilla	Updated
+# 2019-feb-04	2.0		leticiagcapovilla	Updated
 #---------------------------------------------------------------------
 
 #####################################################################
@@ -144,7 +144,7 @@ record(ao, "$(P)$(R)SwePts-SP") {
 
 # Sweep Time
 
-record(ai, "$(P)$(R)SweTime-RB") {
+record(ai, "$(P)$(R)SweTime-Mon") {
   field(DESC, "Get Sweep Time")
   field(DTYP, "stream")
   field(PREC, "3")
@@ -162,7 +162,7 @@ record(bi, "$(P)$(R)EnblSweTimeAuto-Sts") {
   field(ZNAM, "OFF")
   field(ONAM, "ON")
   field(INP, "@rsfsx.proto inEnblSweTimeAuto $(PORT)")
-  field(FLNK, "$(P)$(R)SweTime-RB")
+  field(FLNK, "$(P)$(R)SweTime-Mon")
 }
 
 record(bo, "$(P)$(R)EnblSweTimeAuto-Sel") {
@@ -405,7 +405,6 @@ record(mbbi, "$(P)$(R)Rbw-Sts") {
   field(TVST, "10 MHz")
   field(TVVL, "10000000")
   field(INP, "@rsfsx.proto inRbw $(PORT)")
-  field(FLNK, "$(P)$(R)RbwFout")
 }
 
 record(mbbo, "$(P)$(R)Rbw-Sel") {
@@ -442,12 +441,24 @@ record(mbbo, "$(P)$(R)Rbw-Sel") {
   field(FLNK, "$(P)$(R)Rbw-Sts")
 }
 
-record(fanout, "$(P)$(R)RbwFout"){
-  field(LNK1, "$(P)$(R)SweTime-RB")
-  field(LNK2, "$(P)$(R)Vbw-Sts")
-  field(LNK3, "$(P)$(R)EnblVbwAuto-Sts")
-  field(LNK4, "$(P)$(R)FiltType-Sts")
-  field(SELM, "All")
+# Automatic Resolution Bandwidth
+
+record(bi, "$(P)$(R)EnblRbwAuto-Sts") {
+  field(DESC, "Enable/Disable Rbw Coupling to span")
+  field(DTYP, "stream")
+  field(ZNAM, "OFF")
+  field(ONAM, "ON")
+  field(INP, "@rsfsx.proto inRbwAuto $(PORT)")
+ }
+
+record(bo, "$(P)$(R)EnblRbwAuto-Sel") {
+  field(DESC, "Enable/Disable Rbw Coupling to span")
+  field(PINI, "YES")
+  field(DTYP, "stream")
+  field(ZNAM, "OFF")
+  field(ONAM, "ON")
+  field(OUT, "@rsfsx.proto outRbwAuto($1) $(PORT)")
+  field(FLNK, "$(P)$(R)EnblRbwAuto-Sts")
 }
 
 # Video Bandwidth
@@ -486,7 +497,7 @@ record(mbbi, "$(P)$(R)Vbw-Sts") {
   field(FTST, "10 MHz")
   field(FTVL, "10000000")
   field(INP, "@rsfsx.proto inVbw $(PORT)")
-  field(FLNK, "$(P)$(R)VbwFout")
+  field(FLNK, "$(P)$(R)SweTime-Mon")
 }
 
 record(mbbo, "$(P)$(R)Vbw-Sel") {
@@ -529,14 +540,6 @@ record(mbbo, "$(P)$(R)Vbw-Sel") {
   field(FLNK, "$(P)$(R)Vbw-Sts")
 }
 
-record(fanout, "$(P)$(R)VbwFout") {
-  field(LNK1, "$(P)$(R)SweTime-RB")
-  field(LNK2, "$(P)$(R)Rbw-Sts")
-  field(LNK3, "$(P)$(R)EnblVbwAuto-Sts")
-  field(LNK4, "$(P)$(R)FiltType-Sts")
-  field(SELM, "All")
-}
-
 # Enable/Disable automatic coupling of the video bandwidth to the
 # resolution bandwidth
 
@@ -546,7 +549,6 @@ record(bi, "$(P)$(R)EnblVbwAuto-Sts") {
   field(ZNAM, "OFF")
   field(ONAM, "ON")
   field(INP, "@rsfsx.proto inEnblVbwAuto $(PORT)")
-  field(FLNK, "$(P)$(R)VbwAutoFout")
  }
 
 record(bo, "$(P)$(R)EnblVbwAuto-Sel") {
@@ -557,14 +559,6 @@ record(bo, "$(P)$(R)EnblVbwAuto-Sel") {
   field(ONAM, "ON")
   field(OUT, "@rsfsx.proto outEnblVbwAuto($1) $(PORT)")
   field(FLNK, "$(P)$(R)EnblVbwAuto-Sts")
-}
-
-record(fanout, "$(P)$(R)VbwAutoFout") {
-  field(LNK1, "$(P)$(R)Vbw-Sts")
-  field(LNK2, "$(P)$(R)Rbw-Sts")
-  field(LNK3, "$(P)$(R)SweTime-RB")
-  field(LNK4, "$(P)$(R)FiltType-Sts")
-  field(SELM, "All")
 }
 
 # Select Detector Type Manually
@@ -609,6 +603,26 @@ record(mbbo, "$(P)$(R)DetecType-Sel") {
   field(SXVL, "6")
   field(OUT, "@rsfsx.proto outDetecType($1) $(PORT)")
   field(FLNK, "$(P)$(R)DetecType-Sts")
+}
+
+# Automatic Detector Type Selection
+
+record(bi, "$(P)$(R)EnblAutoDetec-Sts") {
+  field(DESC, "Get Automatic Detector Type State")
+  field(DTYP, "stream")
+  field(ZNAM, "OFF")
+  field(ONAM, "ON")
+  field(INP, "@rsfsx.proto inAutoDetec $(PORT)")
+}
+
+record(bo, "$(P)$(R)EnblAutoDetec-Sel") {
+  field(DESC, "Enable/Disable Auto Detector Type State")
+  field(PINI, "YES")
+  field(DTYP, "stream")
+  field(ZNAM, "OFF")
+  field(ONAM, "ON")
+  field(OUT, "@rsfsx.proto outAutoDetec($1) $(PORT)")
+  field(FLNK, "$(P)$(R)EnblAutoDetec-Sts")
 }
 
 #Enable/Disable Markers (1-4)
@@ -691,9 +705,10 @@ record(bo, "$(P)$(R)EnblMark4-Sel") {
 
 # The input records will only process when the respective Marker
 # is ON or if a value is set to the Marker (using the output xxx-SP PV)
+
 record(ai, "$(P)$(R)MarkX1-RB") {
   field(DESC, "Get X value of the marker1")
-  field(SCAN, "1 second")
+  field(SCAN, ".002 second")
   field(DISV, "0")
   field(SDIS, "$(P)$(R)EnblMark1-Sts.RVAL")
   field(DTYP, "stream")
@@ -722,7 +737,7 @@ record(calc, "$(P)$(R)MarkX1Disp-Mon") {
 
 record(ai, "$(P)$(R)MarkX2-RB") {
   field(DESC, "Get X value of the marker2")
-  field(SCAN, "1 second")
+  field(SCAN, ".002 second")
   field(DISV, "0")
   field(SDIS, "$(P)$(R)EnblMark2-Sts.RVAL")
   field(DTYP, "stream")
@@ -751,7 +766,7 @@ record(calc, "$(P)$(R)MarkX2Disp-Mon") {
 
 record(ai, "$(P)$(R)MarkX3-RB") {
   field(DESC, "Get X value of the marker3")
-  field(SCAN, "1 second")
+  field(SCAN, ".002 second")
   field(DISV, "0")
   field(SDIS, "$(P)$(R)EnblMark3-Sts.RVAL")
   field(DTYP, "stream")
@@ -780,7 +795,7 @@ record(calc, "$(P)$(R)MarkX3Disp-Mon") {
 
 record(ai, "$(P)$(R)MarkX4-RB") {
   field(DESC, "Get X value of the marker4")
-  field(SCAN, "1 second")
+  field(SCAN, ".002 second")
   field(DISV, "0")
   field(SDIS, "$(P)$(R)EnblMark4-Sts.RVAL")
   field(DTYP, "stream")
@@ -864,7 +879,7 @@ record(bi, "$(P)$(R)EnblMaxAuto2-Sts") {
 
 record(bo, "$(P)$(R)OnOffMark2-Sel") {
   field(DESC, "Place Mark2 on Max Peak")
-  field(SCAN, ".1 second")
+  field(SCAN, ".002 second")
   field(DISV, "0")
   field(SDIS, "$(P)$(R)EnblMaxAuto2-Sel")
   field(DTYP, "stream")
@@ -897,7 +912,7 @@ record(bi, "$(P)$(R)EnblMaxAuto3-Sts") {
 
 record(bo, "$(P)$(R)OnOffMark3-Sel") {
   field(DESC, "Place Mark3 on Max Peak")
-  field(SCAN, ".1 second")
+  field(SCAN, ".002 second")
   field(DISV, "0")
   field(SDIS, "$(P)$(R)EnblMaxAuto3-Sel")
   field(DTYP, "stream")
@@ -930,7 +945,7 @@ record(bi, "$(P)$(R)EnblMaxAuto4-Sts") {
 
 record(bo, "$(P)$(R)OnOffMark4-Sel") {
   field(DESC, "Place Mark4 on Max Peak")
-  field(SCAN, ".1 second")
+  field(SCAN, ".002 second")
   field(DISV, "0")
   field(SDIS, "$(P)$(R)EnblMaxAuto4-Sel")
   field(DTYP, "stream")
@@ -1045,6 +1060,7 @@ record(fanout, "$(P)$(R)MarkLimitFout") {
 
 # Enable/Disable Markers (1-4)
 # If any Delta Marker is ON it will cause at least one Marker to remain ON (Marker1 default)
+
 record(bi, "$(P)$(R)EnblDMark1-Sts") {
   field(DESC, "Get Delta Marker1 State")
   field(DTYP, "stream")
@@ -1144,7 +1160,7 @@ record(bi, "$(P)$(R)EnblDMaxAuto1-Sts") {
 
 record(bo, "$(P)$(R)OnOffDMark1-Sel") {
   field(DESC, "Place DMark1 on Max Peak")
-  field(SCAN, ".1 second")
+  field(SCAN, ".002 second")
   field(DISV, "0")
   field(SDIS, "$(P)$(R)EnblDMaxAuto1-Sel")
   field(DTYP, "stream")
@@ -1176,7 +1192,7 @@ record(bi, "$(P)$(R)EnblDMaxAuto2-Sts") {
 
 record(bo, "$(P)$(R)OnOffDMark2-Sel") {
   field(DESC, "Place DMark2 on Max Peak")
-  field(SCAN, ".1 second")
+  field(SCAN, ".002 second")
   field(DISV, "0")
   field(SDIS, "$(P)$(R)EnblDMaxAuto2-Sel")
   field(DTYP, "stream")
@@ -1208,7 +1224,7 @@ record(bi, "$(P)$(R)EnblDMaxAuto3-Sts") {
 
 record(bo, "$(P)$(R)OnOffDMark3-Sel") {
   field(DESC, "Place DMark3 on Max Peak")
-  field(SCAN, ".1 second")
+  field(SCAN, ".002 second")
   field(DISV, "0")
   field(SDIS, "$(P)$(R)EnblDMaxAuto3-Sel")
   field(DTYP, "stream")
@@ -1240,7 +1256,7 @@ record(bi, "$(P)$(R)EnblDMaxAuto4-Sts") {
 
 record(bo, "$(P)$(R)OnOffDMark4-Sel") {
   field(DESC, "Place DMark4 on Max Peak")
-  field(SCAN, ".1 second")
+  field(SCAN, ".002 second")
   field(DISV, "0")
   field(SDIS, "$(P)$(R)EnblDMaxAuto4-Sel")
   field(DTYP, "stream")
@@ -1265,7 +1281,7 @@ record(ai, "$(P)$(R)DynamicDX4-Mon") {
 
 record(ai, "$(P)$(R)DMarkX1-RB") {
   field(DESC, "Get X value of the marker1")
-  field(SCAN, "1 second")
+  field(SCAN, ".002 second")
   field(DISV, "0")
   field(SDIS, "$(P)$(R)EnblDMark1-Sts.RVAL")
   field(DTYP, "stream")
@@ -1294,7 +1310,7 @@ record(calc, "$(P)$(R)DMarkX1Disp-Mon") {
 
 record(ai, "$(P)$(R)DMarkX2-RB") {
   field(DESC, "Get X value of the marker2")
-  field(SCAN, "1 second")
+  field(SCAN, ".002 second")
   field(DISV, "0")
   field(SDIS, "$(P)$(R)EnblDMark2-Sts.RVAL")
   field(DTYP, "stream")
@@ -1323,7 +1339,7 @@ record(calc, "$(P)$(R)DMarkX2Disp-Mon") {
 
 record(ai, "$(P)$(R)DMarkX3-RB") {
   field(DESC, "Get X value of the marker3")
-  field(SCAN, "1 second")
+  field(SCAN, ".002 second")
   field(DISV, "0")
   field(SDIS, "$(P)$(R)EnblDMark3-Sts.RVAL")
   field(DTYP, "stream")
@@ -1352,7 +1368,7 @@ record(calc, "$(P)$(R)DMarkX3Disp-Mon") {
 
 record(ai, "$(P)$(R)DMarkX4-RB") {
   field(DESC, "Get X value of the marker4")
-  field(SCAN, "1 second")
+  field(SCAN, ".002 second")
   field(DISV, "0")
   field(SDIS, "$(P)$(R)EnblDMark4-Sts.RVAL")
   field(DTYP, "stream")
@@ -1480,26 +1496,26 @@ record(bo, "$(P)$(R)EnblAttAuto-Sel") {
   field(FLNK,"$(P)$(R)EnblAttAuto-Sts")
 }
 
-## Enable/Disable Input Preamplifier - Only Available on R&S FSL-B22
-#
-#record(bi, "$(P)$(R)EnblPreamp-Sts") {
-#  field(DESC, "Get Input Preamplifier State")
-#  field(DTYP, "stream")
-#  field(ZNAM, "OFF")
-#  field(ONAM, "ON")
-#  field(INP, "@rsfsx.proto inEnblPreamp $(PORT)")
-#}
-#
-#record(bo, "$(P)$(R)EnblPreamp-Sel") {
-#  field(DESC, "Enable or Disable Input Preamplifier")
-#  field(PINI, "YES")
-#  field(DTYP, "stream")
-#  field(ZNAM, "OFF")
-#  field(ONAM, "ON")
-#  field(OUT, "@rsfsx.proto outEnblPreamp($1) $(PORT)")
-#  field(FLNK,"$(P)$(R)EnblPreamp-Sts")
-#}
-#
+# Enable/Disable Input Preamplifier - Only Available on R&S FSL-B22
+
+record(bi, "$(P)$(R)EnblPreamp-Sts") {
+  field(DESC, "Get Input Preamplifier State")
+  field(DTYP, "stream")
+  field(ZNAM, "OFF")
+  field(ONAM, "ON")
+  field(INP, "@rsfsx.proto inEnblPreamp $(PORT)")
+}
+
+record(bo, "$(P)$(R)EnblPreamp-Sel") {
+  field(DESC, "Enable or Disable Input Preamplifier")
+  field(PINI, "YES")
+  field(DTYP, "stream")
+  field(ZNAM, "OFF")
+  field(ONAM, "ON")
+  field(OUT, "@rsfsx.proto outEnblPreamp($1) $(PORT)")
+  field(FLNK,"$(P)$(R)EnblPreamp-Sts")
+}
+
 # Instrments Nominal Input Impedance
 
 record(bi, "$(P)$(R)ImpdIn-Sts") {
@@ -1580,6 +1596,8 @@ record(ao, "$(P)$(R)TrkGenLvlOffset-SP") {
   field(DESC, "Set Tracking Generator Offset Level")
   field(PINI, "YES")
   field(DTYP, "stream")
+  field(SDIS, "$(P)$(R)EnblTrkGen-Sts.RVAL")
+  field(DISV, "0")
   field(PREC, "1")
   field(DRVH, "200")
   field(DRVL, "-200")
@@ -1650,7 +1668,7 @@ record(stringin, "$(P)$(R)Idn-Cte") {
 # These records will only process when the respective Marker is ON
 record(ai, "$(P)$(R)MarkY1-Mon") {
   field(DESC, "Get Y value of the marker")
-  field(SCAN, "1 second")
+  field(SCAN, ".002 second")
   field(DISV, "0")
   field(SDIS, "$(P)$(R)EnblMark1-Sts.RVAL")
   field(DTYP, "stream")
@@ -1661,7 +1679,7 @@ record(ai, "$(P)$(R)MarkY1-Mon") {
 
 record(ai, "$(P)$(R)MarkY2-Mon") {
   field(DESC, "Get Y value of the marker2")
-  field(SCAN, "1 second")
+  field(SCAN, ".002 second")
   field(DISV, "0")
   field(SDIS, "$(P)$(R)EnblMark2-Sts.RVAL")
   field(DTYP, "stream")
@@ -1672,7 +1690,7 @@ record(ai, "$(P)$(R)MarkY2-Mon") {
 
 record(ai, "$(P)$(R)MarkY3-Mon") {
   field(DESC, "Get Y value of the marker3")
-  field(SCAN, "1 second")
+  field(SCAN, ".002 second")
   field(DISV, "0")
   field(SDIS, "$(P)$(R)EnblMark3-Sts.RVAL")
   field(DTYP, "stream")
@@ -1683,7 +1701,7 @@ record(ai, "$(P)$(R)MarkY3-Mon") {
 
 record(ai, "$(P)$(R)MarkY4-Mon") {
   field(DESC, "Get Y value of the marker4")
-  field(SCAN, "1 second")
+  field(SCAN, ".002 second")
   field(DISV, "0")
   field(SDIS, "$(P)$(R)EnblMark4-Sts.RVAL")
   field(DTYP, "stream")
@@ -1697,7 +1715,7 @@ record(ai, "$(P)$(R)MarkY4-Mon") {
 
 record(ai, "$(P)$(R)DMarkY1-Mon") {
   field(DESC, "Get Y value of the marker")
-  field(SCAN, "1 second")
+  field(SCAN, ".002 second")
   field(DISV, "0")
   field(SDIS, "$(P)$(R)EnblDMark1-Sts.RVAL")
   field(DTYP, "stream")
@@ -1717,7 +1735,7 @@ record(calc, "$(P)$(R)DMarkY1Disp-Mon") {
 
 record(ai, "$(P)$(R)DMarkY2-Mon") {
   field(DESC, "Get Y value of the marker2")
-  field(SCAN, "1 second")
+  field(SCAN, ".002 second")
   field(DISV, "0")
   field(SDIS, "$(P)$(R)EnblDMark2-Sts.RVAL")
   field(DTYP, "stream")
@@ -1737,7 +1755,7 @@ record(calc, "$(P)$(R)DMarkY2Disp-Mon") {
 
 record(ai, "$(P)$(R)DMarkY3-Mon") {
   field(DESC, "Get Y value of the marker3")
-  field(SCAN, "1 second")
+  field(SCAN, ".002 second")
   field(DISV, "0")
   field(SDIS, "$(P)$(R)EnblDMark3-Sts.RVAL")
   field(DTYP, "stream")
@@ -1757,7 +1775,7 @@ record(calc, "$(P)$(R)DMarkY3Disp-Mon") {
 
 record(ai, "$(P)$(R)DMarkY4-Mon") {
   field(DESC, "Get Y value of the marker4")
-  field(SCAN, "1 second")
+  field(SCAN, ".002 second")
   field(DISV, "0")
   field(SDIS, "$(P)$(R)EnblDMark4-Sts.RVAL")
   field(DTYP, "stream")
@@ -1780,7 +1798,7 @@ record(calc, "$(P)$(R)DMarkY4Disp-Mon") {
 
 record(ai, "$(P)$(R)MarkCount-Mon") {
   field(DESC, "Get Marker Freq. Count Result")
-  field(SCAN, "1 second")
+  field(SCAN, ".002 second")
   field(DISV, "0")
   field(SDIS, "$(P)$(R)EnblMarkCount-Sts.RVAL")
   field(DTYP, "stream")
@@ -1796,7 +1814,7 @@ record(ai, "$(P)$(R)MarkCount-Mon") {
 
 record(waveform, "$(P)$(R)Trace-Mon") {
   field(DESC, "Get trace waveform")
-  field(SCAN, ".001 second")
+  field(SCAN, ".002 second")
   field(SDIS, "$(P)$(R)GetSpectrum-Sel.RVAL")
   field(DISV, "0")
   field(MPST, "On Change")
@@ -1912,42 +1930,13 @@ record(bo, "$(P)$(R)Rst-Cmd") {
   field(ONAM, "1")
   field(HIGH, "1")
   field(OUT, "@rsfsx.proto cmdRst $(PORT)")
-  field(FLNK, "$(P)$(R)RstFout1")
+  field(FLNK, "$(P)$(R)RstReady")
 }
 
-record(fanout, "$(P)$(R)RstFout1") {
-  field(LNK1, "$(P)$(R)FreqCenter-RB")
-  field(LNK2, "$(P)$(R)TraceMode-Sts")
-  field(LNK3, "$(P)$(R)SwePts-RB")
-  field(LNK4, "$(P)$(R)RstFout2")
-  field(SELM, "All")
-}
-
-record(fanout, "$(P)$(R)RstFout2") {
-  field(LNK1, "$(P)$(R)MarkLimitFout")
-  field(LNK2, "$(P)$(R)TrkGenLvl-RB")
-  field(LNK3, "$(P)$(R)TrkGenLvlOffset-RB")
-#  field(LNK4, "$(P)$(R)EnblPreamp-Sts")	#PreAmp PV is commented
-  field(LNK5, "$(P)$(R)AttIn-Sts")
-  field(LNK6, "$(P)$(R)RstFout3")
-  field(SELM, "All")
-}
-
-record(fanout, "$(P)$(R)RstFout3") {
-  field(LNK1, "$(P)$(R)EnblAttAuto-Sts")
-  field(LNK2, "$(P)$(R)ImpdIn-Sts")
-  field(LNK3, "$(P)$(R)RoscSrc-Sts")
-  field(LNK4, "$(P)$(R)RstFout4")
-  field(SELM, "All")
-}
-
-record(fanout, "$(P)$(R)RstFout4") {
-  field(LNK1, "$(P)$(R)EnblMaxAuto1-Sts")
-  field(LNK2, "$(P)$(R)EnblMinAuto-Sts")
-  field(LNK3, "$(P)$(R)FiltType-Sts")
-  field(LNK4, "$(P)$(R)DetecType-Sts")
-  field(LNK5, "$(P)$(R)EnblContSwe-Sts")
-  field(SELM, "All")
+record(calc, "$(P)$(R)RstReady") {
+  field(INPA, "$(P)$(R)RstReady")
+  field(INPB, "$(P)$(R)Rst-Cmd")
+  field(CALC, "A+B")
 }
 
 # Set Marker to Max Peak on Trace (1-4)

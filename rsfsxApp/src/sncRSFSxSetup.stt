@@ -49,7 +49,7 @@ double FreqStopProc = 1;
 assign FreqStopProc to "{P}{R}FreqStop-RB.PROC";
 
 double SweTimeProc = 1;
-assign SweTimeProc to "{P}{R}SweTime-RB.PROC";
+assign SweTimeProc to "{P}{R}SweTime-Mon.PROC";
 
 double FreqArrayProc = 1;
 assign FreqArrayProc to "{P}{R}FreqArray-Mon.PROC";
@@ -135,6 +135,9 @@ monitor EnblDMaxAuto4;
 evflag EnblDMaxAuto4Flag;
 sync EnblDMaxAuto4 EnblDMaxAuto4Flag;
 
+double RefOffSP;
+assign RefOffSP to "{P}{R}RefOff-SP";
+
 double RefOffRB;
 assign RefOffRB to "{P}{R}RefOff-RB";
 monitor RefOffRB;
@@ -147,17 +150,365 @@ assign RefLvlSP to "{P}{R}RefLvl-SP";
 double RefLvlRB;
 assign RefLvlRB to "{P}{R}RefLvl-RB";
 monitor RefLvlRB;
-evflag RefLvlFlag;
-sync RefLvlRB RefLvlFlag;
 
 double RefLvlProc = 1;
 assign RefLvlProc to "{P}{R}RefLvl-RB.PROC";
 
-int AttAutoSts;
-assign AttAutoSts to "{P}{R}EnblAttAuto-Sts.RVAL";
+int Rst;
+assign Rst to "{P}{R}RstReady";
+monitor Rst;
+evflag RstFlag;
+sync Rst RstFlag;
+
+double DispRangeSP;
+assign DispRangeSP to "{P}{R}DispRange-SP";
+
+int GetSpectrum;
+assign GetSpectrum to "{P}{R}GetSpectrum-Sel";
+
+int EnblContSwe;
+assign EnblContSwe to "{P}{R}EnblContSwe-Sel";
+
+int EnblSweTimeAuto;
+assign EnblSweTimeAuto to "{P}{R}EnblSweTimeAuto-Sel";
+
+double SwePtsSP;
+assign SwePtsSP to "{P}{R}SwePts-SP";
+
+int FiltTypeSel;
+assign FiltTypeSel to "{P}{R}FiltType-Sel";
+
+int FiltTypeSts;
+assign FiltTypeSts to "{P}{R}FiltType-Sts";
+monitor FiltTypeSts;
+evflag FiltTypeFlag;
+sync FiltTypeSts FiltTypeFlag;
+
+int TraceMode;
+assign TraceMode to "{P}{R}TraceMode-Sel";
+
+int StepLink;
+assign StepLink to "{P}{R}StepLink-Sel";
+
+int AutoStep;
+assign AutoStep to "{P}{R}AutoStep-Sel";
+
+int EnblMinAuto;
+assign EnblMinAuto to "{P}{R}EnblMinAuto-Sel";
+
+int EnblMarkCount;
+assign EnblMarkCount to "{P}{R}EnblMarkCount-Sel";
+
+int EnblMarkLimit;
+assign EnblMarkLimit to "{P}{R}EnblMarkLimit-Sel";
+
+int ImpdIn;
+assign ImpdIn to "{P}{R}ImpdIn-Sel";
+
+int EnblTrkGen;
+assign EnblTrkGen to "{P}{R}EnblTrkGen-Sel";
+
+double TrkGenLvlSP;
+assign TrkGenLvlSP to "{P}{R}TrkGenLvl-SP";
+
+double TrkGenLvlRB;
+assign TrkGenLvlRB to "{P}{R}TrkGenLvl-RB";
+monitor TrkGenLvlRB;
+
+int TrkGenLvlProc;
+assign TrkGenLvlProc to "{P}{R}TrkGenLvl-RB.PROC";
+
+double TrkGenOffsetSP;
+assign TrkGenOffsetSP to "{P}{R}TrkGenLvlOffset-SP";
+
+double TrkGenOffsetRB;
+assign TrkGenOffsetRB to "{P}{R}TrkGenLvlOffset-RB";
+monitor TrkGenOffsetRB;
+evflag TrkGenOffFlag;
+sync TrkGenOffsetRB TrkGenOffFlag;
+
+int EnblAttAuto;
+assign EnblAttAuto to "{P}{R}EnblAttAuto-Sel";
+
+int RoscSrc;
+assign RoscSrc to "{P}{R}RoscSrc-Sel";
+
+int TrigSrc;
+assign TrigSrc to "{P}{R}TrigSrc-Sel";
+
+int DetecTypeProc = 1;
+assign DetecTypeProc to "{P}{R}DetecType-Sts.PROC";
+
+double FreqStepSP;
+assign FreqStepSP to "{P}{R}FreqStep-SP";
+
+int AutoDetec;
+assign AutoDetec to "{P}{R}EnblAutoDetec-Sel";
+
+int RbwAutoSel;
+assign RbwAutoSel to "{P}{R}EnblRbwAuto-Sel";
+
+int RbwAutoSts;
+assign RbwAutoSts to "{P}{R}EnblRbwAuto-Sts";
+monitor RbwAutoSts;
+evflag RbwAutoFlag;
+sync RbwAutoSts RbwAutoFlag;
+
+int RbwSts;
+assign RbwSts to "{P}{R}Rbw-Sts";
+monitor RbwSts;
+evflag RbwFlag;
+sync RbwSts RbwFlag;
+
+int RbwProc;
+assign RbwProc to "{P}{R}Rbw-Sts.PROC";
+
+int VbwProc;
+assign VbwProc to "{P}{R}Vbw-Sts.PROC";
+
+int VbwAutoSel;
+assign VbwAutoSel to "{P}{R}EnblVbwAuto-Sel";
+
+int VbwAutoSts;
+assign VbwAutoSts to "{P}{R}EnblVbwAuto-Sts";
+monitor VbwAutoSts;
+evflag VbwAutoFlag;
+sync VbwAutoSts VbwAutoFlag;
+
+int FFTCalcProc = 1;
+assign FFTCalcProc to "{P}{R}FFTCalc.PROC";
+
+int AcqTime;
+assign AcqTime to "{P}{R}Trace-Mon.SCAN";
+monitor AcqTime;
+evflag AcqTimeFlag;
+sync AcqTime AcqTimeFlag;
+
+int MX1Time;
+assign MX1Time to "{P}{R}MarkX1-RB.SCAN";
+
+int MX2Time;
+assign MX2Time to "{P}{R}MarkX2-RB.SCAN";
+
+int MX3Time;
+assign MX3Time to "{P}{R}MarkX3-RB.SCAN";
+
+int MX4Time;
+assign MX4Time to "{P}{R}MarkX4-RB.SCAN";
+
+int MY1Time;
+assign MY1Time to "{P}{R}MarkY1-Mon.SCAN";
+
+int MY2Time;
+assign MY2Time to "{P}{R}MarkY2-Mon.SCAN";
+
+int MY3Time;
+assign MY3Time to "{P}{R}MarkY3-Mon.SCAN";
+
+int MY4Time;
+assign MY4Time to "{P}{R}MarkY4-Mon.SCAN";
+
+int DMX1Time;
+assign DMX1Time to "{P}{R}DMarkX1-RB.SCAN";
+
+int DMX2Time;
+assign DMX2Time to "{P}{R}DMarkX2-RB.SCAN";
+
+int DMX3Time;
+assign DMX3Time to "{P}{R}DMarkX3-RB.SCAN";
+
+int DMX4Time;
+assign DMX4Time to "{P}{R}DMarkX4-RB.SCAN";
+
+int DMY1Time;
+assign DMY1Time to "{P}{R}DMarkY1-Mon.SCAN";
+
+int DMY2Time;
+assign DMY2Time to "{P}{R}DMarkY2-Mon.SCAN";
+
+int DMY3Time;
+assign DMY3Time to "{P}{R}DMarkY3-Mon.SCAN";
+
+int DMY4Time;
+assign DMY4Time to "{P}{R}DMarkY4-Mon.SCAN";
+
+int DynMX2Time;
+assign DynMX2Time to "{P}{R}OnOffMark2-Sel.SCAN";
+
+int DynMX3Time;
+assign DynMX3Time to "{P}{R}OnOffMark3-Sel.SCAN";
+
+int DynMX4Time;
+assign DynMX4Time to "{P}{R}OnOffMark4-Sel.SCAN";
+
+int DynDMX1Time;
+assign DynDMX1Time to "{P}{R}OnOffDMark1-Sel.SCAN";
+
+int DynDMX2Time;
+assign DynDMX2Time to "{P}{R}OnOffDMark2-Sel.SCAN";
+
+int DynDMX3Time;
+assign DynDMX3Time to "{P}{R}OnOffDMark3-Sel.SCAN";
+
+int DynDMX4Time;
+assign DynDMX4Time to "{P}{R}OnOffDMark4-Sel.SCAN";
+
+int i;
 
 ss ss1 {
     state opr {
+
+	when (efTestAndClear(RstFlag)) {
+
+	    // Disable spectrum acquisition
+	    GetSpectrum = 0;
+	    pvPut(GetSpectrum, SYNC);
+
+	    TrkGenLvlSP = -20;
+	    pvPut(TrkGenLvlSP, SYNC);
+
+	    TrkGenOffsetSP = 0;
+	    pvPut(TrkGenOffsetSP, SYNC);
+
+	    // Disable tracking generator
+	    EnblTrkGen = 0;
+	    pvPut(EnblTrkGen, SYNC);
+
+	    // Disable all delta peak searches
+	    EnblDMaxAuto1 = 0;
+	    pvPut(EnblDMaxAuto1, SYNC);
+
+	    EnblDMaxAuto2 = 0;
+	    pvPut(EnblDMaxAuto2, SYNC);
+
+	    EnblDMaxAuto3 = 0;
+	    pvPut(EnblDMaxAuto3, SYNC);
+
+	    EnblDMaxAuto4 = 0;
+	    pvPut(EnblDMaxAuto4, SYNC);
+
+	    // Disable all delta markers
+	    EnblDM1 = 0;
+	    pvPut(EnblDM1, SYNC);
+
+	    EnblDM2 = 0;
+	    pvPut(EnblDM2, SYNC);
+
+	    EnblDM3 = 0;
+	    pvPut(EnblDM3, SYNC);
+
+	    EnblDM4 = 0;
+	    pvPut(EnblDM4, SYNC);
+
+	    EnblMarkCount = 0;
+	    pvPut(EnblMarkCount, SYNC);
+
+	    // Disable minimum peak search
+	    EnblMinAuto = 0;
+	    pvPut(EnblMinAuto, SYNC);
+
+	    // Disable mark limit
+	    EnblMarkLimit = 0;
+	    pvPut(EnblMarkLimit, SYNC);
+
+	    // Disable all max peak searches
+	    EnblMaxAuto1 = 0;
+	    pvPut(EnblMaxAuto1, SYNC);
+
+	    EnblMaxAuto2 = 0;
+	    pvPut(EnblMaxAuto2, SYNC);
+
+	    EnblMaxAuto3 = 0;
+	    pvPut(EnblMaxAuto3, SYNC);
+
+	    EnblMaxAuto4 = 0;
+	    pvPut(EnblMaxAuto4, SYNC);
+
+	    // Disable all markers
+	    EnblM1 = 0;
+	    pvPut(EnblM1, SYNC);
+
+	    EnblM2 = 0;
+	    pvPut(EnblM2, SYNC);
+
+	    EnblM3 = 0;
+	    pvPut(EnblM3, SYNC);
+
+	    EnblM4 = 0;
+	    pvPut(EnblM4, SYNC);
+
+	    RefLvlSP = -20;
+	    pvPut(RefLvlSP, SYNC);
+
+	    RefOffSP = 0;
+	    pvPut(RefOffSP, SYNC);
+	    efClear(RefOffFlag);
+
+	    DispRangeSP = 100;
+	    pvPut(DispRangeSP, SYNC);
+
+	    // Select continuoua sweep mode
+	    EnblContSwe = 1;
+	    pvPut(EnblContSwe, SYNC);
+
+	    SwePtsSP = 501;
+	    pvPut(SwePtsSP, SYNC);
+
+	    // Return to WRITe mode
+	    TraceMode = 0;
+	    pvPut(TraceMode, SYNC);
+
+	    // Couple the frequency step size
+	    StepLink = 0;
+	    pvPut(StepLink, SYNC);
+
+	    // Enable automatic frequency step size
+	    AutoStep = 0;
+	    pvPut(AutoStep, SYNC);
+
+	    // Return trigger source to free run mode
+	    TrigSrc = 0;
+	    pvPut(TrigSrc, SYNC);
+
+	    // Return input impedance to 50 ohms
+	    ImpdIn = 0;
+	    pvPut(ImpdIn, SYNC);
+
+	    // Enable automatic attenuation
+	    EnblAttAuto = 1;
+	    pvPut(EnblAttAuto, SYNC);
+
+	    // Return to INTernal reference oscillator
+	    RoscSrc = 0;
+	    pvPut(RoscSrc, SYNC);
+
+	    // Return filter type to NORMal
+	    FiltTypeSel = 0;
+	    pvPut(FiltTypeSel, SYNC);
+
+	    // Turn automatic detector type ON
+	    AutoDetec = 1;
+	    pvPut(AutoDetec, SYNC);
+
+	    // Turn auto Rbw ON
+	    RbwAutoSel = 1;
+	    pvPut(RbwAutoSel, SYNC);
+
+	    // Turn auto Vbw ON
+	    VbwAutoSel = 1;
+	    pvPut(VbwAutoSel, SYNC);
+
+	    CenterFreqSP = 1500000000;
+	    pvPut(CenterFreqSP, SYNC);
+
+	    FreqStepSP = 1000000;
+	    pvPut(FreqStepSP, SYNC);
+
+	    // Enable automatic sweep time update
+	    EnblSweTimeAuto = 1;
+	    pvPut(EnblSweTimeAuto, SYNC);
+
+	} state opr
 
 	when (efTest(CenterFreqFlag)) {
 	    
@@ -184,6 +535,9 @@ ss ss1 {
 
 	    pvPut(FreqArrayProc, SYNC);
 	    pvPut(SweTimeProc, SYNC);
+
+	    pvPut(RbwProc, SYNC);
+	    pvPut(VbwProc, SYNC);
 
 	    efClear(CenterFreqFlag);
 
@@ -215,6 +569,9 @@ ss ss1 {
 	    pvPut(FreqArrayProc, SYNC);
 	    pvPut(SweTimeProc, SYNC);
 
+	    pvPut(RbwProc, SYNC);
+	    pvPut(VbwProc, SYNC);
+
 	    efClear(SpanFlag);
 
 	} state opr
@@ -245,6 +602,9 @@ ss ss1 {
 	    pvPut(FreqArrayProc, SYNC);
 	    pvPut(SweTimeProc, SYNC);
 
+	    pvPut(RbwProc, SYNC);
+	    pvPut(VbwProc, SYNC);
+
 	    efClear(FreqStartFlag);
 
 	} state opr
@@ -272,11 +632,70 @@ ss ss1 {
 	    pvPut(FreqArrayProc, SYNC);
 	    pvPut(SweTimeProc, SYNC);
 
+	    pvPut(RbwProc, SYNC);
+	    pvPut(VbwProc, SYNC);
+
 	    efClear(FreqStopFlag);
 
 	} state opr
 
 	when (efTestAndClear(MarkAOffFlag)) {
+
+	    // When the SCAN value is too little, it is hard
+	    // for the IOC to disable the markers, so it
+	    // will put all markers in a Passive state
+	    // first and then disable them. After that, the
+	    // previous SCAN values are restored.
+
+	    i = AcqTime;
+
+	    MX1Time = 0;
+	    MX2Time = 0;
+	    MX3Time = 0;
+	    MX4Time = 0;
+	    MY1Time = 0;
+	    MY2Time = 0;
+	    MY3Time = 0;
+	    MY4Time = 0;
+	    DMX1Time = 0;
+	    DMX2Time = 0;
+	    DMX3Time = 0;
+	    DMX4Time = 0;
+	    DMY1Time = 0;
+	    DMY2Time = 0;
+	    DMY3Time = 0;
+	    DMY4Time = 0;
+	    DynMX2Time = 0;
+	    DynMX3Time = 0;
+	    DynMX4Time = 0;
+	    DynDMX1Time = 0;
+	    DynDMX2Time = 0;
+	    DynDMX3Time = 0;
+	    DynDMX4Time = 0;
+
+	    pvPut(MX1Time, SYNC);
+	    pvPut(MX2Time, SYNC);
+	    pvPut(MX3Time, SYNC);
+	    pvPut(MX4Time, SYNC);
+	    pvPut(MY1Time, SYNC);
+	    pvPut(MY2Time, SYNC);
+	    pvPut(MY3Time, SYNC);
+	    pvPut(MY4Time, SYNC);
+	    pvPut(DMX1Time, SYNC);
+	    pvPut(DMX2Time, SYNC);
+	    pvPut(DMX3Time, SYNC);
+	    pvPut(DMX4Time, SYNC);
+	    pvPut(DMY1Time, SYNC);
+	    pvPut(DMY2Time, SYNC);
+	    pvPut(DMY3Time, SYNC);
+	    pvPut(DMY4Time, SYNC);
+	    pvPut(DynMX2Time, SYNC);
+	    pvPut(DynMX3Time, SYNC);
+	    pvPut(DynMX4Time, SYNC);
+	    pvPut(DynDMX1Time, SYNC);
+	    pvPut(DynDMX2Time, SYNC);
+	    pvPut(DynDMX3Time, SYNC);
+	    pvPut(DynDMX4Time, SYNC);
 
 	    EnblMaxAuto1 = 0;
 	    pvPut(EnblMaxAuto1, SYNC);
@@ -302,9 +721,68 @@ ss ss1 {
 	    EnblM4 = 0;
 	    pvPut(EnblM4, SYNC);
 
+	    AcqTime = i;
+	    pvPut(AcqTime, SYNC);
+
 	} state opr
 
 	when (efTestAndClear(DMarkAOffFlag)) {
+
+	    // When the SCAN value is too little, it is hard
+	    // for the IOC to disable the markers, so it
+	    // will put all markers in a Passive state
+	    // first and then disable them. After that, the
+	    // previous SCAN values are restored.
+
+	    i = AcqTime;
+
+	    MX1Time = 0;
+	    MX2Time = 0;
+	    MX3Time = 0;
+	    MX4Time = 0;
+	    MY1Time = 0;
+	    MY2Time = 0;
+	    MY3Time = 0;
+	    MY4Time = 0;
+	    DMX1Time = 0;
+	    DMX2Time = 0;
+	    DMX3Time = 0;
+	    DMX4Time = 0;
+	    DMY1Time = 0;
+	    DMY2Time = 0;
+	    DMY3Time = 0;
+	    DMY4Time = 0;
+	    DynMX2Time = 0;
+	    DynMX3Time = 0;
+	    DynMX4Time = 0;
+	    DynDMX1Time = 0;
+	    DynDMX2Time = 0;
+	    DynDMX3Time = 0;
+	    DynDMX4Time = 0;
+
+	    pvPut(MX1Time, SYNC);
+	    pvPut(MX2Time, SYNC);
+	    pvPut(MX3Time, SYNC);
+	    pvPut(MX4Time, SYNC);
+	    pvPut(MY1Time, SYNC);
+	    pvPut(MY2Time, SYNC);
+	    pvPut(MY3Time, SYNC);
+	    pvPut(MY4Time, SYNC);
+	    pvPut(DMX1Time, SYNC);
+	    pvPut(DMX2Time, SYNC);
+	    pvPut(DMX3Time, SYNC);
+	    pvPut(DMX4Time, SYNC);
+	    pvPut(DMY1Time, SYNC);
+	    pvPut(DMY2Time, SYNC);
+	    pvPut(DMY3Time, SYNC);
+	    pvPut(DMY4Time, SYNC);
+	    pvPut(DynMX2Time, SYNC);
+	    pvPut(DynMX3Time, SYNC);
+	    pvPut(DynMX4Time, SYNC);
+	    pvPut(DynDMX1Time, SYNC);
+	    pvPut(DynDMX2Time, SYNC);
+	    pvPut(DynDMX3Time, SYNC);
+	    pvPut(DynDMX4Time, SYNC);
 
 	    EnblDMaxAuto1 = 0;
 	    pvPut(EnblDMaxAuto1, SYNC);
@@ -329,6 +807,9 @@ ss ss1 {
 
 	    EnblDM4 = 0;
 	    pvPut(EnblDM4, SYNC);
+
+	    AcqTime = i;
+	    pvPut(AcqTime, SYNC);
 
 	} state opr
 
@@ -435,6 +916,106 @@ ss ss1 {
 	    pvPut(RefLvlProc, SYNC);
 	    RefLvlSP = RefLvlRB;
 	    pvPut(RefLvlSP, SYNC);
+
+	} state opr
+
+	when (efTestAndClear(TrkGenOffFlag)) {
+
+	    pvPut(TrkGenLvlProc, SYNC);
+	    TrkGenLvlSP = TrkGenLvlRB;
+	    pvPut(TrkGenLvlSP, SYNC);
+
+	} state opr
+
+	when (efTestAndClear(RbwFlag)) {
+
+	    pvPut(VbwProc, SYNC);
+	    pvPut(SweTimeProc, SYNC);
+	    pvPut(FFTCalcProc, SYNC);
+
+	} state opr
+
+	when (efTestAndClear(RbwAutoFlag)) {
+
+	    pvPut(RbwProc, SYNC);
+	    pvPut(VbwProc, SYNC);
+	    pvPut(FFTCalcProc, SYNC);
+
+	} state opr
+
+	when (efTestAndClear(VbwAutoFlag)) {
+
+	    pvPut(RbwProc, SYNC);
+	    pvPut(VbwProc, SYNC);
+	    pvPut(FFTCalcProc, SYNC);
+
+	} state opr
+
+	when (efTestAndClear(FiltTypeFlag)) {
+
+	    pvPut(DetecTypeProc, SYNC);
+	    pvPut(SweTimeProc, SYNC);
+	    pvPut(FFTCalcProc, SYNC);
+
+	} state opr
+
+	when (efTestAndClear(AcqTimeFlag)) {
+
+	    // Disable spectrum acquisition
+	    GetSpectrum = 0;
+	    pvPut(GetSpectrum, SYNC);
+
+	    MX1Time = AcqTime;
+	    MX2Time = AcqTime;
+	    MX3Time = AcqTime;
+	    MX4Time = AcqTime;
+	    MY1Time = AcqTime;
+	    MY2Time = AcqTime;
+	    MY3Time = AcqTime;
+	    MY4Time = AcqTime;
+	    DMX1Time = AcqTime;
+	    DMX2Time = AcqTime;
+	    DMX3Time = AcqTime;
+	    DMX4Time = AcqTime;
+	    DMY1Time = AcqTime;
+	    DMY2Time = AcqTime;
+	    DMY3Time = AcqTime;
+	    DMY4Time = AcqTime;
+	    DynMX2Time = AcqTime;
+	    DynMX3Time = AcqTime;
+	    DynMX4Time = AcqTime;
+	    DynDMX1Time = AcqTime;
+	    DynDMX2Time = AcqTime;
+	    DynDMX3Time = AcqTime;
+	    DynDMX4Time = AcqTime;
+
+	    pvPut(MX1Time, SYNC);
+	    pvPut(MX2Time, SYNC);
+	    pvPut(MX3Time, SYNC);
+	    pvPut(MX4Time, SYNC);
+	    pvPut(MY1Time, SYNC);
+	    pvPut(MY2Time, SYNC);
+	    pvPut(MY3Time, SYNC);
+	    pvPut(MY4Time, SYNC);
+	    pvPut(DMX1Time, SYNC);
+	    pvPut(DMX2Time, SYNC);
+	    pvPut(DMX3Time, SYNC);
+	    pvPut(DMX4Time, SYNC);
+	    pvPut(DMY1Time, SYNC);
+	    pvPut(DMY2Time, SYNC);
+	    pvPut(DMY3Time, SYNC);
+	    pvPut(DMY4Time, SYNC);
+	    pvPut(DynMX2Time, SYNC);
+	    pvPut(DynMX3Time, SYNC);
+	    pvPut(DynMX4Time, SYNC);
+	    pvPut(DynDMX1Time, SYNC);
+	    pvPut(DynDMX2Time, SYNC);
+	    pvPut(DynDMX3Time, SYNC);
+	    pvPut(DynDMX4Time, SYNC);
+
+	    // Enable spectrum acquisition
+	    GetSpectrum = 1;
+	    pvPut(GetSpectrum, SYNC);
 
 	} state opr
 
