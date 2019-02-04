@@ -650,6 +650,62 @@ ss ss1 {
 
 	when (efTestAndClear(MarkAOffFlag)) {
 
+	    // When the SCAN value is too little, it is hard
+	    // for the IOC to disable the markers, so it
+	    // will put all markers in a Passive state
+	    // first and then disable them. After that, the
+	    // previous SCAN values are restored.
+
+	    i = AcqTime;
+
+	    MX1Time = 0;
+	    MX2Time = 0;
+	    MX3Time = 0;
+	    MX4Time = 0;
+	    MY1Time = 0;
+	    MY2Time = 0;
+	    MY3Time = 0;
+	    MY4Time = 0;
+	    DMX1Time = 0;
+	    DMX2Time = 0;
+	    DMX3Time = 0;
+	    DMX4Time = 0;
+	    DMY1Time = 0;
+	    DMY2Time = 0;
+	    DMY3Time = 0;
+	    DMY4Time = 0;
+	    DynMX2Time = 0;
+	    DynMX3Time = 0;
+	    DynMX4Time = 0;
+	    DynDMX1Time = 0;
+	    DynDMX2Time = 0;
+	    DynDMX3Time = 0;
+	    DynDMX4Time = 0;
+
+	    pvPut(MX1Time, SYNC);
+	    pvPut(MX2Time, SYNC);
+	    pvPut(MX3Time, SYNC);
+	    pvPut(MX4Time, SYNC);
+	    pvPut(MY1Time, SYNC);
+	    pvPut(MY2Time, SYNC);
+	    pvPut(MY3Time, SYNC);
+	    pvPut(MY4Time, SYNC);
+	    pvPut(DMX1Time, SYNC);
+	    pvPut(DMX2Time, SYNC);
+	    pvPut(DMX3Time, SYNC);
+	    pvPut(DMX4Time, SYNC);
+	    pvPut(DMY1Time, SYNC);
+	    pvPut(DMY2Time, SYNC);
+	    pvPut(DMY3Time, SYNC);
+	    pvPut(DMY4Time, SYNC);
+	    pvPut(DynMX2Time, SYNC);
+	    pvPut(DynMX3Time, SYNC);
+	    pvPut(DynMX4Time, SYNC);
+	    pvPut(DynDMX1Time, SYNC);
+	    pvPut(DynDMX2Time, SYNC);
+	    pvPut(DynDMX3Time, SYNC);
+	    pvPut(DynDMX4Time, SYNC);
+
 	    EnblMaxAuto1 = 0;
 	    pvPut(EnblMaxAuto1, SYNC);
 
@@ -674,9 +730,68 @@ ss ss1 {
 	    EnblM4 = 0;
 	    pvPut(EnblM4, SYNC);
 
+	    AcqTime = i;
+	    pvPut(AcqTime, SYNC);
+
 	} state opr
 
 	when (efTestAndClear(DMarkAOffFlag)) {
+
+	    // When the SCAN value is too little, it is hard
+	    // for the IOC to disable the markers, so it
+	    // will put all markers in a Passive state
+	    // first and then disable them. After that, the
+	    // previous SCAN values are restored.
+
+	    i = AcqTime;
+
+	    MX1Time = 0;
+	    MX2Time = 0;
+	    MX3Time = 0;
+	    MX4Time = 0;
+	    MY1Time = 0;
+	    MY2Time = 0;
+	    MY3Time = 0;
+	    MY4Time = 0;
+	    DMX1Time = 0;
+	    DMX2Time = 0;
+	    DMX3Time = 0;
+	    DMX4Time = 0;
+	    DMY1Time = 0;
+	    DMY2Time = 0;
+	    DMY3Time = 0;
+	    DMY4Time = 0;
+	    DynMX2Time = 0;
+	    DynMX3Time = 0;
+	    DynMX4Time = 0;
+	    DynDMX1Time = 0;
+	    DynDMX2Time = 0;
+	    DynDMX3Time = 0;
+	    DynDMX4Time = 0;
+
+	    pvPut(MX1Time, SYNC);
+	    pvPut(MX2Time, SYNC);
+	    pvPut(MX3Time, SYNC);
+	    pvPut(MX4Time, SYNC);
+	    pvPut(MY1Time, SYNC);
+	    pvPut(MY2Time, SYNC);
+	    pvPut(MY3Time, SYNC);
+	    pvPut(MY4Time, SYNC);
+	    pvPut(DMX1Time, SYNC);
+	    pvPut(DMX2Time, SYNC);
+	    pvPut(DMX3Time, SYNC);
+	    pvPut(DMX4Time, SYNC);
+	    pvPut(DMY1Time, SYNC);
+	    pvPut(DMY2Time, SYNC);
+	    pvPut(DMY3Time, SYNC);
+	    pvPut(DMY4Time, SYNC);
+	    pvPut(DynMX2Time, SYNC);
+	    pvPut(DynMX3Time, SYNC);
+	    pvPut(DynMX4Time, SYNC);
+	    pvPut(DynDMX1Time, SYNC);
+	    pvPut(DynDMX2Time, SYNC);
+	    pvPut(DynDMX3Time, SYNC);
+	    pvPut(DynDMX4Time, SYNC);
 
 	    EnblDMaxAuto1 = 0;
 	    pvPut(EnblDMaxAuto1, SYNC);
@@ -701,6 +816,9 @@ ss ss1 {
 
 	    EnblDM4 = 0;
 	    pvPut(EnblDM4, SYNC);
+
+	    AcqTime = i;
+	    pvPut(AcqTime, SYNC);
 
 	} state opr
 
