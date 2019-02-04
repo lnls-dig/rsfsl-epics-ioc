@@ -151,7 +151,6 @@ record(mbbi, "$(P)$(R)FiltType-Sts") {
   field(FRST, "PULS")
   field(FRVL, "4")
   field(INP, "@rsfsl.proto inFiltType $(PORT)")
-  field(FLNK, "$(P)$(R)SweTime-RB")
 }
 
 record(mbbo, "$(P)$(R)FiltType-Sel") {
@@ -172,3 +171,20 @@ record(mbbo, "$(P)$(R)FiltType-Sel") {
   field(FLNK, "$(P)$(R)FiltType-Sts")
 }
 
+# FFT Filters Active
+# FFT filters are active only while RBW < 100kHz, so even if the Filter Type PV
+# says FFT selected, it may not be active. The FFT-Sts shows the state
+# of the FFT filters.
+
+record(calc, "$(P)$(R)FFTCalc") {
+  field(DESC, "Verify if FFT filter is active")
+  field(INPA, "$(P)$(R)FiltType-Sts")
+  field(INPB, "$(P)$(R)Rbw-Sts.RVAL")
+  field(CALC, "((A=1)&&(B<100000))?1:0")
+  field(FLNK, "$(P)$(R)FFT-Sts")
+}
+
+record(bi, "$(P)$(R)FFT-Sts") {
+  field(DESC, "FFT State")
+  field(INP, "$(P)$(R)FFTCalc")
+}

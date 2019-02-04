@@ -178,8 +178,14 @@ assign EnblSweTimeAuto to "{P}{R}EnblSweTimeAuto-Sel";
 double SwePtsSP;
 assign SwePtsSP to "{P}{R}SwePts-SP";
 
-double FiltType;
-assign FiltType to "{P}{R}FiltType-Sel";
+int FiltTypeSel;
+assign FiltTypeSel to "{P}{R}FiltType-Sel";
+
+int FiltTypeSts;
+assign FiltTypeSts to "{P}{R}FiltType-Sts";
+monitor FiltTypeSts;
+evflag FiltTypeFlag;
+sync FiltTypeSts FiltTypeFlag;
 
 int TraceMode;
 assign TraceMode to "{P}{R}TraceMode-Sel";
@@ -239,6 +245,9 @@ assign DetecTypeSel to "{P}{R}DetecType-Sel";
 int DetecTypeSts;
 assign DetecTypeSts to "{P}{R}DetecType-Sts";
 
+int DetecTypeProc = 1;
+assign DetecTypeProc to "{P}{R}DetecType-Sts.PROC";
+
 double FreqStepSP;
 assign FreqStepSP to "{P}{R}FreqStep-SP";
 
@@ -268,6 +277,9 @@ assign VbwAutoSts to "{P}{R}EnblVbwAuto-Sts";
 monitor VbwAutoSts;
 evflag VbwAutoFlag;
 sync VbwAutoSts VbwAutoFlag;
+
+int FFTCalcProc = 1;
+assign FFTCalcProc to "{P}{R}FFTCalc.PROC";
 
 ss ss1 {
     state opr {
@@ -397,8 +409,8 @@ ss ss1 {
 	    pvPut(RoscSrc, SYNC);
 
 	    // Return filter type to NORMal
-	    FiltType = 0;
-	    pvPut(FiltType, SYNC);
+	    FiltTypeSel = 0;
+	    pvPut(FiltTypeSel, SYNC);
 
 	    // Turn automatic detector type ON
 	    AutoDetec = 1;
@@ -727,6 +739,7 @@ ss ss1 {
 
 	    pvPut(RbwProc, SYNC);
 	    pvPut(VbwProc, SYNC);
+	    pvPut(FFTCalcProc, SYNC);
 
 	} state opr
 
@@ -734,6 +747,15 @@ ss ss1 {
 
 	    pvPut(RbwProc, SYNC);
 	    pvPut(VbwProc, SYNC);
+	    pvPut(FFTCalcProc, SYNC);
+
+	} state opr
+
+	when (efTestAndClear(FiltTypeFlag)) {
+
+	    pvPut(DetecTypeProc, SYNC);
+	    pvPut(SweTimeProc, SYNC);
+	    pvPut(FFTCalcProc, SYNC);
 
 	} state opr
 
