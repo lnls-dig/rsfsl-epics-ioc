@@ -263,6 +263,12 @@ monitor RbwAutoSts;
 evflag RbwAutoFlag;
 sync RbwAutoSts RbwAutoFlag;
 
+int RbwSts;
+assign RbwSts to "{P}{R}Rbw-Sts";
+monitor RbwSts;
+evflag RbwFlag;
+sync RbwSts RbwFlag;
+
 int RbwProc;
 assign RbwProc to "{P}{R}Rbw-Sts.PROC";
 
@@ -732,6 +738,14 @@ ss ss1 {
 	    pvPut(TrkGenLvlProc, SYNC);
 	    TrkGenLvlSP = TrkGenLvlRB;
 	    pvPut(TrkGenLvlSP, SYNC);
+
+	} state opr
+
+	when (efTestAndClear(RbwFlag)) {
+
+	    pvPut(VbwProc, SYNC);
+	    pvPut(SweTimeProc, SYNC);
+	    pvPut(FFTCalcProc, SYNC);
 
 	} state opr
 
