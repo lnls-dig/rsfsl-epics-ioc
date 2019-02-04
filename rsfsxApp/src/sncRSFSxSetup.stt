@@ -49,7 +49,7 @@ double FreqStopProc = 1;
 assign FreqStopProc to "{P}{R}FreqStop-RB.PROC";
 
 double SweTimeProc = 1;
-assign SweTimeProc to "{P}{R}SweTime-RB.PROC";
+assign SweTimeProc to "{P}{R}SweTime-Mon.PROC";
 
 double FreqArrayProc = 1;
 assign FreqArrayProc to "{P}{R}FreqArray-Mon.PROC";

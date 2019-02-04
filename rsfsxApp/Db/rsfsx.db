@@ -144,7 +144,7 @@ record(ao, "$(P)$(R)SwePts-SP") {
 
 # Sweep Time
 
-record(ai, "$(P)$(R)SweTime-RB") {
+record(ai, "$(P)$(R)SweTime-Mon") {
   field(DESC, "Get Sweep Time")
   field(DTYP, "stream")
   field(PREC, "3")
@@ -162,7 +162,7 @@ record(bi, "$(P)$(R)EnblSweTimeAuto-Sts") {
   field(ZNAM, "OFF")
   field(ONAM, "ON")
   field(INP, "@rsfsx.proto inEnblSweTimeAuto $(PORT)")
-  field(FLNK, "$(P)$(R)SweTime-RB")
+  field(FLNK, "$(P)$(R)SweTime-Mon")
 }
 
 record(bo, "$(P)$(R)EnblSweTimeAuto-Sel") {
@@ -497,6 +497,7 @@ record(mbbi, "$(P)$(R)Vbw-Sts") {
   field(FTST, "10 MHz")
   field(FTVL, "10000000")
   field(INP, "@rsfsx.proto inVbw $(PORT)")
+  field(FLNK, "$(P)$(R)SweTime-Mon")
 }
 
 record(mbbo, "$(P)$(R)Vbw-Sel") {
