@@ -154,9 +154,6 @@ monitor RefLvlRB;
 double RefLvlProc = 1;
 assign RefLvlProc to "{P}{R}RefLvl-RB.PROC";
 
-int AttAutoSts;
-assign AttAutoSts to "{P}{R}EnblAttAuto-Sts";
-
 int Rst;
 assign Rst to "{P}{R}RstReady";
 monitor Rst;
@@ -238,12 +235,6 @@ assign RoscSrc to "{P}{R}RoscSrc-Sel";
 
 int TrigSrc;
 assign TrigSrc to "{P}{R}TrigSrc-Sel";
-
-int DetecTypeSel;
-assign DetecTypeSel to "{P}{R}DetecType-Sel";
-
-int DetecTypeSts;
-assign DetecTypeSts to "{P}{R}DetecType-Sts";
 
 int DetecTypeProc = 1;
 assign DetecTypeProc to "{P}{R}DetecType-Sts.PROC";
