@@ -707,7 +707,7 @@ record(bo, "$(P)$(R)EnblMark4-Sel") {
 # is ON or if a value is set to the Marker (using the output xxx-SP PV)
 record(ai, "$(P)$(R)MarkX1-RB") {
   field(DESC, "Get X value of the marker1")
-  field(SCAN, "1 second")
+  field(SCAN, ".002 second")
   field(DISV, "0")
   field(SDIS, "$(P)$(R)EnblMark1-Sts.RVAL")
   field(DTYP, "stream")
@@ -736,7 +736,7 @@ record(calc, "$(P)$(R)MarkX1Disp-Mon") {
 
 record(ai, "$(P)$(R)MarkX2-RB") {
   field(DESC, "Get X value of the marker2")
-  field(SCAN, "1 second")
+  field(SCAN, ".002 second")
   field(DISV, "0")
   field(SDIS, "$(P)$(R)EnblMark2-Sts.RVAL")
   field(DTYP, "stream")
@@ -765,7 +765,7 @@ record(calc, "$(P)$(R)MarkX2Disp-Mon") {
 
 record(ai, "$(P)$(R)MarkX3-RB") {
   field(DESC, "Get X value of the marker3")
-  field(SCAN, "1 second")
+  field(SCAN, ".002 second")
   field(DISV, "0")
   field(SDIS, "$(P)$(R)EnblMark3-Sts.RVAL")
   field(DTYP, "stream")
@@ -794,7 +794,7 @@ record(calc, "$(P)$(R)MarkX3Disp-Mon") {
 
 record(ai, "$(P)$(R)MarkX4-RB") {
   field(DESC, "Get X value of the marker4")
-  field(SCAN, "1 second")
+  field(SCAN, ".002 second")
   field(DISV, "0")
   field(SDIS, "$(P)$(R)EnblMark4-Sts.RVAL")
   field(DTYP, "stream")
@@ -878,7 +878,7 @@ record(bi, "$(P)$(R)EnblMaxAuto2-Sts") {
 
 record(bo, "$(P)$(R)OnOffMark2-Sel") {
   field(DESC, "Place Mark2 on Max Peak")
-  field(SCAN, ".1 second")
+  field(SCAN, ".002 second")
   field(DISV, "0")
   field(SDIS, "$(P)$(R)EnblMaxAuto2-Sel")
   field(DTYP, "stream")
@@ -911,7 +911,7 @@ record(bi, "$(P)$(R)EnblMaxAuto3-Sts") {
 
 record(bo, "$(P)$(R)OnOffMark3-Sel") {
   field(DESC, "Place Mark3 on Max Peak")
-  field(SCAN, ".1 second")
+  field(SCAN, ".002 second")
   field(DISV, "0")
   field(SDIS, "$(P)$(R)EnblMaxAuto3-Sel")
   field(DTYP, "stream")
@@ -944,7 +944,7 @@ record(bi, "$(P)$(R)EnblMaxAuto4-Sts") {
 
 record(bo, "$(P)$(R)OnOffMark4-Sel") {
   field(DESC, "Place Mark4 on Max Peak")
-  field(SCAN, ".1 second")
+  field(SCAN, ".002 second")
   field(DISV, "0")
   field(SDIS, "$(P)$(R)EnblMaxAuto4-Sel")
   field(DTYP, "stream")
@@ -1158,7 +1158,7 @@ record(bi, "$(P)$(R)EnblDMaxAuto1-Sts") {
 
 record(bo, "$(P)$(R)OnOffDMark1-Sel") {
   field(DESC, "Place DMark1 on Max Peak")
-  field(SCAN, ".1 second")
+  field(SCAN, ".002 second")
   field(DISV, "0")
   field(SDIS, "$(P)$(R)EnblDMaxAuto1-Sel")
   field(DTYP, "stream")
@@ -1190,7 +1190,7 @@ record(bi, "$(P)$(R)EnblDMaxAuto2-Sts") {
 
 record(bo, "$(P)$(R)OnOffDMark2-Sel") {
   field(DESC, "Place DMark2 on Max Peak")
-  field(SCAN, ".1 second")
+  field(SCAN, ".002 second")
   field(DISV, "0")
   field(SDIS, "$(P)$(R)EnblDMaxAuto2-Sel")
   field(DTYP, "stream")
@@ -1222,7 +1222,7 @@ record(bi, "$(P)$(R)EnblDMaxAuto3-Sts") {
 
 record(bo, "$(P)$(R)OnOffDMark3-Sel") {
   field(DESC, "Place DMark3 on Max Peak")
-  field(SCAN, ".1 second")
+  field(SCAN, ".002 second")
   field(DISV, "0")
   field(SDIS, "$(P)$(R)EnblDMaxAuto3-Sel")
   field(DTYP, "stream")
@@ -1254,7 +1254,7 @@ record(bi, "$(P)$(R)EnblDMaxAuto4-Sts") {
 
 record(bo, "$(P)$(R)OnOffDMark4-Sel") {
   field(DESC, "Place DMark4 on Max Peak")
-  field(SCAN, ".1 second")
+  field(SCAN, ".002 second")
   field(DISV, "0")
   field(SDIS, "$(P)$(R)EnblDMaxAuto4-Sel")
   field(DTYP, "stream")
@@ -1279,7 +1279,7 @@ record(ai, "$(P)$(R)DynamicDX4-Mon") {
 
 record(ai, "$(P)$(R)DMarkX1-RB") {
   field(DESC, "Get X value of the marker1")
-  field(SCAN, "1 second")
+  field(SCAN, ".002 second")
   field(DISV, "0")
   field(SDIS, "$(P)$(R)EnblDMark1-Sts.RVAL")
   field(DTYP, "stream")
@@ -1308,7 +1308,7 @@ record(calc, "$(P)$(R)DMarkX1Disp-Mon") {
 
 record(ai, "$(P)$(R)DMarkX2-RB") {
   field(DESC, "Get X value of the marker2")
-  field(SCAN, "1 second")
+  field(SCAN, ".002 second")
   field(DISV, "0")
   field(SDIS, "$(P)$(R)EnblDMark2-Sts.RVAL")
   field(DTYP, "stream")
@@ -1337,7 +1337,7 @@ record(calc, "$(P)$(R)DMarkX2Disp-Mon") {
 
 record(ai, "$(P)$(R)DMarkX3-RB") {
   field(DESC, "Get X value of the marker3")
-  field(SCAN, "1 second")
+  field(SCAN, ".002 second")
   field(DISV, "0")
   field(SDIS, "$(P)$(R)EnblDMark3-Sts.RVAL")
   field(DTYP, "stream")
@@ -1366,7 +1366,7 @@ record(calc, "$(P)$(R)DMarkX3Disp-Mon") {
 
 record(ai, "$(P)$(R)DMarkX4-RB") {
   field(DESC, "Get X value of the marker4")
-  field(SCAN, "1 second")
+  field(SCAN, ".002 second")
   field(DISV, "0")
   field(SDIS, "$(P)$(R)EnblDMark4-Sts.RVAL")
   field(DTYP, "stream")
@@ -1666,7 +1666,7 @@ record(stringin, "$(P)$(R)Idn-Cte") {
 # These records will only process when the respective Marker is ON
 record(ai, "$(P)$(R)MarkY1-Mon") {
   field(DESC, "Get Y value of the marker")
-  field(SCAN, "1 second")
+  field(SCAN, ".002 second")
   field(DISV, "0")
   field(SDIS, "$(P)$(R)EnblMark1-Sts.RVAL")
   field(DTYP, "stream")
@@ -1677,7 +1677,7 @@ record(ai, "$(P)$(R)MarkY1-Mon") {
 
 record(ai, "$(P)$(R)MarkY2-Mon") {
   field(DESC, "Get Y value of the marker2")
-  field(SCAN, "1 second")
+  field(SCAN, ".002 second")
   field(DISV, "0")
   field(SDIS, "$(P)$(R)EnblMark2-Sts.RVAL")
   field(DTYP, "stream")
@@ -1688,7 +1688,7 @@ record(ai, "$(P)$(R)MarkY2-Mon") {
 
 record(ai, "$(P)$(R)MarkY3-Mon") {
   field(DESC, "Get Y value of the marker3")
-  field(SCAN, "1 second")
+  field(SCAN, ".002 second")
   field(DISV, "0")
   field(SDIS, "$(P)$(R)EnblMark3-Sts.RVAL")
   field(DTYP, "stream")
@@ -1699,7 +1699,7 @@ record(ai, "$(P)$(R)MarkY3-Mon") {
 
 record(ai, "$(P)$(R)MarkY4-Mon") {
   field(DESC, "Get Y value of the marker4")
-  field(SCAN, "1 second")
+  field(SCAN, ".002 second")
   field(DISV, "0")
   field(SDIS, "$(P)$(R)EnblMark4-Sts.RVAL")
   field(DTYP, "stream")
@@ -1713,7 +1713,7 @@ record(ai, "$(P)$(R)MarkY4-Mon") {
 
 record(ai, "$(P)$(R)DMarkY1-Mon") {
   field(DESC, "Get Y value of the marker")
-  field(SCAN, "1 second")
+  field(SCAN, ".002 second")
   field(DISV, "0")
   field(SDIS, "$(P)$(R)EnblDMark1-Sts.RVAL")
   field(DTYP, "stream")
@@ -1733,7 +1733,7 @@ record(calc, "$(P)$(R)DMarkY1Disp-Mon") {
 
 record(ai, "$(P)$(R)DMarkY2-Mon") {
   field(DESC, "Get Y value of the marker2")
-  field(SCAN, "1 second")
+  field(SCAN, ".002 second")
   field(DISV, "0")
   field(SDIS, "$(P)$(R)EnblDMark2-Sts.RVAL")
   field(DTYP, "stream")
@@ -1753,7 +1753,7 @@ record(calc, "$(P)$(R)DMarkY2Disp-Mon") {
 
 record(ai, "$(P)$(R)DMarkY3-Mon") {
   field(DESC, "Get Y value of the marker3")
-  field(SCAN, "1 second")
+  field(SCAN, ".002 second")
   field(DISV, "0")
   field(SDIS, "$(P)$(R)EnblDMark3-Sts.RVAL")
   field(DTYP, "stream")
@@ -1773,7 +1773,7 @@ record(calc, "$(P)$(R)DMarkY3Disp-Mon") {
 
 record(ai, "$(P)$(R)DMarkY4-Mon") {
   field(DESC, "Get Y value of the marker4")
-  field(SCAN, "1 second")
+  field(SCAN, ".002 second")
   field(DISV, "0")
   field(SDIS, "$(P)$(R)EnblDMark4-Sts.RVAL")
   field(DTYP, "stream")
@@ -1796,7 +1796,7 @@ record(calc, "$(P)$(R)DMarkY4Disp-Mon") {
 
 record(ai, "$(P)$(R)MarkCount-Mon") {
   field(DESC, "Get Marker Freq. Count Result")
-  field(SCAN, "1 second")
+  field(SCAN, ".002 second")
   field(DISV, "0")
   field(SDIS, "$(P)$(R)EnblMarkCount-Sts.RVAL")
   field(DTYP, "stream")
@@ -1812,7 +1812,7 @@ record(ai, "$(P)$(R)MarkCount-Mon") {
 
 record(waveform, "$(P)$(R)Trace-Mon") {
   field(DESC, "Get trace waveform")
-  field(SCAN, ".001 second")
+  field(SCAN, ".002 second")
   field(SDIS, "$(P)$(R)GetSpectrum-Sel.RVAL")
   field(DISV, "0")
   field(MPST, "On Change")

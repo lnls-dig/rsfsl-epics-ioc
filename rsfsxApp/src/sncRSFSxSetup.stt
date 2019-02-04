@@ -287,6 +287,83 @@ sync VbwAutoSts VbwAutoFlag;
 int FFTCalcProc = 1;
 assign FFTCalcProc to "{P}{R}FFTCalc.PROC";
 
+int AcqTime;
+assign AcqTime to "{P}{R}Trace-Mon.SCAN";
+monitor AcqTime;
+evflag AcqTimeFlag;
+sync AcqTime AcqTimeFlag;
+
+int MX1Time;
+assign MX1Time to "{P}{R}MarkX1-RB.SCAN";
+
+int MX2Time;
+assign MX2Time to "{P}{R}MarkX2-RB.SCAN";
+
+int MX3Time;
+assign MX3Time to "{P}{R}MarkX3-RB.SCAN";
+
+int MX4Time;
+assign MX4Time to "{P}{R}MarkX4-RB.SCAN";
+
+int MY1Time;
+assign MY1Time to "{P}{R}MarkY1-Mon.SCAN";
+
+int MY2Time;
+assign MY2Time to "{P}{R}MarkY2-Mon.SCAN";
+
+int MY3Time;
+assign MY3Time to "{P}{R}MarkY3-Mon.SCAN";
+
+int MY4Time;
+assign MY4Time to "{P}{R}MarkY4-Mon.SCAN";
+
+int DMX1Time;
+assign DMX1Time to "{P}{R}DMarkX1-RB.SCAN";
+
+int DMX2Time;
+assign DMX2Time to "{P}{R}DMarkX2-RB.SCAN";
+
+int DMX3Time;
+assign DMX3Time to "{P}{R}DMarkX3-RB.SCAN";
+
+int DMX4Time;
+assign DMX4Time to "{P}{R}DMarkX4-RB.SCAN";
+
+int DMY1Time;
+assign DMY1Time to "{P}{R}DMarkY1-Mon.SCAN";
+
+int DMY2Time;
+assign DMY2Time to "{P}{R}DMarkY2-Mon.SCAN";
+
+int DMY3Time;
+assign DMY3Time to "{P}{R}DMarkY3-Mon.SCAN";
+
+int DMY4Time;
+assign DMY4Time to "{P}{R}DMarkY4-Mon.SCAN";
+
+int DynMX2Time;
+assign DynMX2Time to "{P}{R}OnOffMark2-Sel.SCAN";
+
+int DynMX3Time;
+assign DynMX3Time to "{P}{R}OnOffMark3-Sel.SCAN";
+
+int DynMX4Time;
+assign DynMX4Time to "{P}{R}OnOffMark4-Sel.SCAN";
+
+int DynDMX1Time;
+assign DynDMX1Time to "{P}{R}OnOffDMark1-Sel.SCAN";
+
+int DynDMX2Time;
+assign DynDMX2Time to "{P}{R}OnOffDMark2-Sel.SCAN";
+
+int DynDMX3Time;
+assign DynDMX3Time to "{P}{R}OnOffDMark3-Sel.SCAN";
+
+int DynDMX4Time;
+assign DynDMX4Time to "{P}{R}OnOffDMark4-Sel.SCAN";
+
+int i;
+
 ss ss1 {
     state opr {
 
@@ -770,6 +847,66 @@ ss ss1 {
 	    pvPut(DetecTypeProc, SYNC);
 	    pvPut(SweTimeProc, SYNC);
 	    pvPut(FFTCalcProc, SYNC);
+
+	} state opr
+
+	when (efTestAndClear(AcqTimeFlag)) {
+
+	    // Disable spectrum acquisition
+	    GetSpectrum = 0;
+	    pvPut(GetSpectrum, SYNC);
+
+	    MX1Time = AcqTime;
+	    MX2Time = AcqTime;
+	    MX3Time = AcqTime;
+	    MX4Time = AcqTime;
+	    MY1Time = AcqTime;
+	    MY2Time = AcqTime;
+	    MY3Time = AcqTime;
+	    MY4Time = AcqTime;
+	    DMX1Time = AcqTime;
+	    DMX2Time = AcqTime;
+	    DMX3Time = AcqTime;
+	    DMX4Time = AcqTime;
+	    DMY1Time = AcqTime;
+	    DMY2Time = AcqTime;
+	    DMY3Time = AcqTime;
+	    DMY4Time = AcqTime;
+	    DynMX2Time = AcqTime;
+	    DynMX3Time = AcqTime;
+	    DynMX4Time = AcqTime;
+	    DynDMX1Time = AcqTime;
+	    DynDMX2Time = AcqTime;
+	    DynDMX3Time = AcqTime;
+	    DynDMX4Time = AcqTime;
+
+	    pvPut(MX1Time, SYNC);
+	    pvPut(MX2Time, SYNC);
+	    pvPut(MX3Time, SYNC);
+	    pvPut(MX4Time, SYNC);
+	    pvPut(MY1Time, SYNC);
+	    pvPut(MY2Time, SYNC);
+	    pvPut(MY3Time, SYNC);
+	    pvPut(MY4Time, SYNC);
+	    pvPut(DMX1Time, SYNC);
+	    pvPut(DMX2Time, SYNC);
+	    pvPut(DMX3Time, SYNC);
+	    pvPut(DMX4Time, SYNC);
+	    pvPut(DMY1Time, SYNC);
+	    pvPut(DMY2Time, SYNC);
+	    pvPut(DMY3Time, SYNC);
+	    pvPut(DMY4Time, SYNC);
+	    pvPut(DynMX2Time, SYNC);
+	    pvPut(DynMX3Time, SYNC);
+	    pvPut(DynMX4Time, SYNC);
+	    pvPut(DynDMX1Time, SYNC);
+	    pvPut(DynDMX2Time, SYNC);
+	    pvPut(DynDMX3Time, SYNC);
+	    pvPut(DynDMX4Time, SYNC);
+
+	    // Enable spectrum acquisition
+	    GetSpectrum = 1;
+	    pvPut(GetSpectrum, SYNC);
 
 	} state opr
 
