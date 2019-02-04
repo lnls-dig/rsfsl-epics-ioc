@@ -2,11 +2,11 @@
 # Title      : Rohde & Schwarz FSL Spectrum Analyzer Epics Protocol File
 # Project    :
 #---------------------------------------------------------------------
-# File       : rsfsl.proto
+# File       : rsfsx.proto
 # Author     : Leticia Garcez Capovilla
 # Company    : Brazilian Synchrotron Light Laboratory, LNLS/CNPEM
 # Created    : 2018-03-19
-# Last update: 2018-04-04
+# Last update: 2019-02-04
 #---------------------------------------------------------------------
 # Description:
 #
@@ -32,7 +32,7 @@
 # Revisions  :
 # Date        	Version  	Author          	Description
 # 2018-mar-19	1.0      	leticiagcapovilla       Created
-# 2018-apr-04	1.0		leticiagcapovilla	Updated
+# 2019-feb-04	2.0		leticiagcapovilla	Updated
 #---------------------------------------------------------------------
 
 ######################################################################
@@ -551,17 +551,17 @@ outEnblAttAuto {
 }
 
 ######################################################################
-## Enable/Disable Input Preamplifier - Only available on R&S FSL-B22
-#
-#inEnblPreamp {
-#    out "INP:GAIN:STAT?";
-#    in "%i";
-#}
-#
-#outEnblPreamp {
-#    out "INP:GAIN:STAT %i";
-#}
-#
+# Enable/Disable Input Preamplifier - Only available on R&S FSL-B22
+
+inEnblPreamp {
+    out "INP:GAIN:STAT?";
+    in "%i";
+}
+
+outEnblPreamp {
+    out "INP:GAIN:STAT %i";
+}
+
 ######################################################################
 # Instruments Nominal input impedance
 
