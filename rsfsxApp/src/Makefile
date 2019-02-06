@@ -53,10 +53,10 @@ ifneq ($(SNCSEQ),)
     rsfsxSupport_LIBS += seq pv
     rsfsx_LIBS += seq pv
 
-    # Build sncRSFSx into rsfsxSupport
-    sncRSFSxSetup_SNCFLAGS += +r
-    rsfsx_DBD += sncRSFSxSetup.dbd
-    rsfsxSupport_SRCS += sncRSFSxSetup.stt
+    # Build sncRSFSL into rsfsxSupport
+    sncRSFSL_SNCFLAGS += +r
+    rsfsx_DBD += sncRSFSL.dbd
+    rsfsxSupport_SRCS += sncRSFSL.stt
     rsfsxSupport_LIBS += seq pv
     rsfsx_LIBS += seq pv
 
