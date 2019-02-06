@@ -26,6 +26,7 @@ iocInit
 
 ## Start any sequence programs
 seq sncRSFSV, "P=${P}, R=${R}"
+seq sncSpec, "P=${P}, R=${R}"
 
 # Create manual trigger for Autosave
 create_monitor_set("auto_settings_rsfsv.req", 30, "P=${P}, R=${R}")
