@@ -25,7 +25,7 @@ vxi11Configure("$(RSFSX_PORT)","$(IPADDR)",0,"0.0","inst0",0,0)
 iocInit
 
 ## Start any sequence programs
-seq sncRSFSxSetup, "P=${P}, R=${R}"
+seq sncRSFSV, "P=${P}, R=${R}"
 
 # Create manual trigger for Autosave
 create_monitor_set("auto_settings_rsfsv.req", 30, "P=${P}, R=${R}")
