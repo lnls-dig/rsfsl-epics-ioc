@@ -60,6 +60,13 @@ ifneq ($(SNCSEQ),)
     rsfsxSupport_LIBS += seq pv
     rsfsx_LIBS += seq pv
 
+    # Build sncRSFSV into rsfsxSupport
+    sncRSFSV_SNCFLAGS += +r
+    rsfsx_DBD += sncRSFSV.dbd
+    rsfsxSupport_SRCS += sncRSFSV.stt
+    rsfsxSupport_LIBS += seq pv
+    rsfsx_LIBS += seq pv
+
 endif
 
 # Finally link to the EPICS Base libraries
