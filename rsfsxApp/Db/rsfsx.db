@@ -411,6 +411,8 @@ record(mbbo, "$(P)$(R)Rbw-Sel") {
   field(DESC, "Set Resolution Bandwidth")
   field(PINI, "YES")
   field(DTYP, "stream")
+  field(SDIS, "$(P)$(R)EnblRbwAuto-Sts")
+  field(DISV, "1")
   field(ZRST, "10 Hz")
   field(ZRVL, "10")
   field(ONST, "30 Hz")
