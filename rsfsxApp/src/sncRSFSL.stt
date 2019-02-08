@@ -353,7 +353,11 @@ assign DynDMX3Time to "{P}{R}OnOffDMark3-Sel.SCAN";
 int DynDMX4Time;
 assign DynDMX4Time to "{P}{R}OnOffDMark4-Sel.SCAN";
 
-int i;
+int i;	// Used to store AcqTime on MarkAOff and DMarkAOff
+	// flag routines
+
+int DsblVbwProc = 1;
+assign DsblVbwProc to "{P}{R}DisableVbw.PROC";
 
 ss ss1 {
     state opr {
@@ -932,6 +936,7 @@ ss ss1 {
 	    pvPut(VbwProc, SYNC);
 	    pvPut(SweTimeProc, SYNC);
 	    pvPut(FFTCalcProc, SYNC);
+	    pvPut(DsblVbwProc, SYNC);
 
 	} state opr
 
@@ -948,6 +953,7 @@ ss ss1 {
 	    pvPut(RbwProc, SYNC);
 	    pvPut(VbwProc, SYNC);
 	    pvPut(FFTCalcProc, SYNC);
+	    pvPut(DsblVbwProc, SYNC);
 
 	} state opr
 
@@ -956,6 +962,7 @@ ss ss1 {
 	    pvPut(DetecTypeProc, SYNC);
 	    pvPut(SweTimeProc, SYNC);
 	    pvPut(FFTCalcProc, SYNC);
+	    pvPut(DsblVbwProc, SYNC);
 
 	} state opr
 
