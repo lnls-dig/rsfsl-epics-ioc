@@ -352,6 +352,10 @@ assign DynDMX4Time to "{P}{R}OnOffDMark4-Sel.SCAN";
 
 int i;
 
+int AutoLvl;
+assign AutoLvl to "{P}{R}AutoLvl-Cmd";
+monitor AutoLvl;
+
 ss ss1 {
     state opr {
 
@@ -1009,6 +1013,17 @@ ss ss1 {
 	    // Enable spectrum acquisition
 	    GetSpectrum = 1;
 	    pvPut(GetSpectrum, SYNC);
+
+	} state opr
+
+	when (AutoLvl == 1) {
+
+	    pvPut(RefLvlProc, SYNC);
+	    RefLvlSP = RefLvlRB;
+	    pvPut(RefLvlSP,SYNC);
+
+	    AutoLvl = 0;
+	    pvPut(AutoLvl, SYNC);
 
 	} state opr
 

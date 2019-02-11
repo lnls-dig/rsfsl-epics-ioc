@@ -55,7 +55,6 @@ record(bo, "$(P)$(R)AutoLvl-Cmd") {
   field(DTYP, "stream")
   field(ZNAM, "0")
   field(ONAM, "1")
-  field(HIGH, "1")
   field(OUT, "@rsfsv.proto outAutoLvl($1) $(PORT)")
 }
 
