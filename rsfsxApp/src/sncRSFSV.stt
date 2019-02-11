@@ -360,6 +360,10 @@ int AutoFreq;
 assign AutoFreq to "{P}{R}AutoFreq-Cmd";
 monitor AutoFreq;
 
+int AutoAll;
+assign AutoAll to "{P}{R}AutoAll-Cmd";
+monitor AutoAll;
+
 ss ss1 {
     state opr {
 
@@ -1074,6 +1078,52 @@ ss ss1 {
 
 	    AutoFreq = 0;
 	    pvPut(AutoFreq, SYNC);
+
+	} state opr
+
+	when (AutoAll == 1) {
+
+	    pvPut(FreqStartProc, SYNC);
+	    efClear(FreqStartFlag);
+
+	    pvPut(FreqStopProc, SYNC);
+	    efClear(FreqStopFlag);
+
+	    pvPut(CenterFreqProc, SYNC);
+	    efClear(CenterFreqFlag);
+
+	    pvPut(SpanProc, SYNC);
+	    efClear(SpanFlag);
+
+	    pvPut(RefLvlProc, SYNC);
+
+	    FreqStartSP = FreqStartRB;
+	    pvPut(FreqStartSP, SYNC);
+	    efClear(FreqStartFlag);
+
+	    CenterFreqSP = CenterFreqRB;
+	    pvPut(CenterFreqSP, SYNC);
+	    efClear(CenterFreqFlag);
+
+	    FreqStopSP = FreqStopRB;
+	    pvPut(FreqStopSP, SYNC);
+	    efClear(FreqStopFlag);
+
+	    SpanSP = SpanRB;
+	    pvPut(SpanSP, SYNC);
+	    efClear(SpanFlag);
+
+	    RefLvlSP = RefLvlRB;
+	    pvPut(RefLvlSP,SYNC);
+
+	    pvPut(FreqArrayProc, SYNC);
+	    pvPut(SweTimeProc, SYNC);
+
+	    pvPut(RbwProc, SYNC);
+	    pvPut(VbwProc, SYNC);
+
+	    AutoAll = 0;
+	    pvPut(AutoAll, SYNC);
 
 	} state opr
 

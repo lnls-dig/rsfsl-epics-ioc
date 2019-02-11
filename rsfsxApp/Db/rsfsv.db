@@ -65,7 +65,6 @@ record(bo, "$(P)$(R)AutoAll-Cmd") {
   field(DTYP, "stream")
   field(ZNAM, "0")
   field(ONAM, "1")
-  field(HIGH, "1")
   field(OUT, "@rsfsv.proto outAutoAll($1) $(PORT)")
 }
 
