@@ -41,7 +41,7 @@
 record(ai, "$(P)$(R)RefLvl-RB") {
   field(DESC, "Get reference level")
   field(DTYP, "stream")
-  field(PREC, "1")
+  field(PREC, "2")
   field(EGU, "dBm")
   field(INP, "@rsfsx.proto inRefLvl $(PORT)")
   field(FLNK, "$(P)$(R)AttIn-Sts")
@@ -53,6 +53,7 @@ record(ao, "$(P)$(R)RefLvl-SP") {
   field(DTYP, "stream")
   field(DRVH, "30")
   field(DRVL, "-130")
+  field(PREC, "2")
   field(EGU, "dBm")
   field(OUT, "@rsfsx.proto outRefLvl($1) $(PORT)")
   field(FLNK,"$(P)$(R)RefLvl-RB")
@@ -63,7 +64,7 @@ record(ao, "$(P)$(R)RefLvl-SP") {
 record(ai, "$(P)$(R)RefOff-RB") {
   field(DESC, "Get reference level offset")
   field(DTYP, "stream")
-  field(PREC, "1")
+  field(PREC, "2")
   field(EGU, "dB")
   field(INP, "@rsfsx.proto inRefOff $(PORT)")
 }
@@ -74,6 +75,7 @@ record(ao, "$(P)$(R)RefOff-SP") {
   field(DTYP, "stream")
   field(DRVH, "200")
   field(DRVL, "-200")
+  field(PREC, "2")
   field(EGU, "dB")
   field(OUT, "@rsfsx.proto outRefOff($1) $(PORT)")
   field(FLNK,"$(P)$(R)RefOff-RB")
