@@ -43,7 +43,6 @@ record(bo, "$(P)$(R)AutoFreq-Cmd") {
   field(DTYP, "stream")
   field(ZNAM, "0")
   field(ONAM, "1")
-  field(HIGH, "1")
   field(OUT, "@rsfsv.proto outAutoFreq($1) $(PORT)")
 }
 
