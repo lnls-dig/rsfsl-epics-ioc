@@ -179,3 +179,19 @@ record(mbbo, "$(P)$(R)Vbw-Sel") {
   field(FLNK, "$(P)$(R)Vbw-Sts")
 }
 
+# Resolution Bandwidth
+
+record(ai, "$(P)$(R)Rbw-Sts") {
+  field(DTYP, "stream")
+  field(EGU, "Hz")
+  field(INP, "@rsfsx.proto inRbw $(PORT)")
+}
+
+record(stringout, "$(P)$(R)Rbw-Sel") {
+  field(DTYP, "stream")
+  field(SDIS, "$(P)$(R)EnblRbwAuto-Sts")
+  field(DISV, "1")
+  field(OUT, "@rsfsx.proto outRbw($1) $(PORT)")
+  field(FLNK, "$(P)$(R)Rbw-Sts")
+}
+
