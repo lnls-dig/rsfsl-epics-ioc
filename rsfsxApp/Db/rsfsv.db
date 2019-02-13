@@ -184,14 +184,14 @@ record(mbbo, "$(P)$(R)Vbw-Sel") {
 record(ai, "$(P)$(R)Rbw-Sts") {
   field(DTYP, "stream")
   field(EGU, "Hz")
-  field(INP, "@rsfsx.proto inRbw $(PORT)")
+  field(INP, "@rsfsv.proto inRbw $(PORT)")
 }
 
 record(stringout, "$(P)$(R)Rbw-Sel") {
   field(DTYP, "stream")
   field(SDIS, "$(P)$(R)EnblRbwAuto-Sts")
   field(DISV, "1")
-  field(OUT, "@rsfsx.proto outRbw($1) $(PORT)")
+  field(OUT, "@rsfsv.proto outRbw($1) $(PORT)")
   field(FLNK, "$(P)$(R)Rbw-Sts")
 }
 
