@@ -624,18 +624,6 @@ outTrigSrc {
 }
 
 ######################################################################
-# Resolution Bandwidth
-
-inRbw {
-    out "SENS:BWID:RES?";
-    in "%i";
-}
-
-outRbw {
-    out "SENS:BWID:RES %i";
-}
-
-######################################################################
 # Automatic Resolution Bandwidth
 
 inRbwAuto {
