@@ -182,12 +182,14 @@ record(mbbo, "$(P)$(R)Vbw-Sel") {
 # Resolution Bandwidth
 
 record(ai, "$(P)$(R)Rbw-Sts") {
+  field(DESC, "Get resolution bandwidth value in Hz")
   field(DTYP, "stream")
   field(EGU, "Hz")
   field(INP, "@rsfsv.proto inRbw $(PORT)")
 }
 
 record(stringout, "$(P)$(R)Rbw-Sel") {
+  field(DESC, "Set resolution bandwidth value")
   field(DTYP, "stream")
   field(SDIS, "$(P)$(R)EnblRbwAuto-Sts")
   field(DISV, "1")
