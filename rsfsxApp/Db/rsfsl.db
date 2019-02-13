@@ -310,7 +310,7 @@ record(mbbi, "$(P)$(R)Rbw-Sts") {
   field(ELVL, "3000000")
   field(TVST, "10 MHz")
   field(TVVL, "10000000")
-  field(INP, "@rsfsx.proto inRbw $(PORT)")
+  field(INP, "@rsfsl.proto inRbw $(PORT)")
 }
 
 record(mbbo, "$(P)$(R)Rbw-Sel") {
@@ -345,6 +345,6 @@ record(mbbo, "$(P)$(R)Rbw-Sel") {
   field(ELVL, "3000000")
   field(TVST, "10 MHz")
   field(TVVL, "10000000")
-  field(OUT, "@rsfsx.proto outRbw($1) $(PORT)")
+  field(OUT, "@rsfsl.proto outRbw($1) $(PORT)")
   field(FLNK, "$(P)$(R)Rbw-Sts")
 }
