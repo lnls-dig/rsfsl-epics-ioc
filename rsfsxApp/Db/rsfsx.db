@@ -1783,15 +1783,7 @@ record(bo, "$(P)$(R)Rst-Cmd") {
   field(DTYP, "stream")
   field(ZNAM, "0")
   field(ONAM, "1")
-  field(HIGH, "1")
   field(OUT, "@rsfsx.proto cmdRst $(PORT)")
-  field(FLNK, "$(P)$(R)RstReady")
-}
-
-record(calc, "$(P)$(R)RstReady") {
-  field(INPA, "$(P)$(R)RstReady")
-  field(INPB, "$(P)$(R)Rst-Cmd")
-  field(CALC, "A+B")
 }
 
 # Set Marker to Max Peak on Trace (1-4)

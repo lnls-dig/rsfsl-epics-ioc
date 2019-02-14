@@ -155,10 +155,8 @@ double RefLvlProc = 1;
 assign RefLvlProc to "{P}{R}RefLvl-RB.PROC";
 
 int Rst;
-assign Rst to "{P}{R}RstReady";
+assign Rst to "{P}{R}Rst-Cmd";
 monitor Rst;
-evflag RstFlag;
-sync Rst RstFlag;
 
 double DispRangeSP;
 assign DispRangeSP to "{P}{R}DispRange-SP";
@@ -362,7 +360,7 @@ assign DsblVbwProc to "{P}{R}DisableVbw.PROC";
 ss ss1 {
     state opr {
 
-	when (efTestAndClear(RstFlag)) {
+	when (Rst == 1) {
 
 	    // Disable spectrum acquisition
 	    GetSpectrum = 0;
@@ -511,6 +509,9 @@ ss ss1 {
 	    // Enable automatic sweep time update
 	    EnblSweTimeAuto = 1;
 	    pvPut(EnblSweTimeAuto, SYNC);
+
+	    Rst = 0;
+	    pvPut(Rst, SYNC);
 
 	} state opr
 
