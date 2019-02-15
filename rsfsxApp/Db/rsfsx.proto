@@ -636,18 +636,6 @@ outRbwAuto {
 }
 
 ######################################################################
-# Video Bandwidth
-
-inVbw {
-    out "SENS:BWID:VID?";
-    in "%i";
-}
-
-outVbw {
-    out "SENS:BWID:VID %i";
-}
-
-######################################################################
 # Enable/Disable automatic coupling of the video bandwidth to the
 # resolution bandwidth
 
