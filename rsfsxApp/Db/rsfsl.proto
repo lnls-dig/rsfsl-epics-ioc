@@ -145,4 +145,15 @@ outRbw {
     out "SENS:BWID:RES %i";
 }
 
+######################################################################
+# Video Bandwidth
+
+inVbw {
+    out "SENS:BWID:VID?";
+    in "%i";
+}
+
+outVbw {
+    out "SENS:BWID:VID %i";
+}
 
