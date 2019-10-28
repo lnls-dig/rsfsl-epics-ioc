@@ -81,8 +81,8 @@ include $(TOP)/configure/RULES
 rsfsx_DBD += asyn.dbd
 rsfsx_DBD += drvAsynIPPort.dbd
 rsfsx_DBD += drvVxi11.dbd
-rsfsx_DBD += stream.dbd
 rsfsx_DBD += calcSupport.dbd
+rsfsx_DBD += stream.dbd
 rsfsx_DBD += asSupport.dbd
 rsfsx_DBD += menuScan.dbd
 
