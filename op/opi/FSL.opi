@@ -2571,7 +2571,7 @@ $(pv_value)</tooltip>
       <show_scrollbar>true</show_scrollbar>
       <tooltip></tooltip>
       <transparent>true</transparent>
-      <visible>false</visible>
+      <visible>true</visible>
       <widget_type>Grouping Container</widget_type>
       <width>776</width>
       <wuid>-5afe0710:163264b925c:-7a8a</wuid>
@@ -10409,7 +10409,7 @@ $(pv_value)</tooltip>
       <show_scrollbar>true</show_scrollbar>
       <tooltip></tooltip>
       <transparent>true</transparent>
-      <visible>true</visible>
+      <visible>false</visible>
       <widget_type>Grouping Container</widget_type>
       <width>776</width>
       <wuid>7fb1a497:1634604385e:-6f15</wuid>
@@ -13768,7 +13768,7 @@ $(pv_value)</tooltip>
       <show_scrollbar>true</show_scrollbar>
       <tooltip></tooltip>
       <transparent>true</transparent>
-      <visible>false</visible>
+      <visible>true</visible>
       <widget_type>Grouping Container</widget_type>
       <width>697</width>
       <wuid>-59f0c9c4:1668cc7b809:-7e60</wuid>
@@ -14200,7 +14200,7 @@ $(pv_value)</tooltip>
               <exp bool_exp="pv0==1">
                 <value>false</value>
               </exp>
-              <pv trig="true">$(P)$(R)EnblVbwAuto-Sts</pv>
+              <pv trig="true">$(P)$(R)DisableVbw</pv>
             </rule>
           </rules>
           <scale_options>
@@ -14216,7 +14216,7 @@ $(pv_value)</tooltip>
           <width>140</width>
           <wuid>1878318f:162cfc7c583:-6f21</wuid>
           <x>0</x>
-          <y>32</y>
+          <y>30</y>
         </widget>
       </widget>
       <widget typeId="org.csstudio.opibuilder.widgets.groupingContainer" version="1.0.0">
@@ -14917,7 +14917,7 @@ $(pv_value)</tooltip>
       <show_scrollbar>true</show_scrollbar>
       <tooltip></tooltip>
       <transparent>true</transparent>
-      <visible>true</visible>
+      <visible>false</visible>
       <widget_type>Grouping Container</widget_type>
       <width>697</width>
       <wuid>7fb1a497:1634604385e:-51d8</wuid>
@@ -15316,7 +15316,7 @@ $(pv_value)</tooltip>
               <exp bool_exp="pv0==1">
                 <value>false</value>
               </exp>
-              <pv trig="true">$(P)$(R)EnblAutoDetec-Sts</pv>
+              <pv trig="true">$(P)$(R)DisableVbw</pv>
             </rule>
           </rules>
           <scale_options>

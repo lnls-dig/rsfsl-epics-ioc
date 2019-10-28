@@ -87,3 +87,27 @@ outFiltType {
     out "SENS:BWID:RES:TYPE %{NORM|CFIL|RRC|P5}";
 }
 
+######################################################################
+# Resolution Bandwidth
+
+inRbw {
+    out "SENS:BWID:RES?";
+    in "%i";
+}
+
+outRbw {
+    out "SENS:BWID:RES %s";
+}
+
+######################################################################
+# Video Bandwidth
+
+inVbw {
+    out "SENS:BWID:VID?";
+    in "%i";
+}
+
+outVbw {
+    out "SENS:BWID:VID %s";
+}
+
