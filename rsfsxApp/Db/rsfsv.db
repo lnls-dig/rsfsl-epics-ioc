@@ -43,7 +43,6 @@ record(bo, "$(P)$(R)AutoFreq-Cmd") {
   field(DTYP, "stream")
   field(ZNAM, "0")
   field(ONAM, "1")
-  field(HIGH, "1")
   field(OUT, "@rsfsv.proto outAutoFreq($1) $(PORT)")
 }
 
@@ -55,7 +54,6 @@ record(bo, "$(P)$(R)AutoLvl-Cmd") {
   field(DTYP, "stream")
   field(ZNAM, "0")
   field(ONAM, "1")
-  field(HIGH, "1")
   field(OUT, "@rsfsv.proto outAutoLvl($1) $(PORT)")
 }
 
@@ -67,7 +65,6 @@ record(bo, "$(P)$(R)AutoAll-Cmd") {
   field(DTYP, "stream")
   field(ZNAM, "0")
   field(ONAM, "1")
-  field(HIGH, "1")
   field(OUT, "@rsfsv.proto outAutoAll($1) $(PORT)")
 }
 
@@ -101,5 +98,42 @@ record(mbbo, "$(P)$(R)FiltType-Sel") {
   field(THVL, "3")
   field(OUT, "@rsfsv.proto outFiltType($1) $(PORT)")
   field(FLNK, "$(P)$(R)FiltType-Sts")
+}
+
+# Video Bandwidth
+
+record(ai, "$(P)$(R)Vbw-Sts") {
+  field(DESC, "Get video bandwidth filter value")
+  field(DTYP, "stream")
+  field(EGU, "Hz")
+  field(INP, "@rsfsv.proto inVbw $(PORT)")
+  field(FLNK, "$(P)$(R)SweTime-Mon")
+}
+
+record(stringout, "$(P)$(R)Vbw-Sel") {
+  field(DESC, "Set video bandwidth value")
+  field(DTYP, "stream")
+  field(SDIS, "$(P)$(R)EnblVbwAuto-Sts")
+  field(DISV, "1")
+  field(OUT, "@rsfsv.proto outVbw($1) $(PORT)")
+  field(FLNK, "$(P)$(R)Vbw-Sts")
+}
+
+# Resolution Bandwidth
+
+record(ai, "$(P)$(R)Rbw-Sts") {
+  field(DESC, "Get resolution bandwidth value in Hz")
+  field(DTYP, "stream")
+  field(EGU, "Hz")
+  field(INP, "@rsfsv.proto inRbw $(PORT)")
+}
+
+record(stringout, "$(P)$(R)Rbw-Sel") {
+  field(DESC, "Set resolution bandwidth value")
+  field(DTYP, "stream")
+  field(SDIS, "$(P)$(R)EnblRbwAuto-Sts")
+  field(DISV, "1")
+  field(OUT, "@rsfsv.proto outRbw($1) $(PORT)")
+  field(FLNK, "$(P)$(R)Rbw-Sts")
 }
 

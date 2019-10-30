@@ -133,3 +133,27 @@ cmdCleanSpec {
     out "CALC:SPEC:CLE:IMM";
 }
 
+######################################################################
+# Resolution Bandwidth
+
+inRbw {
+    out "SENS:BWID:RES?";
+    in "%i";
+}
+
+outRbw {
+    out "SENS:BWID:RES %i";
+}
+
+######################################################################
+# Video Bandwidth
+
+inVbw {
+    out "SENS:BWID:VID?";
+    in "%i";
+}
+
+outVbw {
+    out "SENS:BWID:VID %i";
+}
+

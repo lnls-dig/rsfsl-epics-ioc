@@ -25,7 +25,7 @@ vxi11Configure("$(RSFSX_PORT)","$(IPADDR)",0,"0.0","inst0",0,0)
 iocInit
 
 ## Start any sequence programs
-seq sncRSFSxSetup, "P=${P}, R=${R}"
+seq sncRSFSL, "P=${P}, R=${R}"
 seq sncSpec, "P=${P}, R=${R}"
 
 # Create manual trigger for Autosave
