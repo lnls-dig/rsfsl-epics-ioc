@@ -1679,6 +1679,13 @@ record(waveform, "$(P)$(R)Trace-Mon") {
   field(FTVL, "FLOAT")
   field(DTYP, "stream")
   field(INP, "@rsfsx.proto monTrace $(PORT)")
+  field(FLNK, "$(P)$(R)TraceLen-Mon")
+}
+
+# NORD of Trace-Mon
+record(ai, "$(P)$(R)TraceLen-Mon") {
+  field(DESC, "Get NORD field of Trace-Mon")
+  field(INP, "$(P)$(R)Trace-Mon.NORD NPP")
   field(FLNK, "$(P)$(R)TimeStamp")
 }
 
